@@ -1,0 +1,32 @@
+.button {
+  height: 50px;
+  min-width: 80px;
+  max-width: 150px;
+  background-color: white;
+  border: solid 1px black;
+  outline: none;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-moving {
+  height: 50px;
+  width: 200px;
+  background-color: white;
+  border-right: solid 1px black;
+  outline: none;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-img {
+  width: auto;
+  height: auto;
+  max-width: 99%;
+  max-height: 80%;
+  filter: grayscale(100%);
+}

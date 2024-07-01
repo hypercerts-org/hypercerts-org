@@ -1,0 +1,441 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+ .main-body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  margin-top: 20px;
+  max-width: 1000px;
+}
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.responsive-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 0px;
+}
+
+.responsive-container > * {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .responsive-container {
+    flex-direction: column;
+  }
+
+  .responsive-container > * {
+    flex: 1 1 100%;
+  }
+}
+
+.responsive-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 0px;
+}
+
+/* Default to 2 columns */
+.responsive-container2 > * {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.responsive-container2 > :nth-child(1) {
+  flex: 1 1 33%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.responsive-container2 > :nth-child(2) {
+  flex: 1 1 67%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .responsive-container2 {
+    flex-direction: column;
+  }
+
+  .responsive-container2 > * {
+    flex: 1 1 100%;
+  }
+
+  /* Change order in single-column layout */
+  .responsive-container2 > :nth-child(1) {
+    order: 2;
+  }
+  .responsive-container2 > :nth-child(2) {
+    order: 1;
+  }
+}
+
+.responsive-container3 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: right;
+  height: 100%;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 0px;
+}
+
+.responsive-container3 > div {
+  flex: 1 1 50%; /* Adjust as necessary */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@media (min-width: 769px) {
+  .responsive-container3 > :first-child {
+    flex: 0 0 33.33%;
+  }
+
+  .responsive-container3 > :not(:first-child) {
+    flex: 0 0 66.67%;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-container3 {
+    flex-direction: column;
+  }
+
+  .responsive-container3 > * {
+    flex: 1 1 100%;
+  }
+}
+
+.child {
+  flex: 1;
+  min-width: 300px; /* Adjust based on your content */
+  padding: 0px;
+  text-align: left;
+}
+
+.transparentContainer {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.transparentContainer::before {
+  content: "";
+  background-image: url('/img/bg_centered_star.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4; /* Adjust transparency here */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #3AB7A8;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --text-color: #000000;
+  --background-color: #FFFFFF;
+  --highlight-color: #f08c59;
+}
+
+/*
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --text-color: #000000;
+  --background-color: #FFFFFF;
+}
+*/
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --text-color: #FFFFFF;
+  --background-color: #000000;
+}
+
+@font-face {
+  font-family: 'Instrument-Serif';
+  src: url('/static/fonts/InstrumentSerif-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+.hero-font {
+  font-family: 'Instrument-Serif';
+  font-size: 160px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-align: center;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.title-font {
+  font-family: 'Instrument-Serif';
+  font-size: 72px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.title-font-sm {
+  font-family: 'Instrument-Serif';
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 53px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.heading-font {
+  font-family: 'Instrument-Serif';
+  text-align: left;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.author-font {
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.author-font:hover {
+  text-decoration: underline; /* Add underline on hover if desired */
+  color: var(--ifm-color-primary); /* Optional: Change color on hover */
+}
+
+.text-font {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #535353;
+  text-align: left;
+}
+
+.text-centered {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #535353;
+  text-align: center;
+}
+
+.navbar {
+  height: 50px; 
+  box-shadow: none !important;
+}
+
+/* Adjust the navbar's internal elements to align correctly with the new height */
+.navbar__inner {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.navbar__items {
+  height: 100%;
+}
+
+.navbar__title {
+  font-family: 'Instrument-Serif', serif;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.navbar__logo, .navbar__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: none;
+}
+
+.navbar__logo img, .navbar__brand img {
+  width: 30px;
+  height: 30px;
+}
+
+.navbar__items--left {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.navbar__items--right {
+  flex-grow: 0;
+}
+
+@media (max-width: 996px) {
+  .navbar__separator {
+    display: none;
+  }
+}
+
+.col.footer__col {
+  width: 180px;
+  flex: 0 0 auto;
+}
+
+.primaryButton {
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 0px solid var(--text-color);
+  text-decoration: none;
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 5dvb 15px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 2px solid var(--text-color);
+  text-decoration: none;
+}
+
+.greyButton {
+  background-color: #ECECEC;
+  color: var(--text-color);
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 0px solid var(--text-color);
+  text-decoration: none;
+}
+
+.greyTag {
+  display: inline-block;
+  text-align: left;
+  font-size: 12px;
+  background-color: #ECECEC;
+  color: var(--text-color);
+  padding: 2px 5px;
+  margin: 5px 5pc 5px 0px;
+  border-radius: 8px;
+  border: 0px solid var(--text-color);
+  text-decoration: none;
+}
+
+.menuButton {
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 2px solid var(--text-color);
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .menuButton {
+    margin-left: 30px; /* Adjust the value as needed */
+  }
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+}
+
+.highlight {
+  background-color: rgb(255, 255, 255); /* Change this color to whatever you prefer */
+  padding: 0 5px;
+  border-radius: 12px;
+  border: 1px solid #000000;
+}
+
+.highlightButton {
+  background-color: var(--highlight-color);
+  color: var(--background-color);
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 2px solid var(--highlight-color);
+  text-decoration: none;
+}
+
+.image-shadow {
+  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.4); /* Horizontal offset, vertical offset, blur radius, and color */
+}
