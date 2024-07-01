@@ -41,7 +41,7 @@ Every hypercert includes a picture that contains some of the core information.
 - **Rights:** Public display
 
 ### What are hypercerts good for?
-s
+
 
 ### Why should you care?
 
