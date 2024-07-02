@@ -40,8 +40,14 @@ Every hypercert includes a picture that contains some of the core information.
 - **Time of impact:** 2013-01-01 --> indefinite
 - **Rights:** Public display
 
-### What are hypercerts good for?
+### How do hypercerts function?
+Hypercerts act as a decentralized database to track impactful work, their evaluations, and – through the ownership of hypercerts – financial and non-financial contributions that legitimizes claiming the impact.
 
+1. **Projects create hypercerts:** Contributors to impactful work create hypercerts, which are digital representations of the impact.
+2. **Evaluators add credibility:** Independent evaluators verify that the work has been completed and provide assessments of the project's outputs, outcomes, and impact.
+3. **Funders buy hypercerts:** Funders use the evaluators' information to purchase hypercerts that represent the impact they care about. They can then *claim the impact* of the work.
+
+This setup can be applied to various impact funding mechanisms, such as grants, prize competitions, and retroactive funding. Thereby projects can transparently combine raising funds through multiple funding mechanisms.
 
 ### Why should you care?
 
@@ -61,4 +67,4 @@ While we are excited about the prospects of retrospective funding, hypercerts do
 
 Curious and want to learn more? Head over to the [whitepaper](whitepaper/whitepaper-intro.md) to dive deeper into the world of hypercerts.
 
-Or do you want to get started right away? Head to the [minting guide](minting-guide/minting-guide-start.md).
+Or do you want to get started right away? Head to the [minting guide](guide/start.md).

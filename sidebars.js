@@ -66,16 +66,12 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Minting Guide",
+      label: "Getting Started",
       collapsed: true,
       items: [
         {
           type: "doc",
-          id: "minting-guide/minting-guide-start",
-        },
-        {
-          type: "doc",
-          id: "minting-guide/step-by-step",
+          id: "guide/minting",
         },
       ],
     },
