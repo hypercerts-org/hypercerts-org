@@ -21,9 +21,9 @@ The hypercert itself is an extended ERC-1155 semi-fungible token with the inform
 
 #### Graphic representation
 
-<img src="/img/hypercert_example_IPFS.png" alt="hypercert design example" width="300"/>
+Every hypercert includes an image that contains some of the core information.
 
-Every hypercert includes a picture that contains some of the core information.
+<img src="/img/hypercert_example_IPFS.png" alt="hypercert design example" width="300"/>
 
 #### General information
 
@@ -41,13 +41,9 @@ Every hypercert includes a picture that contains some of the core information.
 - **Rights:** Public display
 
 ### How do hypercerts function?
-Hypercerts act as a decentralized database to track impactful work, their evaluations, and – through the ownership of hypercerts – financial and non-financial contributions that legitimizes claiming the impact.
+Hypercerts function as a decentralized database to track impactful work and their evaluations. Multiple evaluators can submit evaluations to a hypercert. Hypercerts can be sold to financial contributors and transferred to non-financial contributors, thus tracking these contributions and allowing contributors to *claim the impact* of the work.
 
-1. **Projects create hypercerts:** Contributors to impactful work create hypercerts, which are digital representations of the impact.
-2. **Evaluators add credibility:** Independent evaluators verify that the work has been completed and provide assessments of the project's outputs, outcomes, and impact.
-3. **Funders buy hypercerts:** Funders use the evaluators' information to purchase hypercerts that represent the impact they care about. They can then *claim the impact* of the work.
-
-This setup can be applied to various impact funding mechanisms, such as grants, prize competitions, and retroactive funding. Thereby projects can transparently combine raising funds through multiple funding mechanisms.
+As a result, hypercerts can power [impact markets](intro/impact-markets.md) and are also valuable for other impact funding mechanisms, such as grants, prize competitions, and retroactive funding (see [Hypercerts Ecosystem](intro/hypercerts-ecosystem.md)).
 
 ### Why should you care?
 
@@ -65,6 +61,6 @@ While we are excited about the prospects of retrospective funding, hypercerts do
 
 ### Next
 
-Curious and want to learn more? Head over to the [whitepaper](whitepaper/whitepaper-intro.md) to dive deeper into the world of hypercerts.
+Curious and want to learn more? Head to the next section on [impact markets](intro/impact-markets.md); alternatively, head over to the [whitepaper](whitepaper/whitepaper-intro.md) to dive deeper into the world of hypercerts.
 
 Or do you want to get started right away? Head to the [minting guide](guide/start.md).

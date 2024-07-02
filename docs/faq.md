@@ -7,7 +7,7 @@ id: faq
 
 ### How do I create a hypercert?
 
-We've created a step-by-step guide in the documents, which you can find [here](minting-guide/minting-guide-start).
+We've created a step-by-step guide in the documents, which you can find [here](guide/start).
 
 ### Who gets to claim my hypercert?
 

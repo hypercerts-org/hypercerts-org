@@ -37,7 +37,7 @@ const client = new HypercertClient({
 Hypercerts is a multi-chain protocol.
 See [here](./supported-networks.md) for a list of currently supported networks.
 
-> **Note** If there's no `walletClient` provided, the client will run in [read-only mode](#read-only-mode).
+> **Note** If there's no `walletClient` provided, the client will run in `read-only mode`.
 
 ## Make a Hypercert
 
@@ -74,7 +74,7 @@ const tx = await client.mintClaim(
 );
 ```
 
-For guidance on how to specify your metadata, see the [minting guide](../minting-guide/step-by-step.md).
+For guidance on how to specify your metadata, see the [minting guide](../guide/minting.md).
 This will validate the metadata, store claim metadata on IPFS, create a new hypercert on-chain, and return a transaction receipt.
 
 For more details, check out the [Minting Guide](./minting.md).
