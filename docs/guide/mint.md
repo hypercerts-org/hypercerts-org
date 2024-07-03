@@ -1,16 +1,8 @@
 ---
-title: 'Step-by-step: Minting'
-id: minting
+title: 'Mint'
+id: mint
 sidebar_position: 2
 ---
-
-# Getting started
-
-### How to create a hypercert
-
-Creating a hypercert is similar to creating an NFT on platforms like OpenSea or Zora.
-
-In this article, we’ll walk through the steps one by one and explain exactly what you need to do to create your first hypercert.
 
 ### Who can create a hypercert?
 
@@ -22,7 +14,7 @@ Critically, if the work was done by more than one person, then each person shoul
 
 ### What do I need to create a hypercert?
 
-You will need to prepare all of the information required in the form builder (see [Step-by-step instructions for creating a hypercert](guide/minting.md) below). This includes important metadata, such as a description of the project and the dimensions of your impact claim, as well as a project artwork. You may also want to include an allowlist of wallets that are approved to claim one or more fractions of the hypercert.
+You will need to prepare all of the information required in the form builder (see [Step-by-step instructions for creating a hypercert](guide/mint.md) below). This includes important metadata, such as a description of the project and the dimensions of your impact claim, as well as a project artwork. You may also want to include an allowlist of wallets that are approved to claim one or more fractions of the hypercert.
 
 In addition to the information regarding the hypercert itself, you’ll need a crypto wallet to mint your hypercert. “Minting” a hypercert is the process of writing an impact claim to the blockchain. This establishes its immutable record of authenticity and ownership.
 
@@ -30,19 +22,19 @@ Next, choose a blockchain on which to mint your hypercert. The hypercerts protoc
 
 Finally, go ahead and create your hypercert.
 
-### How much does it cost to create a hypercert?
-
-You will need enough gas in your wallet to cover transaction fees. In our simulations, the gas fee for minting a hypercert on Optimism are very low, e.g., below 0.0005 ETH or less than $1.
-
 # Step-by-step instructions
 
-First, go to the <a href="https://app.hypercerts.org/hypercerts/new" target="_blank">Create Hypercert</a> site with a wallet-enabled browser. We recommend minting your first hypercert on testnet, which you can this <a href="https://testnet.hypercerts.org/hypercerts/new" target="_blank">here</a>.
+First, go to the <a href="https://app.hypercerts.org/hypercerts/new" target="_blank">Create Hypercert</a> site with a wallet-enabled browser. 
 
 Although the site works on mobile, it is easier to use on desktop because the browser will display a dynamic preview of the hypercert while you fill out the Create form.
 
 Next, connect your wallet. You will be prompted to switch to a compatible network. Make sure you mint the hypercert on your preferred chain.
 
 Once you've connected, you will see an empty form for creating a hypercert.
+
+:::note[testnet]
+We recommend minting your first hypercert on testnet, which you can <a href="https://testnet.hypercerts.org/hypercerts/new" target="_blank">here</a>. It is the exact same Create form and you can walk through the process once before creating a hypercert on mainnet.
+:::
 
 ### General information (first tab)
 
@@ -98,7 +90,7 @@ Multiple tags are [logically conjunctive](https://en.wikipedia.org/wiki/Logical_
 
 For most projects, it's probably best to start with a short form of your project's name. Given that your project may create numerous hypercerts over time, having a work scope that represents the name of your project will make your claims in the "impact hyperspace" continuous. If you want to create a hypercert only for some part of your project, add another tag that narrows down the scope. With every additional tag you can narrow it down further.
 
-#### 7. Start and End Date of Work
+#### 7. Time of Work
 
 The work time period defines when the work was done that the hypercert represents, i.e., only the work in this time period is included in the hypercert.
 
@@ -116,32 +108,47 @@ You need to confirm that all listed contributors have permitted their works' inc
 
 #### 9. Owners and allowlist
 
-[add explanation]
-
 The allowlist allocates fractions of the hypercert to specific wallet addresses. These wallet addresses are then allowed to claim these fractions afterwards. For example, it can be used to allocate fractions to previous funders and contributors.
 
-The allowlist is implemented as a CSV file specifying `index,address,price,fractions` headers.
+You can submit an already available allowlist, create a new one or upload a CSV file. If you want to keep any fraction, include yourself in the allowlist.
 
-| index | address                                    | price | fractions |
-| ----- | ------------------------------------------ | ----- | --------- |
-| 0     | 0x5dee7b340764c49a827c60d2b8729e49405fbefc | 0.0   | 100       |
-| 1     | 0x1e2dbb9ca3f6d48e085384a821b7259abfdc7d65 | 0.0   | 50        |
-| ...   | ...                                        | ...   | ...       |
-| 999   | 0x436bad18642f45d3fa5fcaad0a2d81764a9cba85 | 0.0   | 1         |
+The allowlist is implemented as a CSV file specifying `address,units` headers. You can find a template [here](https://testnet.hypercerts.org/allowlist.csv).
 
-The `price` field is denominated in ETH. This should remain at 0.0 for all hypercerts, as primary sales are not currently supported through the app and the secondary sale/transfer of hypercerts is currently not allowed.
+| address                                    | units              |
+| ------------------------------------------ | ------------------ |
+| 0x5dee7b340764c49a827c60d2b8729e49405fbefc | 300000000000000000 |
+| 0x1e2dbb9ca3f6d48e085384a821b7259abfdc7d65 | 200000000000000000 |
+| ...                                        | ...                |
+| 0x436bad18642f45d3fa5fcaad0a2d81764a9cba85 | 100000000000000000 |
 
-You can store your allowlists on IPFS using [web3.storage](https://web3.storage/).
+Hypercerts are minted with a total supply of 1 ether (10^18 units). This means the total number of units in the allowlist needs to sum to 10^18.
 
 :::note
-If your allowlist is not properly formatted, you will be unable to mint your hypercert. If you do not include an allowlist, then the creator of the hypercert will receive 100% of the hypercert (set to a default of 10,000 units), which you can then sell or transfer to another wallet a maximum of one time.
+If your allowlist is not properly formatted, you will be unable to mint your hypercert. If you do not include an allowlist, then the creator of the hypercert will receive 100% of the hypercert, which the creator can then sell or transfer to another wallet a maximum of one time.
 :::
 
-### Additional fields
-<details>
-  <summary>Impact scope and time</summary>
+### Future releases
 
-  [add explanation]
+In future release, you will be able to modify additional fields. In this release, you can't change their default value. If it is necessary for your project to adjust these default values, please contact us in our [discord help forum](https://discord.gg/UZt8cBnP4w).
+
+<details>
+  <summary>Impact Scope</summary>
+
+The impact scope can be used to limit the impact that a hypercert represents, e.g. for the work scope `Planting trees` a hypercert can represent _only_ the impact on biodiversity by including the impact scope tag `Biodiversity`. This would exclude all other impacts, including the impact on CO2 in the atmosphere, which can be useful if that impact is already captured by a carbon credit.
+
+In the current release, this is set to "`all`", i.e. every impact the work has is included in the hypercert.
+
+Just like the work scope, multiple impact scope tags are [logically conjunctive](https://en.wikipedia.org/wiki/Logical_conjunction).
+
+</details>
+
+<details>
+  <summary>Time of Impact</summary>
+
+The impact time period is another way to limit the impact that a hypercert represents, e.g. inventing a new medical treatment has a positive impact over many years, but we might want to capture the positive impact separately for each year.
+
+By default the `impact start date` is the same as the `work start date` and the `impact end date` is "`indefinite`", i.e., the impact is not restricted time-wise.
+
 </details>
 
 <details>
@@ -150,7 +157,5 @@ If your allowlist is not properly formatted, you will be unable to mint your hyp
 This field defines the rights that owners of the hypercert have over the work being claimed by this hypercert.
 
 By default this is set to `Public Display`, i.e., the owners are allowed to publicly display the hypercert and show their support of the work.
-
-_Note: In the future, additional rights can be included for different hypercerts._
 
 </details>

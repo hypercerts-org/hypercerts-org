@@ -78,7 +78,7 @@ const config = {
         },
         items: [
           {
-            to: '/docs/intro/what-are-hypercerts',
+            to: '/docs/what-are-hypercerts',
             label: 'Docs',
             position: 'left',
           },

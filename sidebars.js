@@ -19,6 +19,11 @@ const sidebars = {
       id: "announcements",
     },
     {
+      type: "doc",
+      id: "what-are-hypercerts",
+    },
+    /**
+    {
       type: "category",
       label: "Introduction",
       collapsed: true,
@@ -37,6 +42,7 @@ const sidebars = {
         },
       ],
     },
+    */
     {
       type: "category",
       label: "Vision & Whitepaper",
@@ -71,7 +77,19 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "guide/minting",
+          id: "guide/start",
+        },
+        {
+          type: "doc",
+          id: "guide/mint",
+        },
+        {
+          type: "doc",
+          id: "guide/sell",
+        },
+        {
+          type: "doc",
+          id: "guide/buy",
         },
       ],
     },
