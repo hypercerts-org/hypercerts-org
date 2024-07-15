@@ -225,7 +225,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
-.hero-font {
+.h1 {
   font-family: 'Instrument-Serif';
   font-size: 160px;
   font-weight: 500;
@@ -236,7 +236,7 @@
   margin-right: auto; 
 }
 
-.title-font {
+.h2 {
   font-family: 'Instrument-Serif';
   font-size: 72px;
   font-weight: 500;
@@ -246,7 +246,7 @@
   color: var(--text-color);
 }
 
-.title-font-sm {
+.h3 {
   font-family: 'Instrument-Serif';
   font-size: 48px;
   font-weight: 500;
@@ -256,10 +256,20 @@
   color: var(--text-color);
 }
 
-.heading-font {
+.h4 {
+  font-family: 'Instrument-Serif';
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 28px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.blog-title {
   font-family: 'Instrument-Serif';
   text-align: left;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 120%;
@@ -274,6 +284,29 @@
   line-height: 1;
   text-decoration: none;
   color: var(--text-color);
+}
+
+@media only screen and (max-width: 768px) {
+  .h1 {
+    font-size: 80px;
+    line-height: 72px;
+  }
+  .h2 {
+    font-size: 42px;
+    line-height: 46px;
+  }
+  .h3 {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  .h4 {
+    font-size: 18px;
+    line-height: 120%;
+  }
+  .blog-title {
+    font-size: 24px;
+    line-height: 120%;
+  }
 }
 
 .author-font:hover {
@@ -327,7 +360,7 @@
 }
 
 .navbar__logo img, .navbar__brand img {
-  width: 30px;
+  width: 150px;
   height: 30px;
 }
 

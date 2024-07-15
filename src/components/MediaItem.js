@@ -25,7 +25,7 @@ const MediaItem = ({ tags, title, titleLink, authors }) => {
           </span>
         ))}
       </div>
-      <a href={titleLink} target="_blank" className="heading-font" rel="noopener noreferrer" style={{ display: 'block', marginBottom: '5px' }}>{title}</a>
+      <a href={titleLink} target="_blank" className="blog-title" rel="noopener noreferrer" style={{ display: 'block', marginBottom: '5px' }}>{title}</a>
       <p style={{ margin: 0 }}>{authorsList}</p>
       <hr style={{ marginTop: '10px' }} />
     </div>

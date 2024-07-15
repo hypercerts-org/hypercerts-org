@@ -28,7 +28,7 @@ function HomepageHeader() {
       <div className='main-body-container'>
         <div className="responsive-container3" style={{justifyContent: "center"}}>
           <div>
-            <h1 className="title-font">
+            <h1 className="h2">
               <span className="highlight">{phrasePart1[index]}</span> {phrasePart2[index]}
             </h1>
           </div>

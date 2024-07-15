@@ -71,10 +71,10 @@ const config = {
         respectPrefersColorScheme: false,
       },
       navbar: {
-        title: 'HYPERCERTS',
+        title: '',
         logo: {
           alt: 'hypercerts logo',
-          src: 'img/hypercerts_logo_b_transparent.png',
+          src: 'img/hypercerts_logo_horizontal.svg',
         },
         items: [
           {

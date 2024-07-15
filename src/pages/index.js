@@ -32,7 +32,7 @@ function HomepageHeader() {
           backgroundImage: 'url(/img/hypercerts_hero_bg.svg)',
           backgroundPosition: 'center',
           }}>
-          <h1 class="hero-font" style={{
+          <h1 class="h1" style={{
           paddingTop: '50px',
           }}>
             Fund and Reward Impact</h1>
@@ -83,7 +83,7 @@ function HomepageHeader() {
 
         {/* longer introduction */}  
         <div className="child" style={{marginTop: '70px', maxWidth: '700px'}}>
-          <h1 class="title-font" style={{textAlign: 'center'}}>
+          <h1 class="h2" style={{textAlign: 'center'}}>
             Hypercerts Represent the Impact of Work
           </h1>
           <p class="text-centered" style={{maxWidth: '500px', marginLeft: 'auto', marginRight: 'auto'}}>
@@ -127,7 +127,7 @@ function HomepageHeader() {
           <p class="text-centered" style={{maxWidth: '500px', marginLeft: 'auto', marginRight: 'auto'}}>
             Build to power
           </p>
-          <h1 class="hero-font">
+          <h1 class="h1">
             Impact Markets
           </h1>
         </div>
@@ -285,7 +285,7 @@ function HomepageHeader() {
         width: '100%',
         padding: '0px 10px',
         }}>
-          <p class="title-font" style={{textAlign: 'center'}}>
+          <p class="h2" style={{textAlign: 'center'}}>
             Articles, Podcasts, and Talks
           </p>
           <hr></hr>
@@ -301,7 +301,7 @@ function HomepageHeader() {
           </a> 
           <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk 18min</p>
           <p className="greyTag" style={{ margin: '0' }}>Jun 2022 | Funding the Commons NYC</p><br></br>
-          <a href="https://youtu.be/2hOhOdCbBlU?si=CvaAkL4651z3LwvD"  target="_blank" class="title-font-sm">On-chain Primitives for Impact Markets</a><br></br>
+          <a href="https://youtu.be/2hOhOdCbBlU?si=CvaAkL4651z3LwvD"  target="_blank" class="h3">On-chain Primitives for Impact Markets</a><br></br>
           <a href="https://twitter.com/davidad"  target="_blank" class="author-font">@davidad</a>
           <hr class="mobile-only"></hr>
         </div>
@@ -393,7 +393,7 @@ function HomepageHeader() {
           width: '100%',
         }}>
         <div style={{maxWidth: '600px'}}>
-          <h1 className="title-font" style={{textAlign: 'center'}}>
+          <h1 className="h2" style={{textAlign: 'center'}}>
            Hypercerts transform siloed funding platforms into interconnected funding networks
           </h1>
           </div>
