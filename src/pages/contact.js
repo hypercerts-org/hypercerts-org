@@ -23,8 +23,8 @@ function HomepageHeader() {
 
   return (
     <Layout
-      title="Impact Markets"
-      description="Sell your impact, buy impact you are about">
+      title="Contact"
+      description="Contact the Hypercerts Foundations">
       <div className='main-body-container'>
         <div className="responsive-container3" style={{justifyContent: "center"}}>
           <div>

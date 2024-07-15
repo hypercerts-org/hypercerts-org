@@ -165,7 +165,7 @@ function HomepageHeader() {
         <div className="main-body-container">
           <div className="responsive-container2">
             <div>
-            <h2 class="heading-font">
+            <h2 class="h3">
               Sell the impact you created
             </h2>
             <p class="text-font">
@@ -196,7 +196,7 @@ function HomepageHeader() {
         <div className="main-body-container">
           <div className="responsive-container2">
             <div>
-            <h2 class="heading-font">
+            <h2 class="h3">
               Buy the impact you care about risk-free
             </h2>
             <p class="text-font">
@@ -226,7 +226,7 @@ function HomepageHeader() {
         <div className="main-body-container">
           <div className="responsive-container2">
             <div>
-            <h2 class="heading-font">
+            <h2 class="h3">
               Get paid for high-quality impact evaluations
             </h2>
             <p class="text-font">
@@ -254,7 +254,7 @@ function HomepageHeader() {
         <div className="main-body-container">
           <div className="responsive-container2">
             <div>
-            <h2 class="heading-font">
+            <h2 class="h3">
               Become part of the funding network
             </h2>
             <p class="text-font">
