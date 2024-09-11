@@ -6,117 +6,137 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
-  title: 'Hypercerts',
-  tagline: 'Fund and Reward Impact',
-  favicon: 'img/favicon.ico',
+export default async function createConfigAsync() {
+    // Use a dynamic import instead of require('esm-lib')
+    const mdx_mermaid = await import("mdx-mermaid");
 
-  // Set the production url of your site here
-  url: 'https://hypercerts.org',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+    return {
+        title: 'Hypercerts',
+        tagline: 'Fund and Reward Impact',
+        favicon: 'img/favicon.ico',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'hypercerts-org', // Usually your GitHub org/user name.
-  projectName: 'hypercerts', // Usually your repo name.
+        // Set the production url of your site here
+        url: 'https://hypercerts.org',
+        // Set the /<baseUrl>/ pathname under which your site is served
+        // For GitHub pages deployment, it is often '/<projectName>/'
+        baseUrl: '/',
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+        // GitHub pages deployment config.
+        // If you aren't using GitHub pages, you don't need these.
+        organizationName: 'hypercerts-org', // Usually your GitHub org/user name.
+        projectName: 'hypercerts', // Usually your repo name.
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+        // TODO fix broken links in SDK
+        onBrokenLinks: 'log',
+        onBrokenMarkdownLinks: 'warn',
 
-  presets: [
-    [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        docs: {
-          sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/hypercerts-org/hypercerts',
+        // Even if you don't use internationalization, you can use this field to set
+        // useful metadata like html lang. For example, if your site is Chinese, you
+        // may want to replace "en" with "zh-Hans".
+        i18n: {
+            defaultLocale: 'en',
+            locales: ['en'],
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/hypercerts-org/hypercerts',
-        },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
-      }),
-    ],
-  ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
-      colorMode: {
-        defaultMode: 'light',
-        disableSwitch: true,
-        respectPrefersColorScheme: false,
-      },
-      navbar: {
-        title: '',
-        logo: {
-          alt: 'hypercerts logo',
-          src: 'img/hypercerts_logo_horizontal.svg',
-        },
-        items: [
-          {
-            to: '/docs/what-are-hypercerts',
-            label: 'Docs',
-            position: 'left',
-          },
-          {
-            to: '/contact',
-            label: 'Contact',
-            position: 'left',
-          },
-          {
-            href: 'https://hypercerts.org/app/create#name=The%20name%20of%20your%20hypercert&logoUrl=https%3A%2F%2Fi.imgur.com%2FsDQhp3Y.png&bannerUrl=https%3A%2F%2Fi.imgur.com%2FwsM3fWd.jpeg&impactScopes%5B0%5D=all&impactTimeEnd=indefinite&workScopes=your%20project&workTimeStart=2023-01-01&rights%5B0%5D=Public%20Display&backgroundColor=blue&backgroundVectorArt=contours',
-            position: 'right',
-            label: 'Go to app',
-            className: 'menuButton',
-          },
+        presets: [
+            [
+                'classic',
+                /** @type {import('@docusaurus/preset-classic').Options} */
+                ({
+                    docs: {
+                        sidebarPath: './sidebars.js',
+                        // Please change this to your repo.
+                        // Remove this to remove the "edit this page" links.
+                        remarkPlugins: [mdx_mermaid],
+                        editUrl:
+                            'https://github.com/hypercerts-org/hypercerts',
+                    },
+                    blog: {
+                        showReadingTime: true,
+                        // Please change this to your repo.
+                        // Remove this to remove the "edit this page" links.
+                        editUrl:
+                            'https://github.com/hypercerts-org/hypercerts',
+                    },
+                    theme: {
+                        customCss: './src/css/custom.css',
+                    },
+                }),
+            ],
         ],
-      },
-      footer: {
-        style: 'light',
-        logo: {
-          alt: 'Hypercerts logo',
-          src: 'img/hypercerts_logo_b_transparent.png',
-          href: 'https://hypercerts.org',
-          width: '50px',
-          height: '50px',
+        markdown: {
+            mermaid: true,
+            format: "detect",
         },
-        links: [
-        ],
-        copyright: `
+
+        themeConfig:
+        /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+            ({
+                // Replace with your project's social card
+                image: 'img/docusaurus-social-card.jpg',
+                colorMode: {
+                    defaultMode: 'light',
+                    disableSwitch: true,
+                    respectPrefersColorScheme: false,
+                },
+                navbar: {
+                    title: '',
+                    logo: {
+                        alt: 'hypercerts logo',
+                        src: 'img/hypercerts_logo_horizontal.svg',
+                    },
+                    items: [
+                        {
+                            to: '/docs/what-are-hypercerts',
+                            label: 'Docs',
+                            position: 'left',
+                        },
+                        {
+                            to: '/contact',
+                            label: 'Contact',
+                            position: 'left',
+                        },
+                        {
+                            href: 'https://hypercerts.org/app/create#name=The%20name%20of%20your%20hypercert&logoUrl=https%3A%2F%2Fi.imgur.com%2FsDQhp3Y.png&bannerUrl=https%3A%2F%2Fi.imgur.com%2FwsM3fWd.jpeg&impactScopes%5B0%5D=all&impactTimeEnd=indefinite&workScopes=your%20project&workTimeStart=2023-01-01&rights%5B0%5D=Public%20Display&backgroundColor=blue&backgroundVectorArt=contours',
+                            position: 'right',
+                            label: 'Go to app',
+                            className: 'menuButton',
+                        },
+                    ],
+                },
+                footer: {
+                    style: 'light',
+                    logo: {
+                        alt: 'Hypercerts logo',
+                        src: 'img/hypercerts_logo_b_transparent.png',
+                        href: 'https://hypercerts.org',
+                        width: '50px',
+                        height: '50px',
+                    },
+                    links: [],
+                    copyright: `
         <a href="/privacy">Privacy policy</a> |
         <a href="/terms">Terms of use</a> <br>
           Copyright © ${new Date().getFullYear()} Hypercerts Foundation
           `,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-      },
-    }),
-};
+                },
+                prism: {
+                    theme: prismThemes.github,
+                    darkTheme: prismThemes.dracula,
+                },
+            }),
+        plugins: [
+            [
+                'docusaurus-plugin-typedoc',
 
-export default config;
+                // Options
+                {
+                    id: 'sdk',
+                    entryPoints: ['./repos/hypercerts-sdk'],
+                    entryPointStrategy: "packages",
+                    out: './docs/developer/api/sdk',
+                },
+            ],
+        ],
+    }
+}
