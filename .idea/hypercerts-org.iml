@@ -7,6 +7,9 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/.docusaurus" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/repos/hypercerts-monorepo" />
+      <excludeFolder url="file://$MODULE_DIR$/repos/hypercerts-sdk" />
+      <excludeFolder url="file://$MODULE_DIR$/repos/marketplace-sdk" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
