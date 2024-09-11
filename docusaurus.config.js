@@ -98,7 +98,7 @@ export default async function createConfigAsync() {
                             position: 'left',
                         },
                         {
-                            href: 'https://hypercerts.org/app/create#name=The%20name%20of%20your%20hypercert&logoUrl=https%3A%2F%2Fi.imgur.com%2FsDQhp3Y.png&bannerUrl=https%3A%2F%2Fi.imgur.com%2FwsM3fWd.jpeg&impactScopes%5B0%5D=all&impactTimeEnd=indefinite&workScopes=your%20project&workTimeStart=2023-01-01&rights%5B0%5D=Public%20Display&backgroundColor=blue&backgroundVectorArt=contours',
+                            href: 'https://app.hypercerts.org/explore',
                             position: 'right',
                             label: 'Go to app',
                             className: 'menuButton',
