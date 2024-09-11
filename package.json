@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "prebuild": "hardhat dodoc && cpx './repos/marketplace-sdk/doc/**/*.md' './docs/developer/api/marketplace-sdk'"
+    "prebuild": "hardhat dodoc && cpx './repos/marketplace-sdk/doc/**/*.md' './docs/developer/api/marketplace-sdk'",
+    "preinstall": "git submodule update --init --recursive && git submodule foreach pnpm i"
   },
   "dependencies": {
     "@docusaurus/theme-common": "^3.5.2",
