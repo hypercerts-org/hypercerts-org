@@ -78,8 +78,9 @@ contracts.
 The documentation is generated using the following command:
 
 ```sh
-pnpm hardhat dodoc 
+pnpm hardhat dodoc
 ```
+Note: this step is implicit in the `generate:docs` script in the `package.json` file.
 
 > Note: this step is implicit in the `prebuild` script in the `package.json` file.
 
@@ -93,3 +94,9 @@ the SDK.
 
 To make the documentation available for the Docusaurus site, we copy the documentation to
 the `docs/developer/api/marketplace-sdk` directory.
+
+
+```sh
+pnpm cpx './repos/marketplace-sdk/doc/**/*.md' './docs/developer/api/marketplace-sdk'
+```
+> Note: this command is run as part of the `generate:docs` script in the root `package.json` file.
