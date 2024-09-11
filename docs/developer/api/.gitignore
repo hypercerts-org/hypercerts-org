@@ -1,0 +1,6 @@
+# Placeholder directory for generated API docs from different packages
+
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
