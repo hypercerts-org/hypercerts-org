@@ -1,3 +1,0 @@
-# @hypercerts-org/sdk
-
-## Packages

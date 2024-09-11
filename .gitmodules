@@ -4,3 +4,6 @@
 [submodule "lib/hypercerts-monorepo"]
 	path = repos/hypercerts-monorepo
 	url = https://github.com/hypercerts-org/hypercerts
+[submodule "repos/marketplace-sdk"]
+	path = repos/marketplace-sdk
+	url = https://github.com/hypercerts-org/marketplace-sdk

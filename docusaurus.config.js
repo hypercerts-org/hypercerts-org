@@ -48,6 +48,7 @@ export default async function createConfigAsync() {
                         // Please change this to your repo.
                         // Remove this to remove the "edit this page" links.
                         remarkPlugins: [mdx_mermaid],
+                        include: ['**/*.md', '**/*.mdx'],
                         editUrl:
                             'https://github.com/hypercerts-org/hypercerts',
                     },
@@ -131,10 +132,10 @@ export default async function createConfigAsync() {
 
                 // Options
                 {
-                    id: 'sdk',
+                    id: 'hypercerts-sdk',
                     entryPoints: ['./repos/hypercerts-sdk'],
                     entryPointStrategy: "packages",
-                    out: './docs/developer/api/sdk',
+                    out: './docs/developer/api/hypercerts-sdk',
                 },
             ],
         ],
