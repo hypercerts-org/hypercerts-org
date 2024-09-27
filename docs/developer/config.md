@@ -1,24 +1,130 @@
-# Hypercert Client Configuration
+# Client setup
 
-The client provides a high level interface that communicates with the Graph, IPFS and the evm. For easy setup we harmonised the configuration into a flow that allows for configuration with different levels of specificity.
+The [hypercerts SDK](https://www.npmjs.com/package/@hypercerts-org/sdk) exposes the `HypercertClient` class that provides a high level interface that communicates with the our API and contracts.
+
+The client handles most complexity involved with minting hypercerts and other contract interactions. Additionally it provides utility methods for common tasks like parsing merkle trees and storing metadata. For reading data from our backend, we recomment connecting to our [Graph instance](https://api.hypercerts.org/v1/graphql) using your prefered graph client. 
+
+For validating and uploading metadata and allowlists you can either use the SDK or directly connect to our [API](https://api.hypercerts.org/spec)
+
+## Installation
+
+Install the SDK in your project:
+
+```bash
+pnpm install @hypercerts-org/sdk
+```
 
 ## Configuration
 
+### Minimal
+
+We recommend using the SDK for utility method and write/upload actions like parsing merkle trees and storing metadata, for example. At a minimum, you need to provide the target environment to initialize the client in read only mode:
+
+```typescript
+type Environment = "production" | "test";
+
+const ENVIRONMENT = "production";
+
+// highlight-start
+const client = new HypercertClient({environment: ENVIRONMENT});
+// highlight-end
+```
+
+### Connect your wallet
+
+To enable write operations, you need to provide a wallet client:
+
+```typescript
+import { HypercertClient } from "@hypercerts-org/sdk";
+import { useWalletClient } from "wagmi";
+
+export const useHypercertClient = () => {
+// highlight-start
+  const { data: walletClient } = useWalletClient();
+// highlight-end
+  const ENVIRONMENT = "production";
+
+// highlight-start
+  const client = new HypercertClient({
+        environment: ENVIRONMENT,
+        walletClient,
+      }),
+    );
+// highlight-end
+
+  return { client };
+};
+```
+
+### Bring your RPCs
+
+We use public RPC or RPCs provided by the Hypercerts Foundation for public actions like reading contract state or simulating requests. We infer the client for the public client based on the connected wallet client. You can also explicitly set the public client by passing it in the configuration.
+
+```typescript
+import { HypercertClient } from "@hypercerts-org/sdk";
+import { useWalletClient, usePublicClient } from "wagmi";
+
+export const useHypercertClient = () => {
+  const { data: walletClient } = useWalletClient();
+// highlight-start
+  const publicClient = usePublicClient()
+// highlight-end
+  const ENVIRONMENT = "production";
+
+// highlight-start
+  const client = new HypercertClient({
+        environment: ENVIRONMENT,
+        walletClient,
+        publicClient,
+      }),
+    );
+// highlight-end
+
+  return { client };
+};
+```
+
+See the [use-hypercert-client](https://github.com/hypercerts-org/hypercerts-app/blob/main/hooks/use-hypercert-client.ts) hook in our app for a full implementation.
+
+
 ### Setup
 
-The SDK allows for minimal configuration, explicit overrides and defining values in environment variables. We apply the following hierarchy:
+When setting up the client, we parse the provided input to infer the applicable hypercert client configuration.
 
-1. Overrides declared in `Partial<HypercertClientConfig>`
+#### Configuration building
 
-Based on the chainID we load the default config for the respected chain, if it's supported.
-
-We then process the rest of the overrides and possible environment variables to customise the default configuration.
-
-To get started quickly you can either:
-
-- initialize a new client by calling `new HypercertClient({chain: {id: 11155111})`.
-
-Using either of the options above will launch the client in `read only` mode using the defaults in [constants.ts](https://github.com/hypercerts-org/hypercerts/blob/main/sdk/src/constants.ts)
+After receiving the configuration, we apply the following logic in [`getConfig`](https://github.com/hypercerts-org/hypercerts-sdk/blob/545f04737a7184efde11f26aac0bcf72eee2b69a/src/utils/config.ts#L27) of the SDK to determine your client set up:
+  
+  1. Input Validation:
+     - Check if the config parameter is provided, throw an error if missing.
+  
+  2. Initial Configuration:
+     - Create a base configuration object (_config) by merging:
+       a. Environment settings
+       b. Wallet client settings
+       c. Public client settings
+       d. Graph URL settings
+       e. Deployments for the specified environment (or default)
+     - Set the initial `readOnly` status to true
+  
+  3. Chain ID Extraction:
+    - Extract the chain ID from the wallet client, if available
+  
+  4. Writable Chain IDs:
+     - Generate a list of chain IDs that support write operations
+  
+  5. Read-Only Mode Configuration:
+     - If no wallet client is provided, log a debug message and keep `readOnly` as true
+     - If a supported chain ID is connected, disable read-only mode and log a debug message
+  
+  6. Public Client Fallback:
+     - If a wallet client is provided but no public client:
+       a. Log a debug message
+       b. Create a default public client using the wallet's chain and HTTP transport
+  
+  7. Return:
+     - Return the final configuration object
+ 
 
 ### Read-only mode
 
@@ -26,8 +132,6 @@ The SDK client will be in read-only mode if any of the following conditions are 
 
 - The client was initialized without an operator.
 - The client was initialized with an operator without signing abilities.
-- The contract address is not set.
-
 If any of these conditions are true, the read-only property of the `HypercertClient` instance will be set to true, and a warning message will be logged indicating that the client is in read-only mode.
 
 ### Defaults
@@ -56,25 +160,6 @@ For example:
 
 You can select which deployment to use by passing in a `chainId` configuration parameter. We also allow for `overrides`
 when creating the SDK by passing configuration variables.
-
-### Client config properties
-
-HypercertClientConfig is a configuration object used when initializing a new instance of the HypercertClient. It allows
-you to customize the client by setting your own providers or deployments. At it's simplest, you only need to provide
-`chain.id` to initalize the client in `readonly` mode.
-
-| Field                       | Type    | Description                                                                                    |
-| --------------------------- | ------- | ---------------------------------------------------------------------------------------------- |
-| `chain`                     | Object  | Partial configuration for the blockchain network.                                              |
-| `contractAddress`           | String  | The address of the deployed contract.                                                          |
-| `graphUrl`                  | String  | The URL to the subgraph that indexes the contract events. Override for localized testing.      |
-| `graphName`                 | String  | The name of the subgraph.                                                                      |
-| `easContractAddress`        | String  | The address of the EAS contract.                                                               |
-| `publicClient`              | Object  | The PublicClient is inherently read-only and is used for reading data from the blockchain.     |
-| `walletClient`              | Object  | The WalletClient is used for signing and sending transactions.                                 |
-| `unsafeForceOverrideConfig` | Boolean | Boolean to force the use of overridden values.                                                 |
-| `readOnly`                  | Boolean | Boolean to assert if the client is in read-only mode.                                          |
-| `readOnlyReason`            | String  | Reason for read-only mode. This is optional and can be used for logging or debugging purposes. |
 
 ### Logging
 
