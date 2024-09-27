@@ -4,98 +4,159 @@ Allowlists are an efficient way to enable distribution of hypercert fractions am
 First, the creator will create the hypercert with the metadata and an immutable allowlist.
 With the `claimId`, every account specified in the allowlist can later mint their fraction token from that allowlist.
 
-## Create an allowlist
+## Allow list format
+
+The allowlist is a list of addresses and the number of units they should receive. The list can be provided in three formats:
+
+1. As a string (URI)
+2. As a string (Merkle tree dump)
+3. As an array of `AllowlistEntry` objects (in code)
+
+When using the hypercerts infrastructure, we expect allowlists and hypercerts to be created with a total supply of **100_000_000 units**. We find this to be a good default for most use cases by supporting tokens with 6 decimal places for reasonable pricing and a large enough supply for splitting fractions for most use cases.
+
+### Allow list as a string (URI)
+
+The allowlist is stored as a CSV file in IPFS. The file must have two columns:
+
+1. `address` - The address of the receiver
+2. `units` - The number of units the receiver should receive
+
+The CSV file must be encoded as a `UTF-8` encoded CSV file. 
+
+You can find a template for the allowlist [here](https://github.com/hypercerts-org/hypercerts-app/blob/71c0b999c61f78ac4e713c313ccd6298ae213996/public/allowlist.csv).
+
+### Allow list as a string (Merkle tree dump)
+
+You can also pass the merkle tree dump to the  minting method. This allows you to parse the allowlist data in any manner you prefer but ending up with the same merkle tree root.
+
+Review the [OpenZeppelin Merkle tree library](https://github.com/OpenZeppelin/merkle-tree) for more information on the Merkle tree dump format.
+
+### Allow list as an array of `AllowlistEntry` objects
+
+You can also pass the allowlist as an array of `AllowlistEntry` objects. This is the most flexible way to specify the allowlist but also the most verbose.
+
+```js
+import { AllowlistEntry } from "@hypercerts-org/sdk";
+
+// highlight-start
+const allowlist: AllowlistEntry[] = [
+  { address: "0x123....asfcnaes", units: 50_000_000n },
+  { address: "0xabc....w2dwqwef", units: 50_000_000n },
+];
+// highlight-end
+```
+
+## Mint an hypercert with an allowlist
+
+The `mintHypercert` method in the `HypercertClient` allows you to mint new hypercerts, optionally with an allowlist. This documentation focuses on the allowlist functionality and the underlying business logic.
 
 First specify an allowlist, mapping addresses to the number of units they should receive.
 
-```js
+```js Example
 import {
   TransferRestrictions,
   formatHypercertData,
-  Allowlist,
+  AllowlistEntry,
 } from "@hypercerts-org/sdk";
 
-const allowlist: Allowlist = [
+const allowlist: AllowlistEntry[] = [
   { address: "0x123....asfcnaes", units: 100n },
   { address: "0xabc....w2dwqwef", units: 100n },
 ];
-```
 
-Then, call `createAllowlist` with the metadata and allowlist.
-
-```js
 const { metadata } = formatHypercertData(...);
-const totalUnits = 10000n;
+const totalUnits = 100_000_000n;
 const transferRestrictions = TransferRestrictions.FromCreatorOnly
 
-const txHash = await hypercerts.createAllowlist({
+// highlight-start
+const txHash = await client.mintHypercert({
   allowList,
   metaData,
   totalUnits,
   transferRestrictions: TransferRestrictions.FromCreatorOnly,
 });
+// highlight-end
 ```
 
-> **note** We store the allowlist and the Merkle tree in the metadata of the Hypercert. To understand the Merkle tree generation and data structures, check out the [OpenZeppelin merkle tree library](https://github.com/OpenZeppelin/merkle-tree)
+### 1. Allow list processing
 
-It first checks if the client is writable and if the operator is a signer. If the operator is not a signer, it throws an `InvalidOrMissingError`.
+The SDK supports processing of different allowlist formats.
 
-Next, it validates the allowlist and metadata by calling the `validateAllowlist` and `validateMetaData` functions respectively. If either the allowlist or metadata is invalid, it throws a `MalformedDataError`.
+#### If `allowList` is a string (URI):
+* The content is fetched using `fetchFromHttpsOrIpfs`
+* The system attempts to parse it as an OpenZeppelin Merkle tree dump
+* If parsing fails, it tries to parse it as a CSV file
 
-Once the allowlist and metadata are validated, the method creates a Merkle tree from the allowlist and stores it on IPFS. It then stores the metadata on IPFS as well.
+#### If `allowList` is a string (Merkle tree dump):
+* The content is directly processed into a Merkle tree
 
-Finally, the method invokes the `createAllowlist` function on the contract with the signer's `address`, the total number of `units`, the Merkle tree `root`, the metadata `CID`, and the `transfer restrictions`. If the method is called with `overrides`, it passes them to the createAllowlist function.
+#### If `allowList` is an array of `AllowlistEntry` objects:
+* We validate the total units and addresses
+* It's directly processed into a Merkle tree
 
-## Claiming a fraction token
+#### Get the root
+* The resulting Merkle tree is used to generate a root for the allowlist
 
-Users can claim their fraction tokens for many hypercerts at once using `mintClaimFractionFromAllowlist`. To determine the input the following information is required:
+### 2. Metadata upload
 
-| Variable | Type   | Source        |
-| -------- | ------ | ------------- | ----------- |
-| claimId  | bigint | Hypercert ID  |
-| units    | bigint | Allowlist     |
-| proof    | `(Hex  | ByteArray)[]` | Merkle tree |
+The metadata and allowlist are stored on IPFS by relaying the data to our API which validates the content and uploads it to IPFS.
 
-We store the allowlist and the Merkle tree in the metadata of the Hypercert. To understand the Merkle tree data structures, check out the [OpenZeppelin merkle tree library](https://github.com/OpenZeppelin/merkle-tree). You can get the `proof` and `units` by traversing the merkle tree.
+> We store the allowlist as a dump of the OpenZeppelin Merkle tree. To understand the Merkle tree generation and data structures, check out the [OpenZeppelin merkle tree library](https://github.com/OpenZeppelin/merkle-tree)
 
-Then, call `mintClaimFractionFromAllowlist` with the required data. The contracts will also verify the proofs. However, when providing the `root` in the function input, the proofs will be verified before a transaction is submitted.
+### 3. Minting
 
-```js
-import { StandardMerkleTree } from "@openzeppelin/merkle-tree";
+If an allowlist is specified, the SDK will call the `createAllowlist` function on the contract with the appropriate parameters. The SDK will return the transaction hash for further processing as you find helpfull.
 
-const claimId = "0x822f17a9a5eecfd...85254363386255337";
-const address = "0xc0ffee254729296a45a3885639AC7E10F9d54979";
+> We recommend using a method similar to viem's [`waitForTransactionReceipt`](https://viem.sh/docs/actions/public/waitForTransactionReceipt.html) to wait for the transaction to be processed. We also provide the [`getClaimStoredDataFromTxHash`](https://github.com/hypercerts-org/hypercerts-sdk/blob/545f04737a7184efde11f26aac0bcf72eee2b69a/src/utils/txParser.ts#L33) to parse the transaction logs and return the data from the `ClaimStored` event. 
 
-const { indexer, storage } = hypercertsClient;
-const claimById = await indexer.claimById(claimId);
-const { uri, tokenID: _id } = claimById.claim;
-const metadata = await storage.getMetadata(uri || "");
-const treeResponse = await storage.getData(metadata.allowList);
-const tree = StandardMerkleTree.load(JSON.parse(treeResponse));
+## Claiming a fraction using an allowlist
 
-let args;
-// Find the proof in the allowlist
-for (const [leaf, value] of tree.entries()) {
-  if (value[0] === address) {
-    args = {
-      proofs: tree.getProof(leaf),
-      units: Number(value[1]),
-      claimId: _id,
-    };
-    break;
+Users can claim their fraction tokens for many hypercerts at once using `claimFractionFromAllowlist`. A fraction is claimed by providing the `claimId`, the `units` and the `proof` that the address is in the allowlist.
+
+### Getting merkle proofs for an address
+
+Merkle proof can be fetched from the allowlist stored on IPFS. While this is nice for the purists, we also provide access to allow list entries using our Graph.
+
+To get all allowlist entries for a given account you can run the following query on our graph:
+
+```graphql
+query getAllowListRecordsForAddress($address: String!) {
+  allowlistRecords(where: {user_address: {contains: [$address]}}) {
+    count
+    data {
+      proof
+      root
+      hypercert_id
+      token_id
+      units
+      user_address
+      claimed
+    }
   }
 }
+```
+[Graph playground](api.hypercerts.org/v1/graphql)
 
-// Mint fraction token
-const tx = await hypercerts.mintClaimFractionFromAllowlist({
-  ...args,
-});
+> For a full implementation see [`getAllowListRecordsForAddressByClaimed`](https://github.com/hypercerts-org/hypercerts-app/blob/71c0b999c61f78ac4e713c313ccd6298ae213996/allowlists/getAllowListRecordsForAddressByClaimed.tsx) in the hypercerts app.
+
+### Submit the claim
+
+By submitting the user's address, the number of units contained in their fraction and the proof, the user can claim their fraction of an hypercert. When a root is not provided, the contract will catch invalid proofs. It's faster to provide the root before so we can validate in the SDK. 
+
+```typescript
+const txHash = await client.claimFractionFromAllowlist(
+    hypercertTokenId,
+    units,
+    proof,
+    root);
 ```
 
-Let's see what happens under the hood:
+> Note that the `hypercertTokenId` refers to the actual `tokenId` in the minting contract, which is the third part of the hypercert ID. For example for hypercert ID `11155111-0xa16DFb32Eb140a6f3F2AC68f41dAd8c7e83C4941-222544667966293755105046993260376410292224` the hypercertTokenId is `222544667966293755105046993260376410292224` 
 
-First, the method checks that the client is not `read only` and that the operator is a signer. If not, it throws an `InvalidOrMissingError`.
+#### Claiming via the hypercerts app
 
-Next, the method verifies the Merkle `proof` using the OpenZeppelin Merkle tree library. If a `root` is provided, the method uses it to verify the proof. If the proof is invalid, it throws an error.
+By using the __Profile__ view in the hypercert app you can easily claim allowlist fractions. Simply connect your wallet in [our app](https://app.hypercerts.org) and navigate to your profile. You will see a list of all your claimable fractions under __Claimable__.
 
-Finally, the method calls the `mintClaimFromAllowlist` function on the contract with the signer `address`, Merkle `proof`, `claim ID`, and number of `units` as parameters. If overrides are provided, the method uses them to send the transaction. Otherwise, it sends the transaction without overrides.
+
+![Claimable fractions in the profile view](/img/app_claim_fraction_from_profile.png)
+
