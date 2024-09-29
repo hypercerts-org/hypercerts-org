@@ -1,0 +1,99 @@
+---
+title: Attestations
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+export const chainIdToEasExplorer = (chainId) => {
+    switch (chainId) {
+      case "10":
+        return "https://optimism.easscan.org/";
+      case "11155111":
+        return "https://sepolia.easscan.org/";
+      case "42161":
+        return "https://arbitrum.easscan.org/";
+      case "42220":
+        return "https://celo.easscan.org/";
+      case "8453":
+        return "https://base.easscan.org/";
+      case "84532":
+        return "https://base-sepolia.easscan.org/";
+      default:
+        return "";
+    }
+  }
+
+export const addressToLink = (chainId, schemaUid) => {
+    const blockExplorer = chainIdToEasExplorer(chainId);
+    return `${blockExplorer}schema/view/${schemaUid}`;
+  }
+
+
+
+# Attestations
+
+Attestations using the [Ethereum Attestation Service](https://attest.org/) (EAS) are used to verify the authenticity of hypercerts. We are building on top of EAS because of it's flexibility. By defining a schema in the registry contract on a supported chain, users can create standardized attestation formats to evaluate hypercerts according to -best- practices in a respective domain.
+
+## Hypercerts compatible schemas
+
+To design an schema that is compatible with hypercerts we require that the schema contains the required fields for determining the `hypercert ID`. This allows us, and any evaluator, to determine which hypercert is being evaluated.
+
+All other information is up to the schema designer. We recommend exploring the EAS documentation and schema registry to get started and maybe even find the schema you need.
+
+### Required fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| chain_id | uint256 | The chain ID where the minter contract is deployed |
+| contract_address | address | The contract address of the minter contract on the chain |
+| token_id | uint256 | The token ID in the minter contract of the hypercert|
+
+:::note
+
+Concatenate the chain_id, contract_address and token_id to get the `hypercert ID`. We use this to reference hypercerts across chains.
+
+:::
+
+### Supported schemas
+
+<Tabs>
+  <TabItem value="basic-evaluation" label="Basic Evaluation">
+    <li><a href={addressToLink("42161", "0x2f4f575d5df78ac52e8b124c4c900ec4c540f1d44f5b8825fac0af5308c91449")}>Arbitrum</a></li>
+    <li><a href={addressToLink("8453", "0x2f4f575d5df78ac52e8b124c4c900ec4c540f1d44f5b8825fac0af5308c91449")}>Base</a></li>
+    <li><a href={addressToLink("42220", "0x2f4f575d5df78ac52e8b124c4c900ec4c540f1d44f5b8825fac0af5308c91449")}>Celo</a></li>
+    <li><a href={addressToLink("10", "0x2f4f575d5df78ac52e8b124c4c900ec4c540f1d44f5b8825fac0af5308c91449")}>Optimism</a></li>
+    <li><a href={addressToLink("11155111", "0x2f4f575d5df78ac52e8b124c4c900ec4c540f1d44f5b8825fac0af5308c91449")}>Sepolia</a></li>
+    <li><a href={addressToLink("84532", "0x2f4f575d5df78ac52e8b124c4c900ec4c540f1d44f5b8825fac0af5308c91449")}>Base Sepolia</a></li>
+  > Schema UID 0x2f4f575d5df78ac52e8b124c4c900ec4c540f1d44f5b8825fac0af5308c91449
+  </TabItem>
+</Tabs>
+
+#### Basic evaluation
+
+The basic evaluation schema is used to evaluate the truthfulness of basic hypercert data.
+
+
+| Field | Type | Description |
+| --- | --- | --- |
+| chain_id | uint256 | The chain ID where the minter contract is deployed |
+| contract_address | address | The contract address of the minter contract on the chain |
+| token_id | uint256 | The token ID in the minter contract of the hypercert|
+| evaluate_basic | uint8 | Evaluate basic truthfulness of the hypercert |
+| evaluate_work | uint8 | Evaluate work scopes defined in the hypercert |
+| evaluate_contributors | uint8 | Evaluate contributors defined in the hypercert |
+| evaluate_properties | uint8 | Evaluate properties defined in the hypercert |
+| comments | string | Comments from the evaluator |
+| tags | string[] | Tags from the evaluator |
+
+The evaluate fields (e.g. `evaluate_basic`) represent an enum value. The evaluator can choose between the following values:
+
+| Value | Description |
+| --- | --- |
+| 0 | Not evaluated |
+| 1 | Valid |
+| 2 | Invalid |
+
+## Trusted evaluators
+
+In addition to a curated set of schemas, the Hypercerts Foundation maintains a list of trusted evaluators in the [`attestor registry`](https://github.com/hypercerts-org/hypercerts-attestor-registry). This is an intermediate step to decentralized governance of trusted evaluators as we grow the ecosystem. Please reach out to us if you think you and/or your organization should be on the list.
