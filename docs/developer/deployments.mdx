@@ -1,0 +1,211 @@
+---
+title: Deployments 
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import { deployments, DeployedChains, Deployment } from "@hypercerts-org/contracts";
+
+export const DeploymentsTable = ({ deployments, color }) => {
+  const isTestnet = (chainId) => ["42220", "84532", "11155111", "421614"].includes(chainId);
+  const isMainnet = (chainId) => ["10", "11155111", "42161"].includes(chainId);
+
+  const testnetDeployments = Object.entries(deployments).filter(([chainId, deployment]) => isTestnet(chainId));
+  const mainnetDeployments = Object.entries(deployments).filter(([chainId, deployment]) => isMainnet(chainId));
+
+  const chainIdToBlockExplorer = (chainId) => {
+    switch (chainId) {
+      case "10":
+        return "https://optimistic.etherscan.io/";
+      case "11155111":
+        return "https://sepolia.etherscan.io/";
+      case "42161":
+        return "https://explorer.arbitrum.io/";
+      case "421614":
+        return "https://sepolia.arbiscan.io/";
+      case "42220":
+        return "https://explorer.celo.org/";
+      case "8453":
+        return "https://explorer.base.org/";
+      case "84532":
+        return "https://sepolia.basescan.org/";
+      default:
+        return "";
+    }
+  }
+
+  const addressToLink = (chainId, address) => {
+    const blockExplorer = chainIdToBlockExplorer(chainId);
+    return `${blockExplorer}address/${address}`;
+  }
+
+  const chainIdToName = (chainId) => {
+    switch (chainId) {
+      case "10":
+        return "Optimism";
+      case "11155111":
+        return "Sepolia";
+      case "42161":
+        return "Arbitrum";
+      case "42220":
+        return "Celo";
+      case "8453":
+        return "Base";
+      case "84532":
+        return "Base Sepolia";
+      case "421614":
+        return "Arbitrum Sepolia";
+      default:
+        return "Unknown";
+    }
+  }
+
+
+  return (
+    <Tabs>
+      <TabItem value="production" label="Production">
+        <table>
+          <thead>
+            <tr>
+              <th>Chain</th>
+              <th>Chain ID</th>
+              <th>Contract</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {mainnetDeployments.map(([chainId, deployment]) => (
+              Object.entries(deployment).map(([contractName, contractAddress]) => (
+                <tr key={chainId}>
+                  <td>{chainIdToName(chainId)}</td>
+                  <td>{chainId}</td>
+                  <td><a href={addressToLink(chainId, contractAddress)}>{contractName}</a></td>
+                  <td><a href={addressToLink(chainId, contractAddress)}>{contractAddress}</a></td>
+                </tr>
+              ))))
+            }
+          </tbody>
+        </table>
+      </TabItem>
+      <TabItem value="test" label="Testnets" default>
+        <table>
+          <thead>
+            <tr>
+              <th>Chain</th>
+              <th>Chain ID</th>
+              <th>Contract</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {testnetDeployments.map(([chainId, deployment]) => (
+              Object.entries(deployment).map(([contractName, contractAddress]) => (
+               <tr key={chainId}>
+                  <td>{chainIdToName(chainId)}</td>
+                  <td>{chainId}</td>
+                  <td><a href={addressToLink(chainId, contractAddress)}>{contractName}</a></td>
+                  <td><a href={addressToLink(chainId, contractAddress)}>{contractAddress}</a></td>
+                </tr>
+              ))))
+            }
+          </tbody>
+        </table>
+      </TabItem>
+    </Tabs>
+  );
+}
+
+
+
+
+# Deployments
+
+Hypercerts is developed in public and released under [dual MIT and Apache license](https://github.com/hypercerts-org/hypercerts/blob/main/LICENSE) by The Hypercert Foundation.
+
+## Supported networks
+
+:::tip
+
+We want to support every network that wants to support positive impact!
+If you want to see Hypercerts deployed on another network, please reach out by [filing an issue](https://github.com/hypercerts-org/hypercerts/issues).
+
+:::
+
+The hypercerts protocol is deployed on a growing set of chains. The SDK, API, Graph and frontend are configured to distinguish between testnets and mainnets/Lx as 'test' and 'production'. At the time of writing the following chains have the hypercerts contracts deployed:
+
+<Tabs>
+  <TabItem value="production" label="Production">
+    <li>Arbitrum</li>
+    <li>Base</li>
+    <li>Celo</li>
+    <li>Optimism</li>
+  </TabItem>
+  <TabItem value="test" label="Testnets" default>
+    <li>Arbitrum Sepolia</li>
+    <li>Base Sepolia</li>
+    <li>Sepolia</li>
+  </TabItem>
+</Tabs>
+
+## Contracts
+
+There are three sets of contracts used in the protocol:
+
+1. **Hypercert Minter**: Creates and manages hypercerts.
+2. **Hypercert Marketplace**: Enables the buying and selling of hypercerts.
+3. **Ethereum Attestation Service (EAS)**: Registry for attestation schemas and attestation based on those schemas.
+
+:::info
+
+For more details on EAS see the [EAS docs](https://docs.attest.org/docs/welcome).
+
+:::
+
+<DeploymentsTable deployments={deployments} color="blue" />
+
+## Backend
+
+The backend uses Railway to host the [API](./api.md) and [Indexer](./indexer.md) and supabase to host the data. 
+
+<Tabs>
+  <TabItem value="production" label="Production">
+     <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Endpoint</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>API</td>
+              <td>https://api.hypercerts.org/spec</td>
+            </tr>
+            <tr>
+              <td>Indexer</td>
+              <td>https://api.hypercerts.org/v1/graphql</td>
+            </tr>
+          </tbody>
+        </table>
+  </TabItem>
+  <TabItem value="test" label="Testnets" default>
+   <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Endpoint</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>API</td>
+              <td>https://staging-api.hypercerts.org/spec</td>
+            </tr>
+            <tr>
+              <td>Indexer</td>
+              <td>https://staging-api.hypercerts.org/v1/graphql</td>
+            </tr>
+          </tbody>
+        </table>
+  </TabItem>
+</Tabs>
