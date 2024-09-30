@@ -9,7 +9,7 @@ please reach out by [filing an issue](https://github.com/hypercerts-org/hypercer
 
 Hypercerts is a multi-chain protocol and we want to support any network that wants to make positive impact.
 We plan to support at most 1 canonical contract deployment per network.
-For a complete list of deployments and their contract addresses, see [Supported Networks](./supported-networks.md).
+For a complete list of deployments and their contract addresses, see [Supported Networks](./deployments.mdx).
 
 ## Installing the Hypercert contracts
 

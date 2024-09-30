@@ -135,7 +135,7 @@ query getAllowListRecordsForAddress($address: String!) {
   }
 }
 ```
-[Graph playground](api.hypercerts.org/v1/graphql)
+[Graph playground](https://api.hypercerts.org/v1/graphql)
 
 > For a full implementation see [`getAllowListRecordsForAddressByClaimed`](https://github.com/hypercerts-org/hypercerts-app/blob/71c0b999c61f78ac4e713c313ccd6298ae213996/allowlists/getAllowListRecordsForAddressByClaimed.tsx) in the hypercerts app.
 

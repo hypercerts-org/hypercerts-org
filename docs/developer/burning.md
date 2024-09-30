@@ -5,8 +5,8 @@
 ## Burning fraction tokens
 
 You can only burn fraction tokens that you own. Hypercert claims cannot be burned once minted.
-You can get a list of all fraction tokens you own with [this query](./querying.md#claimtokensbyowner).
+You can get a list of all fraction tokens you own by [querying the GraphQL API](./querying.md).
 
 ```js
-const txHash = await hypercerts.burnClaimFraction({ claimId });
+const txHash = await hypercerts.burnFraction({ claimId });
 ```
