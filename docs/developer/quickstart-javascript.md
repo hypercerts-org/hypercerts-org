@@ -35,7 +35,7 @@ const client = new HypercertClient({
 ```
 
 Hypercerts is a multi-chain protocol.
-See [here](./supported-networks.md) for a list of currently supported networks.
+See [here](./deployments.mdx) for a list of currently supported networks.
 
 > **Note** If there's no `walletClient` provided, the client will run in `read-only mode`.
 

@@ -131,6 +131,10 @@ const sidebars = {
                 },
                 {
                     type: "doc",
+                    id: "developer/attestations",
+                },
+                {
+                    type: "doc",
                     id: "developer/client-setup",
                 },
                 {

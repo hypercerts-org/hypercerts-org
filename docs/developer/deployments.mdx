@@ -8,10 +8,12 @@ import { deployments, DeployedChains, Deployment } from "@hypercerts-org/contrac
 
 export const DeploymentsTable = ({ deployments, color }) => {
   const isTestnet = (chainId) => ["42220", "84532", "11155111", "421614"].includes(chainId);
-  const isMainnet = (chainId) => ["10", "11155111", "42161"].includes(chainId);
+  const isMainnet = (chainId) => ["10", "8453", "42161", "42220", 42161].includes(chainId);
 
   const testnetDeployments = Object.entries(deployments).filter(([chainId, deployment]) => isTestnet(chainId));
   const mainnetDeployments = Object.entries(deployments).filter(([chainId, deployment]) => isMainnet(chainId));
+
+  console.log(deployments)
 
   const chainIdToBlockExplorer = (chainId) => {
     switch (chainId) {
@@ -63,7 +65,7 @@ export const DeploymentsTable = ({ deployments, color }) => {
 
   return (
     <Tabs>
-      <TabItem value="production" label="Production">
+      <TabItem value="production" label="Production" default>
         <table>
           <thead>
             <tr>
@@ -87,7 +89,7 @@ export const DeploymentsTable = ({ deployments, color }) => {
           </tbody>
         </table>
       </TabItem>
-      <TabItem value="test" label="Testnets" default>
+      <TabItem value="test" label="Testnets">
         <table>
           <thead>
             <tr>
@@ -134,13 +136,13 @@ If you want to see Hypercerts deployed on another network, please reach out by [
 The hypercerts protocol is deployed on a growing set of chains. The SDK, API, Graph and frontend are configured to distinguish between testnets and mainnets/Lx as 'test' and 'production'. At the time of writing the following chains have the hypercerts contracts deployed:
 
 <Tabs>
-  <TabItem value="production" label="Production">
+  <TabItem value="production" label="Production" default>
     <li>Arbitrum</li>
     <li>Base</li>
     <li>Celo</li>
     <li>Optimism</li>
   </TabItem>
-  <TabItem value="test" label="Testnets" default>
+  <TabItem value="test" label="Testnets">
     <li>Arbitrum Sepolia</li>
     <li>Base Sepolia</li>
     <li>Sepolia</li>
@@ -165,7 +167,7 @@ For more details on EAS see the [EAS docs](https://docs.attest.org/docs/welcome)
 
 ## Backend
 
-The backend uses Railway to host the [API](./api.md) and [Indexer](./indexer.md) and supabase to host the data. 
+The backend uses Railway to host the [API](./api.mdx) and [Indexer](./indexer.md) and supabase to host the data. 
 
 <Tabs>
   <TabItem value="production" label="Production">
