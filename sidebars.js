@@ -127,6 +127,10 @@ const sidebars = {
                 },
                 {
                     type: "doc",
+                    id: "developer/config",
+                },
+                {
+                    type: "doc",
                     id: "developer/minting",
                 },
                 {
