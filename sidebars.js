@@ -127,15 +127,15 @@ const sidebars = {
                 },
                 {
                     type: "doc",
-                    id: "developer/config",
-                },
-                {
-                    type: "doc",
-                    id: "developer/minting",
-                },
-                {
-                    type: "doc",
                     id: "developer/allowlists",
+                },
+                {
+                    type: "doc",
+                    id: "developer/client-setup",
+                },
+                {
+                    type: "doc",
+                    id: "developer/deployments",
                 },
                 {
                     type: "doc",
@@ -143,19 +143,45 @@ const sidebars = {
                 },
                 {
                     type: "doc",
-                    id: "developer/split-merge",
-                },
-                {
-                    type: "doc",
-                    id: "developer/burning",
-                },
-                {
-                    type: "doc",
-                    id: "developer/supported-networks",
-                },
-                {
-                    type: "doc",
                     id: "devops/index",
+                },
+                {
+                    type: "category",
+                    label: "Infrastructure",
+                    collapsed: true,
+                    items: [
+                        {
+                            type: "doc",
+                            id: "developer/architecture",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/api",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/indexer",
+                        },
+                    ],
+                },
+                {
+                    type: "category",
+                    label: "Contract interactions",
+                    collapsed: true,
+                    items: [
+                        {
+                            type: "doc",
+                            id: "developer/burning",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/minting",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/split-merge",
+                        },
+                    ],
                 },
                 {
                     type: "category",
