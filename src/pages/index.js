@@ -1,24 +1,12 @@
 import React, {useState} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-import HyperboardWidget from '@site/src/components/HyperboardWidget';
 import SponsorLogos from '@site/src/components/SponsorLogos.js';
 import MediaItem from '@site/src/components/MediaItem';
 import PartnerLinks from '@site/src/components/PartnerLinks.js';
 
-import styles from './index.module.css';
 import ImpactMarketSection from "@site/src/components/ImpactMarketSection";
 
 function HomepageHeader() {
-    const [selectedButton, setSelectedButton] = useState(1);
-
-    const buttonContent = [
-        "Projects",
-        "Evaluators",
-        "Funding platforms",
-        "Everyone",
-    ];
     return (
         <Layout
             title="hypercerts overview"
