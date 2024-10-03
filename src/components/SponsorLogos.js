@@ -1,61 +1,89 @@
 import React, { useEffect, useRef } from 'react';
-import '/src/css/SponsorLogos.css';
 
 const SponsorLogos = () => {
-  const buttonsRowRef = useRef(null);
+    const buttonsRowRef = useRef(null);
+    const animationRef = useRef(null);
 
-  useEffect(() => {
-    const buttonsRow = buttonsRowRef.current;
-    const totalWidth = buttonsRow.offsetWidth; // Get the total width of the buttons
-    buttonsRow.innerHTML += buttonsRow.innerHTML; // Duplicate content for a seamless loop
+    const logos = [
+        { href: "https://www.protocol.ai", imgSrc: "/img/protocollabs_logo.png", altText: "Protocol Labs logo" },
+        { href: "https://www.optimism.io/", imgSrc: "/img/optimism_logo.png", altText: "Optimism logo" },
+        { href: "https://octant.build/", imgSrc: "/img/octant_logo.png", altText: "Octant logo" },
+        { href: "https://www.gitcoin.co/", imgSrc: "/img/gitcoin_logo.png", altText: "Gitcoin logo" },
+        { href: "https://fundingthecommons.io/", imgSrc: "/img/fundingthecommons_logo.png", altText: "Funding the Commons logo" },
+        { href: "https://www.opensource.observer/", imgSrc: "/img/opensourceobserver_logo.png", altText: "Open Source Observer logo" },
+        { href: "https://www.raidguild.org/", imgSrc: "/img/raidguild_logo.webp", altText: "RaidGuild logo" },
+        { href: "https://www.zuzalu.city/", imgSrc: "/img/zuzalu_logo.png", altText: "Zuzalu logo" },
+        { href: "https://www.edgecity.live/", imgSrc: "/img/edgecity_logo.png", altText: "EdgeCity logo" },
+    ];
 
-    let moveAmount = 0;
+    useEffect(() => {
+        const buttonsRow = buttonsRowRef.current;
+        let scrollAmount = 0;
 
-    const moveButtons = () => {
-      moveAmount -= 0.5; // Adjust speed here
-      if (Math.abs(moveAmount) >= totalWidth) {
-        moveAmount = 0;
-      }
-      buttonsRow.style.transform = `translateX(${moveAmount}px)`;
-      requestAnimationFrame(moveButtons);
-    };
+        const scroll = () => {
+            scrollAmount += 0.5;
+            if (scrollAmount >= buttonsRow.offsetWidth / 3) {
+                scrollAmount = 0;
+            }
+            buttonsRow.style.transform = `translateX(-${scrollAmount}px)`;
+            animationRef.current = requestAnimationFrame(scroll);
+        };
 
-    moveButtons();
-  }, []);
+        scroll();
 
-  return (
-    <div id="container" style={{ width: '100vw', height: '50px', backgroundColor: 'black', overflow: 'hidden', whiteSpace: 'nowrap', position: 'relative', border: 'solid 1px black' }}>
-      <div id="buttonsRow" ref={buttonsRowRef} style={{ display: 'flex', position: 'absolute' }}>
-        <a href="https://www.protocol.ai" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/protocollabs_logo.png" alt="Protocol Labs logo" className="button-img" style={{ width: '80%' }} />
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+        };
+    }, []);
+
+    const PartnerLink = ({ href, imgSrc, altText }) => (
+        <a href={href} className="button" target="_blank" rel="noopener noreferrer">
+            <img src={imgSrc} alt={altText} className="button-img" />
         </a>
-        <a href="https://www.optimism.io/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/optimism_logo.png" alt="Optimism logo" className="button-img" style={{ width: '80%' }} />
-        </a>
-        <a href="https://octant.build/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/octant_logo.png" alt="Octant logo" className="button-img" style={{ width: '60%' }} />
-        </a>
-        <a href="https://www.gitcoin.co/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/gitcoin_logo.png" alt="Gitcoin logo" className="button-img" style={{ width: '60%' }} />
-        </a>
-        <a href="https://fundingthecommons.io/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/fundingthecommons_logo.png" alt="Funding the Commons logo" className="button-img" style={{ height: '50%' }} />
-        </a>
-        <a href="https://www.opensource.observer/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/opensourceobserver_logo.png" alt="Open Source Observer logo" className="button-img" style={{ height: '70%' }} />
-        </a>
-        <a href="https://www.raidguild.org/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/raidguild_logo.webp" alt="RaidGuild logo" className="button-img" style={{ height: '50%' }} />
-        </a>
-        <a href="https://www.zuzalu.city/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/zuzalu_logo.png" alt="Zuzalu logo" className="button-img" style={{ height: '70%' }}/>
-        </a>
-        <a href="https://www.edgecity.live/" className="button-moving" target="_blank" rel="noopener noreferrer">
-          <img src="/img/edgecity_logo.png" alt="EdgeCity logo" className="button-img" style={{ height: '80%' }} />
-        </a>
-      </div>
-    </div>
-  );
+    );
+
+    return (
+        <div id="container" style={{
+            width: '100%',
+            height: '70px',
+            backgroundColor: 'white',
+            overflow: 'hidden',
+            position: 'relative',
+        }}>
+            <div id="buttonsRow" ref={buttonsRowRef} style={{ display: 'flex', position: 'absolute' }}>
+                {[...logos, ...logos, ...logos].map((logo, index) => (
+                    <PartnerLink key={index} {...logo} />
+                ))}
+            </div>
+            <style jsx>{`
+                .button {
+                    width: 150px;
+                    height: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px;
+                    background-color: white;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    border: black solid 1px;
+                    margin: 0px;
+                }
+                .button-img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                    filter: grayscale(100%);
+                }
+                .button:hover {
+                    transform: scale(1.1);
+                    transition: transform 0.3s ease;
+                }
+            `}</style>
+        </div>
+    );
 };
 
 export default SponsorLogos;
