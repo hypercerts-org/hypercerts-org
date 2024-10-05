@@ -98,7 +98,7 @@ export default async function createConfigAsync() {
               position: "left",
             },
             {
-              href: "https://app.hypercerts.org/explore",
+              href: "https://app.hypercerts.org/explore&filter=evaluated",
               position: "right",
               label: "Go to app",
               className: "menuButton",

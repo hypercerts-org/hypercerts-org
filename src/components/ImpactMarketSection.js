@@ -23,7 +23,7 @@ const ImpactMarketSection = () => {
             id: 2,
             title: 'Buy the impact you care about risk-free',
             description: 'Find projects\' hypercerts and access their impact evaluations. Reward them for their past impact. Receive the right to claim the impact and build up your impact portfolio to prove your support of collective goods.',
-            primaryButton: { text: 'Explore hypercerts', link: 'https://app.hypercerts.org/explore' },
+            primaryButton: { text: 'Explore hypercerts', link: 'https://app.hypercerts.org/explore&filter=evaluated' },
             secondaryButton: { text: 'Contact us', link: 'https://form.feathery.io/to/kV8E0l' },
             image: '/img/hypercerts_for_funders.png',
         },
