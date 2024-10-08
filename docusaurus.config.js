@@ -138,6 +138,17 @@ export default async function createConfigAsync() {
           out: "./docs/developer/api/hypercerts-sdk",
         },
       ],
+      [
+        '@docusaurus/plugin-client-redirects',
+        {
+          redirects: [
+            {
+              to: '/docs/what-are-hypercerts',
+              from: '/docs',
+            },
+          ],
+        },
+      ],
     ],
   };
 }

@@ -15,6 +15,7 @@
     "generate:docs": "hardhat dodoc && cpx './repos/marketplace-sdk/doc/**/*.md' './docs/developer/api/marketplace-sdk'"
   },
   "dependencies": {
+    "@docusaurus/plugin-client-redirects": "^3.5.2",
     "@docusaurus/theme-common": "^3.5.2",
     "@docusaurus/theme-mermaid": "^3.5.2",
     "@mdx-js/react": "^3.0.0",
