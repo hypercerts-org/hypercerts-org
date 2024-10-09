@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
 import SponsorLogos from '@site/src/components/SponsorLogos.js';
 import MediaItem from '@site/src/components/MediaItem';
@@ -34,9 +34,9 @@ function HomepageHeader() {
 
             </div>
 
+
             {/* Main body */}
             <div className="main-body-container">
-
                 {/* longer introduction */}
                 <div className="child" style={{marginTop: '70px', maxWidth: '700px'}}>
                     <h1 class="h2" style={{textAlign: 'center'}}>
