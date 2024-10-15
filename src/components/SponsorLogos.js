@@ -47,7 +47,7 @@ const SponsorLogos = () => {
     return (
         <div id="container" style={{
             width: '100%',
-            height: '70px',
+            height: '50px',
             backgroundColor: 'white',
             overflow: 'hidden',
             position: 'relative',

@@ -109,21 +109,21 @@ export default async function createConfigAsync() {
                     style: "light",
                     links: [],
                     copyright: `
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem; margin-top: 3rem">
                         <a href="https://twitter.com/hypercerts" target="_blank" rel="noopener noreferrer" title="Follow us on Twitter">
-                            <img src="img/social-icons/x.svg" alt="Twitter" width="30px" height="30px" style="margin: 0 10px;" />
+                            <img src="/img/social-icons/x.svg" alt="Twitter" width="30px" height="30px" style="margin: 0 10px;" />
                         </a>
                         <a href="https://discord.gg/VVSyKg75" target="_blank" rel="noopener noreferrer" title="Join us on Discord">
-                            <img src="img/social-icons/discord.svg" alt="Discord" width="30px" height="30px" style="margin: 0 10px;" />
+                            <img src="/img/social-icons/discord.svg" alt="Discord" width="30px" height="30px" style="margin: 0 10px;" />
                         </a>
-                        <a href="https://hypercerts.org" target="_blank" rel="noopener noreferrer" title="Visit the Hypercerts website">
-                            <img src="img/hypercerts_logo_b_transparent.png" alt="Hypercerts logo" width="30px" height="30px" style="margin: 0 10px;" />
+                        <a href="https://hypercerts.org" rel="noopener noreferrer" title="Visit the Hypercerts website">
+                            <img src="/img/hypercerts_logo_b_transparent.png" alt="Hypercerts logo" width="30px" height="30px" style="margin: 0 10px;" />
                         </a>
                         <a href="https://github.com/hypercerts-org" target="_blank" rel="noopener noreferrer" title="Check out our GitHub">
-                            <img src="img/social-icons/github.svg" alt="GitHub" width="30px" height="30px" style="margin: 0 10px;" />
+                            <img src="/img/social-icons/github.svg" alt="GitHub" width="30px" height="30px" style="margin: 0 10px;" />
                         </a>
                         <a href="https://t.me/+YF9AYb6zCv1mNDJi" target="_blank" rel="noopener noreferrer" title="Join our Telegram channel">
-                            <img src="img/social-icons/telegram.svg" alt="Telegram" width="30px" height="30px" style="margin: 0 10px;" />
+                            <img src="/img/social-icons/telegram.svg" alt="Telegram" width="30px" height="30px" style="margin: 0 10px;" />
                         </a>
                     </div>
         <a href="/privacy">Privacy policy</a> |
