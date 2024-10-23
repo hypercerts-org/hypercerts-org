@@ -5,6 +5,40 @@ id: announcements
 
 # Announcements
 
+## 2024 Oct Update
+
+### Launch of New Hypercerts dApp
+
+We are excited to announce that our brand-new dapp is live!
+
+1. **Hypercert Minter:** Easily create hypercerts.
+2. **Indexer:** Discover and explore hypercerts.
+3. **Evaluator:** Submit and view evaluations and attestations.
+4. **Marketplace Features:** Buy and sell hypercerts with ease.
+5. **Hyperboards:** Display ownership of hypercert collections.
+
+The dapp on testnet is available on https://testnet.hypercerts.org and the mainnet dapp on https://app.hypercerts.org
+
+<img src="/img/docs/2024-10_new-dapp-explore.png" alt="new dapp - explore page"/>
+
+If you have feedback, please contact us at team@hypercerts.org
+
+### New Content Website and Brand Update
+
+Check out the new content website and branding at https://hypercerts.org
+
+<img src="/img/docs/2024-10_new-landing-page.png" alt="new landing page"/>
+
+### Support Hypercerts on Octant and Gitcoin
+
+We are participating in Octant Epoch 5. If you own GLM tokens, head over to https://octant.app/ and vote for your favorite projects!
+
+In addition you can also donate to the Hypercerts Foundation in the Gitcoin Grants Round 22 (dApps and Apps): https://explorer.gitcoin.co/#/round/42161/608/81
+
+We are grateful for any contributions, especially as they unlock quadratic matching funds. Thank you for your past and future support,
+
+The Hypercerts Team
+
 ## 2024 Jun Update
 
 ### New developments
