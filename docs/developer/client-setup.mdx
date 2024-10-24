@@ -1,8 +1,39 @@
+---
+title: Client setup
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from '@theme/CodeBlock';
+
+export const InstallScriptPackageManagers = ({children, code}) => {
+    return (
+        <Tabs>
+            <TabItem value="npm" label="NPM">
+                <CodeBlock className="language-bash">
+                    npm install {code}
+                </CodeBlock>
+            </TabItem>
+            <TabItem value="yarn" label="Yarn">
+                <CodeBlock className="language-bash">
+                    yarn add {code}
+                </CodeBlock>
+            </TabItem>
+            <TabItem value="pnpm" label="PNPM">
+                <CodeBlock className="language-bash">
+                   pnpm add {code}
+                </CodeBlock>
+            </TabItem>
+        </Tabs>
+    );
+
+};
+
 # Client setup
 
 The [hypercerts SDK](https://www.npmjs.com/package/@hypercerts-org/sdk) exposes the `HypercertClient` class that provides a high level interface that communicates with the our API and contracts.
 
-The client handles most complexity involved with minting hypercerts and other contract interactions. Additionally it provides utility methods for common tasks like parsing merkle trees and storing metadata. For reading data from our backend, we recomment connecting to our [Graph instance](https://api.hypercerts.org/v1/graphql) using your prefered graph client. 
+The client handles most complexity involved with minting hypercerts and other contract interactions. Additionally it provides utility methods for common tasks like parsing merkle trees and storing metadata. For reading data from our backend, we recomment connecting to our [Graph instance](https://api.hypercerts.org/v1/graphql) using your prefered graph client.
 
 For validating and uploading metadata and allowlists you can either use the SDK or directly connect to our [API](https://api.hypercerts.org/spec)
 
@@ -10,9 +41,7 @@ For validating and uploading metadata and allowlists you can either use the SDK 
 
 Install the SDK in your project:
 
-```bash
-pnpm install @hypercerts-org/sdk
-```
+<InstallScriptPackageManagers code={`@hypercerts-org/sdk`}/>
 
 ## Configuration
 
@@ -94,37 +123,37 @@ When setting up the client, we parse the provided input to infer the applicable 
 #### Configuration building
 
 After receiving the configuration, we apply the following logic in [`getConfig`](https://github.com/hypercerts-org/hypercerts-sdk/blob/545f04737a7184efde11f26aac0bcf72eee2b69a/src/utils/config.ts#L27) of the SDK to determine your client set up:
-  
+
   1. Input Validation:
-     - Check if the config parameter is provided, throw an error if missing.
-  
-  2. Initial Configuration:
-     - Create a base configuration object (_config) by merging:
-       a. Environment settings
-       b. Wallet client settings
-       c. Public client settings
-       d. Graph URL settings
-       e. Deployments for the specified environment (or default)
-     - Set the initial `readOnly` status to true
-  
-  3. Chain ID Extraction:
-    - Extract the chain ID from the wallet client, if available
-  
-  4. Writable Chain IDs:
-     - Generate a list of chain IDs that support write operations
-  
-  5. Read-Only Mode Configuration:
-     - If no wallet client is provided, log a debug message and keep `readOnly` as true
-     - If a supported chain ID is connected, disable read-only mode and log a debug message
-  
-  6. Public Client Fallback:
-     - If a wallet client is provided but no public client:
-       a. Log a debug message
-       b. Create a default public client using the wallet's chain and HTTP transport
-  
-  7. Return:
-     - Return the final configuration object
- 
+- Check if the config parameter is provided, throw an error if missing.
+
+2. Initial Configuration:
+- Create a base configuration object (_config) by merging:
+a. Environment settings
+b. Wallet client settings
+c. Public client settings
+d. Graph URL settings
+e. Deployments for the specified environment (or default)
+- Set the initial `readOnly` status to true
+
+3. Chain ID Extraction:
+- Extract the chain ID from the wallet client, if available
+
+4. Writable Chain IDs:
+- Generate a list of chain IDs that support write operations
+
+5. Read-Only Mode Configuration:
+- If no wallet client is provided, log a debug message and keep `readOnly` as true
+- If a supported chain ID is connected, disable read-only mode and log a debug message
+
+6. Public Client Fallback:
+- If a wallet client is provided but no public client:
+a. Log a debug message
+b. Create a default public client using the wallet's chain and HTTP transport
+
+7. Return:
+- Return the final configuration object
+
 
 ### Read-only mode
 
