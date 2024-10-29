@@ -26,7 +26,7 @@ function HomepageHeader() {
                         paddingTop: '50px',
                     }}>
                         Fund and Reward Impact</h1>
-                    <img src="/img/hypercert_AI_Safety3.png" alt="Hypercerts"
+                    <img src="/img/2024-11_hypercert_card_FTC_bangkok_red.png" alt="Hypercerts"
                          style={{maxWidth: '250px', maxHeight: '100%', marginBottom: '50px'}}/>
                 </div>
 
