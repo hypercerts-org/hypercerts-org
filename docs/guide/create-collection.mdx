@@ -1,0 +1,84 @@
+---
+title: 'Create a Collection / Hyperboard'
+id: create-collection
+sidebar_position: 5
+---
+
+### What Is a Collection? What Is a Hyperboard?
+
+A **collection** is a group of hypercerts organized under a common theme, project, initiative, or purpose. It helps you present related hypercerts as a unified package, making it easier for stakeholders to explore and engage with your work.
+
+Every collection is also displayed as a **hyperboard**—a digital billboard showcasing all the owners of the collection's hypercerts. Each owner is represented by a tile on the hyperboard, with the size of the tile proportional to their ownership. Owners can choose the image displayed on their tile.
+
+### Who Can Create a Collection and Hyperboard?
+
+Anyone can create a collection and include any hypercerts. A hypercert can be part of multiple collections, and being in a collection does not affect its ownership.
+
+### Why Create a Collection and Hyperboard?
+
+**Collections are useful for:**
+- Showcasing related hypercerts in a structured way.  
+- Organizing hypercerts into campaigns, funding rounds, or thematic groups.  
+- Sharing a curated selection of hypercerts with a specific audience.  
+
+**Hyperboards are useful for:**
+- Recognizing contributors to a project, both financial and non-financial, through their hypercert ownership.  
+- Sharing the hyperboard on websites or social media to reach a broader audience.  
+
+## Step-by-Step Instructions
+
+Before you start, ensure your wallet is connected.
+
+### Required Steps
+
+1. **Navigate to your collections and click "Create Collection"**  
+   In the main menu, go to "My hypercerts" and open the "Collections" tab. Here, you'll see a list of your existing collections. Click the "Create Collection" button at the top-right to begin.
+
+2. **Fill out the form**  
+
+    <div style={{textAlign: 'center'}}>
+        <img src="/img/screenshots/create-collection.png" alt="screenshot of the form to create a collection" style={{ maxWidth: '400px', width: '100%' }}/>
+    <p style={{ marginTop: '6px', fontStyle: 'italic' }}>Form to Create a Collection</p>
+    </div>
+
+   **2.1 Title for your collection**  
+   Provide a clear and descriptive title for your collection. This will help others understand its focus or purpose. (Max: 100 characters)
+
+   **2.2 Add a description**  
+   Write a short description of the collection. This field is optional but recommended for providing context. (Max: 500 characters; Markdown not supported)
+
+   **2.3 Add hypercerts to the collection**  
+   Use the Explore page or your profile to locate hypercerts to include. Copy the hypercert ID from below its title and paste it into the form. Click "Add" to include it in your collection.
+
+   **2.4 Adjust the size of each hypercert on the hyperboard**  
+   Modify the relative importance of each hypercert in the collection. This will affect its visual representation on the hyperboard. By default, the size factor is set to 1. Increase the factor for hypercerts with greater significance.
+
+   _Example:_ If you have two hypercerts in a collection, where one represents major work and the other minor contributions, you can assign a factor of 2 to the first hypercert and 1 to the second. This will allocate two-thirds of the hyperboard's space to the first hypercert.
+
+   **2.5 Choose a background and border color**  
+   Provide a link to a background image. For optimal results, use an aspect ratio of 16:9 (recommended resolution: 1600x900 px). Choose a border color (black, gray, or white typically works best).  
+
+3. **Click "Create Collection"**  
+   Once satisfied, click "Create Collection" and confirm the action in your wallet when prompted. Congratulations—your collection is now live!
+
+### Embed a Hyperboard in Your Website
+
+You can easily embed a hyperboard into any website by including the following script:
+
+```html
+<script src="https://staging.hyperboards.org/widget/hyperboard-widget.js" type="module"></script>    
+```
+
+To display the hyperboard, add this code snippet (replace the data-hyperboard-id with your hyperboard’s ID, found in the collection’s URL):
+```html
+<div class="hyperboard-widget" 
+     data-hyperboard-id="ae35c670-f9e4-4e90-a81e-9d48d971478d" 
+     data-hyperboard-show-table="true">
+</div>       
+```
+
+The option `data-hyperboard-show-table` attribute controls whether the ownership table below the hyperboard is displayed.
+
+### Managing Collections
+
+You can edit, update, or delete your collection at any time. Navigate to the “Collections” tab in “My hypercerts,” select the collection you want to manage, and choose the appropriate “Edit” or “Delete” option.

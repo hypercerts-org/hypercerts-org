@@ -74,7 +74,7 @@ const tx = await client.mintClaim(
 );
 ```
 
-For guidance on how to specify your metadata, see the [minting guide](../guide/mint.md).
+For guidance on how to specify your metadata, see the [minting guide](../guide/mint.mdx).
 This will validate the metadata, store claim metadata on IPFS, create a new hypercert on-chain, and return a transaction receipt.
 
 For more details, check out the [Minting Guide](./minting.md).

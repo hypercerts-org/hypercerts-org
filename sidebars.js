@@ -45,35 +45,8 @@ const sidebars = {
          */
         {
             type: "category",
-            label: "Vision & Whitepaper",
-            collapsed: true,
-            items: [
-                {
-                    type: "doc",
-                    id: "whitepaper/whitepaper-intro",
-                },
-                {
-                    type: "doc",
-                    id: "whitepaper/ifs",
-                },
-                {
-                    type: "doc",
-                    id: "whitepaper/hypercerts-intro",
-                },
-                {
-                    type: "doc",
-                    id: "whitepaper/impact-space",
-                },
-                {
-                    type: "doc",
-                    id: "whitepaper/retrospective-funding",
-                },
-            ],
-        },
-        {
-            type: "category",
-            label: "Getting Started",
-            collapsed: true,
+            label: "Using the Hypercerts App",
+            collapsed: false,
             items: [
                 {
                     type: "doc",
@@ -91,32 +64,33 @@ const sidebars = {
                     type: "doc",
                     id: "guide/buy",
                 },
-            ],
-        },
-        {
-            type: "category",
-            label: "Implementation",
-            collapsed: true,
-            items: [
                 {
                     type: "doc",
-                    id: "implementation/token-standard",
+                    id: "guide/send-blueprint",
                 },
                 {
                     type: "doc",
-                    id: "implementation/metadata",
+                    id: "guide/create-collection",
                 },
                 {
                     type: "doc",
-                    id: "implementation/glossary",
+                    id: "guide/settings",
                 },
             ],
         },
         {
             type: "category",
-            label: "Developer Guide",
+            label: "For Developers",
             collapsed: true,
             items: [
+                {
+                    type: "doc",
+                    id: "developer/token-standard",
+                },
+                {
+                    type: "doc",
+                    id: "developer/metadata",
+                },
                 {
                     type: "doc",
                     id: "developer/quickstart-javascript",
@@ -229,13 +203,43 @@ const sidebars = {
             ],
         },
         {
-            type: "doc",
-            id: "faq",
-        },
-        {
-            type: "doc",
-            id: "about",
-        },
+            type: "category",
+            label: "About",
+            collapsed: true,
+            items: [
+                {
+                    type: "doc",
+                    id: "about",
+                },     
+                {
+                    type: "category",
+                    label: "Vision & Whitepaper",
+                    collapsed: true,
+                    items: [
+                        {
+                            type: "doc",
+                            id: "whitepaper/whitepaper-intro",
+                        },
+                        {
+                            type: "doc",
+                            id: "whitepaper/ifs",
+                        },
+                        {
+                            type: "doc",
+                            id: "whitepaper/hypercerts-intro",
+                        },
+                        {
+                            type: "doc",
+                            id: "whitepaper/impact-space",
+                        },
+                        {
+                            type: "doc",
+                            id: "whitepaper/retrospective-funding",
+                        },
+                    ],
+                },
+            ]
+        }
     ],
 };
 
