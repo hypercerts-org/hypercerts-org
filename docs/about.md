@@ -1,5 +1,5 @@
 ---
-title: About
+title: The Hypercerts Foundation
 id: about
 ---
 

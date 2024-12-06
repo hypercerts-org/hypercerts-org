@@ -3,7 +3,7 @@ title: Hypercerts
 id: what-are-hypercerts
 ---
 
-# What are Hypercerts?
+# Welcome to the Hypercerts Protocol
 
 ### Hypercerts are a new token for tracking, rewarding, and funding positive impact.
 
