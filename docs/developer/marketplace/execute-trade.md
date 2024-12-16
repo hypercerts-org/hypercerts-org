@@ -4,7 +4,7 @@
 >
 > These code snippets are just examples and the data should never be used as is
 
-Trades are executed on-chain by matching a `Maker` order with a `Taker` order. The maker order can be retrieved from the [graphQL API](https://api.hypercerts.org/v1/graphql). The order used here has the same structure as a [maker order](../src/types.ts#L116), but with an added field `signature: string`. While the taker order can be obtained by calling the `createTaker` method as shown here:
+Trades are executed on-chain by matching a `Maker` order with a `Taker` order. The maker order can be retrieved from the [graphQL API](https://api.hypercerts.org/v1/graphql). The order used here has the same structure as a [maker order](/docs/developer/api/marketplace-sdk/types/interfaces/CreateMakerInput.md), but with an added field `signature: string`. While the taker order can be obtained by calling the `createTaker` method as shown here:
 
 ```ts
 import {

@@ -138,14 +138,30 @@ export default async function createConfigAsync() {
             }),
         plugins: [
             [
+                // Generate hypercerts-sdk docs
                 "docusaurus-plugin-typedoc",
-
-                // Options
                 {
                     id: "hypercerts-sdk",
                     entryPoints: ["./repos/hypercerts-sdk"],
                     entryPointStrategy: "packages",
                     out: "./docs/developer/api/hypercerts-sdk",
+                    skipErrorChecking: true,
+                },
+            ],
+            [
+                // Generate marketplace-sdk docs
+                "docusaurus-plugin-typedoc",
+                {
+                    id: "marketplace-sdk",
+                    tsconfig: "./repos/marketplace-sdk/tsconfig.build.json",
+                    entryPoints: [
+                        "./repos/marketplace-sdk/src/HypercertExchangeClient.ts",
+                        "./repos/marketplace-sdk/src/types.ts",
+                    ],
+                    out: "./docs/developer/api/marketplace-sdk",
+                    sortEntryPoints: false,
+                    readme: "none",
+                    skipErrorChecking: true,
                 },
             ],
             [

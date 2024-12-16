@@ -21,7 +21,7 @@ const validatorCodes = await hypercertExchangeAbi.verifyMakerOrders(
 );
 ```
 
-To see all the possible validation codes, see the `OrderValidatorCode` enum located in [src/types.ts](../src/types.ts#L217).
+To see all the possible validation codes, see the `OrderValidatorCode` enum located in [src/types.ts](/docs/developer/api/marketplace-sdk/types/enumerations/OrderValidatorCode.md).
 
 To update order validity in our backend, the `POST /marketplace/orders/validate` [endpoint in our API](https://api.hypercerts.org/spec/#/Marketplace/ValidateOrder) can be used. This is also exposed through a convenient wrapper in the marketplace SDK:
 
@@ -47,4 +47,4 @@ Order validity can be manually updated using the `POST /marketplace/orders/valid
 - order got cancelled
 - all units have been sold
 
-There are more possible reasons, see the `OrderValidatorCode` enum located in [src/types.ts](../src/types.ts#L266) for all possible invalidation codes. When an order is invalidated it is marked as invalid & and the list of error codes that make it invalid are stored for reference, but not deleted. This has to be done manually by the creator of the order. When an order is invalid it's only visible in the Hypercerts UI for the owner of that order.
+There are more possible reasons, see the `OrderValidatorCode` enum located in [src/types.ts](/docs/developer/api/marketplace-sdk/types/enumerations/OrderValidatorCode.md) for all possible invalidation codes. When an order is invalidated it is marked as invalid & and the list of error codes that make it invalid are stored for reference, but not deleted. This has to be done manually by the creator of the order. When an order is invalid it's only visible in the Hypercerts UI for the owner of that order.
