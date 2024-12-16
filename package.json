@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "prebuild": "cd ./repos/marketplace-sdk && pnpm install && pnpm build:ts",
     "build": "docusaurus build --no-minify",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -12,7 +13,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "generate:docs": "hardhat dodoc && cpx './repos/marketplace-sdk/doc/**/*.md' './docs/developer/api/marketplace-sdk'"
+    "generate:docs": "hardhat dodoc"
   },
   "dependencies": {
     "@docusaurus/plugin-client-redirects": "^3.5.2",

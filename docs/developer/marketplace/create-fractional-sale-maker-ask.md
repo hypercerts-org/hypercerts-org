@@ -78,7 +78,7 @@ const result = await hypercertExchangeClient.registerOrder({
 
 # How to execute a fractional sale
 
-`createFractionalSaleTakerBid` is just a convenient wrapper around `createTaker`. The order used here has the same structure as a [maker order](../src/types.ts#L116), but with an added field `signature: string`.
+`createFractionalSaleTakerBid` is just a convenient wrapper around `createTaker`. The order used here has the same structure as a [maker order](/docs/developer/api/marketplace-sdk/types/interfaces/CreateMakerInput.md), but with an added field `signature: string`.
 
 ```ts
 import { HypercertExchangeClient, ChainId } from "@hypercerts-org/marketplace-sdk";
