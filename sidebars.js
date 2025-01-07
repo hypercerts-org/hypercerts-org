@@ -121,6 +121,10 @@ const sidebars = {
                 },
                 {
                     type: "doc",
+                    id: "developer/blueprints",
+                },
+                {
+                    type: "doc",
                     id: "devops/index",
                 },
                 {
