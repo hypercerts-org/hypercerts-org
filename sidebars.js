@@ -129,6 +129,10 @@ const sidebars = {
                 },
                 {
                     type: "doc",
+                    id: "developer/hyperboards",
+                },
+                {
+                    type: "doc",
                     id: "devops/index",
                 },
                 {
