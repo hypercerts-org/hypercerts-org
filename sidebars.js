@@ -138,6 +138,10 @@ const sidebars = {
                         },
                         {
                             type: "doc",
+                            id: "developer/data",
+                        },
+                        {
+                            type: "doc",
                             id: "developer/indexer",
                         },
                     ],
