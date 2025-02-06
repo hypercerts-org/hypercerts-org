@@ -43,7 +43,7 @@ function HomepageHeader() {
           <p>Join our <a href="https://t.me/+YF9AYb6zCv1mNDJi" target="_blank" rel="noopener noreferrer">Telegram Group</a> to stay up to date.</p>
           <p>And find your way to our <a href="https://github.com/hypercerts-org/hypercerts" target="_blank" rel="noopener noreferrer">GitHub</a> to follow our technical development.</p>
           <h3>Get support</h3>
-          <p>Need help? Join our <a href="https://discord.gg/UZt8cBnP4w" target="_blank" rel="noopener noreferrer">Discord</a> and post in the help forum.</p>
+          <p>Need help? Join our <a href="https://discord.gg/azPgDcSQWw" target="_blank" rel="noopener noreferrer">Discord</a> and post in the help forum.</p>
         </div>
       </div>
         
