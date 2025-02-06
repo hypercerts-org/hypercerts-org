@@ -113,7 +113,7 @@ export default async function createConfigAsync() {
                         <a href="https://twitter.com/hypercerts" target="_blank" rel="noopener noreferrer" title="Follow us on Twitter">
                             <img src="/img/social-icons/x.svg" alt="Twitter" width="30px" height="30px" style="margin: 0 10px;" />
                         </a>
-                        <a href="https://discord.gg/VVSyKg75" target="_blank" rel="noopener noreferrer" title="Join us on Discord">
+                        <a href="https://discord.gg/azPgDcSQWw" target="_blank" rel="noopener noreferrer" title="Join us on Discord">
                             <img src="/img/social-icons/discord.svg" alt="Discord" width="30px" height="30px" style="margin: 0 10px;" />
                         </a>
                         <a href="https://hypercerts.org" rel="noopener noreferrer" title="Visit the Hypercerts website">
