@@ -137,6 +137,49 @@ const sidebars = {
                 },
                 {
                     type: "category",
+                    label: "Marketplace",
+                    collapsed: true,
+                    items: [
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/index",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/create-maker-ask",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/create-fractional-sale-maker-ask",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/create-direct-fractions-sale-maker-ask",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/execute-trade",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/cancel-orders",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/nonce-system",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/order-validity",
+                        },
+                        {
+                            type: "doc",
+                            id: "developer/marketplace/faq",
+                        },
+                    ],
+                },
+                {
+                    type: "category",
                     label: "Infrastructure",
                     collapsed: true,
                     items: [
