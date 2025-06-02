@@ -21,13 +21,15 @@ function HomepageHeader() {
                     backgroundRepeat: 'no-repeat',
                     backgroundImage: 'url(/img/hypercerts_hero_bg.svg)',
                     backgroundPosition: 'center',
+                    paddingBottom: '50px',
                 }}>
                     <h1 class="h1" style={{
                         paddingTop: '50px',
                     }}>
                         Fund and Reward Impact</h1>
-                    <img src="/img/2024-11_hypercert_card_FTC_bangkok_red.png" alt="Hypercerts"
-                         style={{maxWidth: '250px', maxHeight: '100%', marginBottom: '50px'}}/>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0px' }}>
+                        <img src="/img/hypercert_AI_Safety3.png" alt="Hypercerts" style={{ maxWidth: '250px', height: 'auto' }} />
+                    </div>
                 </div>
 
                 <PartnerLinks/>
@@ -93,23 +95,69 @@ function HomepageHeader() {
                         <hr></hr>
                     </div>
 
-                    <div className="responsive-container" style={{
-                        alignItems: 'top',
-                        justifyContent: 'space-between',
-                    }}>
-                        <div className="child" style={{padding: '10px'}}>
-                            <a href="https://youtu.be/2hOhOdCbBlU?si=CvaAkL4651z3LwvD" target="_blank">
-                                <img src="/img/davidad_ftc_talk.png" alt="placeholder"
-                                     style={{padding: '5px 0px 0px 0px', borderRadius: '12px'}}/>
-                            </a>
-                            <p className="greyTag" style={{margin: '0 5px 0 0'}}>Talk 18min</p>
-                            <p className="greyTag" style={{margin: '0'}}>Jun 2022 | Funding the Commons NYC</p><br></br>
-                            <a href="https://youtu.be/2hOhOdCbBlU?si=CvaAkL4651z3LwvD" target="_blank" class="h3">On-chain
-                                Primitives for Impact Markets</a><br></br>
-                            <a href="https://twitter.com/davidad" target="_blank" class="author-font">@davidad</a>
-                            <hr class="mobile-only"></hr>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            justifyContent: 'space-between',
+                            width: '100%',
+                            gap: '20px',
+                        }}
+                        >
+                        {/* Left column */}
+                        <div style={{
+                            width: '50%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start'
+                        }}>
+                            <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
+                                <img src="/img/davidad_ftc_talk.png" style={{ width: '100%', display: 'block' }} />
+                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk 18min</p>
+                                <p className="greyTag" style={{ margin: '0' }}>Jun 2022 | Funding the Commons NYC</p>
+                                <br />
+                                <a href="https://youtu.be/2hOhOdCbBlU?si=CvaAkL4651z3LwvD" target="_blank" className="h3">
+                                On-chain Primitives for Impact Markets
+                                </a>
+                                <br />
+                                <a href="https://twitter.com/davidad" target="_blank" className="author-font">@davidad</a>
+                                <hr className="mobile-only" />
+                            </div>
+                            <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
+                                <img src="/img/holke_maearth_podcast.jpg" style={{ width: '100%', display: 'block' }} />
+                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk 18min</p>
+                                <p className="greyTag" style={{ margin: '0' }}>Sep 2023 | Ma Earth: The Regeneration Will Be Funded</p>
+                                <br />
+                                <a href="https://youtu.be/q3osrfEW4WQ?si=1BCaV1QQWoCF7Flb" target="_blank" className="h3">
+                                Retrospective Funding Using Hypercerts
+                                </a>
+                                <br />
+                                <a href="https://twitter.com/holkxyz" target="_blank" className="author-font">@holkexyz</a>
+                                <hr className="mobile-only" />
+                            </div>
                         </div>
-                        <div className="child">
+
+                        {/* Right column */}
+                        <div className="child" style={{
+                            width: '50%',
+                        }}>
+                            <MediaItem
+                                tags={["Workshop 1h20min", "Nov 2024 | Devcon SEA Bangkok"]}
+                                title="Kickstarting impact funding with hypercerts"
+                                titleLink="https://youtu.be/Ozf8X4UeDY0?si=YTXwtqb8GTisBM2j"
+                                authors={[
+                                    {name: "@bitbeckers", link: "https://twitter.com/bitbeckers"},
+                                    {name: "@holkexyz", link: "https://twitter.com/holkexyz"}
+                                ]}
+                            />
+                            <MediaItem
+                                tags={["Demo 10min", "May 2024 | TechSoupVideo"]}
+                                title="A new protocol for funding and rewarding positive impact"
+                                titleLink="https://youtu.be/8osT1iL7Vcc?si=l05fDArAQdJAbpLe"
+                                authors={[
+                                    {name: "@bitbeckers", link: "https://twitter.com/bitbeckers"},
+                                ]}
+                            />
                             <MediaItem
                                 tags={["Talk 15min", "Aug 2023 | Funding the Commons Paris"]}
                                 title="How to Build Modern Impact Funding Systems"
@@ -185,7 +233,8 @@ function HomepageHeader() {
                                 ]}
                             />
                         </div>
-                    </div>
+                        </div>
+
                 </div>
             </div>
             {/* partner logos */}

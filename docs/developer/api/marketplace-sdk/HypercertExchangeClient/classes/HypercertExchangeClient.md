@@ -473,7 +473,7 @@ ContractMethods
 
 ###### Parameters
 
-• **additionalOverrides?**: `PayableOverrides`
+• **additionalOverrides?**: `any`
 
 ###### Returns
 
@@ -485,7 +485,7 @@ ContractMethods
 
 ###### Parameters
 
-• **additionalOverrides?**: `PayableOverrides`
+• **additionalOverrides?**: `any`
 
 ###### Returns
 
@@ -497,7 +497,7 @@ ContractMethods
 
 ###### Parameters
 
-• **additionalOverrides?**: `PayableOverrides`
+• **additionalOverrides?**: `any`
 
 ###### Returns
 
