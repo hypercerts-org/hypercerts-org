@@ -482,3 +482,16 @@
 .image-shadow {
   box-shadow: 0 0px 16px rgba(0, 0, 0, 0.4); /* Horizontal offset, vertical offset, blur radius, and color */
 }
+
+.markdown ul, .markdown ol {
+  list-style-type: disc !important;
+  padding-left: 1.5em !important;
+  margin-left: 0 !important;
+}
+
+
+ul, ol {
+  list-style-type: disc !important;
+  padding-left: 1.5em !important;
+  margin-left: 0 !important;
+}
