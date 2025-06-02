@@ -144,7 +144,6 @@
 
 .child {
   flex: 1;
-  min-width: 300px; /* Adjust based on your content */
   padding: 0px;
   text-align: left;
 }
@@ -444,6 +443,10 @@
   border-radius: 10px;
   border: 2px solid var(--text-color);
   text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 @media (min-width: 768px) {

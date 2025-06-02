@@ -124,6 +124,16 @@ Error errors returned by the order validator contract
 
 ***
 
+### INVALID\_S\_PARAMETER\_EOA
+
+> **INVALID\_S\_PARAMETER\_EOA**: `412`
+
+#### Defined in
+
+[types.ts:293](https://github.com/hypercerts-org/marketplace-sdk/blob/5b36795934d26bddc05adc354c58feff6a0aa2e7/src/types.ts#L293)
+
+***
+
 ### INVALID\_SIGNATURE\_LENGTH
 
 > **INVALID\_SIGNATURE\_LENGTH**: `411`
@@ -141,16 +151,6 @@ Error errors returned by the order validator contract
 #### Defined in
 
 [types.ts:296](https://github.com/hypercerts-org/marketplace-sdk/blob/5b36795934d26bddc05adc354c58feff6a0aa2e7/src/types.ts#L296)
-
-***
-
-### INVALID\_S\_PARAMETER\_EOA
-
-> **INVALID\_S\_PARAMETER\_EOA**: `412`
-
-#### Defined in
-
-[types.ts:293](https://github.com/hypercerts-org/marketplace-sdk/blob/5b36795934d26bddc05adc354c58feff6a0aa2e7/src/types.ts#L293)
 
 ***
 
