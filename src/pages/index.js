@@ -125,7 +125,7 @@ function HomepageHeader() {
                             </div>
                             <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
                                 <img src="/img/holke_maearth_podcast.jpg" style={{ width: '100%', display: 'block' }} />
-                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk 18min</p>
+                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Interview 55min</p>
                                 <p className="greyTag" style={{ margin: '0' }}>Sep 2023 | Ma Earth: The Regeneration Will Be Funded</p>
                                 <br />
                                 <a href="https://youtu.be/q3osrfEW4WQ?si=1BCaV1QQWoCF7Flb" target="_blank" className="h3">
