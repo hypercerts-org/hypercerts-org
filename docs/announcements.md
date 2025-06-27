@@ -5,7 +5,49 @@ id: announcements
 
 # Announcements
 
-## 2025 Mar Update
+## 2025 June Update
+
+### Gitcoin 23: Hypercerts For Nature Stewards – Results and Round Report
+
+[<img src="/img/docs/2025-06_gg23-results.jpeg" alt="Hypercerts For Nature Gitcoin Round" style="max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />](https://gov.gitcoin.co/t/gg23-hypercerts-for-nature-stewards-full-round-report/20975)
+
+The results are in! The Hypercerts for Nature Stewards round on Gitcoin.
+
+Grantees created Ecocerts. Donors showed up. Matching funds were powered by Gainforest, Ma Earth, Celo and the Hypercerts Foundation.
+
+In this round, Gainforest lead the tests of a new way to fund local nature work through Ecocerts + Impact QF.
+
+Read the full report in the Gitcoin forum [here](https://gov.gitcoin.co/t/gg23-hypercerts-for-nature-stewards-full-round-report/20975).
+
+### Invitation to discuss Hypercerts v2
+
+Hypercerts V2 is the latest evolution of the Hypercerts protocol, designed to improve scalability, cross-application interoperability, and simplicity in funding and rewarding positive impact. This version introduces key architectural changes, including:
+- Introduction of a cross-app identifier for organizations.
+- Use of a separate registry for the metadata, which enables non-tokenized hypercerts.
+- A new token standard based on ERC20s or standard ERC1155.
+
+These enhancements make Hypercerts V2 more composable within the broader Ethereum ecosystem, improving usability and efficiency.
+
+The key principle for this evolution is simplicity. We ask: What is the simplest, yet extensible, implementation of hypercerts?
+
+Read more [here](https://docs.google.com/document/d/1U5YhPfSGcKP2EfoQCz12LJK63qzAACUgb8Bm8iQPavU/edit?usp=sharing) and get in contact with us if you want to discuss hypercerts v2 with us and contribute.
+
+[<img src="/img/docs/2025-06_hypercerts_v2_screenshot.png" alt="Hypercerts For Nature Gitcoin Round" style="max-width: 600px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />](https://docs.google.com/document/d/1U5YhPfSGcKP2EfoQCz12LJK63qzAACUgb8Bm8iQPavU/edit?usp=sharing)
+
+### Hypercerts @EthCC in Cannes, July 2nd
+
+[<img src="/img/docs/2025-06_holke_at_ethcc.png" alt="Hypercerts For Nature Gitcoin Round" style="max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />](https://ethcc.io/agenda/hypercerts-decentralized-impact-funding-networks-at-scale)
+
+Catch Holke at EthCC in Cannes on July 2nd, 2:15pm.
+
+**Title:** Decentralized Impact Funding Networks at Scale
+
+**Description:** Impact funding is fragmented, lacks transparency, and relies on centralized trust. Hypercerts solve these issues by creating decentralized funding networks with open evaluations. We’ll showcase Ecocerts, hypercerts for ecological impact.
+
+Find it on the agenda [here](https://ethcc.io/agenda/hypercerts-decentralized-impact-funding-networks-at-scale).
+
+
+## 2025 March Update
 
 ### Ecocertain.xyz: A New Funding Platform by Gainforest
 
@@ -43,7 +85,7 @@ We’re looking for projects that are making a real difference for nature—and 
 - [Full details](https://www.notion.so/GG23-Hypercerts-for-Nature-Round-1b694a2f76b380188bd0cbb5f8fb9eb0?pvs=21)
 
 
-## 2024 Oct Update
+## 2024 October Update
 
 ### Launch of New Hypercerts dApp
 
@@ -77,7 +119,7 @@ We are grateful for any contributions, especially as they unlock quadratic match
 
 The Hypercerts Team
 
-## 2024 Jun Update
+## 2024 June Update
 
 ### New developments
 - Hypercerts Ecosystem: 35 projects were part of the first ever Hypercerts Ecosystem funding round along the Gitcoin Grants Round 20. It is amazing to see how many projects are building on top of the hypercerts protocol. We distributed 60K USD from our matching funders: Gitcoin, Arbitrum and Protocol Labs :pray: You can see all project and the results here: Hypercerts Ecosystem Round | Gitcoin Round Report Card Now we are curious about the progress of these projects. We published a retrospective in the Gitcoin forum: Retrospective of the Hypercerts Ecosystem Round during GG20 - 🌱 Gitcoin Grants - Gitcoin Governance
@@ -102,7 +144,7 @@ Next developments
 - Evaluations (ongoing): Extending the evaluations to allow evaluators to submit data based on specified templates for their impact domain.
 - Web 2.5: Users have requested to allow credit-card payments in addition to crypto payments. We want to enable this and also allow users to collect hypercerts just with an email address, such that they can transfer the hypercerts to their wallets at a later time. This allows projects to sell their impact to a larger audience.
 
-## 2024 Mar Update
+## 2024 March Update
 
 ### New developments
 - HIP: Introduction of the public Hypercerts Improvement Process (HIP) in order to become more transparent in our work at the Hypercerts Foundation and to allow the community to propose improvement and contribute: https://github.com/hypercerts-org/HIPs
@@ -142,7 +184,7 @@ Excited and grateful,
 
 The hypercerts team
 
-## 2023 Dec Update
+## 2023 December Update
 
 ### New developments
 - Release on Celo: Hypercerts can now be minted on Celo or Optimism. The deployment on additional EVM-chains has been simplified.
