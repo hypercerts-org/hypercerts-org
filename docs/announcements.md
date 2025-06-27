@@ -7,9 +7,15 @@ id: announcements
 
 ## 2025 Mar Update
 
-<img src="/img/docs/hypercerts_for_nature_gg23.jpeg" alt="Hypercerts For Nature Gitcoin Round" style="max-width: 420px; width: 100%; height: auto; display: block; margin: 0 auto 24px;"/>
+### Ecocertain.xyz: A New Funding Platform by Gainforest
+
+[<img src="/img/docs/ecocertain_homepage.png" alt="Hypercerts For Nature Gitcoin Round" style="max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />](https://ecocertain.xyz)
+
+Our collaborators at [Gainforst](http://gainforest.earth/) have created a platform to fund impactful regenerative projects via hypercerts. Check it out now and fund impact directly: [www.ecocertain.xyz](https://ecocertain.xyz/)
 
 ### Applications Now Open: GG23 Hypercerts for Nature Round!
+
+<img src="/img/docs/hypercerts_for_nature_gg23.jpeg" alt="Hypercerts For Nature Gitcoin Round" style="max-width: 420px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />
 
 Are you working on ecosystem restoration? Now’s your chance to get your project funded and recognized through the **GG23 Hypercerts for Nature Round**!
 
@@ -32,14 +38,10 @@ We’re looking for projects that are making a real difference for nature—and 
 
 #### How to Apply
 
-- **Deadline:** March 24, 2025  
+- **Deadline:** March 24  
 - **Application form:** [not available anymore]
 - [Full details](https://www.notion.so/GG23-Hypercerts-for-Nature-Round-1b694a2f76b380188bd0cbb5f8fb9eb0?pvs=21)
 
-
----
-
-Ready to make your impact count? **Apply today and let’s restore nature together!**
 
 ## 2024 Oct Update
 
