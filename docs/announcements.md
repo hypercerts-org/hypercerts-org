@@ -5,6 +5,17 @@ id: announcements
 
 # Announcements
 
+## 2025 July Update
+
+### EthCC[8] Talk online: Impact Funding Networks at Scale
+
+[<img src="/img/holke_ethcc8_talk2.png" alt="Talk and Demo from EthCC8 by Holke" style="max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />](https://www.youtube.com/watch?v=bQ2Z0pwZOh8)
+
+Holke's talk from EthCC is online: https://www.youtube.com/watch?v=bQ2Z0pwZOh8
+
+He shared how to build open funding networks, incl. a demo of funding regenerative projects via 
+GainForest’s http://ecocertain.xyz 🌱
+
 ## 2025 June Update
 
 ### Gitcoin 23: Hypercerts For Nature Stewards – Results and Round Report

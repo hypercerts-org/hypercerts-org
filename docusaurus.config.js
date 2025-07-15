@@ -88,6 +88,11 @@ export default async function createConfigAsync() {
                     },
                     items: [
                         {
+                            to: "/docs/announcements",
+                            label: "News",
+                            position: "left",
+                        },
+                        {
                             to: "/docs/what-are-hypercerts",
                             label: "Docs",
                             position: "left",

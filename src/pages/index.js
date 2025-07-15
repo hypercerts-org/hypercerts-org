@@ -112,6 +112,18 @@ function HomepageHeader() {
                             alignItems: 'flex-start'
                         }}>
                             <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
+                                <img src="/img/holke_ethcc8_talk2.png" style={{ width: '100%', display: 'block' }} />
+                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk & Demo 12min</p>
+                                <p className="greyTag" style={{ margin: '0' }}>Jul 2025 | EthCC[8] Cannes</p>
+                                <br />
+                                <a href="https://www.youtube.com/live/bQ2Z0pwZOh8?si=tHMpQuY8C2pUfXmk" target="_blank" className="h3">
+                                Decentralized Impact Funding Networks at Scale
+                                </a>
+                                <br />
+                                <a href="https://twitter.com/holkexyz" target="_blank" className="author-font">@holkexyz</a>
+                                <hr className="mobile-only" />
+                            </div>
+                            <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
                                 <img src="/img/davidad_ftc_talk.png" style={{ width: '100%', display: 'block' }} />
                                 <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk 18min</p>
                                 <p className="greyTag" style={{ margin: '0' }}>Jun 2022 | Funding the Commons NYC</p>
