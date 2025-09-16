@@ -5,6 +5,38 @@ id: announcements
 
 # Announcements
 
+## 2025 September Update
+
+### Hypercerts Retreat Berlin 2025
+
+<img src="/img/docs/2025-09_hypercerts_berlin.png" alt="Hypercerts Berlin 2025 Banner" style="max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />
+
+We wrapped up our hypercerts retreat in Berlin, full of inspiring ideas and progress 🙌  
+
+Here are some highlights 👇
+
+🔑 **P2D focus:** 
+Hypercerts is a protocol for developers building funding mechanisms + platforms. Developer experience is our #1 priority.
+
+✨ **Excellent UX:** 
+Protocol choices shape end-user experience — we aim for world-class UX while being credible neutral.
+
+🧪 **v0.2 prototypes:** 
+We’re running experiments to explore architecture choices on the path to hypercerts v0.2.
+
+🗂 **Metadata decoupling:** 
+Moving toward non-tokenized hypercerts + supporting multiple token standards.
+
+🌐 **ATProto:**
+Bluesky’s protocol might be an interesting place to store hypercerts metadata, early exploration happening now.
+
+🌱 **Building in public:** 
+We’re committed to openness + networked collaboration, inspired by Conway’s Law.
+
+💬 **Join the conversation:** some follow-up discussions are live on GitHub Discussions, jump in and help shape v0.2! https://github.com/hypercerts-org/HIPs/discussions/
+
+And if you’d like to get involved more directly, reach out to us. 🚀
+
 ## 2025 July Update
 
 ### EthCC[8] Talk online: Impact Funding Networks at Scale
