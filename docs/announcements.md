@@ -243,7 +243,28 @@ The hypercerts team
 - Integrations: We’ll support funding platforms to integrate hypercerts. If you are interested in using hypercerts, please write us at team [at] hypercerts.org
 - Maintenance and user support: Not a usual roadmap item, but included here to appreciate the work that goes into this, especially as the code-base and use cases increase 🙂
 
+## Introducing the Hypercerts Foundation
+<span style="display:block;margin-top:-1rem;margin-bottom:1rem;font-size:0.9rem;color:gray;font-style:italic;">
+February 21, 2023
+</span>
 
+We are proud to announce the launch of the [Hypercerts Foundation](http://hypercerts.org). 
 
+The mission of the Hypercerts Foundation is to advance the development and adoption of open-source protocols for funding and rewarding positive impact.
 
+Research on hypercerts was [first presented](https://youtu.be/2hOhOdCbBlU) to the public by David A. Dalrymple at the conference series Funding the Commons in March 2022. However, the concept of “impact certificates” has been a recurring theme at conferences and in online discussion forums since at least [2014](https://rationalaltruist.com/2014/11/15/certificates-of-impact/). In late 2022, a small team of research scientists, developers, and practitioners began implementing hypercerts as a set of Ethereum-based smart contracts that could be used to assert and fund impact claims. The Hypercerts Foundation will now serve as the long-term home for this work.
+
+The new foundation is supported in part by Protocol Labs and is part of the broader Protocol Labs Network of hundreds of companies and organizations. The Foundation will complement Protocol Labs Network’s mission of enabling a more secure, open, and accessible internet. The Hypercerts Foundation, however, is fully independent and will focus on protocol development and cultivating a community of developers and impact entrepreneurs well beyond the Protocol Labs Network.
+
+> "We are proud to be an early supporter of the Hypercerts Foundation, which will bring even greater focus and resources to this important area of innovation," said Juan Benet, founder and CEO of Protocol Labs. "The Hypercerts Foundation is helping build a more transparent and interoperable environment for funding public goods. We are excited to contribute to its mission in any way we can."
+> 
+
+The first protocol to be stewarded by the Hypercerts Foundation will be an ERC-1155-based token and metadata standard for asserting positive impact claims. The hypercerts protocol will enable projects to define an impact claim and then to allocate it to contributors and supporters of their work. Transfers of a hypercert token will be restricted to one transfer from the projects to supporters.
+
+The Hypercerts Foundation will work closely with stakeholders in the open source, scientific research, and cryptography communities to develop and promote additional protocols that are decentralized, secure, and transparent. The Foundation will also provide support and resources to help drive the wider adoption of these protocols.
+
+> "This is an exciting moment for the Hypercerts Foundation and for the future of impact funding," says Kevin Owocki of Supermodular.xyz, another early supporter and steward of the new initiative. "We are committed to advancing the development of decentralized protocols and novel coordination mechanisms."
+> 
+
+For more information on the Hypercerts Foundation and its mission, please visit the website at [hypercerts.org](http://www.hypercerts.org/) or check us out [on GitHub](https://github.com/hypercerts-org/hypercerts).
 
