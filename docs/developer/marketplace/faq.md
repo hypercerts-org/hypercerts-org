@@ -16,4 +16,4 @@ When you approve a collection to be traded on the hypercerts exchange, you appro
 
 🔗 [Public API documentation](https://api.hypercerts.org/spec)
 
-🔗 [Developer discord](https://discord.gg/wxNBt2Arnc)
+🔗 [Developer Support Channel on Telegram](https://t.me/+FODiLtCV2TgwNzRi)

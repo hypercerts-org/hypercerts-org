@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Creating, transfering, selling, and buying a hypercert is similar to interacting with an NFT on platforms like OpenSea or Looksrare. 
 
-In this guide we will provide you all information to get started. If anything is missing or if you are stuck in the process, please jump on [our discord server](https://discord.gg/azPgDcSQWw) and enter the help forum there.
+In this guide we will provide you all information to get started. If anything is missing or if you are stuck in the process, please jump on [our support channel on Telegram](https://t.me/+FODiLtCV2TgwNzRi) and enter the help forum there.
 
 ### Who Can Use Hypercerts?
 
@@ -48,7 +48,7 @@ If you want to sell multiple hypercerts as a project or a funding program operat
 
 ### What Do I Need to Use Hypercerts?
 
-To interact with Hypercerts, you’ll need a crypto wallet. If you’re new to the Web3 space, we recommend familiarizing yourself with the tools first. Don’t worry—we’re here to help! You can reach us in the [discord help forum](https://discord.gg/azPgDcSQWw).
+To interact with Hypercerts, you’ll need a crypto wallet. If you’re new to the Web3 space, we recommend familiarizing yourself with the tools first. Don’t worry—we’re here to help! You can reach us in the [support channel on Telegram](https://t.me/+FODiLtCV2TgwNzRi).
 
 You’ll also need a small amount of gas on the network you choose to interact with. The Hypercerts protocol is available on Optimism, Celo, Base, Arbitrum, and Sepolia (testnet). For example, minting a Hypercert typically costs less than $0.10 USD.
 
