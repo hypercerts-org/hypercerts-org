@@ -112,15 +112,15 @@ function HomepageHeader() {
                             alignItems: 'flex-start'
                         }}>
                             <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
-                                <img src="/img/holke_ethcc8_talk2.png" style={{ width: '100%', display: 'block' }} />
-                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk & Demo 12min</p>
-                                <p className="greyTag" style={{ margin: '0' }}>Jul 2025 | EthCC[8] Cannes</p>
+                                <img src="/img/holke_maearth_podcast_2.jpg" style={{ width: '100%', display: 'block' }} />
+                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Interview 1h 12min</p>
+                                <p className="greyTag" style={{ margin: '0' }}>Nov 2025 | Ma Earth: The Regeneration Will Be Funded</p>
                                 <br />
-                                <a href="https://www.youtube.com/live/bQ2Z0pwZOh8?si=tHMpQuY8C2pUfXmk" target="_blank" className="h3">
-                                Decentralized Impact Funding Networks at Scale
+                                <a href="https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN" target="_blank" className="h3">
+                                The Moment is Ripe for Hypercerts
                                 </a>
                                 <br />
-                                <a href="https://twitter.com/holkexyz" target="_blank" className="author-font">@holkexyz</a>
+                                <a href="https://twitter.com/holkxyz" target="_blank" className="author-font">@holkexyz</a>
                                 <hr className="mobile-only" />
                             </div>
                             <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
@@ -136,15 +136,15 @@ function HomepageHeader() {
                                 <hr className="mobile-only" />
                             </div>
                             <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
-                                <img src="/img/holke_maearth_podcast.jpg" style={{ width: '100%', display: 'block' }} />
-                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Interview 55min</p>
-                                <p className="greyTag" style={{ margin: '0' }}>Sep 2023 | Ma Earth: The Regeneration Will Be Funded</p>
+                                <img src="/img/holke_ethcc8_talk2.png" style={{ width: '100%', display: 'block' }} />
+                                <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Talk & Demo 12min</p>
+                                <p className="greyTag" style={{ margin: '0' }}>Jul 2025 | EthCC[8] Cannes</p>
                                 <br />
-                                <a href="https://youtu.be/q3osrfEW4WQ?si=1BCaV1QQWoCF7Flb" target="_blank" className="h3">
-                                Retrospective Funding Using Hypercerts
+                                <a href="https://www.youtube.com/live/bQ2Z0pwZOh8?si=tHMpQuY8C2pUfXmk" target="_blank" className="h3">
+                                Decentralized Impact Funding Networks at Scale
                                 </a>
                                 <br />
-                                <a href="https://twitter.com/holkxyz" target="_blank" className="author-font">@holkexyz</a>
+                                <a href="https://twitter.com/holkexyz" target="_blank" className="author-font">@holkexyz</a>
                                 <hr className="mobile-only" />
                             </div>
                         </div>
@@ -168,6 +168,14 @@ function HomepageHeader() {
                                 titleLink="https://youtu.be/8osT1iL7Vcc?si=l05fDArAQdJAbpLe"
                                 authors={[
                                     {name: "@bitbeckers", link: "https://twitter.com/bitbeckers"},
+                                ]}
+                            />
+                            <MediaItem
+                                tags={["Interview 55min", "Sep 2023 | Ma Earth: The Regeneration Will Be Funded"]}
+                                title="Retrospective Funding Using Hypercerts"
+                                titleLink="https://youtu.be/q3osrfEW4WQ?si=1BCaV1QQWoCF7Flb"
+                                authors={[
+                                    {name: "@holkexyz", link: "https://twitter.com/holkexyz"},
                                 ]}
                             />
                             <MediaItem
