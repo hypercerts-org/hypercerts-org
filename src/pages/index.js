@@ -114,7 +114,7 @@ function HomepageHeader() {
                             <div className="child" style={{ width: '100%', marginBottom: '40px' }}>
                                 <img src="/img/holke_maearth_podcast_2.jpg" style={{ width: '100%', display: 'block' }} />
                                 <p className="greyTag" style={{ margin: '0 5px 0 0' }}>Interview 1h 12min</p>
-                                <p className="greyTag" style={{ margin: '0' }}>Nov 2025 | Ma Earth: The Regeneration Will Be Funded</p>
+                                <p className="greyTag" style={{ margin: '0' }}>Sep 2025 | Ma Earth: The Regeneration Will Be Funded</p>
                                 <br />
                                 <a href="https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN" target="_blank" className="h3">
                                 The Moment is Ripe for Hypercerts
