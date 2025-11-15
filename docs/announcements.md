@@ -5,6 +5,40 @@ id: announcements
 
 # Announcements
 
+## 2025 November Update
+
+### New Blog Post: Why We Are Building Hypercerts – Recognizing and Rewarding Value Creators
+
+We’ve published a major new essay that outlines the vision behind Hypercerts and the systems we are building.
+
+🔍 What’s inside:
+- Why today’s markets and institutions struggle to recognize collective value
+- How hypercerts make contributions legible, evaluable, and fundable
+- The architecture behind value recognition networks
+- New incentives and funding models enabled by hypercerts
+- Who buys hypercerts — and why
+
+This piece is our most comprehensive explanation yet of the problem we’re solving and the future we’re building toward.
+
+👉 Read the full post [here](why-we-are-building)
+
+If you’re a builder, funder, or researcher working on better ways to recognize and reward positive impact, we’d love to hear from you at team [at] hypercerts.org.
+
+### We Are At Devconnect in Buenos Aires 🇦🇷
+
+Find us here:
+- 18th Nov (10:30am): The Enterprise Hub (roundtable)
+- 19th Nov (3:30pm): Funding the Commons (talk)
+- 20th Nov: Schelling Point (talk)
+- 17th-22nd Nov: During the whole time at the Gainforest stand in the Social District of the World's Fair
+
+<img src="/img/docs/2025-11-dwddao-devconnect-post.png" alt="David Dao's x post about the Gainforest stand at Devconnect" style="max-width: 400px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />
+
+<img src="/img/docs/2025-11-schellingpoint.jpeg" alt="Speaker card Holke at Schelling Point" style="max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />
+
+<img src="/img/docs/2025-11-ftc-buenos-aires.jpg" alt="Speaker card Holke at Funding the Commons" style="max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto 24px;" />
+
+
 ## 2025 September Update
 
 ### Hypercerts Retreat Berlin 2025

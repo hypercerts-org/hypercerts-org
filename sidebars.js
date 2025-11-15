@@ -22,6 +22,10 @@ const sidebars = {
             type: "doc",
             id: "what-are-hypercerts",
         },
+        {
+            type: "doc",
+            id: "why-we-are-building",
+        },
         /**
          {
          type: "category",

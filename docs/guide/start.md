@@ -4,7 +4,12 @@ id: start
 sidebar_position: 1
 ---
 
+
 # Getting Started
+
+:::info
+This is the guide for the first version of hypercerts. We are currently building the new implementation on AT Protocol. Read more about it at [Why We Are Building Hypercerts](../why-we-are-building).
+:::
 
 Creating, transfering, selling, and buying a hypercert is similar to interacting with an NFT on platforms like OpenSea or Looksrare. 
 
