@@ -35,6 +35,44 @@ function HomepageHeader() {
                 <PartnerLinks/>
 
             </div>
+            <div style={{ marginTop: '6rem', textAlign: 'center' }}>
+            <a
+                href="/docs/why-we-are-building"
+                style={{
+                display: 'inline-block',
+                padding: '0.9rem 1.4rem',
+                background: '#000000ff',
+                color: '#ffffffff',
+                border: '1px solid #000000ff',
+                fontWeight: 600,
+                fontSize: '1.3rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                margin: '10px',
+                }}
+            >
+                📣 Read Our Newest Blog Post (Nov 2025)
+            </a>
+            <a
+                href="/docs/announcements"
+                style={{
+                display: 'inline-block',
+                padding: '0.9rem 1.4rem',
+                background: '#000000ff',
+                color: '#ffffffff',
+                border: '1px solid #000000ff',
+                fontWeight: 600,
+                fontSize: '1.3rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                margin: '10px',
+                }}
+            >
+                Find us at Devconnect Buenos Aires 🇦🇷
+            </a>
+            </div>
 
 
             {/* Main body */}
