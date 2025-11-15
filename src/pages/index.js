@@ -52,7 +52,27 @@ function HomepageHeader() {
                 margin: '10px',
                 }}
             >
-                📣 Read Our Newest Blog Post (Nov 2025)
+                📣 Read Our New Blog Post (Nov 2025)
+            </a>
+            <a
+                href="https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN"
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                display: 'inline-block',
+                padding: '0.9rem 1.4rem',
+                background: '#000000ff',
+                color: '#ffffffff',
+                border: '1px solid #000000ff',
+                fontWeight: 600,
+                fontSize: '1.3rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                margin: '10px',
+                }}
+            >
+                📺 Watch Ma Earth Interview (Sep 2025)
             </a>
             <a
                 href="/docs/announcements"
@@ -70,7 +90,7 @@ function HomepageHeader() {
                 margin: '10px',
                 }}
             >
-                Find us at Devconnect Buenos Aires 🇦🇷
+                Find Us At Devconnect Buenos Aires 🇦🇷
             </a>
             </div>
 
