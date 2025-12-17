@@ -16,6 +16,7 @@ const PartnerLink = ({ href, imgSrc, altText }) => (
         <PartnerLink href="https://www.raidguild.org/" imgSrc="/img/raidguild_logo.webp" altText="RaidGuild logo" />
         <PartnerLink href="https://www.zuzalu.city/" imgSrc="/img/zuzalu_logo.png" altText="Zuzalu logo" />
         <PartnerLink href="https://www.edgecity.live/" imgSrc="/img/edgecity_logo.png" altText="EdgeCity logo" />
+        <PartnerLink href="https://fabdaotw.github.io/" imgSrc="/img/greensofa_logo.png" altText="GreenSofa logo" />
       </div>
       <style jsx>{`
           .button {

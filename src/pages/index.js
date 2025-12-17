@@ -35,64 +35,6 @@ function HomepageHeader() {
                 <PartnerLinks/>
 
             </div>
-            <div style={{ marginTop: '6rem', textAlign: 'center' }}>
-            <a
-                href="/docs/why-we-are-building"
-                style={{
-                display: 'inline-block',
-                padding: '0.9rem 1.4rem',
-                background: '#000000ff',
-                color: '#ffffffff',
-                border: '1px solid #000000ff',
-                fontWeight: 600,
-                fontSize: '1.3rem',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                margin: '10px',
-                }}
-            >
-                📣 Read Our New Blog Post (Nov 2025)
-            </a>
-            <a
-                href="https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN"
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{
-                display: 'inline-block',
-                padding: '0.9rem 1.4rem',
-                background: '#000000ff',
-                color: '#ffffffff',
-                border: '1px solid #000000ff',
-                fontWeight: 600,
-                fontSize: '1.3rem',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                margin: '10px',
-                }}
-            >
-                📺 Watch Ma Earth Interview (Sep 2025)
-            </a>
-            <a
-                href="/docs/announcements"
-                style={{
-                display: 'inline-block',
-                padding: '0.9rem 1.4rem',
-                background: '#000000ff',
-                color: '#ffffffff',
-                border: '1px solid #000000ff',
-                fontWeight: 600,
-                fontSize: '1.3rem',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                margin: '10px',
-                }}
-            >
-                Find Us At Devconnect Buenos Aires 🇦🇷
-            </a>
-            </div>
 
 
             {/* Main body */}
@@ -211,6 +153,32 @@ function HomepageHeader() {
                         <div className="child" style={{
                             width: '50%',
                         }}>
+                            <MediaItem
+                                tags={["Talk 18min", "Nov 2025 | Schelling Point Buenos Aires"]}
+                                title="Hypercert on AT Protocol: Rewriting How We Recognize — and Reward — Value Creation"
+                                titleLink="https://youtu.be/-Rw1kLyo2wQ?si=xza1MJN2hzY4m16S"
+                                authors={[
+                                    {name: "@sharfyae", link: "https://twitter.com/sharfyae"},
+                                    {name: "@holkexyz", link: "https://twitter.com/holkexyz"}
+                                ]}
+                            />
+                            <MediaItem
+                                tags={["Talk 14min", "Nov 2025 | Funding the Commons Buenos Aires"]}
+                                title="Rewiring the Commons: Hypercerts on AT Protocol"
+                                titleLink="https://youtu.be/GCEuGMeZiUs?si=TXdqmZ6hU6im0izi"
+                                authors={[
+                                    {name: "@holkexyz", link: "https://twitter.com/holkexyz"}
+                                ]}
+                            />
+                            <MediaItem
+                                tags={["Blogpost", "Nov 2025"]}
+                                title="Why We Are Building Hypercerts: Recognizing and Rewarding Value Creators"
+                                titleLink="https://leaflet.pub/9324aa14-6833-4790-9655-844dfc87fa08"
+                                authors={[
+                                    {name: "@hypercerts", link: "https://twitter.com/hypercerts"},
+                                    {name: "@holkexyz", link: "https://twitter.com/holkexyz"}
+                                ]}
+                            />
                             <MediaItem
                                 tags={["Workshop 1h20min", "Nov 2024 | Devcon SEA Bangkok"]}
                                 title="Kickstarting impact funding with hypercerts"

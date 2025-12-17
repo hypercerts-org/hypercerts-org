@@ -14,6 +14,7 @@ const SponsorLogos = () => {
         { href: "https://www.raidguild.org/", imgSrc: "/img/raidguild_logo.webp", altText: "RaidGuild logo" },
         { href: "https://www.zuzalu.city/", imgSrc: "/img/zuzalu_logo.png", altText: "Zuzalu logo" },
         { href: "https://www.edgecity.live/", imgSrc: "/img/edgecity_logo.png", altText: "EdgeCity logo" },
+        { href: "https://fabdaotw.github.io/", imgSrc: "/img/greensofa_logo.png", altText: "GreenSofa logo" },
     ];
 
     useEffect(() => {
