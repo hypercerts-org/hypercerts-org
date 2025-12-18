@@ -173,7 +173,7 @@ function HomepageHeader() {
                             <MediaItem
                                 tags={["Blogpost", "Nov 2025"]}
                                 title="Why We Are Building Hypercerts: Recognizing and Rewarding Value Creators"
-                                titleLink="https://leaflet.pub/9324aa14-6833-4790-9655-844dfc87fa08"
+                                titleLink="https://hypercerts.leaflet.pub/3m6mnb2riz22o"
                                 authors={[
                                     {name: "@hypercerts", link: "https://twitter.com/hypercerts"},
                                     {name: "@holkexyz", link: "https://twitter.com/holkexyz"}
