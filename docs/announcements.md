@@ -5,6 +5,44 @@ id: announcements
 
 # Announcements
 
+## 2025 December
+
+### Transitioning from 2025 to 2026: Building Hypercerts on the Open Internet
+
+As we close out 2025, it’s worth pausing—not just to look back, but to name what this year clarified for us and to look further ahead.
+
+Hypercerts exists because something fundamental is missing from today’s economy: shared infrastructure for producing, accumulating, and coordinating around information about real value and meaningful action.
+
+In 2025, we made a directional shift to address this by implementing hypercerts on ATProto, the decentralized social protocol Bluesky is built on. This was not a bet on a platform, but a commitment to an architectural direction. Hypercerts depends on a social data layer where actions, evidence, and evaluations can be published, referenced, and built upon over time—independently of any single application. ATProto provides this substrate: portable identities, persistent records, and an open graph for coordination. Combined with onchain anchoring and optional tokenization, this stack gives us what we need to connect resources to the people and projects creating real value in our societies.
+
+Equally important is how this work is being done. Hypercerts is not a product shipped by one organization; it is a network being built by many. Core contributors from Ma Earth, GainForest, and the Hypercerts Foundation worked closely together this year, alongside contributions from Silvi, Astral Protocol, Regen Network, ReFi DAO, Funding the Commons, and unaffiliated individuals who chose to participate because the problem—and the approach—resonated. This is intentional. We are building as a network because the outcome is meant to support a network of applications, not a walled garden.
+
+Some of the most important progress this year happened in shared spaces: the Hypercerts Gathering in Berlin; a month in Argentina with Funding the Commons, Edge City, and the momentum around Devconnect; the Ma Earth co-location weeks in Berlin and Amsterdam; and the Impact Evaluator Retreat in Iceland—where hypercerts wasn’t meant to be a central topic, yet kept resurfacing as a key primitive for impact evaluation.
+
+To everyone who contributed—through code, design, critique, facilitation, and experimentation—thank you. And without attempting to name everyone, we want to extend a special thanks to Ken, Adam, Sharfy, and Matthew. Hypercerts would not have taken the shape it did in 2025 without your work.
+
+Looking ahead to 2026, we continue to push our mission: enabling people to do what they cannot do alone—by improving how resources are allocated to collective action.
+
+Concretely, this means doubling down on ATProto while strengthening its connection to onchain attestation layers, such as the Ethereum Attestation Service (EAS). It means pushing real-world use cases forward, starting with Ma Earth and GainForest, so the protocol continues to be shaped by practice rather than abstraction. And it means developing certified.app as core coordination infrastructure: a portable profile that aggregates actions, evaluations, and credentials across hypercert-enabled applications—and across the broader ATProto ecosystem—so contributors and evaluators don’t have to rebuild their track record in every new context.
+
+Our north star is simple but ambitious. “Certs,” as we increasingly use the short form, will become the default way to track, evaluate, and fund actions via the open internet. When actions are recorded and assessed in the open, information about value is produced collectively rather than imposed from the outside. This makes new funding distribution mechanisms possible—for instance what we think of as collective markets, where many actors contribute information about value and resources flow according to shared evidence and judgment.
+
+In that sense, hypercerts is not only a protocol for funding. It is an experiment in how societies coordinate around value in an open, digital public sphere.
+
+Thank you for building this together. We’re excited to continue the work in 2026.
+
+And if you’d like to get involved or explore collaboration, please reach out to team@hypercerts.org.
+
+### Blogposts on Leaflet
+
+We’re excited to increasingly use tools built on the open internet via ATProto: composable, interoperable, and designed for durable public communication rather than platform lock-in.
+
+That’s why we’re now publishing all our blog posts on Leaflet: https://hypercerts.leaflet.pub/
+
+If you’re on Bluesky, you can subscribe to the blog directly with your profile.
+
+This is a small step—but an important one—in practicing the infrastructure we believe in.
+
 ## 2025 November Update
 
 ### New Blog Post: Why We Are Building Hypercerts – Recognizing and Rewarding Value Creators
