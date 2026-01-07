@@ -88,11 +88,9 @@ export default async function createConfigAsync() {
                     },
                     items: [
                         {
-                            to: "https://hypercerts.leaflet.pub/",
-                            label: "Blog",
+                            to: "/docs/announcements",
+                            label: "News",
                             position: "left",
-                            target: "_blank",
-                            rel: "noopener noreferrer",
                         },
                         {
                             to: "/docs/what-are-hypercerts",
@@ -103,6 +101,13 @@ export default async function createConfigAsync() {
                             to: "/contact",
                             label: "Contact",
                             position: "left",
+                        },
+                        {
+                            to: "https://hypercerts.leaflet.pub/",
+                            label: "Blog ↗",
+                            position: "left",
+                            target: "_blank",
+                            rel: "noopener noreferrer",
                         },
                         {
                             href: "https://app.hypercerts.org/explore?filter=evaluated",
