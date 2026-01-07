@@ -88,9 +88,11 @@ export default async function createConfigAsync() {
                     },
                     items: [
                         {
-                            to: "/docs/announcements",
-                            label: "News",
+                            to: "https://hypercerts.leaflet.pub/",
+                            label: "Blog",
                             position: "left",
+                            target: "_blank",
+                            rel: "noopener noreferrer",
                         },
                         {
                             to: "/docs/what-are-hypercerts",
