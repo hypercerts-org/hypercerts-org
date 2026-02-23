@@ -37,7 +37,7 @@ export default function HeroSection() {
           {/* Right column — Visual (hidden on mobile) */}
           <div className="hidden md:block relative">
             <div className="flex items-center justify-center">
-              <Guilloche variant="radial" preset="teal" width={700} height={700} />
+              <Guilloche variant="radial" preset="teal" width={910} height={910} />
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
               <Image
