@@ -6,10 +6,69 @@ interface GuillocheProps {
   color?: string;
   opacity?: number;
   className?: string;
-  variant?: "radial" | "wave";
+  variant?: "radial" | "wave" | "legacy-radial";
 }
 
-function buildRadialPaths(width: number, height: number): string[] {
+interface SpirographLayer {
+  R: number;       // outer radius (fraction of viewBox, 0-1)
+  r: number;       // inner radius (fraction of viewBox, 0-1)
+  d: number;       // pen distance (fraction of viewBox, 0-1)
+  rotation: number; // rotation in degrees
+  waviness: number; // amplitude of edge perturbation (0 = smooth, higher = wavier)
+  waveFreq: number; // frequency of edge perturbation
+}
+
+function buildSpirographPath(
+  layer: SpirographLayer,
+  width: number,
+  height: number,
+  steps: number = 360
+): string {
+  const { R, r, d, rotation, waviness, waveFreq } = layer;
+  const cx = width / 2;
+  const cy = height / 2;
+  const scale = Math.min(width, height) / 2;
+  const rotRad = (rotation * Math.PI) / 180;
+
+  const Rscaled = R * scale;
+  const rScaled = r * scale;
+  const dScaled = d * scale;
+  const ratio = (Rscaled - rScaled) / rScaled;
+  const periods = lcmRatio(R, r);
+
+  const points: string[] = [];
+  for (let i = 0; i <= steps; i++) {
+    const t = (i / steps) * 2 * Math.PI * periods;
+
+    const perturbation = waviness * Math.sin(waveFreq * t);
+    const x0 = (Rscaled - rScaled + perturbation) * Math.cos(t) + dScaled * Math.cos(ratio * t);
+    const y0 = (Rscaled - rScaled + perturbation) * Math.sin(t) - dScaled * Math.sin(ratio * t);
+
+    // Apply rotation
+    const x = x0 * Math.cos(rotRad) - y0 * Math.sin(rotRad) + cx;
+    const y = x0 * Math.sin(rotRad) + y0 * Math.cos(rotRad) + cy;
+
+    if (i === 0) {
+      points.push(`M ${x.toFixed(3)} ${y.toFixed(3)}`);
+    } else {
+      points.push(`L ${x.toFixed(3)} ${y.toFixed(3)}`);
+    }
+  }
+  points.push("Z");
+  return points.join(" ");
+}
+
+function lcmRatio(R: number, r: number): number {
+  // Number of full rotations needed to close the hypotrochoid
+  // = R/r (simplified). We use a fixed large number of steps instead.
+  // For rendering, we just go 0..2π * ceil(R/r) to ensure closure.
+  const ratio = R / r;
+  // Round to nearest integer multiple for closure (up to 20)
+  const periods = Math.min(Math.ceil(ratio), 20);
+  return periods;
+}
+
+function buildLegacyRadialPaths(width: number, height: number): string[] {
   const cx = width / 2;
   const cy = height / 2;
   const kappa = 0.5522847498; // magic constant for bezier circle approximation
@@ -170,8 +229,10 @@ export default function Guilloche({
   className,
   variant = "radial",
 }: GuillocheProps) {
-  const paths = variant === "radial"
-    ? buildRadialPaths(width, height)
+  const paths = variant === "legacy-radial"
+    ? buildLegacyRadialPaths(width, height)
+    : variant === "radial"
+    ? [buildSpirographPath({ R: 0.45, r: 0.17, d: 0.28, rotation: 0, waviness: 4, waveFreq: 8 }, width, height)]
     : buildWavePaths(width, height);
 
   return (
