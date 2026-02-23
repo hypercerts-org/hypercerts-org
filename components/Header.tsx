@@ -14,7 +14,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-[50px] flex items-center px-6">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-[50px] flex items-center px-6 border-b border-ui-separator">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
@@ -56,7 +56,7 @@ export default function Header() {
             href="https://app.hypercerts.org/explore?filter=evaluated"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-black text-white text-sm rounded-lg px-4 py-1.5 hover:opacity-80 transition-opacity"
+            className="bg-black text-white text-sm rounded-full px-4 py-1.5 hover:opacity-80 transition-opacity"
           >
             Go to app
           </a>
@@ -116,7 +116,7 @@ export default function Header() {
             href="https://app.hypercerts.org/explore?filter=evaluated"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-black text-white text-sm rounded-lg px-4 py-1.5 hover:opacity-80 transition-opacity text-center"
+            className="bg-black text-white text-sm rounded-full px-4 py-1.5 hover:opacity-80 transition-opacity text-center"
             onClick={() => setMenuOpen(false)}
           >
             Go to app

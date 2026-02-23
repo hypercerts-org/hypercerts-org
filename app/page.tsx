@@ -10,15 +10,13 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <MissionStatement />
       <PartnerLogos />
+      <MissionStatement />
       <WhatIsHypercert />
       <HowItWorks />
       <ImpactMarkets />
       <MediaSection />
-      <div style={{ marginTop: "50px" }}>
-        <PartnerLogos />
-      </div>
+      <PartnerLogos />
     </main>
   );
 }
