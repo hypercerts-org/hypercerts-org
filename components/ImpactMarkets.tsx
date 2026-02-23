@@ -120,7 +120,7 @@ export default function ImpactMarkets() {
                   href={content.primaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-brand-black text-brand-white rounded-brand font-body text-body-sm font-medium"
+                   className="inline-block px-6 py-3 bg-brand-black text-brand-white rounded-brand font-body text-body-sm font-medium hover:opacity-90 transition-opacity"
                 >
                   {content.primaryLabel}
                 </a>
@@ -129,7 +129,7 @@ export default function ImpactMarkets() {
                     href={content.secondaryHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-6 py-3 bg-ui-grey-tag text-brand-black rounded-brand font-body text-body-sm font-medium"
+                     className="inline-block px-6 py-3 bg-ui-grey-tag text-brand-black rounded-brand font-body text-body-sm font-medium hover:bg-ui-grey-light transition-colors"
                   >
                     {content.secondaryLabel}
                   </a>
