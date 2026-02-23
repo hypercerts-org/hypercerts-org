@@ -7,7 +7,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="w-full bg-surface-cream py-24 md:py-32">
+    <section className="w-full bg-ui-bg py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="mb-16">
