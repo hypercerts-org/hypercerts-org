@@ -77,77 +77,76 @@ export default function ImpactMarkets() {
   const { content } = tabs[selectedTab];
 
   return (
-    <section className="max-w-4xl mx-auto px-4 pt-[70px]">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <p className="font-body text-body-lg text-ui-grey-dark">
+    <section className="w-full bg-surface-teal-light py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section header */}
+        <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           Built to power
         </p>
-        <h2 className="font-display text-display-1 max-sm:text-[80px] leading-none">
+        <h2 className="font-display text-[80px] md:text-[100px] leading-none text-brand-black mb-12">
           Impact Markets
         </h2>
-      </div>
 
-      {/* Tab buttons */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
-        {tabs.map((tab, index) => (
-          <button
-            key={tab.label}
-            onClick={() => setSelectedTab(index)}
-            className={`w-[150px] h-[50px] rounded-lg font-body text-body-lg transition-transform hover:scale-110 ${
-              selectedTab === index
-                ? "bg-black text-white"
-                : "bg-white text-black"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+        {/* Tab buttons */}
+        <div className="flex flex-wrap gap-2 mb-12">
+          {tabs.map((tab, index) => (
+            <button
+              key={tab.label}
+              onClick={() => setSelectedTab(index)}
+              className={`px-6 py-3 rounded-full font-body text-body-sm font-medium transition ${
+                selectedTab === index
+                  ? "bg-brand-black text-brand-white"
+                  : "bg-brand-white text-brand-black border border-ui-separator hover:border-brand-black"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-      {/* Tab content */}
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col-reverse md:flex-row gap-8 items-center">
-          {/* Left: text (33%) */}
-          <div className="w-full md:w-1/3">
-            <h3 className="font-display text-display-3 mb-4">
-              {content.title}
-            </h3>
-            <p className="font-body text-body-lg text-ui-grey-dark mb-6">
-              {content.description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <a
-                href={content.primaryHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-5 py-3 bg-black text-white rounded-lg font-body text-body-lg"
-              >
-                {content.primaryLabel}
-              </a>
-              {content.secondaryLabel && content.secondaryHref && (
+        {/* Content card */}
+        <div className="bg-brand-white rounded-[20px] p-8 md:p-12 shadow-sm">
+          <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-center">
+            {/* Left: text */}
+            <div>
+              <h3 className="font-display text-display-3 text-brand-black mb-4">
+                {content.title}
+              </h3>
+              <p className="font-body text-body-lg text-ui-grey-dark mb-8">
+                {content.description}
+              </p>
+              <div className="flex flex-wrap gap-3">
                 <a
-                  href={content.secondaryHref}
+                  href={content.primaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-5 py-3 rounded-lg font-body text-body-lg text-black"
-                  style={{ backgroundColor: "#ECECEC" }}
+                  className="inline-block px-6 py-3 bg-brand-black text-brand-white rounded-brand font-body text-body-sm font-medium"
                 >
-                  {content.secondaryLabel}
+                  {content.primaryLabel}
                 </a>
-              )}
+                {content.secondaryLabel && content.secondaryHref && (
+                  <a
+                    href={content.secondaryHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-6 py-3 bg-ui-grey-tag text-brand-black rounded-brand font-body text-body-sm font-medium"
+                  >
+                    {content.secondaryLabel}
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Right: image (67%) */}
-          <div className="w-full md:w-2/3">
-            <Image
-              src={content.image}
-              alt={content.imageAlt}
-              width={800}
-              height={600}
-              className="rounded-3xl w-full h-auto"
-            />
+            {/* Right: image */}
+            <div className="rounded-brand overflow-hidden order-first md:order-last">
+              <Image
+                src={content.image}
+                alt={content.imageAlt}
+                width={800}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </div>
