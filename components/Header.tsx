@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navLinks = [
@@ -12,16 +14,20 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white h-[50px] flex items-center px-6 border-b border-ui-separator">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo */}
-        <Link href="/" className="flex items-center shrink-0">
-          <img
+        <Link href="/" className="flex items-center shrink-0" aria-current={pathname === "/" ? "page" : undefined}>
+          <Image
             src="/img/hypercerts_logo_horizontal.svg"
             alt="Hypercerts"
-            className="h-7"
+            width={140}
+            height={28}
+            className="h-7 w-auto"
+            priority
           />
         </Link>
 
@@ -43,6 +49,7 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 className="text-sm text-black hover:opacity-70 transition-opacity"
+                aria-current={pathname === link.href ? "page" : undefined}
               >
                 {link.label}
               </Link>
@@ -64,23 +71,23 @@ export default function Header() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8"
+          className="md:hidden relative w-8 h-8"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-5 h-0.5 bg-black transition-transform duration-200 ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
+            className={`absolute left-1.5 top-[10px] block w-5 h-0.5 bg-black transition-all duration-200 ${
+              menuOpen ? "rotate-45 translate-y-[6px]" : ""
             }`}
           />
           <span
-            className={`block w-5 h-0.5 bg-black transition-opacity duration-200 ${
+            className={`absolute left-1.5 top-[16px] block w-5 h-0.5 bg-black transition-all duration-200 ${
               menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block w-5 h-0.5 bg-black transition-transform duration-200 ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
+            className={`absolute left-1.5 top-[22px] block w-5 h-0.5 bg-black transition-all duration-200 ${
+              menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
             }`}
           />
         </button>
@@ -106,6 +113,7 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 className="text-sm text-black hover:opacity-70 transition-opacity"
+                aria-current={pathname === link.href ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}

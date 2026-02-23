@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Guilloche from "./Guilloche";
 
 export default function HeroSection() {
@@ -20,13 +21,13 @@ export default function HeroSection() {
             <div className="mt-10 flex gap-4 flex-wrap">
               <a
                 href="https://app.hypercerts.org/explore?filter=evaluated"
-                className="bg-brand-black text-brand-white px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-gray-800 transition"
+                className="bg-brand-black text-brand-white px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-navy transition"
               >
                 Go to app
               </a>
               <a
                 href="/docs/what-are-hypercerts"
-                className="border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-gray-50 transition"
+                className="border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-ui-bg transition"
               >
                 Learn more
               </a>
@@ -43,10 +44,13 @@ export default function HeroSection() {
               opacity={0.15}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <img
+              <Image
                 src="/img/hypercert_AI_Safety3.png"
                 alt="Hypercert example"
+                width={280}
+                height={400}
                 className="rotate-3 shadow-xl max-w-[280px] w-full h-auto"
+                priority
               />
             </div>
           </div>
