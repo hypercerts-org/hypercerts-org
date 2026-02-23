@@ -12,6 +12,9 @@ export default function Home() {
       <WhatIsHypercert />
       <ImpactMarkets />
       <MediaSection />
+      <div style={{ marginTop: "50px" }}>
+        <PartnerLogos />
+      </div>
     </main>
   );
 }
