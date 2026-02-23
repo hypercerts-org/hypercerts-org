@@ -35,14 +35,10 @@ export default function HeroSection() {
           </div>
 
           {/* Right column — Visual (hidden on mobile) */}
-          <div className="hidden md:block relative overflow-hidden">
-            <Guilloche
-              variant="radial"
-              width={500}
-              height={500}
-              color="#33B899"
-              opacity={0.15}
-            />
+          <div className="hidden md:block relative">
+            <div className="flex items-center justify-center">
+              <Guilloche variant="radial" preset="teal" width={700} height={700} />
+            </div>
             <div className="absolute inset-0 flex items-center justify-center">
               <Image
                 src="/img/hypercert_AI_Safety3.png"
