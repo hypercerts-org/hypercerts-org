@@ -347,16 +347,27 @@ export default function Guilloche({
       style={{ pointerEvents: "none" }}
       aria-hidden="true"
     >
+      {isRadial && (
+        <defs>
+          <radialGradient id={`glow-${variant}`} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="white" stopOpacity="0.95" />
+            <stop offset="30%" stopColor="white" stopOpacity="0.6" />
+            <stop offset="60%" stopColor="white" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+      )}
       {isRadial
         ? composition.map((item, i) => (
-            <path
-              key={i}
-              d={item.path}
-              stroke={item.color}
-              strokeWidth={0.75}
-              strokeOpacity={item.opacity}
-              fill="none"
-            />
+            <g key={i} style={{ mixBlendMode: item.blendMode as React.CSSProperties["mixBlendMode"] }}>
+              <path
+                d={item.path}
+                stroke={item.color}
+                strokeWidth={0.5}
+                strokeOpacity={item.opacity}
+                fill="none"
+              />
+            </g>
           ))
         : simplePaths.map((d, i) => (
             <path
@@ -368,6 +379,9 @@ export default function Guilloche({
               fill="none"
             />
           ))}
+      {isRadial && (
+        <circle cx={width / 2} cy={height / 2} r={width * 0.35} fill={`url(#glow-${variant})`} />
+      )}
     </svg>
   );
 }
