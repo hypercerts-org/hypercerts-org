@@ -8,11 +8,9 @@ export default function HeroSection() {
           {/* Left column — Text */}
           <div>
             <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-6">
-              The web3 standard for impact certificates
+              The coordination infrastructure for the AI era
             </p>
-            <h1
-              className="font-display text-[64px] md:text-[120px] lg:text-[150px] leading-[0.85] tracking-[-0.03em] text-brand-black max-w-3xl"
-            >
+            <h1 className="font-display text-[64px] md:text-[120px] lg:text-[150px] leading-[0.85] tracking-[-0.03em] text-brand-black max-w-3xl">
               Fund and reward positive impact
             </h1>
             <p className="mt-8 font-body text-body-lg text-ui-grey-dark max-w-md">
