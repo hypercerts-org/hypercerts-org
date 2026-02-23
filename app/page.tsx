@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import ImpactMarkets from "@/components/ImpactMarkets";
+import MediaSection from "@/components/MediaSection";
 import PartnerLogos from "@/components/PartnerLogos";
 import WhatIsHypercert from "@/components/WhatIsHypercert";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <PartnerLogos />
       <WhatIsHypercert />
       <ImpactMarkets />
+      <MediaSection />
     </main>
   );
 }
