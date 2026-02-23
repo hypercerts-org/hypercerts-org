@@ -1,6 +1,6 @@
 export default function WhatIsHypercert() {
   return (
-    <section className="bg-surface-sage py-24 md:py-32">
+    <section className="bg-ui-bg py-24 md:py-32">
       <div className="max-w-4xl mx-auto px-4">
         {/* Section label */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4 text-center">
@@ -22,7 +22,7 @@ export default function WhatIsHypercert() {
         </div>
 
         {/* Section 2: Diagram */}
-        <div className="bg-brand-white rounded-[16px] overflow-hidden shadow-sm mt-10">
+        <div className="bg-white rounded-[16px] overflow-hidden shadow-sm mt-10">
           <picture>
             <source
               media="(max-width: 768px)"
