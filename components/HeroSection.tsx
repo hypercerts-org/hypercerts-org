@@ -15,8 +15,8 @@ export default function HeroSection() {
               Fund and reward positive impact
             </h1>
             <p className="mt-8 font-body text-body-lg text-ui-grey-dark max-w-md">
-              Recognize contributions with a hypercert. Evaluators get rewarded
-              for their expertise and input.
+              Recognize contributions, reward expertise, and direct funding
+              toward the people and projects creating lasting positive impact.
             </p>
             <div className="mt-10 flex gap-4 flex-wrap">
               <a

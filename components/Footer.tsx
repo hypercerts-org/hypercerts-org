@@ -95,14 +95,14 @@ export default function Footer() {
               href="/privacy"
               className="text-ui-grey-dark hover:text-brand-black transition"
             >
-              Privacy policy
+              Privacy
             </Link>
             <span className="text-ui-separator">|</span>
             <Link
               href="/terms"
               className="text-ui-grey-dark hover:text-brand-black transition"
             >
-              Terms of use
+              Terms
             </Link>
           </div>
         </div>

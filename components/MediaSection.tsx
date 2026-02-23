@@ -3,7 +3,10 @@ import MediaItem from "./MediaItem";
 const featuredItems = [
   {
     image: "/img/holke_maearth_podcast_2.jpg",
-    tags: ["Interview 1h 12min", "Sep 2025 | Ma Earth: The Regeneration Will Be Funded"],
+    tags: [
+      "Interview 1h 12min",
+      "Sep 2025 | Ma Earth: The Regeneration Will Be Funded",
+    ],
     title: "The Moment is Ripe for Hypercerts",
     titleLink: "https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN",
     authors: [{ name: "@holkexyz", link: "https://twitter.com/holkxyz" }],
@@ -27,7 +30,8 @@ const featuredItems = [
 const textItems = [
   {
     tags: ["Talk 18min", "Nov 2025 | Schelling Point Buenos Aires"],
-    title: "Hypercert on AT Protocol: Rewriting How We Recognize — and Reward — Value Creation",
+    title:
+      "Hypercert on AT Protocol: Rewriting How We Recognize — and Reward — Value Creation",
     titleLink: "https://youtu.be/-Rw1kLyo2wQ?si=xza1MJN2hzY4m16S",
     authors: [
       { name: "@sharfyae", link: "https://twitter.com/sharfyae" },
@@ -42,7 +46,8 @@ const textItems = [
   },
   {
     tags: ["Blogpost", "Nov 2025"],
-    title: "Why We Are Building Hypercerts: Recognizing and Rewarding Value Creators",
+    title:
+      "Why We Are Building Hypercerts: Recognizing and Rewarding Value Creators",
     titleLink: "https://hypercerts.leaflet.pub/3m6mnb2riz22o",
     authors: [
       { name: "@hypercerts", link: "https://twitter.com/hypercerts" },
@@ -65,7 +70,10 @@ const textItems = [
     authors: [{ name: "@bitbeckers", link: "https://twitter.com/bitbeckers" }],
   },
   {
-    tags: ["Interview 55min", "Sep 2023 | Ma Earth: The Regeneration Will Be Funded"],
+    tags: [
+      "Interview 55min",
+      "Sep 2023 | Ma Earth: The Regeneration Will Be Funded",
+    ],
     title: "Retrospective Funding Using Hypercerts",
     titleLink: "https://youtu.be/q3osrfEW4WQ?si=1BCaV1QQWoCF7Flb",
     authors: [{ name: "@holkexyz", link: "https://twitter.com/holkexyz" }],
@@ -80,18 +88,26 @@ const textItems = [
     tags: ["Talk 13min", "May 2023 | Metascience Conference"],
     title: "Accelerating Academic Research with Impact Certificates",
     titleLink: "https://www.youtube.com/watch?v=_mLdx48B7zE",
-    authors: [{ name: "@RaymondCheng00", link: "https://twitter.com/RaymondCheng00" }],
+    authors: [
+      { name: "@RaymondCheng00", link: "https://twitter.com/RaymondCheng00" },
+    ],
   },
   {
     tags: ["Blogpost", "Apr 2023 | Forbes"],
-    title: "Greenpilled: Meet 5 Entrepreneurs Engineering Social Good On The Blockchain",
-    titleLink: "https://www.forbes.com/sites/digital-assets/2023/04/25/greenpilled-meet-5-entrepreneurs-engineering-social-good-on-the-blockchain/?sh=4e26c7f2468f",
-    authors: [{ name: "@JocelynnPearl", link: "https://twitter.com/JocelynnPearl" }],
+    title:
+      "Greenpilled: Meet 5 Entrepreneurs Engineering Social Good On The Blockchain",
+    titleLink:
+      "https://www.forbes.com/sites/digital-assets/2023/04/25/greenpilled-meet-5-entrepreneurs-engineering-social-good-on-the-blockchain/?sh=4e26c7f2468f",
+    authors: [
+      { name: "@JocelynnPearl", link: "https://twitter.com/JocelynnPearl" },
+    ],
   },
   {
     tags: ["Blogpost", "Apr 2023 | Mirror"],
-    title: "Funding for Impact, Not Intention: A New Era of Creativity and Risk-Taking for Public Goods",
-    titleLink: "https://mirror.xyz/hypercerts.eth/kpu2vewrOVCCVNFf78Y1ui0D091XS6-ZgPoEKc0rkp0",
+    title:
+      "Funding for Impact, Not Intention: A New Era of Creativity and Risk-Taking for Public Goods",
+    titleLink:
+      "https://mirror.xyz/hypercerts.eth/kpu2vewrOVCCVNFf78Y1ui0D091XS6-ZgPoEKc0rkp0",
     authors: [{ name: "@carl_cervone", link: "https://x.com/carl_cervone" }],
   },
   {
@@ -106,7 +122,8 @@ const textItems = [
   {
     tags: ["Announcement", "Feb 2023"],
     title: "Introducing the Hypercerts Foundation",
-    titleLink: "https://hypercerts.notion.site/Introducing-the-Hypercerts-Foundation-d956203fe0fc4792980da138015e770a",
+    titleLink:
+      "https://hypercerts.notion.site/Introducing-the-Hypercerts-Foundation-d956203fe0fc4792980da138015e770a",
     authors: [{ name: "@hypercerts", link: "https://twitter.com/hypercerts" }],
   },
   {
@@ -138,7 +155,7 @@ export default function MediaSection() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
-          From the community
+          Get up to date
         </p>
         <h2 className="font-display text-display-3 md:text-display-2 text-brand-black mb-12">
           Articles, Podcasts, and Talks
