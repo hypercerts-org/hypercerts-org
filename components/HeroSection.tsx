@@ -35,19 +35,19 @@ export default function HeroSection() {
           </div>
 
           {/* Right column — Visual (hidden on mobile) */}
-          <div className="hidden md:block relative">
-            <div className="flex items-center justify-center">
-              <Guilloche variant="radial" preset="teal" width={1820} height={1820} />
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center">
+          <div className="hidden md:block relative overflow-visible">
+            <div className="flex items-center justify-center py-12">
               <Image
                 src="/img/hypercert_AI_Safety3.png"
                 alt="Hypercert example"
                 width={280}
                 height={400}
-                className="rotate-3 shadow-xl max-w-[280px] w-full h-auto"
+                className="rotate-3 shadow-xl max-w-[280px] w-full h-auto relative z-10"
                 priority
               />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none">
+              <Guilloche variant="radial" preset="teal" width={900} height={900} className="shrink-0" />
             </div>
           </div>
         </div>
