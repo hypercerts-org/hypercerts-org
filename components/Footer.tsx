@@ -29,7 +29,7 @@ const navColumns = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-brand-black text-brand-white py-16 md:py-20">
+    <footer className="w-full bg-surface-cream py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-6">
         {/* Top row */}
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-10">
@@ -40,10 +40,9 @@ export default function Footer() {
               alt="Hypercerts"
               width={140}
               height={40}
-              style={{ filter: "invert(1)" }}
               className="object-contain"
             />
-            <p className="font-body text-body-sm text-gray-400">
+            <p className="font-body text-body-sm text-ui-grey">
               Fund and Reward Impact
             </p>
           </div>
@@ -52,7 +51,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {navColumns.map((col) => (
               <div key={col.header}>
-                <p className="text-brand-white font-body font-medium text-body-sm uppercase tracking-wider mb-4">
+                <p className="text-brand-black font-body font-medium text-body-sm uppercase tracking-wider mb-4">
                   {col.header}
                 </p>
                 <ul className="flex flex-col gap-2">
@@ -63,14 +62,14 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-brand-white transition text-body-sm font-body"
+                          className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
                         >
                           {link.label}
                         </a>
                       ) : (
                         <Link
                           href={link.href}
-                          className="text-gray-400 hover:text-brand-white transition text-body-sm font-body"
+                          className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
                         >
                           {link.label}
                         </Link>
@@ -84,24 +83,24 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gray-800 my-8" />
+        <div className="h-px bg-ui-separator my-8" />
 
         {/* Bottom row */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-body-sm font-body">
+          <p className="text-ui-grey text-body-sm font-body">
             &copy; 2026 Hypercerts Foundation
           </p>
           <div className="flex items-center gap-3 text-body-sm font-body">
             <Link
               href="/privacy"
-              className="text-gray-500 hover:text-gray-300 transition"
+              className="text-ui-grey-dark hover:text-brand-black transition"
             >
               Privacy policy
             </Link>
-            <span className="text-gray-700">|</span>
+            <span className="text-ui-separator">|</span>
             <Link
               href="/terms"
-              className="text-gray-500 hover:text-gray-300 transition"
+              className="text-ui-grey-dark hover:text-brand-black transition"
             >
               Terms of use
             </Link>
