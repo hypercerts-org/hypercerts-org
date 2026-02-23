@@ -106,6 +106,7 @@ export default function ImpactMarkets() {
 
         {/* Content card */}
         <div className="bg-brand-white rounded-[20px] p-8 md:p-12 shadow-sm">
+          <div key={selectedTab} className="animate-fade-in">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-center">
             {/* Left: text */}
             <div>
@@ -147,6 +148,7 @@ export default function ImpactMarkets() {
                 className="w-full h-auto"
               />
             </div>
+          </div>
           </div>
         </div>
       </div>
