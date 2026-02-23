@@ -47,7 +47,7 @@ export default function HeroSection() {
               />
             </div>
             <div className="absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none">
-              <Guilloche variant="radial" preset="teal" width={900} height={900} className="shrink-0" />
+              <Guilloche variant="radial" preset="teal" width={450} height={450} className="shrink-0" />
             </div>
           </div>
         </div>
