@@ -134,27 +134,27 @@ const textItems = [
 
 export default function MediaSection() {
   return (
-    <section className="max-w-4xl mx-auto px-4 pt-[70px]">
-      {/* Heading */}
-      <h2 className="font-display text-display-2 max-sm:text-[42px] text-center mb-4">
-        Articles, Podcasts, and Talks
-      </h2>
+    <section className="w-full bg-surface-lavender py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section header */}
+        <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
+          From the community
+        </p>
+        <h2 className="font-display text-display-3 md:text-display-2 text-brand-black mb-12">
+          Articles, Podcasts, and Talks
+        </h2>
 
-      <hr className="border-ui-separator mb-8" />
-
-      {/* Two-column layout */}
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Left column: 3 featured items with images */}
-        <div className="w-full md:w-1/2 flex flex-col gap-8">
+        {/* Featured items — 3-column card grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {featuredItems.map((item) => (
-            <MediaItem key={item.titleLink} {...item} />
+            <MediaItem key={item.titleLink} {...item} variant="featured" />
           ))}
         </div>
 
-        {/* Right column: 15 text-only items */}
-        <div className="w-full md:w-1/2 flex flex-col gap-8">
+        {/* Remaining text-only items — 2-column list */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
           {textItems.map((item) => (
-            <MediaItem key={item.titleLink} {...item} />
+            <MediaItem key={item.titleLink} {...item} variant="list" />
           ))}
         </div>
       </div>

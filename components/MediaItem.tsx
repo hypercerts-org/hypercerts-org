@@ -6,6 +6,7 @@ interface MediaItemProps {
   titleLink: string;
   authors: { name: string; link: string }[];
   image?: string;
+  variant?: "featured" | "list";
 }
 
 export default function MediaItem({
@@ -14,27 +15,76 @@ export default function MediaItem({
   titleLink,
   authors,
   image,
+  variant = image ? "featured" : "list",
 }: MediaItemProps) {
-  return (
-    <div>
-      {image && (
-        <div className="mb-4">
-          <Image
-            src={image}
-            alt={title}
-            width={800}
-            height={450}
-            className="w-full h-auto rounded-brand"
-          />
-        </div>
-      )}
+  if (variant === "featured") {
+    return (
+      <div className="bg-brand-white rounded-[16px] overflow-hidden shadow-sm hover:shadow-md transition">
+        {image && (
+          <div className="relative w-full aspect-video">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+        <div className="p-6">
+          {/* Tags */}
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="bg-ui-grey-tag text-brand-black text-[11px] uppercase tracking-wider px-2 py-0.5 rounded-md font-body font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
 
+          {/* Title */}
+          <h3 className="font-display text-[22px] md:text-[24px] leading-[1.2] tracking-[-0.02em] mb-2">
+            <a
+              href={titleLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-black no-underline hover:text-brand-teal transition"
+            >
+              {title}
+            </a>
+          </h3>
+
+          {/* Authors */}
+          <p className="font-body text-body-sm text-ui-grey-dark">
+            {authors.map((author, index) => (
+              <span key={author.name}>
+                {index > 0 && ", "}
+                <a
+                  href={author.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:text-brand-teal transition"
+                >
+                  {author.name}
+                </a>
+              </span>
+            ))}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // List variant
+  return (
+    <div className="py-4 border-b border-ui-separator last:border-0">
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5 mb-2">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="bg-ui-grey-tag text-xs rounded-lg px-2 py-0.5 font-body"
+            className="bg-ui-grey-tag text-brand-black text-[11px] uppercase tracking-wider px-2 py-0.5 rounded-md font-body font-medium"
           >
             {tag}
           </span>
@@ -42,19 +92,19 @@ export default function MediaItem({
       </div>
 
       {/* Title */}
-      <h3 className="font-display text-[28px] max-sm:text-[24px] leading-[1.2] tracking-[-0.02em] mb-1">
+      <h3 className="font-display text-[22px] md:text-[24px] leading-[1.2] tracking-[-0.02em] mb-1">
         <a
           href={titleLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black no-underline hover:text-black"
+          className="text-brand-black no-underline hover:text-brand-teal transition"
         >
           {title}
         </a>
       </h3>
 
       {/* Authors */}
-      <p className="font-body text-base font-medium text-black mb-4">
+      <p className="font-body text-body-sm text-ui-grey-dark">
         {authors.map((author, index) => (
           <span key={author.name}>
             {index > 0 && ", "}
@@ -62,15 +112,13 @@ export default function MediaItem({
               href={author.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:underline hover:text-brand-teal"
+              className="hover:underline hover:text-brand-teal transition"
             >
               {author.name}
             </a>
           </span>
         ))}
       </p>
-
-      <hr className="border-ui-separator" />
     </div>
   );
 }
