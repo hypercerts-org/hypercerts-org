@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hypercerts.org"),
   title: "Hypercerts - Fund and Reward Impact",
   description:
     "Fund and Reward Impact with Hypercerts. The web3 standard for impact certificates.",
@@ -42,9 +43,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-body" suppressHydrationWarning>
+      <body className="font-body pt-[50px]" suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Hypercerts Foundation",
+              url: "https://hypercerts.org",
+              logo: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
+              sameAs: [
+                "https://twitter.com/hypercerts",
+                "https://github.com/hypercerts-org",
+              ],
+            }),
+          }}
+        />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-brand-black focus:text-brand-white focus:px-4 focus:py-2 focus:rounded-brand focus:text-body-sm"
+        >
+          Skip to content
+        </a>
         <Header />
-        <main>{children}</main>
+        {children}
         <Footer />
       </body>
     </html>

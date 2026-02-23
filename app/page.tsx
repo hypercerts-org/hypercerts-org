@@ -8,7 +8,7 @@ import WhatIsHypercert from "@/components/WhatIsHypercert";
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <HeroSection />
       <PartnerLogos />
       <MissionStatement />
