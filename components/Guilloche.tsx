@@ -23,7 +23,7 @@ function buildSpirographPath(
   layer: SpirographLayer,
   width: number,
   height: number,
-  steps: number = 360
+  steps: number = 720
 ): string {
   const { R, r, d, rotation, waviness, waveFreq } = layer;
   const cx = width / 2;
@@ -80,17 +80,17 @@ interface CompositionItem {
 
 const PRESET_TEAL: GuillochePreset = {
   layers: [
-    { R: 0.45, r: 0.17, d: 0.28, rotation: 0,   waviness: 4, waveFreq: 8 },
-    { R: 0.45, r: 0.17, d: 0.28, rotation: 45,  waviness: 4, waveFreq: 8 },
-    { R: 0.45, r: 0.17, d: 0.28, rotation: 90,  waviness: 4, waveFreq: 8 },
-    { R: 0.45, r: 0.17, d: 0.28, rotation: 135, waviness: 4, waveFreq: 8 },
+    { R: 0.45, r: 0.09, d: 0.38, rotation: 0,   waviness: 2.5, waveFreq: 15 },
+    { R: 0.45, r: 0.09, d: 0.38, rotation: 36,  waviness: 2.5, waveFreq: 15 },
+    { R: 0.45, r: 0.09, d: 0.38, rotation: 72,  waviness: 2.5, waveFreq: 15 },
+    { R: 0.45, r: 0.09, d: 0.38, rotation: 108, waviness: 2.5, waveFreq: 15 },
   ],
   contours: {
-    count: 28,
-    startScale: 0.7,
-    endScale: 0.12,
-    waviness: 4,
-    waveFreq: 8,
+    count: 36,
+    startScale: 0.92,
+    endScale: 0.10,
+    waviness: 2.0,
+    waveFreq: 15,
   },
   colors: ["#14334C", "#33B899", "#A1E6DA", "#426A5A"],
 };
@@ -350,9 +350,10 @@ export default function Guilloche({
       {isRadial && (
         <defs>
           <radialGradient id={`glow-${variant}`} cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="white" stopOpacity="0.95" />
-            <stop offset="30%" stopColor="white" stopOpacity="0.6" />
-            <stop offset="60%" stopColor="white" stopOpacity="0.1" />
+            <stop offset="0%" stopColor="white" stopOpacity="1" />
+            <stop offset="20%" stopColor="white" stopOpacity="0.85" />
+            <stop offset="45%" stopColor="white" stopOpacity="0.3" />
+            <stop offset="70%" stopColor="white" stopOpacity="0.05" />
             <stop offset="100%" stopColor="white" stopOpacity="0" />
           </radialGradient>
         </defs>
@@ -363,7 +364,7 @@ export default function Guilloche({
               <path
                 d={item.path}
                 stroke={item.color}
-                strokeWidth={0.5}
+                strokeWidth={0.4}
                 strokeOpacity={item.opacity}
                 fill="none"
               />
@@ -380,7 +381,7 @@ export default function Guilloche({
             />
           ))}
       {isRadial && (
-        <circle cx={width / 2} cy={height / 2} r={width * 0.35} fill={`url(#glow-${variant})`} />
+        <circle cx={width / 2} cy={height / 2} r={width * 0.42} fill={`url(#glow-${variant})`} />
       )}
     </svg>
   );
