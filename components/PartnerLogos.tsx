@@ -51,65 +51,71 @@ export default function PartnerLogos() {
   }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "50px",
-        backgroundColor: "#ffffff",
-        overflow: "hidden",
-        position: "relative",
-      }}
-    >
+    <div className="w-full bg-brand-white">
+      {/* Top separator */}
+      <div className="h-px bg-ui-separator" />
+
       <div
-        ref={rowRef}
         style={{
-          position: "absolute",
-          display: "flex",
-          flexDirection: "row",
-          top: 0,
-          left: 0,
+          width: "100%",
+          height: "50px",
+          backgroundColor: "#ffffff",
+          overflow: "hidden",
+          position: "relative",
         }}
       >
-        {triplePartners.map((partner, index) => (
-          <a
-            key={index}
-            href={partner.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              width: "150px",
-              height: "50px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#ffffff",
-              borderRadius: "8px",
-              border: "1px solid #000000",
-              flexShrink: 0,
-              transition: "transform 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
-            }}
-          >
-            <Image
-              src={partner.img}
-              alt={partner.alt}
-              width={120}
-              height={40}
+        <div
+          ref={rowRef}
+          style={{
+            position: "absolute",
+            display: "flex",
+            flexDirection: "row",
+            top: 0,
+            left: 0,
+          }}
+        >
+          {triplePartners.map((partner, index) => (
+            <a
+              key={index}
+              href={partner.href}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
-                filter: "grayscale(100%)",
-                objectFit: "contain",
-                maxWidth: "120px",
-                maxHeight: "40px",
+                width: "150px",
+                height: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#ffffff",
+                flexShrink: 0,
+                transition: "transform 0.2s ease",
               }}
-            />
-          </a>
-        ))}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.1)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+              }}
+            >
+              <Image
+                src={partner.img}
+                alt={partner.alt}
+                width={120}
+                height={40}
+                style={{
+                  filter: "grayscale(100%)",
+                  objectFit: "contain",
+                  maxWidth: "120px",
+                  maxHeight: "40px",
+                }}
+              />
+            </a>
+          ))}
+        </div>
       </div>
+
+      {/* Bottom separator */}
+      <div className="h-px bg-ui-separator" />
     </div>
   );
 }

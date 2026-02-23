@@ -1,73 +1,113 @@
 import Link from "next/link";
+import Image from "next/image";
 
-const socialLinks = [
+const navColumns = [
   {
-    href: "https://twitter.com/hypercerts",
-    icon: "/img/social-icons/x.svg",
-    alt: "Twitter / X",
+    header: "Product",
+    links: [
+      { label: "Go to app", href: "https://app.hypercerts.org" },
+      { label: "Explore", href: "https://app.hypercerts.org/explore" },
+    ],
   },
   {
-    href: "https://t.me/+FODiLtCV2TgwNzRi",
-    icon: "/img/social-icons/support.svg",
-    alt: "Support Telegram",
+    header: "Resources",
+    links: [
+      { label: "Docs", href: "/docs/what-are-hypercerts" },
+      { label: "Blog", href: "https://hypercerts.leaflet.pub/" },
+      { label: "News", href: "/docs/announcements" },
+    ],
   },
   {
-    href: "https://hypercerts.org",
-    icon: "/img/hypercerts_logo_b_transparent.png",
-    alt: "Hypercerts",
-  },
-  {
-    href: "https://github.com/hypercerts-org",
-    icon: "/img/social-icons/github.svg",
-    alt: "GitHub",
-  },
-  {
-    href: "https://t.me/+YF9AYb6zCv1mNDJi",
-    icon: "/img/social-icons/telegram.svg",
-    alt: "Telegram",
+    header: "Community",
+    links: [
+      { label: "Twitter", href: "https://twitter.com/hypercerts" },
+      { label: "Telegram", href: "https://t.me/+YF9AYb6zCv1mNDJi" },
+      { label: "GitHub", href: "https://github.com/hypercerts-org" },
+    ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="w-full py-10 flex flex-col items-center gap-4">
-      {/* Social Icons Row */}
-      <div className="flex items-center gap-5">
-        {socialLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={link.alt}
-            className="grayscale hover:grayscale-0 transition-all duration-200"
-          >
-            <img
-              src={link.icon}
-              alt={link.alt}
-              width={30}
-              height={30}
-              className="w-[30px] h-[30px] object-contain"
+    <footer className="w-full bg-brand-black text-brand-white py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Top row */}
+        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-10">
+          {/* Left: Logo + tagline */}
+          <div className="flex flex-col gap-3">
+            <Image
+              src="/img/hypercerts_logo_b_transparent.png"
+              alt="Hypercerts"
+              width={140}
+              height={40}
+              style={{ filter: "invert(1)" }}
+              className="object-contain"
             />
-          </a>
-        ))}
-      </div>
+            <p className="font-body text-body-sm text-gray-400">
+              Fund and Reward Impact
+            </p>
+          </div>
 
-      {/* Privacy / Terms */}
-      <div className="flex items-center gap-3 text-sm text-gray-600">
-        <Link href="/privacy" className="hover:underline">
-          Privacy policy
-        </Link>
-        <span>|</span>
-        <Link href="/terms" className="hover:underline">
-          Terms of use
-        </Link>
-      </div>
+          {/* Right: Navigation columns */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            {navColumns.map((col) => (
+              <div key={col.header}>
+                <p className="text-brand-white font-body font-medium text-body-sm uppercase tracking-wider mb-4">
+                  {col.header}
+                </p>
+                <ul className="flex flex-col gap-2">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      {link.href.startsWith("http") ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-brand-white transition text-body-sm font-body"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-gray-400 hover:text-brand-white transition text-body-sm font-body"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
 
-      {/* Copyright */}
-      <p className="text-sm text-gray-500">
-        Copyright &copy; 2026 Hypercerts Foundation
-      </p>
+        {/* Divider */}
+        <div className="h-px bg-gray-800 my-8" />
+
+        {/* Bottom row */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-body-sm font-body">
+            &copy; 2026 Hypercerts Foundation
+          </p>
+          <div className="flex items-center gap-3 text-body-sm font-body">
+            <Link
+              href="/privacy"
+              className="text-gray-500 hover:text-gray-300 transition"
+            >
+              Privacy policy
+            </Link>
+            <span className="text-gray-700">|</span>
+            <Link
+              href="/terms"
+              className="text-gray-500 hover:text-gray-300 transition"
+            >
+              Terms of use
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
