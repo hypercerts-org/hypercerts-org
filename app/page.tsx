@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import HowItWorks from "@/components/HowItWorks";
 import ImpactMarkets from "@/components/ImpactMarkets";
 import MediaSection from "@/components/MediaSection";
 import MissionStatement from "@/components/MissionStatement";
@@ -12,6 +13,7 @@ export default function Home() {
       <MissionStatement />
       <PartnerLogos />
       <WhatIsHypercert />
+      <HowItWorks />
       <ImpactMarkets />
       <MediaSection />
       <div style={{ marginTop: "50px" }}>
