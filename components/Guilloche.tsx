@@ -19,6 +19,113 @@ interface SpirographLayer {
   waveFreq: number; // frequency of edge perturbation
 }
 
+interface GuillochePreset {
+  rays: {
+    count: number;
+    R: number;
+    r: number;
+    d: number;
+    waviness: number;
+    waveFreq: number;
+  };
+  contours: {
+    count: number;
+    R: number;
+    r: number;
+    d: number;
+    startScale: number;
+    endScale: number;
+    waviness: number;
+    waveFreq: number;
+    rotationStep: number; // degrees per ring
+  };
+  outerGrid: {
+    count: number;
+    R: number;
+    r: number;
+    d: number;
+    startScale: number;
+    endScale: number;
+    waviness: number;
+    waveFreq: number;
+  };
+  colors: string[];
+}
+
+interface CompositionItem {
+  path: string;
+  color: string;
+  opacity: number;
+  blendMode: string;
+  strokeWidth: number;
+}
+
+const PRESET_TEAL: GuillochePreset = {
+  rays: {
+    count: 80,
+    R: 0.45,
+    r: 0.025,
+    d: 0.42,
+    waviness: 1.5,
+    waveFreq: 6,
+  },
+  contours: {
+    count: 30,
+    R: 0.45,
+    r: 0.08,
+    d: 0.35,
+    startScale: 0.95,
+    endScale: 0.15,
+    waviness: 2.0,
+    waveFreq: 12,
+    rotationStep: 3,
+  },
+  outerGrid: {
+    count: 12,
+    R: 0.48,
+    r: 0.47,
+    d: 0.01,
+    startScale: 0.85,
+    endScale: 1.0,
+    waviness: 0.5,
+    waveFreq: 20,
+  },
+  colors: ["#14334C", "#33B899", "#A1E6DA", "#426A5A"],
+};
+
+const PRESET_WARM: GuillochePreset = {
+  rays: {
+    count: 60,
+    R: 0.42,
+    r: 0.03,
+    d: 0.38,
+    waviness: 2.5,
+    waveFreq: 8,
+  },
+  contours: {
+    count: 30,
+    R: 0.45,
+    r: 0.08,
+    d: 0.35,
+    startScale: 0.95,
+    endScale: 0.15,
+    waviness: 2.0,
+    waveFreq: 12,
+    rotationStep: 5,
+  },
+  outerGrid: {
+    count: 10,
+    R: 0.48,
+    r: 0.47,
+    d: 0.01,
+    startScale: 0.85,
+    endScale: 1.0,
+    waviness: 0.5,
+    waveFreq: 20,
+  },
+  colors: ["#121047", "#FF4B00", "#FFD099", "#FEDFCA"],
+};
+
 function buildSpirographPath(
   layer: SpirographLayer,
   width: number,
@@ -59,100 +166,6 @@ function buildSpirographPath(
   return points.join(" ");
 }
 
-interface GuillochePreset {
-  layers: SpirographLayer[];
-  contours: {
-    count: number;
-    startScale: number;
-    endScale: number;
-    waviness: number;
-    waveFreq: number;
-  };
-  colors: string[];
-}
-
-interface CompositionItem {
-  path: string;
-  color: string;
-  opacity: number;
-  blendMode: string;
-}
-
-const PRESET_TEAL: GuillochePreset = {
-  layers: [
-    { R: 0.45, r: 0.09, d: 0.38, rotation: 0,   waviness: 2.5, waveFreq: 15 },
-    { R: 0.45, r: 0.09, d: 0.38, rotation: 36,  waviness: 2.5, waveFreq: 15 },
-    { R: 0.45, r: 0.09, d: 0.38, rotation: 72,  waviness: 2.5, waveFreq: 15 },
-    { R: 0.45, r: 0.09, d: 0.38, rotation: 108, waviness: 2.5, waveFreq: 15 },
-  ],
-  contours: {
-    count: 36,
-    startScale: 0.92,
-    endScale: 0.10,
-    waviness: 2.0,
-    waveFreq: 15,
-  },
-  colors: ["#14334C", "#33B899", "#A1E6DA", "#426A5A"],
-};
-
-const PRESET_WARM: GuillochePreset = {
-  layers: [
-    { R: 0.42, r: 0.15, d: 0.26, rotation: 23,   waviness: 5, waveFreq: 10 },
-    { R: 0.42, r: 0.15, d: 0.26, rotation: -67,  waviness: 5, waveFreq: 10 },
-    { R: 0.42, r: 0.15, d: 0.26, rotation: -22,  waviness: 5, waveFreq: 10 },
-    { R: 0.42, r: 0.15, d: 0.26, rotation: -112, waviness: 5, waveFreq: 10 },
-  ],
-  contours: {
-    count: 30,
-    startScale: 0.7,
-    endScale: 0.15,
-    waviness: 5,
-    waveFreq: 10,
-  },
-  colors: ["#121047", "#FF4B00", "#FFD099", "#FEDFCA"],
-};
-
-function buildGuillocheComposition(
-  preset: GuillochePreset,
-  width: number,
-  height: number
-): CompositionItem[] {
-  const items: CompositionItem[] = [];
-
-  // 4 base spirograph layers — each drawn twice (multiply + screen)
-  preset.layers.forEach((layer, i) => {
-    const color = preset.colors[i % preset.colors.length];
-    const path = buildSpirographPath(layer, width, height);
-
-    items.push({ path, color, opacity: 0.4, blendMode: "multiply" });
-    items.push({ path, color, opacity: 0.15, blendMode: "screen" });
-  });
-
-  // Concentric contour rings
-  const { count, startScale, endScale, waviness, waveFreq } = preset.contours;
-  const baseLayer = preset.layers[0];
-  const contourColor = preset.colors[0];
-
-  for (let i = 0; i < count; i++) {
-    const t = count === 1 ? 0 : i / (count - 1);
-    const scale = startScale + (endScale - startScale) * t;
-
-    const contourLayer: SpirographLayer = {
-      R: baseLayer.R * scale,
-      r: baseLayer.r * scale,
-      d: baseLayer.d * scale,
-      rotation: baseLayer.rotation,
-      waviness,
-      waveFreq,
-    };
-
-    const path = buildSpirographPath(contourLayer, width, height);
-    items.push({ path, color: contourColor, opacity: 0.3, blendMode: "multiply" });
-  }
-
-  return items;
-}
-
 function lcmRatio(R: number, r: number): number {
   // Number of full rotations needed to close the hypotrochoid
   // = R/r (simplified). We use a fixed large number of steps instead.
@@ -161,6 +174,73 @@ function lcmRatio(R: number, r: number): number {
   // Round to nearest integer multiple for closure (up to 20)
   const periods = Math.min(Math.ceil(ratio), 20);
   return periods;
+}
+
+function buildGuillocheComposition(
+  preset: GuillochePreset,
+  width: number,
+  height: number
+): CompositionItem[] {
+  const items: CompositionItem[] = [];
+  const GOLDEN_ANGLE = 137.508; // degrees
+
+  // ── Layer A: Dense radial rays (the main starburst) ──────────────────────
+  const { rays } = preset;
+  for (let i = 0; i < rays.count; i++) {
+    const rotationDeg = (i * GOLDEN_ANGLE) % 360;
+    const layer: SpirographLayer = {
+      R: rays.R,
+      r: rays.r,
+      d: rays.d,
+      rotation: rotationDeg,
+      waviness: rays.waviness,
+      waveFreq: rays.waveFreq,
+    };
+    const path = buildSpirographPath(layer, width, height, 360);
+    const color = preset.colors[i % preset.colors.length];
+    items.push({ path, color, opacity: 0.5, blendMode: "multiply", strokeWidth: 0.6 });
+  }
+
+  // ── Layer B: Concentric warped rings (the contour density) ───────────────
+  const { contours } = preset;
+  for (let i = 0; i < contours.count; i++) {
+    const t = contours.count === 1 ? 0 : i / (contours.count - 1);
+    const scale = contours.startScale + (contours.endScale - contours.startScale) * t;
+    const rotationDeg = i * contours.rotationStep;
+
+    const layer: SpirographLayer = {
+      R: contours.R * scale,
+      r: contours.r * scale,
+      d: contours.d * scale,
+      rotation: rotationDeg,
+      waviness: contours.waviness,
+      waveFreq: contours.waveFreq,
+    };
+    const path = buildSpirographPath(layer, width, height, 720);
+    items.push({ path, color: preset.colors[0], opacity: 0.35, blendMode: "multiply", strokeWidth: 0.35 });
+  }
+
+  // ── Layer C: Outer circular grid (the fine crosshatch) ───────────────────
+  const { outerGrid } = preset;
+  for (let i = 0; i < outerGrid.count; i++) {
+    const t = outerGrid.count === 1 ? 0 : i / (outerGrid.count - 1);
+    const scale = outerGrid.startScale + (outerGrid.endScale - outerGrid.startScale) * t;
+    const rotationDeg = i * (360 / outerGrid.count);
+
+    const layer: SpirographLayer = {
+      R: outerGrid.R * scale,
+      r: outerGrid.r * scale,
+      d: outerGrid.d * scale,
+      rotation: rotationDeg,
+      waviness: outerGrid.waviness,
+      waveFreq: outerGrid.waveFreq,
+    };
+    // Outer grid needs many steps to render the fine wobbly circles cleanly
+    const path = buildSpirographPath(layer, width, height, 1440);
+    items.push({ path, color: preset.colors[2], opacity: 0.25, blendMode: "normal", strokeWidth: 0.3 });
+  }
+
+  return items;
 }
 
 function buildLegacyRadialPaths(width: number, height: number): string[] {
@@ -364,7 +444,7 @@ export default function Guilloche({
               <path
                 d={item.path}
                 stroke={item.color}
-                strokeWidth={0.4}
+                strokeWidth={item.strokeWidth}
                 strokeOpacity={item.opacity}
                 fill="none"
               />
