@@ -7,6 +7,7 @@ interface GuillocheProps {
   opacity?: number;
   className?: string;
   variant?: "radial" | "wave" | "legacy-radial";
+  preset?: "teal" | "warm";
 }
 
 interface SpirographLayer {
@@ -56,6 +57,100 @@ function buildSpirographPath(
   }
   points.push("Z");
   return points.join(" ");
+}
+
+interface GuillochePreset {
+  layers: SpirographLayer[];
+  contours: {
+    count: number;
+    startScale: number;
+    endScale: number;
+    waviness: number;
+    waveFreq: number;
+  };
+  colors: string[];
+}
+
+interface CompositionItem {
+  path: string;
+  color: string;
+  opacity: number;
+  blendMode: string;
+}
+
+const PRESET_TEAL: GuillochePreset = {
+  layers: [
+    { R: 0.45, r: 0.17, d: 0.28, rotation: 0,   waviness: 4, waveFreq: 8 },
+    { R: 0.45, r: 0.17, d: 0.28, rotation: 45,  waviness: 4, waveFreq: 8 },
+    { R: 0.45, r: 0.17, d: 0.28, rotation: 90,  waviness: 4, waveFreq: 8 },
+    { R: 0.45, r: 0.17, d: 0.28, rotation: 135, waviness: 4, waveFreq: 8 },
+  ],
+  contours: {
+    count: 28,
+    startScale: 0.7,
+    endScale: 0.12,
+    waviness: 4,
+    waveFreq: 8,
+  },
+  colors: ["#14334C", "#33B899", "#A1E6DA", "#426A5A"],
+};
+
+const PRESET_WARM: GuillochePreset = {
+  layers: [
+    { R: 0.42, r: 0.15, d: 0.26, rotation: 23,   waviness: 5, waveFreq: 10 },
+    { R: 0.42, r: 0.15, d: 0.26, rotation: -67,  waviness: 5, waveFreq: 10 },
+    { R: 0.42, r: 0.15, d: 0.26, rotation: -22,  waviness: 5, waveFreq: 10 },
+    { R: 0.42, r: 0.15, d: 0.26, rotation: -112, waviness: 5, waveFreq: 10 },
+  ],
+  contours: {
+    count: 30,
+    startScale: 0.7,
+    endScale: 0.15,
+    waviness: 5,
+    waveFreq: 10,
+  },
+  colors: ["#121047", "#FF4B00", "#FFD099", "#FEDFCA"],
+};
+
+function buildGuillocheComposition(
+  preset: GuillochePreset,
+  width: number,
+  height: number
+): CompositionItem[] {
+  const items: CompositionItem[] = [];
+
+  // 4 base spirograph layers — each drawn twice (multiply + screen)
+  preset.layers.forEach((layer, i) => {
+    const color = preset.colors[i % preset.colors.length];
+    const path = buildSpirographPath(layer, width, height);
+
+    items.push({ path, color, opacity: 0.4, blendMode: "multiply" });
+    items.push({ path, color, opacity: 0.15, blendMode: "screen" });
+  });
+
+  // Concentric contour rings
+  const { count, startScale, endScale, waviness, waveFreq } = preset.contours;
+  const baseLayer = preset.layers[0];
+  const contourColor = preset.colors[0];
+
+  for (let i = 0; i < count; i++) {
+    const t = count === 1 ? 0 : i / (count - 1);
+    const scale = startScale + (endScale - startScale) * t;
+
+    const contourLayer: SpirographLayer = {
+      R: baseLayer.R * scale,
+      r: baseLayer.r * scale,
+      d: baseLayer.d * scale,
+      rotation: baseLayer.rotation,
+      waviness,
+      waveFreq,
+    };
+
+    const path = buildSpirographPath(contourLayer, width, height);
+    items.push({ path, color: contourColor, opacity: 0.3, blendMode: "multiply" });
+  }
+
+  return items;
 }
 
 function lcmRatio(R: number, r: number): number {
@@ -228,11 +323,18 @@ export default function Guilloche({
   opacity = 0.3,
   className,
   variant = "radial",
+  preset = "teal",
 }: GuillocheProps) {
-  const paths = variant === "legacy-radial"
+  const isRadial = variant === "radial";
+  const selectedPreset = preset === "warm" ? PRESET_WARM : PRESET_TEAL;
+  const composition: CompositionItem[] = isRadial
+    ? buildGuillocheComposition(selectedPreset, width, height)
+    : [];
+
+  const simplePaths: string[] = isRadial
+    ? []
+    : variant === "legacy-radial"
     ? buildLegacyRadialPaths(width, height)
-    : variant === "radial"
-    ? [buildSpirographPath({ R: 0.45, r: 0.17, d: 0.28, rotation: 0, waviness: 4, waveFreq: 8 }, width, height)]
     : buildWavePaths(width, height);
 
   return (
@@ -245,16 +347,27 @@ export default function Guilloche({
       style={{ pointerEvents: "none" }}
       aria-hidden="true"
     >
-      {paths.map((d, i) => (
-        <path
-          key={i}
-          d={d}
-          stroke={color}
-          strokeWidth={0.75}
-          strokeOpacity={opacity}
-          fill="none"
-        />
-      ))}
+      {isRadial
+        ? composition.map((item, i) => (
+            <path
+              key={i}
+              d={item.path}
+              stroke={item.color}
+              strokeWidth={0.75}
+              strokeOpacity={item.opacity}
+              fill="none"
+            />
+          ))
+        : simplePaths.map((d, i) => (
+            <path
+              key={i}
+              d={d}
+              stroke={color}
+              strokeWidth={0.75}
+              strokeOpacity={opacity}
+              fill="none"
+            />
+          ))}
     </svg>
   );
 }
