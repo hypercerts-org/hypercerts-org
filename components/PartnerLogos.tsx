@@ -22,32 +22,45 @@ export default function PartnerLogos() {
   const rowRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef(0);
   const rafRef = useRef<number | null>(null);
+  const visibleRef = useRef(true);
 
   useEffect(() => {
     const row = rowRef.current;
     if (!row) return;
 
-    const animate = () => {
-      offsetRef.current += 0.5;
+    // Observe visibility
+    const container = row.parentElement;
+    if (container) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          visibleRef.current = entry.isIntersecting;
+        },
+        { threshold: 0 }
+      );
+      observer.observe(container);
 
-      const totalWidth = row.scrollWidth;
-      const oneThird = totalWidth / 3;
+      const animate = () => {
+        if (visibleRef.current) {
+          offsetRef.current += 0.5;
+          const totalWidth = row.scrollWidth;
+          const oneThird = totalWidth / 3;
+          if (offsetRef.current >= oneThird) {
+            offsetRef.current = 0;
+          }
+          row.style.transform = `translateX(-${offsetRef.current}px)`;
+        }
+        rafRef.current = requestAnimationFrame(animate);
+      };
 
-      if (offsetRef.current >= oneThird) {
-        offsetRef.current = 0;
-      }
-
-      row.style.transform = `translateX(-${offsetRef.current}px)`;
       rafRef.current = requestAnimationFrame(animate);
-    };
 
-    rafRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (rafRef.current !== null) {
-        cancelAnimationFrame(rafRef.current);
-      }
-    };
+      return () => {
+        observer.disconnect();
+        if (rafRef.current !== null) {
+          cancelAnimationFrame(rafRef.current);
+        }
+      };
+    }
   }, []);
 
   return (
