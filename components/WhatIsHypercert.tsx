@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function WhatIsHypercert() {
   return (
     <section className="bg-white py-24 md:py-32">
@@ -23,17 +25,22 @@ export default function WhatIsHypercert() {
 
         {/* Section 2: Diagram */}
         <div className="bg-white rounded-[16px] overflow-hidden shadow-sm mt-10">
-          <picture>
-            <source
-              media="(max-width: 768px)"
-              srcSet="/img/what_is_a_hypercert_intro_mobile.png"
-            />
-            <img
-              src="/img/what_is_a_hypercert_intro.png"
-              alt="What is a Hypercert"
-              className="max-w-full"
-            />
-          </picture>
+          {/* Mobile image */}
+          <Image
+            src="/img/what_is_a_hypercert_intro_mobile.png"
+            alt="What is a Hypercert"
+            width={768}
+            height={600}
+            className="md:hidden w-full h-auto"
+          />
+          {/* Desktop image */}
+          <Image
+            src="/img/what_is_a_hypercert_intro.png"
+            alt="What is a Hypercert"
+            width={1200}
+            height={600}
+            className="hidden md:block w-full h-auto"
+          />
         </div>
       </div>
     </section>

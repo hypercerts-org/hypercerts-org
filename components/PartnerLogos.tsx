@@ -55,24 +55,10 @@ export default function PartnerLogos() {
       {/* Top separator */}
       <div className="h-px bg-ui-separator" />
 
-      <div
-        style={{
-          width: "100%",
-          height: "50px",
-          backgroundColor: "#ffffff",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
+      <div className="w-full h-[50px] bg-brand-white overflow-hidden relative">
         <div
           ref={rowRef}
-          style={{
-            position: "absolute",
-            display: "flex",
-            flexDirection: "row",
-            top: 0,
-            left: 0,
-          }}
+          className="absolute flex flex-row top-0 left-0"
         >
           {triplePartners.map((partner, index) => (
             <a
@@ -80,34 +66,14 @@ export default function PartnerLogos() {
               href={partner.href}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                width: "150px",
-                height: "50px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#ffffff",
-                flexShrink: 0,
-                transition: "transform 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
-              }}
+              className="w-[150px] h-[50px] flex items-center justify-center bg-brand-white shrink-0 transition-transform duration-200 ease-in-out hover:scale-110"
             >
               <Image
                 src={partner.img}
                 alt={partner.alt}
                 width={120}
                 height={40}
-                style={{
-                  filter: "grayscale(100%)",
-                  objectFit: "contain",
-                  maxWidth: "120px",
-                  maxHeight: "40px",
-                }}
+                className="grayscale object-contain max-w-[120px] max-h-[40px]"
               />
             </a>
           ))}
