@@ -45,16 +45,16 @@ export default function HeroSection() {
                 priority
               />
             </div>
-            {/* Guilloché background from v2 landing page */}
+            {/* Guilloché background */}
             <div
               className="absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none"
               aria-hidden="true"
             >
               <Image
-                src="/img/hypercerts_hero_bg.svg"
+                src="/img/guilloche_02.svg"
                 alt=""
-                width={740}
-                height={400}
+                width={1440}
+                height={1054}
                 className="shrink-0 max-w-none"
                 priority
               />
