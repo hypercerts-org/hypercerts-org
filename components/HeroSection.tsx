@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Guilloche from "./Guilloche";
 
 export default function HeroSection() {
   return (
@@ -46,8 +45,19 @@ export default function HeroSection() {
                 priority
               />
             </div>
-            <div className="absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none">
-              <Guilloche variant="radial" preset="teal" width={450} height={450} className="shrink-0" />
+            {/* Guilloché background from v2 landing page */}
+            <div
+              className="absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none"
+              aria-hidden="true"
+            >
+              <Image
+                src="/img/hypercerts_hero_bg.svg"
+                alt=""
+                width={1439}
+                height={777}
+                className="shrink-0 max-w-none"
+                priority
+              />
             </div>
           </div>
         </div>
