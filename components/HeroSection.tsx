@@ -53,8 +53,8 @@ export default function HeroSection() {
               <Image
                 src="/img/hypercerts_hero_bg.svg"
                 alt=""
-                width={1439}
-                height={777}
+                width={740}
+                height={400}
                 className="shrink-0 max-w-none"
                 priority
               />
