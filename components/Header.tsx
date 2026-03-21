@@ -4,12 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-
-const navLinks = [
-  { label: "Docs", href: "https://hypercerts.org/docs/what-are-hypercerts", external: true },
-  { label: "Contact", href: "https://hypercerts.org/contact", external: true },
-  { label: "Blog ↗", href: "https://hypercerts.leaflet.pub/", external: true },
-];
+import { headerNavLinks as navLinks } from "@/lib/data/navigation";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
