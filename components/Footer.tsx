@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 const navColumns = [
@@ -12,9 +11,9 @@ const navColumns = [
   {
     header: "Resources",
     links: [
-      { label: "Docs", href: "/docs/what-are-hypercerts" },
+      { label: "Docs", href: "https://hypercerts.org/docs/what-are-hypercerts" },
       { label: "Blog", href: "https://hypercerts.leaflet.pub/" },
-      { label: "News", href: "/docs/announcements" },
+      { label: "News", href: "https://hypercerts.org/docs/announcements" },
     ],
   },
   {
@@ -55,25 +54,16 @@ export default function Footer() {
                   {col.header}
                 </p>
                 <ul className="flex flex-col gap-2">
-                  {col.links.map((link) => (
+                   {col.links.map((link) => (
                     <li key={link.label}>
-                      {link.href.startsWith("http") ? (
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
-                        >
-                          {link.label}
-                        </a>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
-                        >
-                          {link.label}
-                        </Link>
-                      )}
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
+                      >
+                        {link.label}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -91,19 +81,23 @@ export default function Footer() {
             &copy; 2026 Hypercerts Foundation
           </p>
           <div className="flex items-center gap-3 text-body-sm font-body">
-            <Link
-              href="/privacy"
+            <a
+              href="https://hypercerts.org/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-ui-grey-dark hover:text-brand-black transition"
             >
               Privacy
-            </Link>
+            </a>
             <span className="text-ui-separator">|</span>
-            <Link
-              href="/terms"
+            <a
+              href="https://hypercerts.org/terms"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-ui-grey-dark hover:text-brand-black transition"
             >
               Terms
-            </Link>
+            </a>
           </div>
         </div>
       </div>

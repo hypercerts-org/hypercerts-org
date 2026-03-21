@@ -25,7 +25,9 @@ export default function HeroSection() {
                 Go to app
               </a>
               <a
-                href="/docs/what-are-hypercerts"
+                href="https://hypercerts.org/docs/what-are-hypercerts"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-ui-bg transition"
               >
                 Learn more

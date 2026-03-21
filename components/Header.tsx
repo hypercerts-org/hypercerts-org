@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Docs", href: "/docs/what-are-hypercerts" },
-  { label: "Contact", href: "/contact" },
+  { label: "Docs", href: "https://hypercerts.org/docs/what-are-hypercerts", external: true },
+  { label: "Contact", href: "https://hypercerts.org/contact", external: true },
   { label: "Blog ↗", href: "https://hypercerts.leaflet.pub/", external: true },
 ];
 

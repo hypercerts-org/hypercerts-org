@@ -61,7 +61,9 @@ export default function HowItWorks() {
               </span>
             </div>
             <a
-              href="/explore"
+              href="https://app.hypercerts.org/explore"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-body text-body-lg text-brand-teal hover:underline"
             >
               Explore hypercerts →
