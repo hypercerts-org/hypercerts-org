@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const partners = [
+  { href: "https://www.maearth.com/", img: "/img/maearth_logo.png", alt: "Ma Earth", invert: true },
+  { href: "https://gainforest.earth/", img: "/img/gainforest_earth_logo.png", alt: "Gainforest" },
   { href: "https://www.protocol.ai", img: "/img/protocollabs_logo.png", alt: "Protocol Labs" },
   { href: "https://www.optimism.io/", img: "/img/optimism_logo.png", alt: "Optimism" },
   { href: "https://octant.build/", img: "/img/octant_logo.png", alt: "Octant" },
@@ -127,7 +129,7 @@ export default function PartnerLogos() {
                 sizes="120px"
                 width={120}
                 height={40}
-                className="grayscale object-contain max-w-[120px] max-h-[40px]"
+                className={`grayscale object-contain max-w-[120px] max-h-[40px]${partner.invert ? " invert" : ""}`}
               />
             </a>
           ))}

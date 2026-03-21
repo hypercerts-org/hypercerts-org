@@ -1,67 +1,44 @@
-import Image from "next/image";
-
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center bg-white" aria-labelledby="hero-heading">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full py-16">
-        <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-12 items-center">
-          {/* Left column — Text */}
-          <div>
-            <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-6">
-              The coordination infrastructure for the AI era
-            </p>
-            <h1 id="hero-heading" className="font-display text-[64px] md:text-[120px] lg:text-[150px] leading-[0.85] tracking-[-0.03em] text-brand-black max-w-3xl">
-              Fund and reward positive impact
-            </h1>
-            <p className="mt-8 font-body text-body-lg text-ui-grey-dark max-w-md">
-              Recognize contributions, reward expertise, and direct funding
-              toward the people and projects creating lasting positive impact.
-            </p>
-            <div className="mt-10 flex gap-4 flex-wrap">
-              <a
-                href="https://app.hypercerts.org/explore?filter=evaluated"
-                className="bg-brand-black text-brand-white px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-navy transition"
-              >
-                Go to app
-              </a>
-              <a
-                href="https://hypercerts.org/docs/what-are-hypercerts"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-ui-bg transition"
-              >
-                Learn more
-              </a>
-            </div>
-          </div>
+    <section className="relative h-screen -mt-[50px] pt-[50px] flex flex-col items-center justify-center bg-white overflow-hidden" aria-labelledby="hero-heading">
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+        {/* Label */}
+        <p className="font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent mb-6">
+          The Open Context Layer
+        </p>
 
-          {/* Right column — Visual (hidden on mobile) */}
-          <div className="hidden md:block relative overflow-visible">
-            <div className="flex items-center justify-center py-12">
-              <Image
-                src="/img/hypercert_AI_Safety3.png"
-                alt="Hypercert example"
-                width={280}
-                height={400}
-                className="rotate-3 shadow-xl max-w-[280px] w-full h-auto relative z-10"
-                priority
-              />
-            </div>
-            {/* Guilloché background */}
-            <div
-              className="absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none"
-              aria-hidden="true"
-            >
-              <Image
-                src="/img/guilloche_02.svg"
-                alt=""
-                width={420}
-                height={307}
-                className="shrink-0 max-w-none"
-                priority
-              />
-            </div>
-          </div>
+        {/* Title */}
+        <h1 id="hero-heading" className="font-display text-[42px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[0.95] tracking-[-0.03em] text-brand-black">
+          Collective Intelligence
+          <br />
+          <span className="italic text-brand-accent">for Funding Impact</span>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="mt-8 font-body text-body-lg text-ui-grey-dark max-w-xl mx-auto leading-relaxed">
+          Hypercerts creates shared context—evidence, expert input, and
+          community trust—that humans and AI use to decide what to fund.
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-10 flex gap-4 flex-wrap justify-center">
+          <a
+            href="https://hypercerts.org/docs/what-are-hypercerts"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-brand-black text-brand-white px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-navy transition"
+          >
+            Learn more
+          </a>
+          <a
+            href="https://hypercerts.org/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-ui-bg transition"
+          >
+            Get in touch
+          </a>
         </div>
       </div>
     </section>
