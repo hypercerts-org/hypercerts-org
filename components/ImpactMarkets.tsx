@@ -93,7 +93,7 @@ export default function ImpactMarkets() {
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           Built to power
         </p>
-        <h2 id="impact-markets-heading" className="font-display text-[80px] md:text-[100px] leading-none text-brand-black mb-12">
+        <h2 id="impact-markets-heading" className="font-display text-[36px] sm:text-[52px] md:text-[72px] lg:text-[100px] leading-none text-brand-black mb-12">
           Impact Markets
         </h2>
 
@@ -145,7 +145,7 @@ export default function ImpactMarkets() {
                   href={content.primaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                   className="inline-block px-6 py-3 bg-brand-black text-brand-white rounded-brand font-body text-body-sm font-medium hover:opacity-90 transition-opacity"
+                  className="inline-block px-6 py-3 bg-brand-black text-brand-white rounded-brand font-body text-body-sm font-medium hover:opacity-90 transition-opacity"
                 >
                   {content.primaryLabel}
                 </a>
@@ -154,7 +154,7 @@ export default function ImpactMarkets() {
                     href={content.secondaryHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                     className="inline-block px-6 py-3 bg-ui-grey-tag text-brand-black rounded-brand font-body text-body-sm font-medium hover:bg-ui-grey-light transition-colors"
+                    className="inline-block px-6 py-3 bg-ui-grey-tag text-brand-black rounded-brand font-body text-body-sm font-medium hover:bg-ui-grey-light transition-colors"
                   >
                     {content.secondaryLabel}
                   </a>
