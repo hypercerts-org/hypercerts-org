@@ -53,6 +53,7 @@ export default function HowItWorks() {
           {/* Right column — Visual card */}
           <div className="bg-ui-bg rounded-brand p-8">
             <div className="flex items-baseline gap-4 mb-6">
+              {/* TODO: Fetch dynamically or update periodically — last checked 2026-03 */}
               <span className="font-display text-display-2 text-brand-black">
                 459
               </span>

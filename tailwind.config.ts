@@ -24,6 +24,7 @@ const config: Config = {
           "orange-light": "#FFD099",
           green: "#B6E6A1",
           "green-light": "#EDFFB8",
+          accent: "#af2901",
         },
         ui: {
           bg: "#F1F1F1",
@@ -52,6 +53,9 @@ const config: Config = {
       },
       borderRadius: {
         brand: "12px",
+      },
+      spacing: {
+        header: "50px",
       },
     },
   },

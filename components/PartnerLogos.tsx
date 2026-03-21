@@ -31,7 +31,10 @@ export default function PartnerLogos() {
     // Observe visibility
     const container = row.parentElement;
     if (container) {
+      const reducedMotionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+
       const startLoop = () => {
+        if (reducedMotionMq.matches) return; // respect reduced-motion preference
         if (rafRef.current !== null) return; // already running
         const animate = () => {
           offsetRef.current += 0.5;
@@ -52,6 +55,16 @@ export default function PartnerLogos() {
           rafRef.current = null;
         }
       };
+
+      const handleReducedMotionChange = (e: MediaQueryListEvent) => {
+        if (e.matches) {
+          stopLoop();
+        } else if (visibleRef.current && document.visibilityState === "visible") {
+          startLoop();
+        }
+      };
+
+      reducedMotionMq.addEventListener("change", handleReducedMotionChange);
 
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -76,7 +89,7 @@ export default function PartnerLogos() {
 
       document.addEventListener("visibilitychange", handleVisibilityChange);
 
-      // Start immediately if visible
+      // Start immediately if visible and motion is not reduced
       if (visibleRef.current && document.visibilityState === "visible") {
         startLoop();
       }
@@ -84,6 +97,7 @@ export default function PartnerLogos() {
       return () => {
         observer.disconnect();
         document.removeEventListener("visibilitychange", handleVisibilityChange);
+        reducedMotionMq.removeEventListener("change", handleReducedMotionChange);
         stopLoop();
       };
     }
@@ -110,6 +124,7 @@ export default function PartnerLogos() {
               <Image
                 src={partner.img}
                 alt={partner.alt}
+                sizes="120px"
                 width={120}
                 height={40}
                 className="grayscale object-contain max-w-[120px] max-h-[40px]"

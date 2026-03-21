@@ -25,6 +25,7 @@ export default function MediaItem({
             <Image
               src={image}
               alt={title}
+              sizes="(max-width: 768px) 100vw, 400px"
               fill
               className="object-cover"
             />

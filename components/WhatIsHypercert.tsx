@@ -29,6 +29,7 @@ export default function WhatIsHypercert() {
           <Image
             src="/img/what_is_a_hypercert_intro_mobile.png"
             alt="What is a Hypercert"
+            sizes="(max-width: 768px) 100vw, 50vw"
             width={768}
             height={600}
             className="md:hidden w-full h-auto"
@@ -37,6 +38,7 @@ export default function WhatIsHypercert() {
           <Image
             src="/img/what_is_a_hypercert_intro.png"
             alt="What is a Hypercert"
+            sizes="(max-width: 768px) 100vw, 50vw"
             width={1200}
             height={600}
             className="hidden md:block w-full h-auto"

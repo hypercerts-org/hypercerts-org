@@ -167,6 +167,7 @@ export default function ImpactMarkets() {
               <Image
                 src={content.image}
                 alt={content.imageAlt}
+                sizes="(max-width: 768px) 100vw, 600px"
                 width={800}
                 height={600}
                 className="w-full h-auto"
