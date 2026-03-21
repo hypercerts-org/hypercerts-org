@@ -1,5 +1,3 @@
-"use client";
-
 interface GuillocheProps {
   width?: number;
   height?: number;

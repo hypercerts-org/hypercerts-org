@@ -9,7 +9,7 @@ const featuredItems = [
     ],
     title: "The Moment is Ripe for Hypercerts",
     titleLink: "https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN",
-    authors: [{ name: "@holkexyz", link: "https://twitter.com/holkxyz" }],
+    authors: [{ name: "@holkexyz", link: "https://twitter.com/holkexyz" }],
   },
   {
     image: "/img/davidad_ftc_talk.png",
@@ -130,7 +130,7 @@ const textItems = [
     tags: ["Talk 31min", "Oct 2022 | Devcon Bogota"],
     title: "Hypercerts for Regenerative Cryptoeconomics",
     titleLink: "https://youtu.be/YpIQoq_bfu8",
-    authors: [{ name: "@emiyazono", link: "http://twitter.com/emiyazono" }],
+    authors: [{ name: "@emiyazono", link: "https://twitter.com/emiyazono" }],
   },
   {
     tags: ["Blogpost", "Aug 2022 | Protocol Labs"],
@@ -143,8 +143,8 @@ const textItems = [
     title: "Impact Certificates",
     titleLink: "https://youtu.be/kyo5SxtSJ9U?si=-eDvLbalnWFyoJrW",
     authors: [
-      { name: "@emiyazono", link: "http://twitter.com/emiyazono" },
-      { name: "@owocki", link: "http://twitter.com/owocki" },
+      { name: "@emiyazono", link: "https://twitter.com/emiyazono" },
+      { name: "@owocki", link: "https://twitter.com/owocki" },
     ],
   },
 ];
