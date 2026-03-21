@@ -76,6 +76,16 @@ export default function ImpactMarkets() {
 
   const { content } = tabs[selectedTab];
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      setSelectedTab((prev) => (prev + 1) % tabs.length);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      setSelectedTab((prev) => (prev - 1 + tabs.length) % tabs.length);
+    }
+  };
+
   return (
     <section className="w-full bg-white py-24 md:py-32" aria-labelledby="impact-markets-heading">
       <div className="max-w-6xl mx-auto px-6">
@@ -88,10 +98,19 @@ export default function ImpactMarkets() {
         </h2>
 
         {/* Tab buttons */}
-        <div className="flex flex-wrap gap-2 mb-12">
+        <div
+          role="tablist"
+          aria-label="Impact market audience"
+          className="flex flex-wrap gap-2 mb-12"
+          onKeyDown={handleKeyDown}
+        >
           {tabs.map((tab, index) => (
             <button
               key={tab.label}
+              id={`impact-tab-${index}`}
+              role="tab"
+              aria-selected={selectedTab === index}
+              aria-controls="impact-tabpanel"
               onClick={() => setSelectedTab(index)}
               className={`px-6 py-3 rounded-full font-body text-body-sm font-medium transition ${
                 selectedTab === index
@@ -105,7 +124,12 @@ export default function ImpactMarkets() {
         </div>
 
         {/* Content card */}
-        <div className="bg-brand-white rounded-[20px] p-8 md:p-12 shadow-sm">
+        <div
+          id="impact-tabpanel"
+          role="tabpanel"
+          aria-labelledby={`impact-tab-${selectedTab}`}
+          className="bg-brand-white rounded-[20px] p-8 md:p-12 shadow-sm"
+        >
           <div key={selectedTab} className="animate-fade-in">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-center">
             {/* Left: text */}
