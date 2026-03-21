@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center bg-white">
+    <section className="min-h-screen flex items-center bg-white" aria-labelledby="hero-heading">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full py-16">
         <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-12 items-center">
           {/* Left column — Text */}
@@ -10,7 +10,7 @@ export default function HeroSection() {
             <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-6">
               The coordination infrastructure for the AI era
             </p>
-            <h1 className="font-display text-[64px] md:text-[120px] lg:text-[150px] leading-[0.85] tracking-[-0.03em] text-brand-black max-w-3xl">
+            <h1 id="hero-heading" className="font-display text-[64px] md:text-[120px] lg:text-[150px] leading-[0.85] tracking-[-0.03em] text-brand-black max-w-3xl">
               Fund and reward positive impact
             </h1>
             <p className="mt-8 font-body text-body-lg text-ui-grey-dark max-w-md">

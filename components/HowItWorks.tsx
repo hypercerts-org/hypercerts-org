@@ -7,14 +7,14 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="w-full bg-ui-bg py-24 md:py-32">
+    <section className="w-full bg-ui-bg py-24 md:py-32" aria-labelledby="how-it-works-heading">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="mb-16">
           <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
             How it works
           </p>
-          <h2 className="font-display text-display-3 md:text-display-2 text-brand-black">
+          <h2 id="how-it-works-heading" className="font-display text-display-3 md:text-display-2 text-brand-black">
             Get started in four steps
           </h2>
         </div>

@@ -151,13 +151,13 @@ const textItems = [
 
 export default function MediaSection() {
   return (
-    <section className="w-full bg-surface-cream py-24 md:py-32">
+    <section className="w-full bg-surface-cream py-24 md:py-32" aria-labelledby="media-section-heading">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           Get up to date
         </p>
-        <h2 className="font-display text-display-3 md:text-display-2 text-brand-black mb-12">
+        <h2 id="media-section-heading" className="font-display text-display-3 md:text-display-2 text-brand-black mb-12">
           Articles, Podcasts, and Talks
         </h2>
 

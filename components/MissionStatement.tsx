@@ -2,7 +2,7 @@ import Guilloche from "./Guilloche";
 
 export default function MissionStatement() {
   return (
-    <section className="relative w-full bg-surface-cream py-24 md:py-32 overflow-hidden">
+    <section className="relative w-full bg-surface-cream py-24 md:py-32 overflow-hidden" aria-label="Mission Statement">
       {/* Subtle Guilloche wave accent */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <Guilloche

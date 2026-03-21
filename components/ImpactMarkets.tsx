@@ -77,13 +77,13 @@ export default function ImpactMarkets() {
   const { content } = tabs[selectedTab];
 
   return (
-    <section className="w-full bg-white py-24 md:py-32">
+    <section className="w-full bg-white py-24 md:py-32" aria-labelledby="impact-markets-heading">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           Built to power
         </p>
-        <h2 className="font-display text-[80px] md:text-[100px] leading-none text-brand-black mb-12">
+        <h2 id="impact-markets-heading" className="font-display text-[80px] md:text-[100px] leading-none text-brand-black mb-12">
           Impact Markets
         </h2>
 

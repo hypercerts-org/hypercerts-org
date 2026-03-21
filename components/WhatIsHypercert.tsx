@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WhatIsHypercert() {
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section className="bg-white py-24 md:py-32" aria-labelledby="what-is-hypercert-heading">
       <div className="max-w-4xl mx-auto px-4">
         {/* Section label */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4 text-center">
@@ -11,7 +11,7 @@ export default function WhatIsHypercert() {
 
         {/* Section 1: Text block */}
         <div className="text-center">
-          <h2 className="font-display text-display-2 max-sm:text-[42px] leading-none">
+          <h2 id="what-is-hypercert-heading" className="font-display text-display-2 max-sm:text-[42px] leading-none">
             Hypercerts Represent the Impact of Work
           </h2>
           <p className="font-body text-body-lg text-ui-grey-dark max-w-lg mx-auto mt-6">
