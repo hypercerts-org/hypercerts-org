@@ -53,8 +53,8 @@ export default function HeroSection() {
               <Image
                 src="/img/guilloche_02.svg"
                 alt=""
-                width={1440}
-                height={1054}
+                width={420}
+                height={307}
                 className="shrink-0 max-w-none"
                 priority
               />
