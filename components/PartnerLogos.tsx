@@ -31,16 +31,9 @@ export default function PartnerLogos() {
     // Observe visibility
     const container = row.parentElement;
     if (container) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          visibleRef.current = entry.isIntersecting;
-        },
-        { threshold: 0 }
-      );
-      observer.observe(container);
-
-      const animate = () => {
-        if (visibleRef.current) {
+      const startLoop = () => {
+        if (rafRef.current !== null) return; // already running
+        const animate = () => {
           offsetRef.current += 0.5;
           const totalWidth = row.scrollWidth;
           const oneThird = totalWidth / 3;
@@ -48,17 +41,50 @@ export default function PartnerLogos() {
             offsetRef.current = 0;
           }
           row.style.transform = `translateX(-${offsetRef.current}px)`;
-        }
+          rafRef.current = requestAnimationFrame(animate);
+        };
         rafRef.current = requestAnimationFrame(animate);
       };
 
-      rafRef.current = requestAnimationFrame(animate);
+      const stopLoop = () => {
+        if (rafRef.current !== null) {
+          cancelAnimationFrame(rafRef.current);
+          rafRef.current = null;
+        }
+      };
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          visibleRef.current = entry.isIntersecting;
+          if (entry.isIntersecting && document.visibilityState === "visible") {
+            startLoop();
+          } else {
+            stopLoop();
+          }
+        },
+        { threshold: 0 }
+      );
+      observer.observe(container);
+
+      const handleVisibilityChange = () => {
+        if (document.visibilityState === "hidden") {
+          stopLoop();
+        } else if (visibleRef.current) {
+          startLoop();
+        }
+      };
+
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+
+      // Start immediately if visible
+      if (visibleRef.current && document.visibilityState === "visible") {
+        startLoop();
+      }
 
       return () => {
         observer.disconnect();
-        if (rafRef.current !== null) {
-          cancelAnimationFrame(rafRef.current);
-        }
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+        stopLoop();
       };
     }
   }, []);

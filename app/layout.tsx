@@ -32,7 +32,12 @@ export const metadata: Metadata = {
     images: ["/img/hypercerts_opengraph.jpg"],
   },
   icons: {
-    icon: "/img/favicon.ico",
+    icon: "/favicon.ico",
+  },
+  keywords: ["hypercerts", "impact certificates", "impact funding", "public goods", "web3"],
+  authors: [{ name: "Hypercerts Foundation" }],
+  alternates: {
+    canonical: "https://hypercerts.org",
   },
 };
 
