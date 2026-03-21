@@ -1,48 +1,59 @@
-import Image from "next/image";
-
 export default function WhatIsHypercert() {
   return (
-    <section className="bg-white py-24 md:py-32" aria-labelledby="what-is-hypercert-heading">
-      <div className="max-w-4xl mx-auto px-4">
+    <section
+      className="bg-white py-24 md:py-32"
+      aria-labelledby="what-is-hypercert-heading"
+    >
+      <div className="max-w-5xl mx-auto px-6">
         {/* Section label */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4 text-center">
           What is a hypercert
         </p>
 
-        {/* Section 1: Text block */}
-        <div className="text-center">
-          <h2 id="what-is-hypercert-heading" className="font-display text-display-2 max-sm:text-[42px] leading-none">
-            Hypercerts Represent the Impact of Work
-          </h2>
-          <p className="font-body text-body-lg text-ui-grey-dark max-w-lg mx-auto mt-6">
-            Every hypercert accounts for a discrete piece of work and represents
-            the impact resulting from that work. Projects create hypercerts for
-            their work. Evaluators assess the outputs, outcomes and impact of
-            projects&apos; work. Funders buy hypercert fractions and receive the
-            rights to claim the represented impact.
-          </p>
-        </div>
+        {/* Headline — extracted from first sentence */}
+        <h2
+          id="what-is-hypercert-heading"
+          className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black text-center max-w-3xl mx-auto"
+        >
+          A Living Digital Record
+          <br />
+          <span className="italic">of Impactful Work</span>
+        </h2>
 
-        {/* Section 2: Diagram */}
-        <div className="bg-white rounded-[16px] overflow-hidden shadow-sm mt-10">
-          {/* Mobile image */}
-          <Image
-            src="/img/what_is_a_hypercert_intro_mobile.png"
-            alt="What is a Hypercert"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            width={768}
-            height={600}
-            className="md:hidden w-full h-auto"
-          />
-          {/* Desktop image */}
-          <Image
-            src="/img/what_is_a_hypercert_intro.png"
-            alt="What is a Hypercert"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            width={1200}
-            height={600}
-            className="hidden md:block w-full h-auto"
-          />
+        {/* Lead paragraph */}
+        <p className="font-body text-body-lg text-ui-grey-dark text-center max-w-2xl mx-auto mt-8 leading-relaxed">
+          At its core, a hypercert captures a simple claim: who did what, when,
+          and where. Over time, evidence, feedback, and trust signals
+          accumulate—forming a shared, evolving picture of the work and its
+          value.
+        </p>
+
+        {/* Two feature blocks */}
+        <div className="grid md:grid-cols-2 gap-10 mt-16">
+          {/* Block 1: Context for coordination */}
+          <div className="border-t-2 border-brand-black pt-6">
+            <h3 className="font-display text-heading-4 text-brand-black mb-3">
+              Context for Coordination
+            </h3>
+            <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
+              Hypercerts don&apos;t decide what&apos;s valuable directly. The
+              shared, transparent context they create can be used by humans and
+              AI in novel funding and decision-making mechanisms—enabling more
+              effective coordination around collective value.
+            </p>
+          </div>
+
+          {/* Block 2: Portable by design */}
+          <div className="border-t-2 border-brand-black pt-6">
+            <h3 className="font-display text-heading-4 text-brand-black mb-3">
+              Portable by Design
+            </h3>
+            <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
+              Built on open social infrastructure, hypercerts are portable by
+              design. Your data stays under your control and moves freely across
+              platforms.
+            </p>
+          </div>
         </div>
       </div>
     </section>
