@@ -22,7 +22,7 @@ export default function WhatIsHypercert() {
 
         {/* Lead paragraph */}
         <p className="font-body text-body-lg text-ui-grey-dark text-center max-w-2xl mx-auto mt-8 leading-relaxed">
-          At its core, a hypercert captures a simple claim: who did what, when, and where. As evidence and feedback accumulate over time, it becomes a shared, evolving picture of the work and its value.
+          At its core, a hypercert captures a simple claim: who did what, when, and where. As evidence and feedback accumulate, it becomes a shared, evolving picture of the work and its value.
         </p>
 
         {/* Two feature blocks */}
@@ -33,7 +33,7 @@ export default function WhatIsHypercert() {
               Context for Resource Allocation
             </h3>
             <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
-              Hypercerts create shared context that humans and AI can use in novel funding and decision-making mechanisms—enabling effective coordination around collective value.
+              Hypercerts create shared context that enable new forms of decision-making, where human judgment is supported by AI—enabling effective coordination around collective value.
             </p>
           </div>
 
