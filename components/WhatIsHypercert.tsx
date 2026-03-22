@@ -22,10 +22,7 @@ export default function WhatIsHypercert() {
 
         {/* Lead paragraph */}
         <p className="font-body text-body-lg text-ui-grey-dark text-center max-w-2xl mx-auto mt-8 leading-relaxed">
-          At its core, a hypercert captures a simple claim: who did what, when,
-          and where. Over time, evidence, feedback, and trust signals
-          accumulate—forming a shared, evolving picture of the work and its
-          value.
+          At its core, a hypercert captures a simple claim: who did what, when, and where. As evidence and feedback accumulate over time, it becomes a shared, evolving picture of the work and its value.
         </p>
 
         {/* Two feature blocks */}
@@ -33,25 +30,20 @@ export default function WhatIsHypercert() {
           {/* Block 1: Context for coordination */}
           <div className="border-t-2 border-brand-black pt-6">
             <h3 className="font-display text-heading-4 text-brand-black mb-3">
-              Context for Coordination
+              Context for Resource Allocation
             </h3>
             <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
-              Hypercerts don&apos;t decide what&apos;s valuable directly. The
-              shared, transparent context they create can be used by humans and
-              AI in novel funding and decision-making mechanisms—enabling more
-              effective coordination around collective value.
+              Hypercerts create shared context that humans and AI can use in novel funding and decision-making mechanisms—enabling effective coordination around collective value.
             </p>
           </div>
 
           {/* Block 2: Portable by design */}
           <div className="border-t-2 border-brand-black pt-6">
             <h3 className="font-display text-heading-4 text-brand-black mb-3">
-              Portable by Design
+              Impact as a Shared Record
             </h3>
             <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
-              Built on open social infrastructure, hypercerts are portable by
-              design. Your data stays under your control and moves freely across
-              platforms.
+              Hypercerts attribute impact to contributors and funders through a shared, referenceable record—enabling credible proof and recognition.
             </p>
           </div>
         </div>
