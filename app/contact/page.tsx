@@ -56,17 +56,21 @@ const faqs = [
   {
     question: "What is a hypercert?",
     answer:
-      "A hypercert is a living digital record of impactful work. It captures what was done or is planned, by whom, when, and where. As evidence and evaluations accumulate over time, it becomes a shared picture of the work and its value.",
-  },
-  {
-    question: "How do hypercerts work?",
-    answer:
-      "Hypercerts follow three steps: (1) Record — projects publish structured records of their work. (2) Evaluate — domain experts and communities assess contributions over time. (3) Fund — funders use shared records and evaluations to allocate resources, with impact attributed to both contributors and funders.",
+      "A hypercert is a living digital record of impactful work. It captures what was done or is planned, by whom, when, and where. As evidence and evaluations accumulate over time, it becomes a shared picture of the work and its value. Learn more at docs.hypercerts.org.",
+    richAnswer:
+      'A hypercert is a living digital record of impactful work. It captures what was done or is planned, by whom, when, and where. As evidence and evaluations accumulate over time, it becomes a shared picture of the work and its value. <a href="https://docs.hypercerts.org/core-concepts/what-is-hypercerts" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">Learn more</a>.',
   },
   {
     question: "What impact domains can hypercerts be used in?",
     answer:
-      "Hypercerts work across any impact domain where collective work needs funding — including climate and regeneration, open-source software, research and development, and community programs. The same pattern applies across all of them.",
+      "Hypercerts work across any impact domain where collective work needs funding — including climate and regeneration, open-source software, research and development, community programs, and many more. The same pattern applies across all of them.",
+  },
+  {
+    question: "How can I get started?",
+    answer:
+      "Explore the network on Hyperscan (hyperscan.dev), read the quickstart guide (docs.hypercerts.org/quickstart), or reach out to the team via the contact form above. If you're a developer, check out the Scaffold App on GitHub to start building.",
+    richAnswer:
+      'Explore the network on <a href="https://hyperscan.dev" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">Hyperscan</a>, read the <a href="https://docs.hypercerts.org/quickstart" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">quickstart guide</a>, or reach out to the team via the contact form above. If you&rsquo;re a developer, check out the <a href="https://github.com/hypercerts-org/hypercerts-scaffold-atproto" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">Scaffold App</a> on GitHub to start building.',
   },
   {
     question: "What technology are hypercerts built on?",
@@ -81,14 +85,16 @@ const faqs = [
       'The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting — so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at <a href="https://atproto.com" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">atproto.com</a>.',
   },
   {
-    question: "How can I get started?",
+    question: "What is Certified?",
     answer:
-      "Explore the network on Hyperscan (hyperscan.dev), read the documentation (docs.hypercerts.org), or reach out to the team via the contact form above. If you're a developer, check out the Scaffold App on GitHub to start building.",
+      "Certified is your portable impact profile — one identity across all hypercert-enabled applications. It aggregates your actions, evaluations, and credentials without locking you into any single platform. Create your identity at certified.app.",
+    richAnswer:
+      'Certified is your portable impact profile — one identity across all hypercert-enabled applications. It aggregates your actions, evaluations, and credentials without locking you into any single platform. Create your identity at <a href="https://certified.app" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">certified.app</a>.',
   },
   {
     question: "Is hypercerts free to use?",
     answer:
-      "Yes. Hypercerts is open infrastructure. The protocol, tools, and documentation are freely available. There are no subscription fees or platform charges.",
+      "Yes. Hypercerts is open infrastructure. The protocol, tools, and documentation are freely available. There are no subscription or protocol fees.",
   },
 ];
 
