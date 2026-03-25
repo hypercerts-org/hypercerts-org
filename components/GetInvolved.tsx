@@ -1,10 +1,18 @@
 export default function GetInvolved() {
   return (
     <section
-      className="w-full bg-white py-24 md:py-32"
+      className="relative w-full bg-white py-24 md:py-32 overflow-hidden"
       aria-labelledby="get-involved-heading"
     >
-      <div className="max-w-2xl mx-auto px-6 text-center">
+      {/* Guilloche — centered background */}
+      <img
+        src="/img/guilloche/guilloche_01.svg"
+        alt=""
+        aria-hidden="true"
+        className="absolute -bottom-[500px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] md:w-[1000px] md:h-[1000px] pointer-events-none opacity-[0.2]"
+      />
+
+      <div className="relative max-w-2xl mx-auto px-6 text-center">
         {/* Eyebrow */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           Get involved
@@ -28,20 +36,18 @@ export default function GetInvolved() {
         {/* Buttons */}
         <div className="mt-10 flex gap-4 flex-wrap justify-center">
           <a
-            href="https://form.feathery.io/to/kV8E0l"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className="bg-brand-black text-brand-white px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-navy transition"
           >
             Reach out &rarr;
           </a>
           <a
-            href="https://t.me/hypercerts"
+            href="https://t.me/+YF9AYb6zCv1mNDJi"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-ui-bg transition"
           >
-            Join Telegram
+            Stay informed
           </a>
           <a
             href="https://github.com/hypercerts-org"

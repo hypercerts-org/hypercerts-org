@@ -28,12 +28,12 @@ export default function Architecture() {
           Architecture
         </p>
 
-        {/* Heading */}
+        {/* Heading — largest of the three sections */}
         <h2
           id="architecture-heading"
           className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black max-w-3xl"
         >
-          How Hypercerts Work
+          How the Hypercerts Protocol Works
         </h2>
 
         {/* Intro */}
@@ -43,13 +43,19 @@ export default function Architecture() {
           resources.
         </p>
 
-        {/* Three cards */}
-        <div className="grid md:grid-cols-3 gap-10 mt-16">
-          {steps.map((step) => (
-            <div key={step.number} className="border-t-2 border-brand-black pt-6">
-              <span className="font-body text-body-sm text-ui-grey mb-3 block">
-                {String(step.number).padStart(2, "0")}
-              </span>
+        {/* Three steps — with connecting line */}
+        <div className="grid md:grid-cols-3 gap-0 mt-20">
+          {steps.map((step, index) => (
+            <div
+              key={step.number}
+              className={`relative pt-8 ${index < steps.length - 1 ? "md:border-r md:border-ui-separator md:pr-10" : ""} ${index > 0 ? "md:pl-10" : ""} ${index > 0 ? "mt-10 md:mt-0" : ""}`}
+            >
+              {/* Step number */}
+              <div className="w-10 h-10 rounded-full border-2 border-brand-black flex items-center justify-center mb-5">
+                <span className="font-body text-body-sm font-medium text-brand-black">
+                  {step.number}
+                </span>
+              </div>
               <h3 className="font-display text-heading-4 text-brand-black mb-3">
                 {step.title}
               </h3>
@@ -61,7 +67,7 @@ export default function Architecture() {
         </div>
 
         {/* Footer callout */}
-        <div className="mt-16 border-t border-ui-separator pt-8">
+        <div className="mt-20 border-t border-ui-separator pt-8">
           <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-3xl italic">
             Built on open infrastructure&mdash;so contributions, evaluations,
             and funding work seamlessly across applications, without lock-in.

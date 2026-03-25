@@ -7,10 +7,10 @@ export default function MissionStatement() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <Guilloche
           variant="wave"
-          width={1200}
-          height={300}
+          width={3000}
+          height={500}
           color="#000000"
-          opacity={0.05}
+          opacity={0.1}
         />
       </div>
 

@@ -1,37 +1,20 @@
-import Image from "next/image";
 import { footerNavColumns as navColumns } from "@/lib/data/navigation";
 
 export default function Footer() {
   return (
     <footer className="w-full bg-ui-bg py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Top row */}
-        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-10">
-          {/* Left: Logo + tagline */}
-          <div className="flex flex-col gap-3">
-            <Image
-              src="/img/hypercerts_logo_b_transparent.png"
-              alt="Hypercerts"
-              sizes="120px"
-              width={140}
-              height={40}
-              className="object-contain"
-            />
-            <p className="font-body text-body-sm text-ui-grey">
-              Fund and Reward Impact
-            </p>
-          </div>
-
-          {/* Right: Navigation columns */}
+        {/* Navigation columns */}
+        <div className="mb-12">
           <nav aria-label="Footer navigation">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-3 gap-12 max-w-lg">
               {navColumns.map((col) => (
                 <div key={col.header}>
                   <p className="text-brand-black font-body font-medium text-body-sm uppercase tracking-wider mb-4">
                     {col.header}
                   </p>
                   <ul className="flex flex-col gap-2">
-                     {col.links.map((link) => (
+                    {col.links.map((link) => (
                       <li key={link.label}>
                         <a
                           href={link.href}
@@ -60,18 +43,14 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-3 text-body-sm font-body">
             <a
-              href="https://hypercerts.org/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/privacy"
               className="text-ui-grey-dark hover:text-brand-black transition"
             >
               Privacy
             </a>
             <span className="text-ui-separator">|</span>
             <a
-              href="https://hypercerts.org/terms"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/terms"
               className="text-ui-grey-dark hover:text-brand-black transition"
             >
               Terms

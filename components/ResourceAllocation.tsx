@@ -1,7 +1,7 @@
 export default function ResourceAllocation() {
   return (
     <section
-      className="bg-white py-24 md:py-32"
+      className="bg-white py-16 md:py-24"
       aria-labelledby="resource-allocation-heading"
     >
       <div className="max-w-5xl mx-auto px-6">
@@ -10,53 +10,52 @@ export default function ResourceAllocation() {
           The challenge
         </p>
 
-        {/* Headline */}
+        {/* Headline — reduced dominance: smaller than Architecture */}
         <h2
           id="resource-allocation-heading"
-          className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black max-w-3xl"
+          className="font-display text-[26px] sm:text-[32px] md:text-[42px] leading-[1.1] tracking-[-0.02em] text-brand-black max-w-2xl mb-8"
         >
-          Upgrading How We
-          <br />
+          Upgrading How We{" "}
           <span className="italic">Allocate Resources</span>
         </h2>
 
-        {/* Two-column layout */}
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 mt-16">
-          {/* Left column — the problem */}
-          <div className="border-t-2 border-brand-black pt-6">
-            <h3 className="font-display text-heading-4 text-brand-black mb-3">
-              Today&rsquo;s systems are fragmented and inefficient
-            </h3>
+        {/* Two-column layout — left dominant, right secondary */}
+        <div className="grid md:grid-cols-[1.15fr_1fr] gap-10 md:gap-16">
+          {/* Left column — the problem (dominant, denser) */}
+          <div>
             <div className="font-body text-body-lg text-ui-grey-dark leading-relaxed space-y-4">
-              <p>
-                How we allocate resources shapes what gets built.
-                But today&rsquo;s systems consistently undervalue collective
-                work—like regenerative land, open-source software, and community
-                infrastructure.
+              {/* Lead sentence — visually distinct */}
+              <p className="text-brand-black font-medium">
+                Today&rsquo;s impact funding systems are fragmented, opaque, and
+                inefficient.
               </p>
               <p>
-                At the core, this is a coordination problem:
-                <br />
-                <span className="italic font-display text-brand-black">
-                  How do we decide—together—what is worth funding?
-                </span>
+                Decisions are made across disconnected platforms, committees, and
+                juries—with little shared context about what was done, what
+                worked, and what matters.
+              </p>
+              <p>
+                Collective work—like regenerative land, open-source software, and
+                community infrastructure—remains consistently undervalued and
+                underfunded.
               </p>
             </div>
           </div>
 
-          {/* Right column — the missing piece */}
-          <div className="border-t-2 border-brand-black pt-6">
-            <h3 className="font-display text-heading-4 text-brand-black mb-3">
-              We need new funding mechanisms built on shared context
-            </h3>
-            <div className="font-body text-body-lg text-ui-grey-dark leading-relaxed space-y-4">
+          {/* Right column — the missing piece (secondary, airier) */}
+          <div className="border-l-0 md:border-l md:border-ui-grey-light md:pl-10 md:my-1">
+            <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
+              What&rsquo;s missing
+            </p>
+            <div className="font-body text-body-lg text-ui-grey-dark leading-relaxed space-y-4 max-w-sm">
               <p>
-                A common understanding of what was done, what worked, and what
-                matters—built on evidence, feedback, and trust.
+                A way to bring together evidence, feedback, and
+                trust—creating shared context without enforcing a single
+                worldview or set of values.
               </p>
               <p>
-                This shared context enables new forms of decision-making, where
-                human judgment is supported by AI.
+                This enables new forms of decision-making—where different actors
+                coordinate while applying their own judgment.
               </p>
             </div>
           </div>

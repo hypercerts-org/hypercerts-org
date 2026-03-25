@@ -1,9 +1,11 @@
-import { toolGroups } from "@/lib/data/tools";
+import Image from "next/image";
+import { featuredTools, tools } from "@/lib/data/tools";
 
 export default function ToolsAndApps() {
   return (
     <section
-      className="w-full bg-white py-24 md:py-32"
+      id="tools-and-apps"
+      className="w-full bg-ui-bg py-24 md:py-32"
       aria-labelledby="tools-heading"
     >
       <div className="max-w-5xl mx-auto px-6">
@@ -27,55 +29,97 @@ export default function ToolsAndApps() {
           systems, or new coordination mechanisms.
         </p>
 
-        {/* Tool groups */}
-        <div className="mt-16 space-y-14">
-          {toolGroups.map((group) => (
-            <div key={group.heading}>
-              {/* Group heading */}
-              <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-5">
-                {group.heading}
-              </p>
-
-              {/* Cards grid */}
-              <div
-                className={`grid gap-4 ${
-                  group.cards.length === 1
-                    ? "md:grid-cols-1 max-w-xl"
-                    : group.cards.length === 2
-                      ? "md:grid-cols-2"
-                      : "md:grid-cols-3"
-                }`}
-              >
-                {group.cards.map((card) => (
-                  <a
-                    key={card.title}
-                    href={card.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group border border-ui-separator rounded-brand p-6 hover:border-brand-black transition-colors flex flex-col"
-                  >
-                    <h3 className="font-display text-heading-4 text-brand-black mb-2">
-                      {card.title}
-                    </h3>
-                    <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed flex-1">
-                      {card.description}
-                    </p>
-                    <p className="font-body text-body-sm text-brand-black font-medium mt-4 group-hover:underline">
-                      {card.cta} &rarr;
-                    </p>
-                  </a>
-                ))}
+        {/* Featured tools with screenshots */}
+        <div className="grid md:grid-cols-2 gap-4 mt-16">
+          {featuredTools.map((card) => (
+            <a
+              key={card.title}
+              href={card.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-ui-separator rounded-brand overflow-hidden hover:border-brand-black transition-colors flex flex-col bg-brand-white"
+            >
+              {card.image && (
+                <div className="relative w-full aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    fill
+                    className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
+              )}
+              <div className="p-6">
+                <h3 className="font-display text-heading-4 text-brand-black mb-2">
+                  {card.title}
+                </h3>
+                <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
+                  {card.description}
+                </p>
+                <p className="font-body text-body-sm text-brand-black font-medium mt-4 group-hover:underline">
+                  {card.cta} &rarr;
+                </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
-        {/* Footer line */}
-        <div className="mt-16 border-t border-ui-separator pt-8">
-          <p className="font-body text-body-lg text-ui-grey italic leading-relaxed">
-            From creating records to exploring data and building
-            applications&mdash;the full stack for working with hypercerts.
-          </p>
+        {/* Developer tools — compact grid with hover screenshots */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+          {tools.map((card) => (
+            <a
+              key={card.title}
+              href={card.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative border border-ui-separator rounded-brand p-6 hover:border-brand-black transition-colors flex flex-col bg-brand-white overflow-hidden"
+            >
+              {/* Screenshot on hover */}
+              {card.image && (
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <Image
+                    src={card.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 50vw, 250px"
+                    className={`object-cover ${card.imagePosition || "object-top"}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="font-display text-heading-4 text-brand-white mb-1">
+                      {card.title}
+                    </h3>
+                    <p className="font-body text-body-sm text-brand-white/80 font-medium">
+                      {card.cta} &rarr;
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Default content */}
+              <h3 className="font-display text-heading-4 text-brand-black mb-2">
+                {card.title}
+              </h3>
+              <p className="font-body text-body-sm text-ui-grey-dark leading-relaxed flex-1">
+                {card.description}
+              </p>
+              <p className="font-body text-body-sm text-brand-black font-medium mt-4 group-hover:underline">
+                {card.cta} &rarr;
+              </p>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-10">
+          <a
+            href="https://docs.hypercerts.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-body-lg text-brand-black font-medium hover:underline"
+          >
+            Read the documentation &rarr;
+          </a>
         </div>
       </div>
     </section>
