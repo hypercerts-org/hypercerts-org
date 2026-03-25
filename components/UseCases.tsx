@@ -147,7 +147,7 @@ export default function UseCases() {
             </div>
             <div>
               <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-2">
-                Also built on hypercerts
+                Built on hypercerts
               </p>
               <h3 className="font-display text-heading-4 text-brand-black mb-2">
                 Simocracy
