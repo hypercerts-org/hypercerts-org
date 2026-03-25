@@ -1,4 +1,5 @@
 import Ecosystem from "@/components/Ecosystem";
+import Simocracy from "@/components/Simocracy";
 import GetInvolved from "@/components/GetInvolved";
 import HeroSection from "@/components/HeroSection";
 import MediaSection from "@/components/MediaSection";
@@ -151,6 +152,7 @@ export default function Home() {
       <Vision />
       <OpenByDesign />
       <UseCases />
+      <Simocracy />
       <ToolsAndApps />
       <Ecosystem />
       <MediaSection />
