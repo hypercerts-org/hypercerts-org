@@ -1,6 +1,8 @@
 # Hypercerts.org
 
-The official website for the Hypercerts protocol — collective intelligence for funding impact.
+The official website for Hypercerts: The AI-Native, Open Context Layer for Collective Funding
+
+Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.
 
 ## Tech Stack
 
