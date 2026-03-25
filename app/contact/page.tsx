@@ -52,9 +52,67 @@ const contactSections = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What is a hypercert?",
+    answer:
+      "A hypercert is a living digital record of impactful work. It captures what was done or is planned, by whom, when, and where. As evidence and evaluations accumulate over time, it becomes a shared picture of the work and its value.",
+  },
+  {
+    question: "How do hypercerts work?",
+    answer:
+      "Hypercerts follow three steps: (1) Record — projects publish structured records of their work. (2) Evaluate — domain experts and communities assess contributions over time. (3) Fund — funders use shared records and evaluations to allocate resources, with impact attributed to both contributors and funders.",
+  },
+  {
+    question: "What impact domains can hypercerts be used in?",
+    answer:
+      "Hypercerts work across any impact domain where collective work needs funding — including climate and regeneration, open-source software, research and development, and community programs. The same pattern applies across all of them.",
+  },
+  {
+    question: "What technology are hypercerts built on?",
+    answer:
+      "Hypercerts are built on the AT Protocol as open infrastructure. Records, evaluations, and attribution are portable and referenceable across applications — not locked into any single platform.",
+  },
+  {
+    question: "What is the AT Protocol?",
+    answer:
+      "The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting — so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at atproto.com.",
+    richAnswer:
+      'The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting — so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at <a href="https://atproto.com" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">atproto.com</a>.',
+  },
+  {
+    question: "How can I get started?",
+    answer:
+      "Explore the network on Hyperscan (hyperscan.dev), read the documentation (docs.hypercerts.org), or reach out to the team via the contact form above. If you're a developer, check out the Scaffold App on GitHub to start building.",
+  },
+  {
+    question: "Is hypercerts free to use?",
+    answer:
+      "Yes. Hypercerts is open infrastructure. The protocol, tools, and documentation are freely available. There are no subscription fees or platform charges.",
+  },
+];
+
 export default function ContactPage() {
   return (
     <main className="bg-white py-24 md:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": "https://hypercerts.org/contact#faq",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
       <p className="sr-only">
         Contact the Hypercerts Foundation to participate as a builder, funder,
         evaluator, or researcher. Reach out via email at team@hypercerts.org,
@@ -99,6 +157,39 @@ export default function ContactPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* FAQ section */}
+        <div className="mt-24 border-t border-ui-separator pt-16">
+          <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
+            Frequently asked questions
+          </p>
+          <h2 className="font-display text-[28px] sm:text-[36px] md:text-[48px] leading-[1.1] tracking-[-0.02em] text-brand-black mb-12">
+            Common questions
+          </h2>
+
+          <div className="max-w-3xl divide-y divide-ui-separator">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="group py-5 first:pt-0">
+                <summary className="flex items-center justify-between cursor-pointer list-none font-display text-heading-4 text-brand-black hover:text-brand-accent transition">
+                  {faq.question}
+                  <span className="ml-4 flex-shrink-0 text-ui-grey group-open:rotate-45 transition-transform duration-200 text-[24px] leading-none">
+                    +
+                  </span>
+                </summary>
+                {faq.richAnswer ? (
+                  <p
+                    className="font-body text-body-lg text-ui-grey-dark leading-relaxed mt-3 pr-10"
+                    dangerouslySetInnerHTML={{ __html: faq.richAnswer }}
+                  />
+                ) : (
+                  <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed mt-3 pr-10">
+                    {faq.answer}
+                  </p>
+                )}
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </main>
