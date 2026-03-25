@@ -739,3 +739,101 @@ time="2026-03-20T23:55:38-07:00" level=info msg=NewConnection DisableClientMulti
 time="2026-03-20T23:55:38-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=155
 time="2026-03-20T23:55:38-07:00" level=info msg=ConnectionClosed connectionID=154
 time="2026-03-20T23:55:38-07:00" level=info msg=ConnectionClosed connectionID=155
+time="2026-03-21T06:37:02-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=157
+time="2026-03-21T06:37:02-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=156
+time="2026-03-21T06:37:02-07:00" level=info msg=ConnectionClosed connectionID=156
+time="2026-03-21T06:37:02-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=158
+time="2026-03-21T06:37:02-07:00" level=info msg=ConnectionClosed connectionID=157
+time="2026-03-21T06:37:02-07:00" level=warning msg="error running query" connectTime="2026-03-21 06:37:02.678142 -0700 PDT m=+5687.886253501" connectionDb=beads_hypercerts-org-v3 connectionID=158 error="nothing to commit" queryTime="2026-03-21 06:37:02.818202 -0700 PDT m=+5688.026319293"
+time="2026-03-21T06:37:03-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=159
+time="2026-03-21T06:37:03-07:00" level=info msg=ConnectionClosed connectionID=159
+time="2026-03-21T06:37:03-07:00" level=info msg=ConnectionClosed connectionID=158
+time="2026-03-21T07:00:51-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=160
+time="2026-03-21T07:00:51-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=161
+time="2026-03-21T07:00:51-07:00" level=info msg=ConnectionClosed connectionID=160
+time="2026-03-21T07:00:51-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=162
+time="2026-03-21T07:00:51-07:00" level=info msg=ConnectionClosed connectionID=161
+time="2026-03-21T07:00:51-07:00" level=warning msg="error running query" connectTime="2026-03-21 07:00:51.914311 -0700 PDT m=+5742.808871334" connectionDb=beads_hypercerts-org-v3 connectionID=162 error="nothing to commit" queryTime="2026-03-21 07:00:51.990467 -0700 PDT m=+5742.885027376"
+time="2026-03-21T07:00:52-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=163
+time="2026-03-21T07:00:52-07:00" level=info msg=ConnectionClosed connectionID=163
+time="2026-03-21T07:00:52-07:00" level=info msg=ConnectionClosed connectionID=162
+time="2026-03-22T00:36:23-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=165
+time="2026-03-22T00:36:23-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=164
+time="2026-03-22T00:36:23-07:00" level=info msg=ConnectionClosed connectionID=164
+time="2026-03-22T00:36:23-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=166
+time="2026-03-22T00:36:23-07:00" level=info msg=ConnectionClosed connectionID=165
+time="2026-03-22T00:36:23-07:00" level=warning msg="error running query" connectTime="2026-03-22 00:36:23.795973 -0700 PDT m=+15050.325805376" connectionDb=beads_hypercerts-org-v3 connectionID=166 error="nothing to commit" queryTime="2026-03-22 00:36:23.920278 -0700 PDT m=+15050.450110709"
+time="2026-03-22T00:36:30-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=167
+time="2026-03-22T00:36:30-07:00" level=info msg=ConnectionClosed connectionID=167
+time="2026-03-22T00:36:30-07:00" level=info msg=ConnectionClosed connectionID=166
+time="2026-03-22T00:36:36-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=168
+time="2026-03-22T00:36:36-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=169
+time="2026-03-22T00:36:36-07:00" level=info msg=ConnectionClosed connectionID=168
+time="2026-03-22T00:36:36-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=170
+time="2026-03-22T00:36:36-07:00" level=info msg=ConnectionClosed connectionID=169
+time="2026-03-22T00:36:36-07:00" level=warning msg="error running query" connectTime="2026-03-22 00:36:36.671516 -0700 PDT m=+15063.201349709" connectionDb=beads_hypercerts-org-v3 connectionID=170 error="nothing to commit" queryTime="2026-03-22 00:36:36.715559 -0700 PDT m=+15063.245392251"
+time="2026-03-22T00:36:37-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=171
+time="2026-03-22T00:36:37-07:00" level=info msg=ConnectionClosed connectionID=171
+time="2026-03-22T00:36:37-07:00" level=info msg=ConnectionClosed connectionID=170
+time="2026-03-22T08:37:56-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=173
+time="2026-03-22T08:37:56-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=172
+time="2026-03-22T08:37:56-07:00" level=info msg=ConnectionClosed connectionID=172
+time="2026-03-22T08:37:56-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=174
+time="2026-03-22T08:37:56-07:00" level=info msg=ConnectionClosed connectionID=173
+time="2026-03-22T08:37:56-07:00" level=warning msg="error running query" connectTime="2026-03-22 08:37:56.617357 -0700 PDT m=+43045.078382501" connectionDb=beads_hypercerts-org-v3 connectionID=174 error="nothing to commit" queryTime="2026-03-22 08:37:56.740897 -0700 PDT m=+43045.201921709"
+time="2026-03-22T08:37:57-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=175
+time="2026-03-22T08:37:57-07:00" level=info msg=ConnectionClosed connectionID=175
+time="2026-03-22T08:37:57-07:00" level=info msg=ConnectionClosed connectionID=174
+time="2026-03-22T08:38:00-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=176
+time="2026-03-22T08:38:00-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=177
+time="2026-03-22T08:38:00-07:00" level=info msg=ConnectionClosed connectionID=176
+time="2026-03-22T08:38:00-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=178
+time="2026-03-22T08:38:00-07:00" level=info msg=ConnectionClosed connectionID=177
+time="2026-03-22T08:38:00-07:00" level=warning msg="error running query" connectTime="2026-03-22 08:38:00.742499 -0700 PDT m=+43049.203496334" connectionDb=beads_hypercerts-org-v3 connectionID=178 error="nothing to commit" queryTime="2026-03-22 08:38:00.81329 -0700 PDT m=+43049.274286834"
+time="2026-03-22T08:38:01-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=179
+time="2026-03-22T08:38:01-07:00" level=info msg=ConnectionClosed connectionID=179
+time="2026-03-22T08:38:01-07:00" level=info msg=ConnectionClosed connectionID=178
+Starting server with Config HP="127.0.0.1:55874"|T="28800000"|R="false"|L="info"
+time="2026-03-25T09:07:36-07:00" level=info msg="Server ready. Accepting connections."
+time="2026-03-25T09:07:36-07:00" level=warning msg="secure_file_priv is set to \"\", which is insecure."
+time="2026-03-25T09:07:36-07:00" level=warning msg="Any user with GRANT FILE privileges will be able to read any file which the sql-server process can read."
+time="2026-03-25T09:07:36-07:00" level=warning msg="Please consider restarting the server with secure_file_priv set to a safe (or non-existent) directory."
+time="2026-03-25T09:07:36-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=1
+time="2026-03-25T09:07:36-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=2
+time="2026-03-25T09:07:36-07:00" level=info msg=ConnectionClosed connectionID=1
+time="2026-03-25T09:07:36-07:00" level=info msg=ConnectionClosed connectionID=2
+time="2026-03-25T09:07:36-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=3
+time="2026-03-25T09:07:36-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=4
+time="2026-03-25T09:07:36-07:00" level=info msg=ConnectionClosed connectionID=3
+time="2026-03-25T09:07:36-07:00" level=warning msg="error running query" connectTime="2026-03-25 09:07:36.79936 -0700 PDT m=+0.674790709" connectionDb=beads_hypercerts-org-v3 connectionID=4 error="nothing to commit" queryTime="2026-03-25 09:07:36.855339 -0700 PDT m=+0.730769667"
+time="2026-03-25T09:07:37-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=5
+time="2026-03-25T09:07:37-07:00" level=info msg=ConnectionClosed connectionID=5
+time="2026-03-25T09:07:37-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=6
+time="2026-03-25T09:07:37-07:00" level=info msg=ConnectionClosed connectionID=6
+time="2026-03-25T09:07:37-07:00" level=info msg=ConnectionClosed connectionID=4
+time="2026-03-25T09:07:37-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=7
+time="2026-03-25T09:07:37-07:00" level=info msg=ConnectionClosed connectionID=7
+time="2026-03-25T09:07:37-07:00" level=info msg="Server closing listener. No longer accepting connections."
+time="2026-03-25T09:07:37-07:00" level=info msg="stats stopped: context canceled"
+Starting server with Config HP="127.0.0.1:52286"|T="28800000"|R="false"|L="info"
+time="2026-03-25T09:07:39-07:00" level=info msg="Server ready. Accepting connections."
+time="2026-03-25T09:07:39-07:00" level=warning msg="secure_file_priv is set to \"\", which is insecure."
+time="2026-03-25T09:07:39-07:00" level=warning msg="Any user with GRANT FILE privileges will be able to read any file which the sql-server process can read."
+time="2026-03-25T09:07:39-07:00" level=warning msg="Please consider restarting the server with secure_file_priv set to a safe (or non-existent) directory."
+time="2026-03-25T09:07:39-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=2
+time="2026-03-25T09:07:39-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=1
+time="2026-03-25T09:07:39-07:00" level=info msg=ConnectionClosed connectionID=1
+time="2026-03-25T09:07:39-07:00" level=info msg=ConnectionClosed connectionID=2
+time="2026-03-25T09:07:39-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=3
+time="2026-03-25T09:07:39-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=4
+time="2026-03-25T09:07:39-07:00" level=info msg=ConnectionClosed connectionID=3
+time="2026-03-25T09:07:39-07:00" level=warning msg="error running query" connectTime="2026-03-25 09:07:39.542444 -0700 PDT m=+0.533620751" connectionDb=beads_hypercerts-org-v3 connectionID=4 error="nothing to commit" queryTime="2026-03-25 09:07:39.557036 -0700 PDT m=+0.548212876"
+time="2026-03-25T09:07:39-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=5
+time="2026-03-25T09:07:39-07:00" level=info msg=ConnectionClosed connectionID=5
+time="2026-03-25T09:07:40-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=6
+time="2026-03-25T09:07:40-07:00" level=info msg=ConnectionClosed connectionID=6
+time="2026-03-25T09:07:40-07:00" level=info msg=ConnectionClosed connectionID=4
+time="2026-03-25T09:07:40-07:00" level=info msg=NewConnection DisableClientMultiStatements=false connectionID=7
+time="2026-03-25T09:07:40-07:00" level=info msg=ConnectionClosed connectionID=7
+time="2026-03-25T09:07:40-07:00" level=info msg="Server closing listener. No longer accepting connections."
+time="2026-03-25T09:07:40-07:00" level=info msg="stats stopped: context canceled"
