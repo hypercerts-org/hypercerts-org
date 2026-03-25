@@ -64,14 +64,21 @@ const faqs = [
       "Hypercerts follow three steps: (1) Record — projects publish structured records of their work. (2) Evaluate — domain experts and communities assess contributions over time. (3) Fund — funders use shared records and evaluations to allocate resources, with impact attributed to both contributors and funders.",
   },
   {
-    question: "What domains can hypercerts be used in?",
+    question: "What impact domains can hypercerts be used in?",
     answer:
-      "Hypercerts work across any domain where collective work needs funding — including climate and regeneration, open-source software, research and development, and community programs. The same pattern applies across all of them.",
+      "Hypercerts work across any impact domain where collective work needs funding — including climate and regeneration, open-source software, research and development, and community programs. The same pattern applies across all of them.",
   },
   {
     question: "What technology are hypercerts built on?",
     answer:
       "Hypercerts are built on the AT Protocol as open infrastructure. Records, evaluations, and attribution are portable and referenceable across applications — not locked into any single platform.",
+  },
+  {
+    question: "What is the AT Protocol?",
+    answer:
+      "The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting — so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at atproto.com.",
+    richAnswer:
+      'The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting — so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at <a href="https://atproto.com" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">atproto.com</a>.',
   },
   {
     question: "How can I get started?",
@@ -161,16 +168,26 @@ export default function ContactPage() {
             Common questions
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-x-16 gap-y-10">
+          <div className="max-w-3xl divide-y divide-ui-separator">
             {faqs.map((faq) => (
-              <div key={faq.question}>
-                <h3 className="font-display text-heading-4 text-brand-black mb-2">
+              <details key={faq.question} className="group py-5 first:pt-0">
+                <summary className="flex items-center justify-between cursor-pointer list-none font-display text-heading-4 text-brand-black hover:text-brand-accent transition">
                   {faq.question}
-                </h3>
-                <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
+                  <span className="ml-4 flex-shrink-0 text-ui-grey group-open:rotate-45 transition-transform duration-200 text-[24px] leading-none">
+                    +
+                  </span>
+                </summary>
+                {faq.richAnswer ? (
+                  <p
+                    className="font-body text-body-lg text-ui-grey-dark leading-relaxed mt-3 pr-10"
+                    dangerouslySetInnerHTML={{ __html: faq.richAnswer }}
+                  />
+                ) : (
+                  <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed mt-3 pr-10">
+                    {faq.answer}
+                  </p>
+                )}
+              </details>
             ))}
           </div>
         </div>
