@@ -37,8 +37,39 @@ export default async function BlogPostPage({ params }: Props) {
     day: "numeric",
   });
 
+  const isoDate = new Date(post.pubDate).toISOString();
+
   return (
     <main className="bg-white py-24 md:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.description,
+            datePublished: isoDate,
+            author: {
+              "@type": "Organization",
+              name: "Hypercerts Foundation",
+              url: "https://hypercerts.org",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Hypercerts Foundation",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://hypercerts.org/blog/${slug}`,
+            },
+          }),
+        }}
+      />
       <article className="max-w-3xl mx-auto px-6">
         {/* Back link */}
         <Link
@@ -54,7 +85,7 @@ export default async function BlogPostPage({ params }: Props) {
         </h1>
 
         <div className="flex items-center gap-4 mb-6 pb-8 border-b border-brand-accent/40">
-          <time className="font-body text-body-sm text-ui-grey-dark">
+          <time dateTime={isoDate} className="font-body text-body-sm text-ui-grey-dark">
             {date}
           </time>
           <span className="text-ui-separator">|</span>

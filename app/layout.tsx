@@ -64,19 +64,33 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Hypercerts Foundation",
-              url: "https://hypercerts.org",
-              logo: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
-              sameAs: [
-                "https://bsky.app/profile/hypercerts.org",
-                "https://twitter.com/hypercerts",
-                "https://github.com/hypercerts-org",
-                "https://t.me/+YF9AYb6zCv1mNDJi",
-              ],
-            }),
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Hypercerts Foundation",
+                url: "https://hypercerts.org",
+                logo: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
+                description:
+                  "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
+                sameAs: [
+                  "https://bsky.app/profile/hypercerts.org",
+                  "https://twitter.com/hypercerts",
+                  "https://github.com/hypercerts-org",
+                  "https://t.me/+YF9AYb6zCv1mNDJi",
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Hypercerts",
+                url: "https://hypercerts.org",
+                publisher: {
+                  "@type": "Organization",
+                  name: "Hypercerts Foundation",
+                },
+              },
+            ]),
           }}
         />
         <a
