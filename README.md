@@ -1,6 +1,8 @@
 # Hypercerts.org
 
-The official website for Hypercerts — impact certificates for tracking, evaluating, and rewarding positive impact.
+The official website for Hypercerts — The AI-Native, Open Context Layer: Collective Intelligence for Funding Impact
+
+Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.
 
 ## Tech Stack
 
