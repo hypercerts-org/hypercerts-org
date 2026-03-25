@@ -2,7 +2,14 @@ import Link from "next/link";
 import { fetchBlogPosts } from "@/lib/rss";
 
 export const metadata = {
-  title: "Blog | Hypercerts",
+  title: "Blog",
+  description:
+    "Updates from the Hypercerts Foundation on protocol development and highlights from across the ecosystem.",
+  openGraph: {
+    title: "Blog | Hypercerts",
+    description:
+      "Updates from the Hypercerts Foundation on protocol development and highlights from across the ecosystem.",
+  },
 };
 
 export default async function BlogPage() {

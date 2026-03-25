@@ -9,8 +9,15 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = await fetchBlogPost(slug);
-  if (!post) return { title: "Post Not Found | Hypercerts" };
-  return { title: `${post.title} | Hypercerts Blog` };
+  if (!post) return { title: "Post Not Found" };
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: `${post.title} | Hypercerts Blog`,
+      description: post.description,
+    },
+  };
 }
 
 export async function generateStaticParams() {

@@ -1,5 +1,12 @@
 export const metadata = {
-  title: "Contact | Hypercerts",
+  title: "Contact",
+  description:
+    "Get in touch with the Hypercerts Foundation — whether you're a builder, funder, evaluator, or researcher.",
+  openGraph: {
+    title: "Contact | Hypercerts",
+    description:
+      "Get in touch with the Hypercerts Foundation — whether you're a builder, funder, evaluator, or researcher.",
+  },
 };
 
 const contactSections = [

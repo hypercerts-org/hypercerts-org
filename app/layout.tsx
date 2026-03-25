@@ -5,13 +5,16 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hypercerts.org"),
-  title: "Hypercerts - Fund and Reward Impact",
+  title: {
+    default: "Hypercerts — Collective Intelligence for Funding Impact",
+    template: "%s | Hypercerts",
+  },
   description:
-    "Fund and Reward Impact with Hypercerts. The web3 standard for impact certificates.",
+    "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
   openGraph: {
-    title: "Hypercerts - Fund and Reward Impact",
+    title: "Hypercerts — Collective Intelligence for Funding Impact",
     description:
-      "Fund and Reward Impact with Hypercerts. The web3 standard for impact certificates.",
+      "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
     url: "https://hypercerts.org",
     siteName: "Hypercerts",
     images: [
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
         url: "/img/hypercerts_opengraph.jpg",
         width: 1200,
         height: 630,
-        alt: "Hypercerts",
+        alt: "Hypercerts — Collective Intelligence for Funding Impact",
       },
     ],
     locale: "en_US",
@@ -27,14 +30,23 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hypercerts - Fund and Reward Impact",
-    description: "Fund and Reward Impact with Hypercerts.",
+    title: "Hypercerts — Collective Intelligence for Funding Impact",
+    description:
+      "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
     images: ["/img/hypercerts_opengraph.jpg"],
   },
   icons: {
     icon: "/favicon.ico",
   },
-  keywords: ["hypercerts", "impact certificates", "impact funding", "public goods", "web3"],
+  keywords: [
+    "hypercerts",
+    "impact funding",
+    "public goods",
+    "resource allocation",
+    "impact evaluation",
+    "open infrastructure",
+    "AT Protocol",
+  ],
   authors: [{ name: "Hypercerts Foundation" }],
   alternates: {
     canonical: "https://hypercerts.org",
@@ -59,8 +71,10 @@ export default function RootLayout({
               url: "https://hypercerts.org",
               logo: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
               sameAs: [
+                "https://bsky.app/profile/hypercerts.org",
                 "https://twitter.com/hypercerts",
                 "https://github.com/hypercerts-org",
+                "https://t.me/+YF9AYb6zCv1mNDJi",
               ],
             }),
           }}
