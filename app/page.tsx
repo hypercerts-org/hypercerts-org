@@ -76,7 +76,7 @@ const geoStructuredData = [
         name: "What domains can hypercerts be used in?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Hypercerts can be applied across any domain where collective work needs to be funded. Current use cases include climate and regeneration (e.g. reforestation, soil restoration), open-source software, research and development, and community programs. The same pattern—shared records, evidence, evaluation, and funding—works across all of these domains.",
+          text: "Hypercerts can be applied across any domain where collective work needs to be funded. Current use cases include climate and regeneration (e.g. reforestation, soil restoration), open-source software, research and development, journalism, and community programs. The same pattern—shared records, evidence, evaluation, and funding—works across all of these domains.",
         },
       },
       {
