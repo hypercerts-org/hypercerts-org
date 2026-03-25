@@ -130,6 +130,44 @@ export default function UseCases() {
           </div>
         </div>
 
+        {/* Simocracy — compact showcase */}
+        <div className="mt-16 border-t border-ui-separator pt-8">
+          <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-10 items-center">
+            <div className="group/sim w-full md:w-[280px] rounded-brand overflow-hidden border border-ui-separator flex-shrink-0 relative">
+              <img
+                src="/img/screenshots/simocracy_screenshot.png"
+                alt="Simocracy — decentralized governance simulation"
+                className="w-full h-auto transition-opacity duration-300 group-hover/sim:opacity-0"
+              />
+              <img
+                src="/img/screenshots/simocracy_screenshot_2.png"
+                alt="Simocracy — governance in action"
+                className="w-full h-auto absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/sim:opacity-100"
+              />
+            </div>
+            <div>
+              <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-2">
+                Also built on hypercerts
+              </p>
+              <h3 className="font-display text-heading-4 text-brand-black mb-2">
+                Simocracy
+              </h3>
+              <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed mb-3">
+                A decentralized governance simulation, where users create AI agents, propose policies,
+                and participate in collective decision-making.
+              </p>
+              <a
+                href="https://simocracy.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-body-sm text-brand-accent font-medium hover:text-brand-black transition"
+              >
+                simocracy.org &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
