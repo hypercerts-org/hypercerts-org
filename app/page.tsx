@@ -15,6 +15,7 @@ const geoStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "DefinedTerm",
+    "@id": "https://hypercerts.org/#hypercert",
     name: "Hypercert",
     description:
       "A living digital record of impactful work that captures what was done or is planned, by whom, when, and where. As evidence and evaluations accumulate over time, a hypercert becomes a shared, evolving picture of work and its value—enabling better funding decisions.",
@@ -27,9 +28,11 @@ const geoStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
+    "@id": "https://hypercerts.org/#howto",
     name: "How Hypercerts Work",
     description:
       "Hypercerts create a shared system where work is recorded, evaluated, and funded—linking contributions directly to impact and resources.",
+    about: { "@id": "https://hypercerts.org/#hypercert" },
     step: [
       {
         "@type": "HowToStep",
@@ -54,6 +57,8 @@ const geoStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": "https://hypercerts.org/#faq",
+    about: { "@id": "https://hypercerts.org/#hypercert" },
     mainEntity: [
       {
         "@type": "Question",
@@ -100,6 +105,7 @@ const geoStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": "https://hypercerts.org/#software",
     name: "Hypercerts Protocol",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
@@ -112,8 +118,7 @@ const geoStructuredData = [
       priceCurrency: "USD",
     },
     author: {
-      "@type": "Organization",
-      name: "Hypercerts Foundation",
+      "@id": "https://hypercerts.org/#organization",
     },
   },
 ];
