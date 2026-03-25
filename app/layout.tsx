@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Hypercerts",
     images: [
       {
-        url: "/img/hypercerts_opengraph.jpg",
+        url: "/img/hypercerts_opengraph-v2.jpg",
         width: 1200,
         height: 630,
         alt: "Hypercerts — Collective Intelligence for Funding Impact",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Hypercerts — Collective Intelligence for Funding Impact",
     description:
       "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
-    images: ["/img/hypercerts_opengraph.jpg"],
+    images: ["/img/hypercerts_opengraph-v2.jpg"],
   },
   icons: {
     icon: "/favicon.ico",
