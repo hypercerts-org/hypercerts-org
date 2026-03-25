@@ -101,9 +101,9 @@ const geoStructuredData = [
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Hypercerts Protocol",
-    applicationCategory: "Infrastructure",
+    applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
-    url: "https://hypercerts.org",
+    url: "https://www.hypercerts.org",
     description:
       "Open infrastructure for recording, evaluating, and funding impactful work. Built on the AT Protocol.",
     offers: {

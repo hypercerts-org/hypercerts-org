@@ -13,9 +13,30 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `https://www.hypercerts.org/blog/${slug}`,
+    },
     openGraph: {
       title: `${post.title} | Hypercerts Blog`,
       description: post.description,
+      url: `https://www.hypercerts.org/blog/${slug}`,
+      type: "article",
+      publishedTime: new Date(post.pubDate).toISOString(),
+      authors: ["Hypercerts Foundation"],
+      images: [
+        {
+          url: "/img/hypercerts_opengraph-v2.jpg",
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: ["/img/hypercerts_opengraph-v2.jpg"],
     },
   };
 }
@@ -44,30 +65,64 @@ export default async function BlogPostPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: post.title,
-            description: post.description,
-            datePublished: isoDate,
-            author: {
-              "@type": "Organization",
-              name: "Hypercerts Foundation",
-              url: "https://hypercerts.org",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Hypercerts Foundation",
-              logo: {
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "@id": `https://www.hypercerts.org/blog/${slug}#article`,
+              headline: post.title,
+              description: post.description,
+              datePublished: isoDate,
+              image: {
                 "@type": "ImageObject",
-                url: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
+                url: "https://www.hypercerts.org/img/hypercerts_opengraph-v2.jpg",
+                width: 1200,
+                height: 630,
+              },
+              author: {
+                "@type": "Organization",
+                "@id": "https://www.hypercerts.org/#organization",
+                name: "Hypercerts Foundation",
+                url: "https://www.hypercerts.org",
+              },
+              publisher: {
+                "@type": "Organization",
+                "@id": "https://www.hypercerts.org/#organization",
+                name: "Hypercerts Foundation",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.hypercerts.org/img/hypercerts_logo_horizontal.svg",
+                },
+              },
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": `https://www.hypercerts.org/blog/${slug}`,
               },
             },
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `https://hypercerts.org/blog/${slug}`,
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.hypercerts.org",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Blog",
+                  item: "https://www.hypercerts.org/blog",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: post.title,
+                },
+              ],
             },
-          }),
+          ]),
         }}
       />
       <article className="max-w-3xl mx-auto px-6">

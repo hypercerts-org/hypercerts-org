@@ -16,6 +16,10 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
       {
+        userAgent: "ClaudeBot",
+        allow: "/",
+      },
+      {
         userAgent: "PerplexityBot",
         allow: "/",
       },
@@ -28,6 +32,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://hypercerts.org/sitemap.xml",
+    sitemap: "https://www.hypercerts.org/sitemap.xml",
   };
 }
