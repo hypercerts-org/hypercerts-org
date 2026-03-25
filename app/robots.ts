@@ -32,6 +32,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://www.hypercerts.org/sitemap.xml",
+    sitemap: "https://hypercerts.org/sitemap.xml",
   };
 }

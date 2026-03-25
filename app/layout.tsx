@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.hypercerts.org"),
+  metadataBase: new URL("https://hypercerts.org"),
   title: {
     default: "Hypercerts — Collective Intelligence for Funding Impact",
     template: "%s | Hypercerts",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Hypercerts — Collective Intelligence for Funding Impact",
     description:
       "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
-    url: "https://www.hypercerts.org",
+    url: "https://hypercerts.org",
     siteName: "Hypercerts",
     images: [
       {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Hypercerts Foundation" }],
   alternates: {
-    canonical: "https://www.hypercerts.org",
+    canonical: "https://hypercerts.org",
   },
 };
 
@@ -68,12 +68,12 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "Organization",
-                "@id": "https://www.hypercerts.org/#organization",
+                "@id": "https://hypercerts.org/#organization",
                 name: "Hypercerts Foundation",
-                url: "https://www.hypercerts.org",
+                url: "https://hypercerts.org",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://www.hypercerts.org/img/hypercerts_logo_horizontal.svg",
+                  url: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
                 },
                 description:
                   "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
@@ -87,11 +87,11 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                "@id": "https://www.hypercerts.org/#website",
+                "@id": "https://hypercerts.org/#website",
                 name: "Hypercerts",
-                url: "https://www.hypercerts.org",
+                url: "https://hypercerts.org",
                 publisher: {
-                  "@id": "https://www.hypercerts.org/#organization",
+                  "@id": "https://hypercerts.org/#organization",
                 },
               },
             ]),

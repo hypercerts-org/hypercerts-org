@@ -103,7 +103,7 @@ const geoStructuredData = [
     name: "Hypercerts Protocol",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
-    url: "https://www.hypercerts.org",
+    url: "https://hypercerts.org",
     description:
       "Open infrastructure for recording, evaluating, and funding impactful work. Built on the AT Protocol.",
     offers: {
