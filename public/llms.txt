@@ -1,0 +1,48 @@
+# Hypercerts
+
+> Hypercerts are living digital records of impactful work, built on the AT Protocol as open infrastructure. Projects record their work, evaluators add evidence and trust signals, and funders allocate capital using shared records.
+
+## About
+
+Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation. The protocol follows a three-step process: Record, Evaluate, Fund.
+
+- Record: Projects create structured records of their work—what was done or is planned.
+- Evaluate: Domain experts, communities, and tools assess contributions over time.
+- Fund: Funders use shared records and evaluations to make better decisions.
+
+Hypercerts are built on the AT Protocol. Records are portable, referenceable, and not locked into any single platform.
+
+## Key Pages
+
+- Homepage: https://hypercerts.org
+- Blog: https://hypercerts.org/blog
+- Contact: https://hypercerts.org/contact
+- Documentation: https://docs.hypercerts.org
+
+## Tools & Applications
+
+- Hyperscan: https://hyperscan.dev — Explore the hypercert network
+- Certified: https://certified.app — Portable impact profiles
+- Hyperindex: https://docs.hypercerts.org/tools/hyperindex — Query hypercert data
+- Hypercerts CLI: https://github.com/GainForest/hypercerts-cli — Programmatic management
+- Agent API: https://www.hyperscan.dev/agents/page — AI agent integration
+- Scaffold App: https://github.com/hypercerts-org/hypercerts-scaffold-atproto — Reference app
+
+## Use Cases
+
+Hypercerts apply across any domain where collective work needs funding:
+- Climate and regeneration (reforestation, soil restoration, indigenous stewardship)
+- Open-source software (code, documentation, infrastructure)
+- Research and development (milestones, peer evaluation, interdisciplinary funding)
+- Community programs (coordination, education, local organizing)
+
+## Ecosystem
+
+The protocol is shaped by: Hypercerts Foundation, Ma Earth, GainForest, Protocol Labs, Octant, Silvi, Regen Foundation, and Funding the Commons.
+
+## Social
+
+- Bluesky: https://bsky.app/profile/hypercerts.org
+- Twitter: https://twitter.com/hypercerts
+- GitHub: https://github.com/hypercerts-org
+- Telegram: https://t.me/+YF9AYb6zCv1mNDJi

@@ -55,6 +55,11 @@ const contactSections = [
 export default function ContactPage() {
   return (
     <main className="bg-white py-24 md:py-32">
+      <p className="sr-only">
+        Contact the Hypercerts Foundation to participate as a builder, funder,
+        evaluator, or researcher. Reach out via email at team@hypercerts.org,
+        join the Telegram community, or explore the GitHub repositories.
+      </p>
       <div className="max-w-5xl mx-auto px-6">
         {/* Heading */}
         <h1 className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black mb-6">

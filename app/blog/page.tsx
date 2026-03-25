@@ -17,6 +17,12 @@ export default async function BlogPage() {
 
   return (
     <main className="bg-white py-24 md:py-32">
+      <p className="sr-only">
+        The Hypercerts blog publishes updates on protocol development, ecosystem
+        highlights, and perspectives on impact funding from the Hypercerts
+        Foundation and contributors across climate, open-source, research, and
+        community domains.
+      </p>
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent mb-4">
