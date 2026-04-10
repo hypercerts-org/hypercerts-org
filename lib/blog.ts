@@ -176,6 +176,7 @@ interface ATRecord {
   value: {
     $type: string;
     title: string;
+    description?: string;
     path: string;
     publishedAt?: string;
     content?: {
@@ -198,14 +199,16 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     const posts: BlogPost[] = records
       .filter((r) => r.value.publishedAt)
       .map((r) => {
-        const { title, path, publishedAt, content } = r.value;
+        const { title, description: rawDesc, path, publishedAt, content } = r.value;
         const slug = path.replace(/^\//, "");
         const htmlContent = content?.pages
           ? renderBlocks(content.pages)
           : "";
-        const plainText = stripHtml(htmlContent);
-        const description =
-          plainText.slice(0, 300) + (plainText.length > 300 ? "…" : "");
+        const description = rawDesc
+          || (() => {
+            const plainText = stripHtml(htmlContent);
+            return plainText.slice(0, 300) + (plainText.length > 300 ? "…" : "");
+          })();
 
         return {
           title,
