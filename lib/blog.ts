@@ -25,8 +25,9 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
   const bytes = new TextEncoder().encode(plaintext);
 
   // Build a list of boundary events
-  type Event = { pos: number; type: "open" | "close"; tag: string; end: number };
+  type Event = { pos: number; type: "open" | "close"; tag: string; end: number; ordinal: number };
   const events: Event[] = [];
+  let ordinalCounter = 0;
 
   for (const facet of facets) {
     const { byteStart, byteEnd } = facet.index;
@@ -42,26 +43,44 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
           openTag = "<em>";
           closeTag = "</em>";
           break;
-        case "pub.leaflet.richtext.facet#link":
-          openTag = `<a href="${escapeAttr(feat.uri ?? "")}" target="_blank" rel="noopener noreferrer">`;
-          closeTag = "</a>";
+        case "pub.leaflet.richtext.facet#link": {
+          const uri = feat.uri ?? "";
+          let safe = false;
+          try {
+            const scheme = new URL(uri).protocol;
+            safe = scheme === "https:" || scheme === "http:" || scheme === "mailto:";
+          } catch {}
+          if (safe) {
+            openTag = `<a href="${escapeAttr(uri)}" target="_blank" rel="noopener noreferrer">`;
+            closeTag = "</a>";
+          } else {
+            openTag = "<span>";
+            closeTag = "</span>";
+          }
           break;
+        }
       }
       if (openTag) {
-        events.push({ pos: byteStart, type: "open", tag: openTag, end: byteEnd });
-        events.push({ pos: byteEnd, type: "close", tag: closeTag, end: byteEnd });
+        const ord = ordinalCounter++;
+        events.push({ pos: byteStart, type: "open", tag: openTag, end: byteEnd, ordinal: ord });
+        events.push({ pos: byteEnd, type: "close", tag: closeTag, end: byteEnd, ordinal: ord });
       }
     }
   }
 
   // Sort: by position; at same position opens before closes,
-  // longer spans open first, shorter spans close first (proper nesting)
+  // longer spans open first, shorter spans close first,
+  // stable ordinal tiebreaker for identical ranges
   events.sort((a, b) => {
     if (a.pos !== b.pos) return a.pos - b.pos;
     if (a.type === "open" && b.type === "close") return -1;
     if (a.type === "close" && b.type === "open") return 1;
-    if (a.type === "open") return b.end - a.end; // longer span opens first
-    return a.end - b.end; // shorter span closes first
+    if (a.type === "open") {
+      const endDiff = b.end - a.end;
+      return endDiff !== 0 ? endDiff : a.ordinal - b.ordinal;
+    }
+    const endDiff = a.end - b.end;
+    return endDiff !== 0 ? endDiff : b.ordinal - a.ordinal;
   });
 
   const decoder = new TextDecoder();
@@ -115,7 +134,8 @@ function renderBlock(block: Block): string {
       return `<p>${html}</p>`;
     }
     case "pub.leaflet.blocks.header": {
-      const tag = `h${block.level ?? 2}`;
+      const level = Math.max(1, Math.min(6, Math.floor(Number(block.level) || 2)));
+      const tag = `h${level}`;
       const html = applyFacets(block.plaintext ?? "", block.facets);
       return `<${tag}>${html}</${tag}>`;
     }
