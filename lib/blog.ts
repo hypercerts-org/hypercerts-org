@@ -198,7 +198,7 @@ function findFirstImage(pages: { blocks?: { block: Block }[] }[]): string | unde
       if (block.$type === "pub.leaflet.blocks.iframe" && block.url) {
         const match = block.url.match(/youtube\.com\/embed\/([^?/]+)/);
         if (match) {
-          return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
+          return `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
         }
       }
     }
