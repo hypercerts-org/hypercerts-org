@@ -145,6 +145,19 @@
   border-radius: 12px;
   margin: 1.5em 0;
 }
+/* Responsive iframes / embeds (YouTube, etc.) */
+.blog-content iframe,
+.blog-content embed,
+.blog-content object,
+.blog-content video {
+  max-width: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+  border-radius: 12px;
+  margin: 1.5em 0;
+}
 .blog-content hr {
   border: none;
   border-top: 1px solid #D2D2D2;
