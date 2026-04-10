@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { fetchBlogPosts } from "@/lib/rss";
+import { fetchBlogPosts } from "@/lib/blog";
 
 export const metadata = {
   title: "Blog",

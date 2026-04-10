@@ -52,13 +52,8 @@
   display: none;
 }
 
-/* Blog content — styles for Leaflet RSS HTML */
-.blog-content > .postContent {
-  display: flex;
-  flex-direction: column;
-}
-.blog-content > :first-child,
-.blog-content > .postContent > :first-child {
+/* Blog content styles */
+.blog-content > :first-child {
   margin-top: 0 !important;
 }
 .blog-content p {
@@ -78,42 +73,30 @@
 .blog-content h2 + h3 {
   margin-top: 0.25em;
 }
+.blog-content h1 {
+  font-size: 2rem;
+}
 .blog-content h2 {
   font-size: 1.5rem;
 }
 .blog-content h3 {
   font-size: 1.25rem;
 }
-/* Leaflet lists: custom flex-based structure */
 .blog-content ul,
 .blog-content ol {
-  padding-left: 0 !important;
+  padding-left: 1.5em;
   margin-top: 0.25em;
   margin-bottom: 1em;
 }
+.blog-content ul {
+  list-style-type: disc;
+}
+.blog-content ol {
+  list-style-type: decimal;
+}
 .blog-content li {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 0.5em !important;
-  margin-bottom: 0.25em !important;
-  padding-bottom: 0 !important;
-}
-/* Leaflet bullet marker */
-.blog-content li .listMarker {
-  margin-top: 10px !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  width: 5px !important;
-  height: 5px !important;
-  min-width: 5px;
-  border-radius: 50%;
-  background-color: #535353 !important;
-  flex-shrink: 0;
-}
-/* Remove paragraph margin inside list items */
-.blog-content li p {
-  margin-bottom: 0.15em !important;
+  display: list-item;
+  margin-bottom: 0.25em;
 }
 /* Tighten spacing when heading directly precedes list */
 .blog-content p + ul,
@@ -142,6 +125,19 @@
 .blog-content img {
   max-width: 100%;
   height: auto;
+  border-radius: 12px;
+  margin: 1.5em 0;
+}
+/* Responsive iframes / embeds (YouTube, etc.) */
+.blog-content iframe,
+.blog-content embed,
+.blog-content object,
+.blog-content video {
+  max-width: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
   border-radius: 12px;
   margin: 1.5em 0;
 }

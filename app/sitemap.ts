@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { fetchBlogPosts } from "@/lib/rss";
+import { fetchBlogPosts } from "@/lib/blog";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await fetchBlogPosts();
