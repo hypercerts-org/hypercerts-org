@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
+import { blogPath, blogCanonical, blogAbsoluteUrl } from "@/lib/blog-url";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -14,12 +15,12 @@ export async function generateMetadata({ params }: Props) {
     title: post.title,
     description: post.description,
     alternates: {
-      canonical: `https://hypercerts.org/blog/${slug}`,
+      canonical: blogCanonical(slug),
     },
     openGraph: {
       title: `${post.title} | Hypercerts Blog`,
       description: post.description,
-      url: `https://hypercerts.org/blog/${slug}`,
+      url: blogCanonical(slug),
       type: "article",
       publishedTime: new Date(post.pubDate).toISOString(),
       authors: ["Hypercerts Foundation"],
@@ -59,6 +60,9 @@ export default async function BlogPostPage({ params }: Props) {
   });
 
   const isoDate = new Date(post.pubDate).toISOString();
+  const backHref = await blogPath();
+  const canonical = blogCanonical(slug);
+  const absoluteUrl = blogAbsoluteUrl(slug);
 
   return (
     <main className="bg-white py-24 md:py-32">
@@ -69,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
             {
               "@context": "https://schema.org",
               "@type": "Article",
-              "@id": `https://hypercerts.org/blog/${slug}#article`,
+              "@id": `${absoluteUrl}#article`,
               headline: post.title,
               description: post.description,
               datePublished: isoDate,
@@ -96,7 +100,7 @@ export default async function BlogPostPage({ params }: Props) {
               },
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `https://hypercerts.org/blog/${slug}`,
+                "@id": canonical,
               },
             },
             {
@@ -113,7 +117,7 @@ export default async function BlogPostPage({ params }: Props) {
                   "@type": "ListItem",
                   position: 2,
                   name: "Blog",
-                  item: "https://hypercerts.org/blog",
+                  item: blogCanonical(),
                 },
                 {
                   "@type": "ListItem",
@@ -128,7 +132,7 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="max-w-3xl mx-auto px-6">
         {/* Back link */}
         <Link
-          href="/blog"
+          href={backHref}
           className="font-body text-body-sm text-brand-accent hover:text-brand-black transition mb-10 inline-block"
         >
           &larr; All posts
@@ -164,7 +168,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-ui-separator">
           <Link
-            href="/blog"
+            href={backHref}
             className="font-body text-body-sm text-brand-black font-medium hover:underline"
           >
             &larr; All posts

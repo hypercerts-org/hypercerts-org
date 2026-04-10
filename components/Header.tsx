@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { headerNavLinks as navLinks } from "@/lib/data/navigation";
+import { getHeaderNavLinks } from "@/lib/data/navigation";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const navLinks = getHeaderNavLinks();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white h-[50px] flex items-center px-6 border-b border-ui-separator">

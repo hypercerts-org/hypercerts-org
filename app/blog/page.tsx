@@ -1,19 +1,27 @@
 import Link from "next/link";
 import { fetchBlogPosts } from "@/lib/blog";
+import { blogPath, blogCanonical } from "@/lib/blog-url";
 
 export const metadata = {
   title: "Blog",
   description:
     "Updates from the Hypercerts Foundation on protocol development and highlights from across the ecosystem.",
+  alternates: {
+    canonical: blogCanonical(),
+  },
   openGraph: {
     title: "Blog | Hypercerts",
     description:
       "Updates from the Hypercerts Foundation on protocol development and highlights from across the ecosystem.",
+    url: blogCanonical(),
   },
 };
 
 export default async function BlogPage() {
   const posts = await fetchBlogPosts();
+  const postPaths = await Promise.all(
+    posts.map((post) => blogPath(post.slug))
+  );
 
   return (
     <main className="bg-white py-24 md:py-32">
@@ -53,10 +61,10 @@ export default async function BlogPage() {
           </p>
         ) : (
           <div className="space-y-0">
-            {posts.map((post) => (
+            {posts.map((post, i) => (
               <Link
                 key={post.slug}
-                href={`/blog/${post.slug}`}
+                href={postPaths[i]}
                 className="group block border-t border-ui-separator py-10 first:border-t first:border-brand-accent/40"
               >
                 <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-12 items-start">

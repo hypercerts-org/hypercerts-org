@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
 import { fetchBlogPosts } from "@/lib/blog";
+import { blogCanonical } from "@/lib/blog-url";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await fetchBlogPosts();
 
   const blogEntries = posts.map((post) => ({
-    url: `https://hypercerts.org/blog/${post.slug}`,
+    url: blogCanonical(post.slug),
     lastModified: new Date(post.pubDate),
     changeFrequency: "monthly" as const,
     priority: 0.7,
@@ -19,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: "https://hypercerts.org/blog",
+      url: blogCanonical(),
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
