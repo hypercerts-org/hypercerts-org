@@ -180,19 +180,12 @@ function renderBlocks(pages: { blocks?: { block: Block }[] }[]): string {
 }
 
 function findFirstImage(pages: { blocks?: { block: Block }[] }[]): string | undefined {
-  // 1. Look for an image block first
   for (const page of pages) {
     for (const entry of page.blocks ?? []) {
       const block = entry.block;
       if (block.$type === "pub.leaflet.blocks.image" && block.url) {
         return block.url;
       }
-    }
-  }
-  // 2. Fall back to YouTube thumbnail
-  for (const page of pages) {
-    for (const entry of page.blocks ?? []) {
-      const block = entry.block;
       if (block.$type === "pub.leaflet.blocks.iframe" && block.url) {
         const match = block.url.match(/youtube\.com\/embed\/([^?/]+)/);
         if (match) {
