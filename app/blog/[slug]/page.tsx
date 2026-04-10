@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { fetchBlogPost, fetchBlogPosts } from "@/lib/rss";
+import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
 
 interface Props {
   params: Promise<{ slug: string }>;
