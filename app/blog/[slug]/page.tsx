@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props) {
       authors: ["Hypercerts Foundation"],
       images: [
         {
-          url: "/img/hypercerts_opengraph-v2.jpg",
+          url: post.image ?? "/img/hypercerts_opengraph-v2.jpg",
           width: 1200,
           height: 630,
           alt: post.title,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: ["/img/hypercerts_opengraph-v2.jpg"],
+      images: [post.image ?? "/img/hypercerts_opengraph-v2.jpg"],
     },
   };
 }
@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: Props) {
               datePublished: isoDate,
               image: {
                 "@type": "ImageObject",
-                url: "https://hypercerts.org/img/hypercerts_opengraph-v2.jpg",
+                url: post.image ?? "https://hypercerts.org/img/hypercerts_opengraph-v2.jpg",
                 width: 1200,
                 height: 630,
               },
