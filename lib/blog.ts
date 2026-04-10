@@ -25,7 +25,7 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
   const bytes = new TextEncoder().encode(plaintext);
 
   // Build a list of boundary events
-  type Event = { pos: number; type: "open" | "close"; tag: string };
+  type Event = { pos: number; type: "open" | "close"; tag: string; end: number };
   const events: Event[] = [];
 
   for (const facet of facets) {
@@ -48,16 +48,20 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
           break;
       }
       if (openTag) {
-        events.push({ pos: byteStart, type: "open", tag: openTag });
-        events.push({ pos: byteEnd, type: "close", tag: closeTag });
+        events.push({ pos: byteStart, type: "open", tag: openTag, end: byteEnd });
+        events.push({ pos: byteEnd, type: "close", tag: closeTag, end: byteEnd });
       }
     }
   }
 
-  // Sort: by position, opens before closes at same position
+  // Sort: by position; at same position opens before closes,
+  // longer spans open first, shorter spans close first (proper nesting)
   events.sort((a, b) => {
     if (a.pos !== b.pos) return a.pos - b.pos;
-    return a.type === "open" ? -1 : 1;
+    if (a.type === "open" && b.type === "close") return -1;
+    if (a.type === "close" && b.type === "open") return 1;
+    if (a.type === "open") return b.end - a.end; // longer span opens first
+    return a.end - b.end; // shorter span closes first
   });
 
   const decoder = new TextDecoder();
@@ -117,8 +121,16 @@ function renderBlock(block: Block): string {
     }
     case "pub.leaflet.blocks.horizontalRule":
       return "<hr />";
-    case "pub.leaflet.blocks.iframe":
-      return `<iframe src="${escapeAttr(block.url ?? "")}" width="100%" height="${block.height ?? 300}" allow="fullscreen" loading="lazy" style="border:none;"></iframe>`;
+    case "pub.leaflet.blocks.iframe": {
+      const iframeSrc = block.url ?? "";
+      try {
+        const scheme = new URL(iframeSrc).protocol;
+        if (scheme !== "https:" && scheme !== "http:") return "";
+      } catch {
+        return "";
+      }
+      return `<iframe src="${escapeAttr(iframeSrc)}" width="100%" allow="fullscreen" loading="lazy" style="border:none;"></iframe>`;
+    }
     case "pub.leaflet.blocks.unorderedList": {
       const items = (block.children ?? [])
         .map((item) => {
@@ -167,41 +179,46 @@ interface ATRecord {
 }
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
-  const url = `${PDS}/xrpc/com.atproto.repo.listRecords?repo=${DID}&collection=${COLLECTION}&limit=100`;
-  const res = await fetch(url, { next: { revalidate: 60 } });
+  try {
+    const url = `${PDS}/xrpc/com.atproto.repo.listRecords?repo=${DID}&collection=${COLLECTION}&limit=100`;
+    const res = await fetch(url, { next: { revalidate: 60 } });
 
-  if (!res.ok) return [];
+    if (!res.ok) return [];
 
-  const data = await res.json();
-  const records: ATRecord[] = data.records ?? [];
+    const data = await res.json();
+    const records: ATRecord[] = data.records ?? [];
 
-  const posts: BlogPost[] = records
-    .filter((r) => r.value.publishedAt)
-    .map((r) => {
-      const { title, path, publishedAt, content } = r.value;
-      const slug = path.replace(/^\//, "");
-      const htmlContent = content?.pages
-        ? renderBlocks(content.pages)
-        : "";
-      const plainText = stripHtml(htmlContent);
-      const description =
-        plainText.slice(0, 300) + (plainText.length > 300 ? "…" : "");
+    const posts: BlogPost[] = records
+      .filter((r) => r.value.publishedAt)
+      .map((r) => {
+        const { title, path, publishedAt, content } = r.value;
+        const slug = path.replace(/^\//, "");
+        const htmlContent = content?.pages
+          ? renderBlocks(content.pages)
+          : "";
+        const plainText = stripHtml(htmlContent);
+        const description =
+          plainText.slice(0, 300) + (plainText.length > 300 ? "…" : "");
 
-      return {
-        title,
-        link: `${LEAFLET_BASE}${path}`,
-        slug,
-        description,
-        content: htmlContent,
-        pubDate: publishedAt!,
-      };
-    })
-    .sort(
-      (a, b) =>
-        new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
-    );
+        return {
+          title,
+          link: `${LEAFLET_BASE}${path}`,
+          slug,
+          description,
+          content: htmlContent,
+          pubDate: publishedAt!,
+        };
+      })
+      .sort(
+        (a, b) =>
+          new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+      );
 
-  return posts;
+    return posts;
+  } catch (err) {
+    console.error("Failed to fetch blog posts from AT Protocol:", err);
+    return [];
+  }
 }
 
 export async function fetchBlogPost(
