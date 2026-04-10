@@ -159,7 +159,14 @@ function renderBlocks(pages: { blocks?: { block: Block }[] }[]): string {
 }
 
 function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+  return html
+    .replace(/<[^>]*>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 // --- AT Protocol fetch ---
