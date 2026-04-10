@@ -135,9 +135,15 @@ export default async function BlogPostPage({ params }: Props) {
         </Link>
 
         {/* Header */}
-        <h1 className="font-display text-[32px] sm:text-[42px] md:text-[56px] leading-[1.05] tracking-[-0.02em] text-brand-black mb-6">
+        <h1 className="font-display text-[32px] sm:text-[42px] md:text-[56px] leading-[1.05] tracking-[-0.02em] text-brand-black mb-4">
           {post.title}
         </h1>
+
+        {post.description && (
+          <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed mb-6">
+            {post.description}
+          </p>
+        )}
 
         <div className="flex items-center gap-4 mb-6 pb-8 border-b border-brand-accent/40">
           <time dateTime={isoDate} className="font-body text-body-sm text-ui-grey-dark">
