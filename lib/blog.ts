@@ -179,17 +179,26 @@ function renderBlocks(pages: { blocks?: { block: Block }[] }[]): string {
   return html.join("\n");
 }
 
+function isSafeUrl(url: string): boolean {
+  try {
+    const scheme = new URL(url).protocol;
+    return scheme === "https:" || scheme === "http:";
+  } catch {
+    return false;
+  }
+}
+
 function findFirstImage(pages: { blocks?: { block: Block }[] }[]): string | undefined {
   for (const page of pages) {
     for (const entry of page.blocks ?? []) {
       const block = entry.block;
-      if (block.$type === "pub.leaflet.blocks.image" && block.url) {
+      if (block.$type === "pub.leaflet.blocks.image" && block.url && isSafeUrl(block.url)) {
         return block.url;
       }
       if (block.$type === "pub.leaflet.blocks.iframe" && block.url) {
         const match = block.url.match(/youtube\.com\/embed\/([^?/]+)/);
         if (match) {
-          return `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
+          return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
         }
       }
     }
