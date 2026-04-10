@@ -73,6 +73,9 @@
 .blog-content h2 + h3 {
   margin-top: 0.25em;
 }
+.blog-content h1 {
+  font-size: 2rem;
+}
 .blog-content h2 {
   font-size: 1.5rem;
 }
