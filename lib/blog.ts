@@ -5,6 +5,7 @@ export interface BlogPost {
   description: string;
   content: string;
   pubDate: string;
+  image?: string;
 }
 
 const DID = "did:plc:s4puetfspot742ai7y4otuel";
@@ -178,6 +179,21 @@ function renderBlocks(pages: { blocks?: { block: Block }[] }[]): string {
   return html.join("\n");
 }
 
+function findFirstImage(pages: { blocks?: { block: Block }[] }[]): string | undefined {
+  for (const page of pages) {
+    for (const entry of page.blocks ?? []) {
+      const block = entry.block;
+      if (block.$type === "pub.leaflet.blocks.iframe" && block.url) {
+        const match = block.url.match(/youtube\.com\/embed\/([^?/]+)/);
+        if (match) {
+          return `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
+        }
+      }
+    }
+  }
+  return undefined;
+}
+
 function stripHtml(html: string): string {
   return html
     .replace(/<[^>]*>/g, "")
@@ -221,9 +237,9 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
       .map((r) => {
         const { title, description: rawDesc, path, publishedAt, content } = r.value;
         const slug = path.replace(/^\//, "");
-        const htmlContent = content?.pages
-          ? renderBlocks(content.pages)
-          : "";
+        const pages = content?.pages ?? [];
+        const htmlContent = pages.length ? renderBlocks(pages) : "";
+        const image = findFirstImage(pages);
         const description = rawDesc
           || (() => {
             const plainText = stripHtml(htmlContent);
@@ -237,6 +253,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
           description,
           content: htmlContent,
           pubDate: publishedAt!,
+          image,
         };
       })
       .sort(
