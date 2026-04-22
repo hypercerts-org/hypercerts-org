@@ -20,23 +20,23 @@ export const footerNavColumns: NavColumn[] = [
     header: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
-      { label: "Docs", href: "https://docs.hypercerts.org" },
-      { label: "GitHub", href: "https://github.com/hypercerts-org" },
+      { label: "Docs", href: "https://docs.hypercerts.org", external: true },
+      { label: "GitHub", href: "https://github.com/hypercerts-org", external: true },
     ],
   },
   {
     header: "Social",
     links: [
-      { label: "Bluesky", href: "https://bsky.app/profile/hypercerts.org" },
-      { label: "Twitter", href: "https://twitter.com/hypercerts" },
-      { label: "Telegram", href: "https://t.me/+o4wPsJ7yEZYzNGFk" },
+      { label: "Bluesky", href: "https://bsky.app/profile/hypercerts.org", external: true },
+      { label: "Twitter", href: "https://twitter.com/hypercerts", external: true },
+      { label: "Telegram", href: "https://t.me/+o4wPsJ7yEZYzNGFk", external: true },
     ],
   },
   {
     header: "Connect",
     links: [
       { label: "Contact", href: "/contact" },
-      { label: "Support", href: "https://t.me/+FODiLtCV2TgwNzRi" },
+      { label: "Support", href: "https://t.me/+o4wPsJ7yEZYzNGFk", external: true },
     ],
   },
 ];

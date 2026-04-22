@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { footerNavColumns as navColumns } from "@/lib/data/navigation";
 
 export default function Footer() {
@@ -16,14 +17,23 @@ export default function Footer() {
                   <ul className="flex flex-col gap-2">
                     {col.links.map((link) => (
                       <li key={link.label}>
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
-                        >
-                          {link.label}
-                        </a>
+                        {link.external ? (
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
+                          >
+                            {link.label}
+                          </a>
+                        ) : (
+                          <Link
+                            href={link.href}
+                            className="text-ui-grey-dark hover:text-brand-black transition text-body-sm font-body"
+                          >
+                            {link.label}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
