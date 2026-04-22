@@ -46,7 +46,7 @@ const contactSections = [
     links: [
       {
         label: "Telegram",
-        href: "https://t.me/+FODiLtCV2TgwNzRi",
+        href: "https://t.me/+o4wPsJ7yEZYzNGFk",
       },
     ],
   },
