@@ -45,4 +45,4 @@ The protocol is shaped by: Hypercerts Foundation, Ma Earth, GainForest, Protocol
 - Bluesky: https://bsky.app/profile/hypercerts.org
 - Twitter: https://twitter.com/hypercerts
 - GitHub: https://github.com/hypercerts-org
-- Telegram: https://t.me/+YF9AYb6zCv1mNDJi
+- Telegram: https://t.me/+o4wPsJ7yEZYzNGFk
