@@ -32,7 +32,7 @@ const contactSections = [
     links: [
       {
         label: "Telegram group",
-        href: "https://t.me/+YF9AYb6zCv1mNDJi",
+        href: "https://t.me/+o4wPsJ7yEZYzNGFk",
       },
       {
         label: "GitHub",

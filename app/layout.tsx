@@ -81,7 +81,7 @@ export default function RootLayout({
                   "https://bsky.app/profile/hypercerts.org",
                   "https://twitter.com/hypercerts",
                   "https://github.com/hypercerts-org",
-                  "https://t.me/+YF9AYb6zCv1mNDJi",
+                  "https://t.me/+o4wPsJ7yEZYzNGFk",
                 ],
               },
               {

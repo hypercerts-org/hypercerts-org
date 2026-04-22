@@ -29,7 +29,7 @@ export const footerNavColumns: NavColumn[] = [
     links: [
       { label: "Bluesky", href: "https://bsky.app/profile/hypercerts.org" },
       { label: "Twitter", href: "https://twitter.com/hypercerts" },
-      { label: "Telegram", href: "https://t.me/+YF9AYb6zCv1mNDJi" },
+      { label: "Telegram", href: "https://t.me/+o4wPsJ7yEZYzNGFk" },
     ],
   },
   {

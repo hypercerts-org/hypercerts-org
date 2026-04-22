@@ -42,7 +42,7 @@ export default function GetInvolved() {
             Reach out &rarr;
           </a>
           <a
-            href="https://t.me/+YF9AYb6zCv1mNDJi"
+            href="https://t.me/+o4wPsJ7yEZYzNGFk"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-ui-bg transition"
