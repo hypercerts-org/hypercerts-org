@@ -106,7 +106,6 @@ You do not need to adopt the entire stack to use hypercerts—individual compone
 - [Bluesky](https://bsky.app/profile/hypercerts.org)
 - [Twitter](https://x.com/hypercerts)
 - [Telegram](https://t.me/+o4wPsJ7yEZYzNGFk)
-- [Telegram Support](https://t.me/+FODiLtCV2TgwNzRi)
 
 # Supporters
 
