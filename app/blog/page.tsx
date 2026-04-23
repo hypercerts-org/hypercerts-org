@@ -16,7 +16,7 @@ export default async function BlogPage() {
   const posts = await fetchBlogPosts();
 
   return (
-    <main className="bg-white py-24 md:py-32">
+    <main id="main-content" tabIndex={-1} className="bg-white py-24 md:py-32 outline-none">
       <p className="sr-only">
         The Hypercerts blog publishes updates on protocol development, ecosystem
         highlights, and perspectives on impact funding from the Hypercerts

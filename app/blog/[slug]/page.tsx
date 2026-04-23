@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: Props) {
   const isoDate = new Date(post.pubDate).toISOString();
 
   return (
-    <main className="bg-white py-24 md:py-32">
+    <main id="main-content" tabIndex={-1} className="bg-white py-24 md:py-32 outline-none">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

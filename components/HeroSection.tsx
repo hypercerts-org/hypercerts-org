@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className="relative h-screen -mt-[50px] pt-[50px] flex flex-col items-center justify-center bg-white overflow-hidden" aria-labelledby="hero-heading">
+    <section className="relative min-h-[calc(100svh-50px)] flex flex-col items-center justify-center bg-white overflow-hidden" aria-labelledby="hero-heading">
       {/* Guilloche background — positioned so only top 40% is visible */}
       <img
         src="/img/guilloche_02_top.svg"

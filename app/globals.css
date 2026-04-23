@@ -32,6 +32,9 @@
   h1, h2, h3 {
     @apply font-display;
   }
+  html[data-banner-hidden] [data-banner-role="announcement"] {
+    display: none !important;
+  }
 }
 
 @keyframes fade-in {

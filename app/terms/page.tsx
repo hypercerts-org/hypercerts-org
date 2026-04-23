@@ -4,7 +4,7 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="bg-white py-24 md:py-32">
+    <main id="main-content" tabIndex={-1} className="bg-white py-24 md:py-32 outline-none">
       <article className="max-w-3xl mx-auto px-6 font-body text-brand-black">
         <h1 className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] mb-12">
           Terms of Use
