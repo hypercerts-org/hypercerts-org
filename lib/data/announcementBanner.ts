@@ -1,6 +1,12 @@
 /** Leaf module — no runtime deps; safe for any bundle. */
 
-export type ISODate = `${number}-${number}-${number}`;
+/**
+ * Human-readable ISO date string (e.g. "2026-05-06"). The template-literal
+ * type proved too permissive to be useful, so the shape is enforced at
+ * runtime in `parseExpiry` (AnnouncementBanner.tsx), which logs and disables
+ * expiry on any value Date.parse rejects.
+ */
+export type ISODate = string;
 
 export type AnnouncementBannerConfig = {
   /** Bump this string to re-show the banner to users who previously dismissed. */

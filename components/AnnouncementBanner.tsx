@@ -20,7 +20,7 @@ const parseExpiry = (v?: string): number | null => {
 const buildPreHideScript = (id: string, exp: number | null) =>
   `(function(){try{var id=${safeScriptJSON(id)},exp=${
     Number.isFinite(exp as number) ? String(exp) : "null"
-  };if(exp!==null&&Date.now()>=exp){document.documentElement.setAttribute("data-banner-hidden","expired");return;}if(new RegExp("(?:^|;\\\\s*)banner-dismissed-"+id+"=true").test(document.cookie)){document.documentElement.setAttribute("data-banner-hidden","dismissed");}}catch(e){}})()`;
+  };if(exp!==null&&Date.now()>=exp){document.documentElement.setAttribute("data-banner-hidden","expired");return;}var name="banner-dismissed-"+id,pairs=document.cookie?document.cookie.split(";"):[];for(var i=0;i<pairs.length;i++){if(pairs[i].trim()===name+"=true"){document.documentElement.setAttribute("data-banner-hidden","dismissed");break;}}}catch(e){}})()`;
 
 // CSP note: this inline script requires script-src 'unsafe-inline' (or a nonce).
 // If a strict CSP is added later, move the script to /public/banner-init.js,

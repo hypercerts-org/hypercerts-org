@@ -19,23 +19,29 @@ export default function AnnouncementBannerDismiss({
 
   const dismiss = () => {
     try {
-      document.cookie = `banner-dismissed-${id}=true; path=/; max-age=31536000; SameSite=Lax`;
+      document.cookie = `banner-dismissed-${id}=true; path=/; max-age=31536000; SameSite=Lax; Secure`;
     } catch {}
     try {
       localStorage.setItem(`banner-dismissed-${id}`, "true");
     } catch {}
 
     const status = document.getElementById("banner-status");
-    if (status) status.textContent = "Banner dismissed";
+    if (status) status.textContent = "";
 
-    const focusTarget =
-      document.getElementById("main-content") ??
-      document.querySelector("main") ??
-      document.body;
+    const mainById = document.getElementById("main-content");
+    if (!mainById && process.env.NODE_ENV !== "production") {
+      console.warn(
+        "[AnnouncementBanner] #main-content not found on this route; falling back to <main> or <body>."
+      );
+    }
+    const focusTarget = mainById ?? document.querySelector("main") ?? document.body;
     (focusTarget as HTMLElement | null)?.focus?.({ preventScroll: true });
 
     requestAnimationFrame(() => {
-      document.documentElement.setAttribute("data-banner-hidden", "dismissed");
+      if (status) status.textContent = "Banner dismissed";
+      requestAnimationFrame(() => {
+        document.documentElement.setAttribute("data-banner-hidden", "dismissed");
+      });
     });
   };
 
