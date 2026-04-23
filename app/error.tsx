@@ -14,7 +14,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-white">
+    <main id="main-content" tabIndex={-1} className="min-h-screen flex items-center justify-center bg-white outline-none">
       <div className="text-center px-6">
         <h1 className="font-display text-display-2 text-brand-black">
           Something went wrong

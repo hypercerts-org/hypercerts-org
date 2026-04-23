@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hypercerts.org"),
@@ -104,8 +105,10 @@ export default function RootLayout({
           Skip to content
         </a>
         <Header />
+        <AnnouncementBanner />
         {children}
         <Footer />
+        <div id="banner-status" className="sr-only" aria-live="polite" />
       </body>
     </html>
   );
