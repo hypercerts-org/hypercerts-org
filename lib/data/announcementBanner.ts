@@ -21,12 +21,12 @@ export type AnnouncementBannerConfig = {
 };
 
 export const announcementBanner: AnnouncementBannerConfig = {
-  id: "community-call-2026-05-05",
-  date: "May 5, 2026",
+  id: "community-call-2026-06-02",
+  date: "June 2, 2026",
   title: "Community Call",
   description: "Updates, demos & open Q&A.",
-  ctaHref: "https://luma.com/fcyqpplm",
+  ctaHref: "https://luma.com/y0dxmfa9",
   ctaText: "RSVP on Luma",
   enabled: true,
-  expiresAt: "2026-05-06",
+  expiresAt: "2026-06-03",
 };
