@@ -32,7 +32,7 @@ export default function DocsMovedPage() {
     <main
       id="main-content"
       tabIndex={-1}
-      className="min-h-screen flex items-center justify-center bg-white outline-none"
+      className="min-h-screen flex items-start justify-center bg-white outline-none pt-[25vh]"
     >
       <div className="text-center px-6 max-w-2xl">
         <h1 className="font-display text-[48px] sm:text-[64px] md:text-[112px] leading-[1] tracking-[-0.02em] text-brand-black">
