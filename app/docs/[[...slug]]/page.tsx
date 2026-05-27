@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 
 /**
@@ -28,30 +27,7 @@ export const metadata: Metadata = {
 
 const DOCS_ORIGIN = "https://docs.hypercerts.org";
 
-/**
- * If a viewer landed on `/docs/<path>` we offer a direct jump to the
- * same path on `docs.hypercerts.org`. Most legacy URLs round-trip
- * cleanly because the new site mirrors the old top-level structure;
- * paths that don't resolve fall back to the new docs' own 404, which
- * still beats showing nothing here.
- */
-function buildTargetUrl(slugSegments: string[] | undefined): string {
-  if (!slugSegments || slugSegments.length === 0) return DOCS_ORIGIN;
-  // Re-encode each segment defensively — `params` arrives URL-decoded
-  // and re-encoding keeps any unicode / spaces well-formed.
-  const path = slugSegments.map((s) => encodeURIComponent(s)).join("/");
-  return `${DOCS_ORIGIN}/${path}`;
-}
-
-export default async function DocsMovedPage({
-  params,
-}: {
-  params: Promise<{ slug?: string[] }>;
-}) {
-  const { slug } = await params;
-  const target = buildTargetUrl(slug);
-  const showSpecificLink = !!slug && slug.length > 0;
-
+export default function DocsMovedPage() {
   return (
     <main
       id="main-content"
@@ -59,7 +35,7 @@ export default async function DocsMovedPage({
       className="min-h-screen flex items-center justify-center bg-white outline-none"
     >
       <div className="text-center px-6 max-w-2xl">
-        <h1 className="font-display text-[64px] sm:text-[80px] md:text-display-1 leading-[1] tracking-[-0.02em] text-brand-black">
+        <h1 className="font-display text-[48px] sm:text-[64px] md:text-[112px] leading-[1] tracking-[-0.02em] text-brand-black">
           The docs have moved
         </h1>
         <p className="font-body text-body-lg text-ui-grey-dark mt-6">
@@ -72,47 +48,6 @@ export default async function DocsMovedPage({
           </a>
           .
         </p>
-
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href={target}
-            className="inline-block bg-brand-black text-brand-white px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-navy transition"
-          >
-            {showSpecificLink ? "Open this page on the new docs" : "Open the docs"}
-          </a>
-          {showSpecificLink ? (
-            <a
-              href={DOCS_ORIGIN}
-              className="inline-block border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-black hover:text-brand-white transition"
-            >
-              Docs home
-            </a>
-          ) : (
-            <Link
-              href="/"
-              className="inline-block border border-brand-black text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-black hover:text-brand-white transition"
-            >
-              Go to hypercerts.org
-            </Link>
-          )}
-        </div>
-
-        {showSpecificLink ? (
-          <p className="font-body text-body-sm text-ui-grey-dark mt-8">
-            Trying to reach{" "}
-            <code className="font-mono text-sm bg-ui-grey-light px-1.5 py-0.5 rounded">
-              /docs/{slug!.join("/")}
-            </code>
-            ? If the page doesn&rsquo;t open at the new address, browse from{" "}
-            <a
-              href={DOCS_ORIGIN}
-              className="text-brand-accent hover:text-brand-black transition underline"
-            >
-              docs.hypercerts.org
-            </a>{" "}
-            instead.
-          </p>
-        ) : null}
       </div>
     </main>
   );
