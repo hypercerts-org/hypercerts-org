@@ -9,6 +9,9 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+# this project uses pnpm; foreign lockfiles are accidents
+/package-lock.json
+/yarn.lock
 
 # testing
 /coverage
