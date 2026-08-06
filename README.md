@@ -27,6 +27,13 @@ Open [http://localhost:3000](http://localhost:3000)
 - `lib/data/` — Content data (media, tools, ecosystem partners, navigation)
 - `lib/rss.ts` — Blog integration via Leaflet RSS feed
 - `public/img/` — Static assets, logos, screenshots, guilloche patterns
+- `public/brand/` — Brand asset kit (logos, mark, avatars, favicons)
+
+## Design
+
+[DESIGN.md](./DESIGN.md) explains what the site looks like and why — the typographic
+system, the guilloche ornament, and the rules to follow when adding a section. Read it
+before building new UI.
 
 ## Blog
 
