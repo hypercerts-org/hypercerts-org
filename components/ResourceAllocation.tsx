@@ -1,65 +1,48 @@
+import { bodyCopy, SectionHeading } from "./LandingSection";
+
 export default function ResourceAllocation() {
   return (
     <section
-      className="bg-white py-16 md:py-24"
-      aria-labelledby="resource-allocation-heading"
+      id="why-hypercerts"
+      className="bg-ui-bg py-24 md:py-32"
+      aria-labelledby="challenge-heading"
     >
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Section label */}
-        <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
-          The challenge
-        </p>
-
-        {/* Headline — reduced dominance: smaller than Architecture */}
-        <h2
-          id="resource-allocation-heading"
-          className="font-display text-[26px] sm:text-[32px] md:text-[42px] leading-[1.1] tracking-[-0.02em] text-brand-black max-w-2xl mb-8"
-        >
-          Upgrading How We{" "}
-          <span className="italic">Allocate Resources</span>
-        </h2>
-
-        {/* Two-column layout — left dominant, right secondary */}
-        <div className="grid md:grid-cols-[1.15fr_1fr] gap-10 md:gap-16">
-          {/* Left column — the problem (dominant, denser) */}
-          <div>
-            <div className="font-body text-body-lg text-ui-grey-dark leading-relaxed space-y-4">
-              {/* Lead sentence — visually distinct */}
-              <p className="text-brand-black font-medium">
-                Today&rsquo;s impact funding systems are fragmented, opaque, and
-                inefficient.
-              </p>
-              <p>
-                Decisions are made across disconnected platforms, committees, and
-                juries—with little shared context about what was done, what
-                worked, and what matters.
-              </p>
-              <p>
-                Collective work—like regenerative land, open-source software, and
-                community infrastructure—remains consistently undervalued and
-                underfunded.
+      <div className="mx-auto max-w-5xl px-6">
+        <SectionHeading id="challenge-heading" eyebrow="The challenge">
+          Closing the funding gap
+          <br />
+          <em className="text-brand-accent">for valuable work</em>
+        </SectionHeading>
+        <div className="mt-10 grid gap-12 md:grid-cols-2 md:gap-16">
+          <p className={bodyCopy}>
+            Ecosystem restoration, open-source software, research, and community
+            programs create benefits that sales or contracts often cannot fully
+            pay for. Projects and social enterprises need funding that
+            recognizes the wider value of their work.
+          </p>
+          <div className="space-y-8">
+            <div className="border-t-2 border-brand-black pt-4">
+              <h3 className="mb-3 font-display text-heading-4">
+                For projects and enterprises
+              </h3>
+              <p className={bodyCopy}>
+                Time goes into rewriting applications and reporting the same
+                information in disconnected systems.
               </p>
             </div>
-          </div>
-
-          {/* Right column — the missing piece (secondary, airier) */}
-          <div className="border-l-0 md:border-l md:border-ui-grey-light md:pl-10 md:my-1">
-            <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
-              What&rsquo;s missing
-            </p>
-            <div className="font-body text-body-lg text-ui-grey-dark leading-relaxed space-y-4 max-w-sm">
-              <p>
-                A way to bring together evidence, feedback, and
-                trust—creating shared context without enforcing a single
-                worldview or set of values.
-              </p>
-              <p>
-                This enables new forms of decision-making—where different actors
-                coordinate while applying their own judgment.
+            <div className="border-t-2 border-brand-black pt-4">
+              <h3 className="mb-3 font-display text-heading-4">For funders</h3>
+              <p className={bodyCopy}>
+                Previous reviews, local knowledge, and funding history are hard
+                to find, so useful assessment work is repeated.
               </p>
             </div>
           </div>
         </div>
+        <p className="mt-12 border-t border-ui-separator pt-6 font-display text-[28px] leading-tight text-brand-black md:text-[32px]">
+          The result today is a persistent gap between valuable work{" "}
+          <em>and the resources it needs.</em>
+        </p>
       </div>
     </section>
   );

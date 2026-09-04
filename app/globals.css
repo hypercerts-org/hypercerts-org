@@ -149,3 +149,94 @@
   border-top: 1px solid #D2D2D2;
   margin: 2em 0;
 }
+
+/* Keep anchor destinations and keyboard focus clear of the fixed header. */
+html { scroll-padding-top: 74px; }
+:focus-visible { outline: 2px solid #af2901; outline-offset: 4px; }
+
+/* Independent records connected to one project; reading order stays intact. */
+.trust-diagram { display: grid; gap: 24px; }
+.trust-contribution, .trust-update { margin-left: 24px; }
+.trust-contribution::before, .trust-update::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: -25px;
+  bottom: 50%;
+  width: 24px;
+  border-left: 1px solid #535353;
+  border-bottom: 1px solid #535353;
+}
+@media (min-width: 768px) {
+  .trust-diagram {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "peer project certification" "assessment project funding" ". update .";
+    column-gap: 32px;
+    row-gap: 32px;
+  }
+  .trust-project { grid-area: project; }
+  .trust-peer { grid-area: peer; }
+  .trust-certification { grid-area: certification; }
+  .trust-assessment { grid-area: assessment; }
+  .trust-funding { grid-area: funding; }
+  .trust-update { grid-area: update; }
+  .trust-contribution, .trust-update { margin-left: 0; }
+  .trust-contribution::before {
+    top: 50%; bottom: auto; left: auto; right: -33px;
+    width: 32px; border: 0; border-top: 1px solid #535353;
+  }
+  .trust-certification::before, .trust-funding::before { left: -33px; right: auto; }
+  .trust-update::before {
+    left: 50%; top: -33px; bottom: auto; width: 0; height: 32px;
+    border: 0; border-left: 1px solid #535353;
+  }
+}
+.funding-branches { border-top: 1px solid #535353; padding-top: 24px; }
+.funding-branches > li::before {
+  content: ""; position: absolute; left: 50%; top: -25px; height: 24px;
+  border-left: 1px solid #535353;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0s !important; animation: none !important; }
+}
+
+/* On smaller screens, every funding model branches from the same left rail. */
+@media (max-width: 1023px) {
+  .funding-branches {
+    position: relative;
+    border-top: 0;
+    border-left: 1px solid #535353;
+    padding-left: 24px;
+    margin-top: 24px;
+    padding-top: 0;
+  }
+  .funding-branches::before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: -1px;
+    width: calc(50% + 1px);
+    height: 24px;
+    border-top: 1px solid #535353;
+    border-left: 1px solid #535353;
+  }
+  .funding-branches > li::before {
+    top: 50%;
+    left: -25px;
+    height: 0;
+    width: 24px;
+    border-left: 0;
+    border-top: 1px solid #535353;
+  }
+}
+
+@media (max-width: 767px) {
+  .trust-contribution::after {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    bottom: -25px;
+    border-left: 1px solid #535353;
+  }
+}

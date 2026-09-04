@@ -10,6 +10,9 @@ export interface NavColumn {
 }
 
 export const headerNavLinks: NavLink[] = [
+  { label: "Why Hypercerts", href: "/#why-hypercerts" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Use cases", href: "/#use-cases" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Docs \u2197", href: "https://docs.hypercerts.org", external: true },
@@ -21,22 +24,42 @@ export const footerNavColumns: NavColumn[] = [
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Docs", href: "https://docs.hypercerts.org", external: true },
-      { label: "GitHub", href: "https://github.com/hypercerts-org", external: true },
+      {
+        label: "GitHub",
+        href: "https://github.com/hypercerts-org",
+        external: true,
+      },
     ],
   },
   {
     header: "Social",
     links: [
-      { label: "Bluesky", href: "https://bsky.app/profile/hypercerts.org", external: true },
-      { label: "Twitter", href: "https://twitter.com/hypercerts", external: true },
-      { label: "Telegram", href: "https://t.me/+o4wPsJ7yEZYzNGFk", external: true },
+      {
+        label: "Bluesky",
+        href: "https://bsky.app/profile/hypercerts.org",
+        external: true,
+      },
+      {
+        label: "Twitter",
+        href: "https://twitter.com/hypercerts",
+        external: true,
+      },
+      {
+        label: "Telegram",
+        href: "https://t.me/+o4wPsJ7yEZYzNGFk",
+        external: true,
+      },
     ],
   },
   {
     header: "Connect",
     links: [
       { label: "Contact", href: "/contact" },
-      { label: "Support", href: "https://t.me/+o4wPsJ7yEZYzNGFk", external: true },
+      {
+        label: "Support",
+        href: "https://t.me/+o4wPsJ7yEZYzNGFk",
+        external: true,
+      },
     ],
   },
 ];

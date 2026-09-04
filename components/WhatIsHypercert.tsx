@@ -1,72 +1,81 @@
-const steps = [
+import {
+  bodyCopy,
+  developerGuideUrl,
+  SectionHeading,
+  textLink,
+} from "./LandingSection";
+
+const contributions = [
   {
-    number: 1,
-    title: "Record",
-    body: "Projects create structured records of their work—what was done or is planned—forming a shared foundation for evaluation and funding.",
+    role: "Projects and organizations",
+    action:
+      "Keep approved profiles and information about their work up to date.",
+    record: "Profiles & work",
   },
   {
-    number: 2,
-    title: "Evaluate",
-    body: "Domain experts, communities, and tools assess contributions. Evaluations accumulate over time, building a shared layer of trust.",
+    role: "Networks and certifiers",
+    action:
+      "Publish memberships, endorsements, and certifications others can check.",
+    record: "Memberships & endorsements",
   },
   {
-    number: 3,
-    title: "Fund",
-    body: "Funders use shared records and evaluations to make better decisions. The resulting impact is attributed to contributors and funders.",
+    role: "Evaluators",
+    action:
+      "Publish evidence and assessments, with a clear record of who produced them.",
+    record: "Evidence & assessments",
+  },
+  {
+    role: "Funders",
+    action:
+      "Use relevant information to assess projects and record which work they support.",
+    record: "Funding history",
   },
 ];
 
 export default function WhatIsHypercert() {
   return (
     <section
-      id="what-is-hypercert"
-      className="bg-ui-bg py-28 md:py-36"
-      aria-labelledby="what-is-hypercert-heading"
+      id="how-it-works"
+      className="bg-white py-24 md:py-32"
+      aria-labelledby="protocol-heading"
     >
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Section label */}
-        <p className="font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent mb-4 text-center">
-          What is a hypercert
-        </p>
-
-        {/* Headline */}
-        <h2
-          id="what-is-hypercert-heading"
-          className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black text-center max-w-3xl mx-auto"
-        >
-          A Living Record of Work
+      <div className="mx-auto max-w-5xl px-6">
+        <SectionHeading id="protocol-heading" eyebrow="The Hypercerts protocol">
+          A shared language
           <br />
-          <span className="italic text-brand-accent">That Can Be Funded</span>
-        </h2>
-
-        {/* Lead paragraph */}
-        <p className="font-body text-body-lg text-ui-grey-dark text-center max-w-2xl mx-auto mt-8 leading-relaxed">
-          At its core, a hypercert captures a simple claim: what was done or is planned, by whom, when, and where. As evidence and feedback accumulate, it becomes a shared, evolving picture of the work and its value.
+          <em className="text-brand-accent">for funding</em>
+        </SectionHeading>
+        <p className={`mt-8 max-w-3xl ${bodyCopy}`}>
+          The Hypercerts Foundation stewards the protocol and maintains shared,
+          open infrastructure. Common formats let projects, networks,
+          evaluators, and funders publish information that other participating
+          applications can understand and use.
         </p>
-
-        {/* Three steps — with connecting line */}
-        <div className="grid md:grid-cols-3 gap-0 mt-20">
-          {steps.map((step, index) => (
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {contributions.map(({ role, action, record }) => (
             <div
-              key={step.number}
-              className={`relative pt-8 ${index < steps.length - 1 ? "md:border-r md:border-ui-separator md:pr-10" : ""} ${index > 0 ? "md:pl-10" : ""} ${index > 0 ? "mt-10 md:mt-0" : ""}`}
+              key={role}
+              className="flex flex-col border-t-2 border-brand-black pt-5"
             >
-              {/* Step number */}
-              <div className="w-10 h-10 rounded-full border-2 border-brand-black flex items-center justify-center mb-5">
-                <span className="font-body text-body-sm font-medium text-brand-black">
-                  {step.number}
-                </span>
-              </div>
-              <h3 className="font-display text-heading-4 text-brand-black mb-3">
-                {step.title}
-              </h3>
-              <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed">
-                {step.body}
+              <h3 className="mb-4 font-display text-heading-4">{role}</h3>
+              <p className={`flex-1 ${bodyCopy}`}>{action}</p>
+              <p className="mt-6 border-t border-ui-separator pt-3 font-body text-body-sm leading-relaxed text-brand-accent">
+                {record}
               </p>
             </div>
           ))}
         </div>
-
+        <div className="mt-12 rounded-brand border border-ui-separator bg-surface-cream p-6 md:p-8">
+          <p className={bodyCopy}>
+            Organizations can connect approved public information from their
+            existing systems, while keeping private information in those
+            systems.
+          </p>
+        </div>
+        <a href={developerGuideUrl} className={`mt-6 ${textLink}`}>
+          For builders: start with the developer guide{" "}
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </section>
   );

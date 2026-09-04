@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <title>Hypercerts social card — 1200 × 630</title>
+  <style>
+    @font-face {
+      font-family: Instrument;
+      src: url("../public/fonts/InstrumentSerif-Regular.woff2");
+    }
+    @font-face {
+      font-family: Instrument;
+      src: url("../public/fonts/InstrumentSerif-Italic.woff2");
+      font-style: italic;
+    }
+    @font-face {
+      font-family: Switzer;
+      src: url("../public/fonts/Switzer-Variable.woff2");
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #fff;
+      color: #000;
+    }
+    main {
+      position: relative;
+      height: 100%;
+      padding: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .ornament {
+      position: absolute;
+      width: 1500px;
+      height: 1000px;
+      left: -150px;
+      top: 0;
+      opacity: 0.15;
+      z-index: -1;
+    }
+    p {
+      font:
+        18px Switzer,
+        sans-serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #af2901;
+      margin: 0 0 28px;
+    }
+    h1 {
+      font:
+        96px/0.98 Instrument,
+        serif;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+    em {
+      color: #af2901;
+    }
+    .logo {
+      width: 180px;
+      height: auto;
+      margin-top: 48px;
+    }
+  </style>
+  <main>
+    <img class="ornament" src="../public/img/guilloche_02_top.svg" alt="" />
+    <p>The social funding layer for the open web</p>
+    <h1>Open infrastructure for<br /><em>funding valuable work</em></h1>
+    <img
+      class="logo"
+      src="../public/img/hypercerts_logo_horizontal.svg"
+      alt="Hypercerts"
+    />
+  </main>
+</html>

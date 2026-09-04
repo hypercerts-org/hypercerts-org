@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { featuredItems, recentTextItems, olderTextItems } from "@/lib/data/media";
+import {
+  featuredItems,
+  recentTextItems,
+  olderTextItems,
+} from "@/lib/data/media";
 import type { MediaItem } from "@/lib/data/media";
 
 function TextItem({ item }: { item: MediaItem }) {
@@ -51,14 +55,20 @@ export default function MediaSection() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section className="w-full bg-surface-cream py-24 md:py-32" aria-labelledby="media-section-heading">
+    <section
+      className="w-full bg-surface-cream py-24 md:py-32"
+      aria-labelledby="media-section-heading"
+    >
       <div className="max-w-5xl mx-auto px-6">
         {/* Section header */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           Get up to date
         </p>
-        <h2 id="media-section-heading" className="font-display text-display-3 md:text-display-2 text-brand-black mb-16">
-          Articles, Podcasts, and Talks
+        <h2
+          id="media-section-heading"
+          className="font-display text-display-3 md:text-display-2 text-brand-black mb-16"
+        >
+          Articles, podcasts, <em className="text-brand-accent">and talks</em>
         </h2>
 
         {/* Two-column: featured left, list right */}
@@ -124,7 +134,7 @@ export default function MediaSection() {
 
           {/* Right: text-only list */}
           <div>
-            <div className="divide-y divide-ui-separator">
+            <div id="media-links" className="divide-y divide-ui-separator">
               {recentTextItems.map((item) => (
                 <TextItem key={item.titleLink} item={item} />
               ))}
@@ -135,6 +145,8 @@ export default function MediaSection() {
             </div>
             <div className="mt-6">
               <button
+                aria-expanded={showAll}
+                aria-controls="media-links"
                 onClick={() => setShowAll(!showAll)}
                 className="font-body text-body-sm font-medium text-brand-black border border-ui-separator px-6 py-3 rounded-brand hover:border-brand-black transition"
               >
