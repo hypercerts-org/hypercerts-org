@@ -49,7 +49,7 @@ The pre-existing `no-img-element` lint warning in unused `components/OpenByDesig
 
 ## Browser feedback iteration
 
-The bridge uses two alternating rows at `/#reusable-information`: paragraph one on the left with a simple scattered-sheet SVG on the right, then a reusable-sheet SVG on the left with paragraph two on the right. Both paragraphs retain the original wording and use the same body typography. The first image has a tiny fading dot; the second has a dot moving eight SVG units along a short reuse arrow. Each animation lasts five seconds and respects reduced motion. Mobile stacks each paragraph with its corresponding image. The earlier labeled contribution map has been removed.
+The bridge at `/#reusable-information` is one short editorial section, grounded in the 9 September “Website and Docs Wireframe Review” meeting notes, section 3. Its heading is “The knowledge is there. Let’s make it reusable.” One paragraph concludes the fragmentation problem and introduces Hypercerts through visibility, attribution, and reuse in later funding decisions. It uses the existing section-heading component, typography, and content measure. The illustrations and their animations have been removed. Protocol mechanics remain after the trust examples.
 
 Removed the trust diagram's illustrative-example label, explanatory caption, and all three source footers and divider lines as requested. Card text retains its original comfortable padding. The examples remain illustrative in the underlying data and documentation.
 
@@ -70,3 +70,5 @@ The collective remains scrollable with hidden scrollbars and room for keyboard f
 Detail-pass validation: production build and lint passed with the existing unused-component image warning. At 320, 390, 682, 768, 884, 1024, and 1440px, the red SVG endpoint matched the next circle center exactly in both axes. Verified the line is continuous, all requested removals, guide destination, horizontal scrolling with hidden scrollbar, keyboard access, reduced motion, and no document overflow. Axe reported zero automated violations.
 
 Simple bridge validation: production build passed; lint retains only the existing unused-component warning. Checked the alternating desktop rows and stacked mobile order at six widths from 320 to 1440px. Verified unchanged paragraph text, no overflow, two small animations, and no animation under reduced motion.
+
+The editorial bridge revision passed the production build and lint (the existing unused `OpenByDesign.tsx` image warning remains). Browser checks covered 1237px desktop and 390px mobile layouts, with a 320px overflow check. The rendered homepage contains no em dashes, and the bridge contains no SVGs. Screenshots are saved in the 9 September output folder under `editorial-bridge`.
