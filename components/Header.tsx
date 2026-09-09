@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex h-[50px] items-center border-b border-ui-separator bg-white px-6"
+      className="fixed inset-x-0 top-0 z-50 flex h-[50px] items-center border-b border-ui-separator bg-white"
       onKeyDown={(event) => {
         if (event.key === "Escape" && menuOpen) {
           setMenuOpen(false);
@@ -25,7 +25,7 @@ export default function Header() {
           setMenuOpen(false);
       }}
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6">
+      <div className="landing-container flex items-center justify-between gap-6">
         <Link
           href="/"
           className="flex shrink-0 items-center"
@@ -42,7 +42,7 @@ export default function Header() {
           />
         </Link>
         <nav
-          className="hidden items-center gap-6 lg:flex"
+          className="hidden items-center gap-6 md:flex"
           aria-label="Main navigation"
         >
           {navLinks.map((link) => (
@@ -59,7 +59,7 @@ export default function Header() {
         <button
           ref={menuButton}
           type="button"
-          className="relative h-11 w-11 shrink-0 lg:hidden"
+          className="relative h-11 w-11 shrink-0 md:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
@@ -82,7 +82,7 @@ export default function Header() {
       <nav
         id="mobile-navigation"
         hidden={!menuOpen}
-        className={`${menuOpen ? "flex" : "hidden"} absolute inset-x-0 top-[50px] max-h-[calc(100dvh-50px)] flex-col overflow-y-auto border-b border-ui-separator bg-white px-6 py-4 lg:hidden`}
+        className={`${menuOpen ? "flex" : "hidden"} absolute inset-x-0 top-[50px] max-h-[calc(100dvh-50px)] flex-col overflow-y-auto border-b border-ui-separator bg-white py-4 md:hidden`}
         aria-label="Mobile navigation"
       >
         {navLinks.map((link) => (

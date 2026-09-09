@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { textLink } from "./LandingSection";
 import Image from "next/image";
 import { ecosystemPartners } from "@/lib/data/ecosystem";
 
@@ -7,7 +9,7 @@ export default function Ecosystem() {
       className="w-full bg-white py-24 md:py-32"
       aria-labelledby="ecosystem-heading"
     >
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="landing-container">
         {/* Eyebrow */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           The Hypercerts Collective
@@ -79,6 +81,12 @@ export default function Ecosystem() {
           {/* Spacer for right padding */}
           <div className="flex-shrink-0 w-6" aria-hidden="true" />
         </div>
+      </div>
+      <div className="landing-container mt-10">
+        <Link href="/about" className={textLink}>
+          Meet the Foundation and the people behind Hypercerts{" "}
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
     </section>
   );

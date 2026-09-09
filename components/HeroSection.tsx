@@ -29,7 +29,7 @@ export default function HeroSection() {
       />
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
         <p className="mb-6 max-w-xl font-body text-body-sm uppercase tracking-[0.2em] leading-relaxed text-brand-accent">
-          The social funding layer for the open web
+          The AI-native context layer
         </p>
         <h1
           id="hero-heading"
@@ -41,15 +41,15 @@ export default function HeroSection() {
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
           Hypercerts is an open protocol that connects information about
           valuable work with evidence, evaluations, and funding history.
-          Projects and organizations can share that information across
-          applications, helping funders build on what others already know.
+          Projects and organizations publish once, for any application or agent
+          to read. Funders build on what others already know.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a href="#how-it-works" className={primaryButton}>
             See how it works
           </a>
           <a href={developerGuideUrl} className={secondaryButton}>
-            Developer guide{" "}
+            Start the Guide{" "}
             <span className="ml-2" aria-hidden="true">
               ↗
             </span>

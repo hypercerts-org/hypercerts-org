@@ -1,42 +1,48 @@
 # September 2026 landing page
 
-Implemented on `feat/sep_2026_redesign`, 4 September 2026.
+Updated locally on `feat/sep_2026_redesign`, 9 September 2026. Do not push or deploy without a new user request.
 
-## Scope
+## Current implementation
 
-The homepage follows the current approved Miro frame: hero, mission, partner strip, challenge, protocol roles, Ma Earth, trust over time, why now, funding models, collective, media, contact, and footer. The previous tools showcase, Open by Design, and Knowledge Compounds sections are no longer rendered.
+The homepage follows the latest Miro continuity pass: hero, mission, moving partners, challenge, information-reuse bridge, selectable trust example, protocol roles, Ma Earth, why now, information-economy timeline, collective, media, contact, and footer. The header now links Home, About, and Docs. Existing media and the Ma Earth case page remain.
 
-The Ma Earth overview links to `/case-studies/ma-earth`. Both pages distinguish the completed funding round from the next step of using its records in another application's funding process. The shared header uses homepage section links that also work from other routes. The contact CTAs describe the existing contact form accurately.
+The trust illustration is a responsive SVG curve with three selectable fields. All fields share project updates and peer endorsements; the third signal is certification for local energy, community evaluation and impact data for land regeneration, and expert assessment for AI safety research. Select a signal to view that stage of the curve. The descriptions and contributors are illustrative examples, not real records. The graph has no numerical or universal trust score. Tabs support arrow keys, Home, and End; changes are announced to screen readers.
 
-The existing media data and featured-image layout remain. The partner strip is manually scrollable, with one keyboard-reachable link per partner; it no longer moves automatically or duplicates links. The collective retains its horizontal card layout and now uses the approved partner descriptions.
+The information-economy diagram has three connected chapters: today's crowdfunding and matching, possible next outcome payments, and future impact investing, commerce, and procurement. Bounties are described as a nearer possibility; procurement requires protocol changes. Current uses have grey panels, possible extensions white panels. The line draws once on entry and the panels settle into place. On narrow screens the timeline becomes vertical. Both diagrams respect reduced motion.
 
-Homepage metadata, JSON-LD, `llms.txt`, the sitemap, and the social preview image reflect the new positioning. JSON-LD describes the visible page and protocol without invisible FAQ claims or a mandatory funding sequence.
+The original hero, mission wave, protocol-corner, and contact guilloche treatments are restored. This deliberately follows the user's request for the existing site's background images over the design repository's usual single-ornament guidance. The expensive radial ornaments are existing static assets. Partner logos move continuously, pause on hover or with the pause button, and become a static scrollable row during keyboard use or reduced motion. Duplicate visuals are inert and hidden from assistive technology. Silvi is included from the updated wireframe.
 
-## Sources and assets
+A shared 64rem container aligns navigation, content, diagrams, and footer. Instrument Serif roman/italic and Switzer remain self-hosted. The latest accessible muted grey (#666666), 11px micro type token, and monochrome button hover are reflected in the site tokens. Section spacing stays generous and card padding is consistent.
 
-- [Approved homepage frame](https://miro.com/app/board/uXjVHrWL3EE=/?moveToWidget=3458764682674208723), read again during implementation.
-- [Approved Ma Earth case-study frame](https://miro.com/app/board/uXjVHrWL3EE=/?moveToWidget=3458764682667732989).
-- [Ma Earth](https://www.maearth.com/): Round 3 results report 201 projects and $2.19M distributed. The homepage uses the approved rounded wording “almost $2.2M.”
-- The 1 September 2026 Hypercerts community-call transcript supplies the almost $1M in crowd donations, $1M matching pool, and $200,000 collective bonus. The approved case frame supplies the partner-review and endorsement-allocation details.
-- [Ma Earth source photograph](https://www.maearth.com/images/home/hero/closed/mosaic-01.webp), stored at `public/img/case-studies/ma-earth-community.webp`. Visible attribution links to Ma Earth. The image depicts community members tending crops; it is not presented as a named project's documented funding result.
-- [Existing developer guide](https://docs.hypercerts.org/getting-started/building-on-hypercerts), checked for a successful response. The documentation redesign remains separate.
-- [AT Protocol overview](https://atproto.com/guides/overview).
-- Local design-repository rules and `examples/web-section.html`; existing self-hosted Instrument Serif roman/italic and Switzer Variable, color tokens, 12px radii, and section spacing retained. The sole homepage ornament is the static hero SVG.
+## About scaffold and editorial follow-up
 
-The social card is reproducible from `scripts/landing-social-card.html`: open with local-file access, use a 1200 × 630 viewport, wait for `document.fonts.ready`, and save the viewport to `public/img/hypercerts-opengraph-sep-2026.png`.
+`/about` contains the Foundation introduction, Protocol Labs origins, three explicit team placeholders, the seven organizations named in the new frame, and the contact section. It is marked `noindex` and intentionally omitted from the sitemap while incomplete.
+
+Before publishing About, confirm names, roles, portraits, relevant LinkedIn/GitHub/Bluesky links, and the partner roster. Replace the placeholders and remove `noindex` once approved. No names, biographies, or social links have been invented.
+
+The board still marks the hero category “AI-native context layer,” hero CTA choices, and “Information economy done right” as provisional. This iteration implements the latest visible wireframe wording for review. It does not silently substitute the alternative hero phrase on the adjacent sticky. Obvious typos in the protocol and why-now copy were corrected. “Start a conversation” accurately describes the existing contact form; no booking system is implied.
+
+## Authoritative sources
+
+- [02. Main website - Homepage continuity pass](https://miro.com/app/board/uXjVHrWL3EE=/?moveToWidget=3458764682674208723), including its 9 September review notes.
+- [02a. Main website - About draft](https://miro.com/app/board/uXjVHrWL3EE=/?moveToWidget=3458764683147680261).
+- Only these current frames were used for this iteration; archived page variants were excluded.
+- `hypercerts-design` upstream `098239c`, read after fetching its updated guidelines. The design repository's local checkout was not changed. Relevant rules include screen-safe muted grey, monochrome hover, typography, spacing, and ornament guidance.
+- Live [hypercerts.org](https://hypercerts.org/) inspected for original background placements and logo motion.
+- [Approved Ma Earth case-study frame](https://miro.com/app/board/uXjVHrWL3EE=/?moveToWidget=3458764682667732989), implemented in the previous iteration.
+- [Ma Earth](https://www.maearth.com/): Round 3 supported 201 projects with $2.19M, expressed as “almost $2.2M.” The page distinguishes this completed round from reuse of its records in another application's future funding process.
+- The existing Ma Earth photograph is credited visibly and stored at `public/img/case-studies/ma-earth-community.webp`.
+- [Existing developer guide](https://docs.hypercerts.org/getting-started/building-on-hypercerts); documentation redesign remains separate.
+
+Metadata, JSON-LD, `llms.txt`, and the reproducible social card reflect the new visible copy. The social card source is `scripts/landing-social-card.html`; capture it at 1200 × 630 after fonts load.
 
 ## Validation
 
-- `npm run build`: passed, including type checking and static generation of both pages.
-- `npm run lint`: passed with one pre-existing `no-img-element` warning in the unused `components/OpenByDesign.tsx`.
-- Added the five ESLint packages directly imported by `eslint.config.mjs` as dev dependencies, using their already-resolved versions. This fixes lint under pnpm's dependency isolation without upgrading runtime dependencies.
-- Checked both pages at 320, 375, 390, 768, 1024, and 1440px: no document overflow or broken images. All three self-hosted font faces loaded.
-- Viewed desktop/mobile screenshots and compared with the pre-change homepage and design example. Inspected heading wrapping, diagrams, image crops, section alignment, and the preserved featured-media layout.
-- Tested skip link, mobile menu, Tab navigation, Escape/focus return, anchor offset below the fixed header, and homepage navigation from the case-study page.
-- Tested media expansion: 6 → 16 → 6 entries, with `aria-expanded` updated.
-- Checked homepage, contact, blog, case-study, and developer-guide destinations: HTTP 200. Checked every homepage section-anchor target.
-- Body grey and accent contrast on white/grey/cream backgrounds range from 5.92:1 to 7.69:1. Used the [WCAG 2.2 quick reference](https://www.w3.org/WAI/WCAG22/quickref/) for the targeted reflow, contrast, keyboard, focus, and text-alternative checks; this is not a full accessibility conformance audit.
+- `npm run build`: passed, including TypeScript checks and static page generation.
+- `npm run lint`: zero errors.
+- 18 route/viewport checks: homepage, About, and Ma Earth at 320, 375, 390, 768, 1024, and 1440px; no document overflow, broken loaded images, or invalid internal anchors. All three font faces loaded.
+- 26 browser interaction checks: all nine project/signal combinations, tab keyboard behavior, logo pause/resume and focus behavior, reduced motion, mobile menu and Escape, About navigation, and draft metadata.
+- Axe 4.12.1: zero violations on the homepage and About. Image-backed text still requires manual contrast review; the restored subtle ornaments and overlaid text were inspected in screenshots. This is a targeted review, not a complete accessibility conformance audit.
+- Desktop and mobile screenshots reviewed for both diagrams, typography, spacing, restored backgrounds, and About. Partner images were checked after scrolling them into view.
 
-## Handoff
-
-No deployment was requested or performed. Beads (`bd`) is unavailable in the environment, so its onboarding and sync commands could not run. No landing-page implementation work remains; the docs redesign is the separate follow-up described in the original brief. The existing unused-component lint warning is unchanged.
+The pre-existing `no-img-element` lint warning in unused `components/OpenByDesign.tsx` remains. Beads (`bd`) is unavailable; editorial follow-ups are therefore recorded above.

@@ -18,7 +18,7 @@ const structuredData = {
   url: "https://hypercerts.org",
   name: "Hypercerts — Open infrastructure for funding valuable work",
   description:
-    "Hypercerts is an open protocol that connects information about valuable work with evidence, evaluations, and funding history. Projects and organizations can share that information across applications, helping funders build on what others already know.",
+    "Hypercerts is an open protocol that connects information about valuable work with evidence, evaluations, and funding history. Projects and organizations publish once, for any application or agent to read. Funders build on what others already know.",
   isPartOf: { "@id": "https://hypercerts.org/#website" },
   about: {
     "@type": "DefinedTerm",
@@ -41,9 +41,9 @@ export default function Home() {
       <MissionStatement />
       <PartnerLogos />
       <ResourceAllocation />
+      <TrustOverTime />
       <WhatIsHypercert />
       <UseCases />
-      <TrustOverTime />
       <WhyNow />
       <FundingModels />
       <Ecosystem />

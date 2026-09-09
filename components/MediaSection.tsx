@@ -59,7 +59,7 @@ export default function MediaSection() {
       className="w-full bg-surface-cream py-24 md:py-32"
       aria-labelledby="media-section-heading"
     >
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="landing-container">
         {/* Section header */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           Get up to date

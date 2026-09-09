@@ -29,7 +29,9 @@
   body {
     @apply font-body text-brand-black bg-brand-white;
   }
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply font-display;
   }
   html[data-banner-hidden] [data-banner-role="announcement"] {
@@ -38,8 +40,14 @@
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {
@@ -115,7 +123,7 @@
   color: #000;
 }
 .blog-content blockquote {
-  border-left: 2px solid #D2D2D2;
+  border-left: 2px solid #d2d2d2;
   padding-left: 1.25em;
   margin: 1.5em 0;
   font-style: italic;
@@ -146,97 +154,329 @@
 }
 .blog-content hr {
   border: none;
-  border-top: 1px solid #D2D2D2;
+  border-top: 1px solid #d2d2d2;
   margin: 2em 0;
 }
 
 /* Keep anchor destinations and keyboard focus clear of the fixed header. */
-html { scroll-padding-top: 74px; }
-:focus-visible { outline: 2px solid #af2901; outline-offset: 4px; }
+html {
+  scroll-padding-top: 74px;
+}
+:focus-visible {
+  outline: 2px solid #af2901;
+  outline-offset: 4px;
+}
 
-/* Independent records connected to one project; reading order stays intact. */
-.trust-diagram { display: grid; gap: 24px; }
-.trust-contribution, .trust-update { margin-left: 24px; }
-.trust-contribution::before, .trust-update::before {
-  content: "";
+/* Shared page measure: the logo, headings, diagrams and footer use one margin. */
+.landing-container {
+  width: 100%;
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+.trust-explorer {
+  border: 1px solid #d2d2d2;
+  border-radius: 12px;
+  overflow: clip;
+  background: white;
+}
+.trust-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 1px solid #d2d2d2;
+}
+.trust-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.trust-tab + .trust-tab {
+  border-left: 1px solid #d2d2d2;
+}
+.trust-tab:hover {
+  background: #f9f6ef;
+}
+.trust-tab[aria-selected="true"] {
+  color: #af2901;
+  border-bottom-color: #af2901;
+  background: #f9f6ef;
+}
+.trust-tab:focus-visible {
+  outline-offset: -6px;
+}
+.trust-panel {
+  padding: 32px;
+}
+.trust-panel:focus-visible {
+  outline-offset: -6px;
+}
+.trust-plot {
+  position: relative;
+  height: 260px;
+}
+.chart-axis,
+.chart-guide,
+.trust-potential,
+.trust-curve,
+.timeline-present,
+.timeline-future {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+.chart-axis {
+  stroke: #666;
+  stroke-width: 1;
+}
+.chart-guide {
+  stroke: #d2d2d2;
+  stroke-width: 1;
+}
+.trust-potential {
+  stroke: #999;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+}
+.trust-curve {
+  stroke: #af2901;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.diagram-reveal[data-visible="true"] .trust-curve,
+.diagram-reveal[data-visible="true"] .timeline-present {
+  animation: draw-line 650ms ease-out both;
+  stroke-dasharray: 1;
+}
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.trust-point {
   position: absolute;
-  left: -25px;
-  top: -25px;
-  bottom: 50%;
-  width: 24px;
-  border-left: 1px solid #535353;
-  border-bottom: 1px solid #535353;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #666;
+  background: white;
+  color: #666;
+  font-size: 14px;
+  transition:
+    background 250ms,
+    color 250ms;
 }
-@media (min-width: 768px) {
-  .trust-diagram {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "peer project certification" "assessment project funding" ". update .";
-    column-gap: 32px;
-    row-gap: 32px;
+.trust-point[data-added="true"] {
+  background: #af2901;
+  border-color: #af2901;
+  color: white;
+}
+.trust-signal {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #d2d2d2;
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 200ms,
+    background 200ms;
+}
+.trust-signal:hover {
+  border-color: #666;
+}
+.trust-signal[aria-pressed="true"] {
+  border-color: #af2901;
+  background: #f9f6ef;
+}
+.trust-signal > :last-child {
+  margin-top: auto;
+  padding-top: 16px;
+  width: 100%;
+}
+.trust-signal > :nth-last-child(2) {
+  margin-bottom: 24px;
+}
+.signal-mark {
+  color: #af2901;
+  font-size: 18px;
+}
+.economy-timeline {
+  position: relative;
+  padding-top: 48px;
+}
+.economy-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+}
+.timeline-present {
+  stroke: #af2901;
+  stroke-width: 2;
+}
+.timeline-future {
+  stroke: #666;
+  stroke-dasharray: 4 6;
+}
+.timeline-era {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.timeline-dot {
+  position: absolute;
+  top: -34px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #666;
+  border-radius: 50%;
+  background: #f9f6ef;
+}
+.timeline-era[data-current="true"] .timeline-dot {
+  border-color: #af2901;
+  background: #af2901;
+}
+.timeline-record {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 330px;
+  padding: 28px;
+  border: 1px solid #d2d2d2;
+  border-radius: 12px;
+  background: white;
+}
+.timeline-era[data-current="true"] .timeline-record {
+  background: #f1f1f1;
+  border-color: #666;
+}
+.diagram-reveal[data-visible="true"] .timeline-record {
+  animation: settle-in 700ms ease-out both;
+}
+@keyframes settle-in {
+  from {
+    transform: translateY(8px);
   }
-  .trust-project { grid-area: project; }
-  .trust-peer { grid-area: peer; }
-  .trust-certification { grid-area: certification; }
-  .trust-assessment { grid-area: assessment; }
-  .trust-funding { grid-area: funding; }
-  .trust-update { grid-area: update; }
-  .trust-contribution, .trust-update { margin-left: 0; }
-  .trust-contribution::before {
-    top: 50%; bottom: auto; left: auto; right: -33px;
-    width: 32px; border: 0; border-top: 1px solid #535353;
-  }
-  .trust-certification::before, .trust-funding::before { left: -33px; right: auto; }
-  .trust-update::before {
-    left: 50%; top: -33px; bottom: auto; width: 0; height: 32px;
-    border: 0; border-left: 1px solid #535353;
+  to {
+    transform: translateY(0);
   }
 }
-.funding-branches { border-top: 1px solid #535353; padding-top: 24px; }
-.funding-branches > li::before {
-  content: ""; position: absolute; left: 50%; top: -25px; height: 24px;
-  border-left: 1px solid #535353;
+.partner-marquee {
+  position: relative;
+  overflow: hidden;
+}
+.partner-track {
+  display: flex;
+  width: max-content;
+  animation: partner-scroll 60s linear infinite;
+}
+.partner-group {
+  display: flex;
+  flex-shrink: 0;
+}
+.partner-marquee:hover .partner-track,
+.partner-marquee[data-paused="true"] .partner-track {
+  animation-play-state: paused;
+}
+.partner-marquee:focus-within .partner-track {
+  animation: none;
+}
+.partner-marquee:focus-within {
+  overflow-x: auto;
+}
+.partner-marquee:focus-within .partner-group[aria-hidden] {
+  display: none;
+}
+@keyframes partner-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 767px) {
+  .trust-tab {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 12px;
+    gap: 12px;
+    font-size: 13px;
+  }
+  .trust-panel {
+    padding: 24px 20px;
+  }
+  .trust-plot {
+    height: 220px;
+  }
+  .trust-signal {
+    padding: 24px;
+  }
+  .economy-timeline {
+    padding-top: 0;
+    padding-left: 28px;
+  }
+  .economy-line {
+    display: none;
+  }
+  .economy-timeline > ol {
+    position: relative;
+  }
+  .economy-timeline > ol::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 0;
+    left: -23px;
+    border-left: 1px dashed #666;
+  }
+  .timeline-dot {
+    left: -28px;
+    top: 3px;
+  }
+  .timeline-record {
+    min-height: 0;
+    padding: 28px;
+  }
+}
+@media (max-width: 479px) {
+  .trust-tabs {
+    grid-template-columns: 1fr;
+  }
+  .trust-tab {
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+  .trust-tab + .trust-tab {
+    border-left: 0;
+    border-top: 1px solid #d2d2d2;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0s !important; animation: none !important; }
-}
-
-/* On smaller screens, every funding model branches from the same left rail. */
-@media (max-width: 1023px) {
-  .funding-branches {
-    position: relative;
-    border-top: 0;
-    border-left: 1px solid #535353;
-    padding-left: 24px;
-    margin-top: 24px;
-    padding-top: 0;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    animation: none !important;
   }
-  .funding-branches::before {
-    content: "";
-    position: absolute;
-    top: -24px;
-    left: -1px;
-    width: calc(50% + 1px);
-    height: 24px;
-    border-top: 1px solid #535353;
-    border-left: 1px solid #535353;
+  .partner-marquee {
+    overflow-x: auto;
   }
-  .funding-branches > li::before {
-    top: 50%;
-    left: -25px;
-    height: 0;
-    width: 24px;
-    border-left: 0;
-    border-top: 1px solid #535353;
-  }
-}
-
-@media (max-width: 767px) {
-  .trust-contribution::after {
-    content: "";
-    position: absolute;
-    left: -25px;
-    top: 50%;
-    bottom: -25px;
-    border-left: 1px solid #535353;
+  .partner-group[aria-hidden] {
+    display: none;
   }
 }

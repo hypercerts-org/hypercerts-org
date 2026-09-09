@@ -10,12 +10,9 @@ export interface NavColumn {
 }
 
 export const headerNavLinks: NavLink[] = [
-  { label: "Why Hypercerts", href: "/#why-hypercerts" },
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "Use cases", href: "/#use-cases" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-  { label: "Docs \u2197", href: "https://docs.hypercerts.org", external: true },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Docs ↗", href: "https://docs.hypercerts.org", external: true },
 ];
 
 export const footerNavColumns: NavColumn[] = [
@@ -54,6 +51,7 @@ export const footerNavColumns: NavColumn[] = [
   {
     header: "Connect",
     links: [
+      { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
       {
         label: "Support",

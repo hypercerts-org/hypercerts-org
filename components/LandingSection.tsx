@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 export const developerGuideUrl =
   "https://docs.hypercerts.org/getting-started/building-on-hypercerts";
 export const primaryButton =
-  "inline-flex items-center justify-center rounded-brand bg-brand-black px-8 py-3 font-body text-body-lg font-medium text-brand-white transition hover:bg-brand-navy";
+  "inline-flex items-center justify-center rounded-brand bg-brand-black px-8 py-3 font-body text-body-lg font-medium text-brand-white transition hover:bg-brand-black/90";
 export const secondaryButton =
   "inline-flex items-center justify-center rounded-brand border border-brand-black px-8 py-3 font-body text-body-lg font-medium text-brand-black transition hover:bg-ui-bg";
 export const textLink =

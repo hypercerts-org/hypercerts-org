@@ -1,23 +1,25 @@
 # Hypercerts
 
-> Open infrastructure for funding valuable work. The social funding layer for the open web.
+> Open infrastructure for funding valuable work. The AI-native context layer.
 
-Hypercerts is an open protocol that connects information about valuable work with evidence, evaluations, and funding history. Projects and organizations can share that information across compatible applications, helping funders build on what others already know.
+Hypercerts is an open protocol that connects information about valuable work with evidence, evaluations, and funding history. Projects and organizations publish once, for any application or agent to read. Funders build on what others already know.
 
 The Hypercerts Foundation is an independent nonprofit stewarding the protocol, maintaining open infrastructure, and helping organizations participate.
 
 ## How it works
 
-- Projects and organizations keep approved profiles and work information up to date.
-- Networks and certifiers publish memberships, endorsements, and certifications.
-- Evaluators publish evidence and assessments with identifiable sources.
-- Funders assess relevant information and record which work they support.
+- Projects and organizations publish profiles, progress updates, and evidence about their work.
+- Networks publish memberships, badges, and endorsements.
+- Evaluators and certifiers contribute certifications and assessments with supporting evidence.
+- Funders use others’ assessments alongside their own and record support for the work.
 
 These are independent contributions, not a mandatory sequence. Each contribution identifies its source; readers decide which evidence and judgments matter. There is no universal score. Publishing a record does not establish that a claim is true.
 
 Hypercerts builds on AT Protocol for portable identities, user-controlled records, and connected applications. Organizations can share approved public information while keeping private information in existing systems.
 
-Shared records can inform grants, milestone payments, bounties, prizes, outcome payments, crowdfunding, and matching. Funding decisions can involve funders, experts, communities, or combinations. Applications include regenerative land, open-source software, journalism, research, and other public-interest work.
+Crowdfunding and matching are current uses. Outcome payments and bounties are possible next extensions. Impact investing, commerce, and procurement are future possibilities, not supported features or a release schedule. Procurement requires protocol changes.
+
+Illustrative trust examples cover local energy, community land regeneration, and AI safety research. Project updates and peer endorsements are shared signals. The field-specific signals are certification, community evaluation and impact data, and expert assessment, respectively. The curve illustrates confidence building over time; it is not a calculated trust score.
 
 ## Ma Earth case study
 

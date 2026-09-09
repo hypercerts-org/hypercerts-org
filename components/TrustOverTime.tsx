@@ -1,114 +1,202 @@
-import { bodyCopy, SectionHeading } from "./LandingSection";
+"use client";
 
-const contributions = [
-  {
-    title: "Peer endorsement",
-    text: "A neighboring project vouches for the team.",
-    source: "Neighboring project",
-    position: "trust-peer",
-  },
-  {
-    title: "Network certification",
-    text: "A certifier publishes the standard the organization meets.",
-    source: "Network certifier",
-    position: "trust-certification",
-  },
-  {
-    title: "Independent assessment",
-    text: "An evaluator reviews the restoration evidence.",
-    source: "Independent evaluator",
-    position: "trust-assessment",
-  },
-  {
-    title: "Funding record",
-    text: "A funder records support for the work.",
-    source: "Supporting funder",
-    position: "trust-funding",
-  },
+import { useRef, useState } from "react";
+import { bodyCopy, SectionHeading } from "./LandingSection";
+import { trustExamples } from "@/lib/data/trustExamples";
+import { useDiagramReveal } from "./diagrams/useDiagramReveal";
+import ProjectIcon from "./diagrams/ProjectIcon";
+
+const segments = [
+  "M20 260 C110 260 165 244 250 225",
+  "M250 225 C355 202 435 178 550 145",
+  "M550 145 C675 109 785 61 890 45",
+];
+const points = [
+  { x: 25, y: 75 },
+  { x: 55, y: 48.333 },
+  { x: 89, y: 15 },
 ];
 
 export default function TrustOverTime() {
+  const [projectIndex, setProjectIndex] = useState(0);
+  const [stage, setStage] = useState(2);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const { ref, visible } = useDiagramReveal();
+  const project = trustExamples[projectIndex];
+
+  function selectProject(index: number) {
+    setProjectIndex(index);
+    setStage(2);
+  }
+
   return (
     <section
-      className="bg-ui-bg py-24 md:py-32"
+      id="trust"
+      className="bg-surface-cream py-24 md:py-32"
       aria-labelledby="trust-heading"
     >
-      <div className="mx-auto max-w-5xl px-6">
-        <SectionHeading id="trust-heading" eyebrow="Trust builds over time">
-          See who knows the work,
-          <br />
-          who supports it,
-          <br />
-          <em className="text-brand-accent">and what happens next.</em>
+      <div className="landing-container">
+        <SectionHeading id="trust-heading" eyebrow="Examples of trust">
+          Trust builds <em className="text-brand-accent">over time</em>
         </SectionHeading>
-        <p className={`mt-8 max-w-3xl ${bodyCopy}`}>
-          Peers, communities, networks, and experts contribute different
-          perspectives. Each endorsement, certification, or assessment
-          identifies its source, so funders can decide whose judgment matters
-          for the work.
+        <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
+          Project updates, endorsements, and independent assessments paint a
+          fuller picture of the work. Which signals matter depends on the
+          field—and who is making the decision.
         </p>
-        <figure className="mt-12" aria-labelledby="trust-caption">
-          <figcaption
-            id="trust-caption"
-            className="mb-8 font-body text-body-sm uppercase tracking-[0.2em] leading-relaxed text-ui-grey-dark"
+        <div
+          ref={ref}
+          data-visible={visible}
+          className="trust-explorer diagram-reveal mt-12 md:mt-16"
+        >
+          <div
+            role="tablist"
+            aria-label="Choose a project type"
+            className="trust-tabs"
           >
-            Illustrative example · Independent contributions around one project
-          </figcaption>
-          <div className="trust-diagram">
-            <div className="trust-project relative z-10 flex flex-col justify-center rounded-brand border border-brand-black bg-surface-cream p-6 md:text-center">
-              <p className="mb-4 font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent">
-                Shared work record
-              </p>
-              <h3 className="font-display text-[32px] leading-tight text-brand-black">
-                Community
-                <br className="hidden md:block" /> land project
-              </h3>
-              <p className="mt-4 font-body text-body-sm leading-relaxed text-ui-grey-dark">
-                Work, people, and location
-              </p>
-              <p className="mt-5 border-t border-ui-separator pt-3 font-body text-body-sm leading-relaxed text-ui-grey-dark">
-                Published by the project team
-              </p>
-            </div>
-            {contributions.map(({ title, text, source, position }) => (
-              <div
-                key={title}
-                className={`trust-contribution ${position} relative rounded-brand border border-ui-separator bg-white p-5 lg:p-6`}
+            {trustExamples.map((item, index) => (
+              <button
+                key={item.id}
+                ref={(element) => {
+                  tabs.current[index] = element;
+                }}
+                type="button"
+                role="tab"
+                id={`trust-tab-${item.id}`}
+                aria-controls="trust-panel"
+                aria-selected={projectIndex === index}
+                tabIndex={projectIndex === index ? 0 : -1}
+                className="trust-tab"
+                onClick={() => selectProject(index)}
+                onKeyDown={(event) => {
+                  let next: number | undefined;
+                  if (event.key === "ArrowRight")
+                    next = (index + 1) % trustExamples.length;
+                  if (event.key === "ArrowLeft")
+                    next =
+                      (index + trustExamples.length - 1) % trustExamples.length;
+                  if (event.key === "Home") next = 0;
+                  if (event.key === "End") next = trustExamples.length - 1;
+                  if (next !== undefined) {
+                    event.preventDefault();
+                    selectProject(next);
+                    tabs.current[next]?.focus();
+                  }
+                }}
               >
-                <h3 className="font-display text-heading-4 text-brand-black">
-                  {title}
-                </h3>
-                <p className="mt-3 font-body text-body-sm leading-relaxed text-ui-grey-dark">
-                  {text}
-                </p>
-                <p className="mt-4 border-t border-ui-separator pt-3 font-body text-body-sm leading-relaxed text-ui-grey-dark">
-                  <span className="text-brand-accent">Source</span> · {source}
-                </p>
-              </div>
+                <ProjectIcon kind={item.id} className="h-7 w-7 shrink-0" />
+                <span>{item.name}</span>
+              </button>
             ))}
-            <div className="trust-update relative rounded-brand border border-ui-separator bg-white p-6 md:text-center">
-              <h3 className="font-display text-heading-4">
-                Later project update
-              </h3>
-              <p className="mt-3 font-body text-body-sm leading-relaxed text-ui-grey-dark">
-                The team publishes field observations and progress.
+          </div>
+          <div
+            id="trust-panel"
+            role="tabpanel"
+            aria-labelledby={`trust-tab-${project.id}`}
+            tabIndex={0}
+            className="trust-panel"
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <p className="font-display text-heading-4 text-brand-black">
+                {project.project}
               </p>
-              <p className="mt-3 font-body text-body-sm text-ui-grey-dark">
-                <span className="text-brand-accent">Source</span> · Project team
+              <p className="font-body text-body-sm text-ui-grey-muted">
+                An illustrative example
               </p>
             </div>
+            <figure
+              className="mt-8"
+              aria-label={`How trust can build in ${project.name.toLowerCase()}`}
+            >
+              <div className="mb-3 font-body text-body-sm text-ui-grey-dark">
+                Trust <span aria-hidden="true">↑</span>
+              </div>
+              <div className="trust-plot" key={project.id}>
+                <svg
+                  viewBox="0 0 1000 300"
+                  preserveAspectRatio="none"
+                  className="absolute inset-0 h-full w-full"
+                  aria-hidden="true"
+                >
+                  <path d="M20 20V280H980" className="chart-axis" />
+                  <path d="m971 275 9 5-9 5" className="chart-axis" />
+                  {points.map((p, i) => (
+                    <path
+                      key={i}
+                      d={`M${p.x * 10} ${p.y * 3} V280`}
+                      className="chart-guide"
+                    />
+                  ))}
+                  <path d={segments.join(" ")} className="trust-potential" />
+                  {segments.map(
+                    (d, index) =>
+                      stage >= index && (
+                        <path
+                          key={index}
+                          d={d}
+                          pathLength="1"
+                          className="trust-curve"
+                          style={{ animationDelay: `${index * 220}ms` }}
+                        />
+                      ),
+                  )}
+                </svg>
+                {points.map((point, index) => (
+                  <span
+                    key={index}
+                    aria-hidden="true"
+                    className="trust-point"
+                    data-added={stage >= index}
+                    style={{ left: `${point.x}%`, top: `${point.y}%` }}
+                  >
+                    {index + 1}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-2 text-right font-body text-body-sm text-ui-grey-dark">
+                Time <span aria-hidden="true">→</span>
+              </div>
+              <figcaption className="mt-5 font-body text-body-sm leading-relaxed text-ui-grey-muted">
+                Select a signal to explore how the picture develops. This curve
+                illustrates growing confidence, not a calculated trust score.
+              </figcaption>
+            </figure>
+            <div
+              className="mt-8 grid gap-4 md:grid-cols-3"
+              role="group"
+              aria-label="Explore the trust signals"
+            >
+              {project.signals.map((signal, index) => (
+                <button
+                  key={`${project.id}-${index}`}
+                  type="button"
+                  className="trust-signal"
+                  aria-pressed={stage === index}
+                  onClick={() => setStage(index)}
+                >
+                  <span className="mb-5 flex items-center justify-between gap-4 font-body text-body-sm text-ui-grey-muted">
+                    <span>Signal {index + 1}</span>
+                    <span aria-hidden="true" className="signal-mark">
+                      {stage >= index ? "✓" : "+"}
+                    </span>
+                  </span>
+                  <span className="block font-display text-heading-4 text-brand-black">
+                    {signal.title}
+                  </span>
+                  <span className="mt-4 block font-body text-body-sm leading-relaxed text-ui-grey-dark">
+                    {signal.description}
+                  </span>
+                  <span className="mt-6 block border-t border-ui-separator pt-4 font-body text-body-sm leading-relaxed text-ui-grey-muted">
+                    From {signal.source.toLowerCase()}
+                  </span>
+                </button>
+              ))}
+            </div>
+            <p className="sr-only" aria-live="polite" aria-atomic="true">
+              {project.name}: {stage + 1} of 3 illustrative signals added.
+              Latest signal: {project.signals[stage].title}.
+            </p>
           </div>
-        </figure>
-        <div className="mt-10 grid gap-6 md:grid-cols-[1.5fr_1fr] md:gap-12">
-          <p className={bodyCopy}>
-            After funding, projects can add updates and evidence of what
-            happened. Funders and communities can follow the work and use that
-            information when considering future support.
-          </p>
-          <p className="border-l-2 border-brand-accent pl-5 font-body text-body-lg leading-relaxed text-ui-grey-dark">
-            Every contribution has a source. There is no universal score:
-            readers decide which evidence and judgments matter.
-          </p>
         </div>
       </div>
     </section>

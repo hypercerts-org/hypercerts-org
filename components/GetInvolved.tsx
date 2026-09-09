@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   bodyCopy,
   developerGuideUrl,
@@ -10,10 +11,18 @@ export default function GetInvolved() {
   return (
     <section
       id="get-involved"
-      className="bg-white py-24 md:py-32"
+      className="relative overflow-hidden bg-white py-24 md:py-32"
       aria-labelledby="get-involved-heading"
     >
-      <div className="mx-auto max-w-5xl px-6">
+      <Image
+        src="/img/guilloche/guilloche_01.svg"
+        alt=""
+        aria-hidden="true"
+        width={1000}
+        height={1000}
+        className="pointer-events-none absolute -bottom-[500px] left-1/2 max-w-none -translate-x-1/2 opacity-[0.2]"
+      />
+      <div className="landing-container relative">
         <div className="grid gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16">
           <div>
             <SectionHeading id="get-involved-heading" eyebrow="Get involved">
@@ -28,13 +37,13 @@ export default function GetInvolved() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a href="/contact" className={primaryButton}>
-                Get in touch{" "}
+                Start a conversation{" "}
                 <span className="ml-2" aria-hidden="true">
                   →
                 </span>
               </a>
               <a href={developerGuideUrl} className={secondaryButton}>
-                Developer guide{" "}
+                Start the Guide{" "}
                 <span className="ml-2" aria-hidden="true">
                   ↗
                 </span>

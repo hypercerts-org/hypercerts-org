@@ -8,7 +8,7 @@ export default function UseCases() {
       className="bg-surface-cream py-24 md:py-32"
       aria-labelledby="case-study-heading"
     >
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="landing-container">
         <SectionHeading id="case-study-heading" eyebrow="Case study · Ma Earth">
           Coordinating regenerative funding
           <br />
@@ -16,7 +16,7 @@ export default function UseCases() {
         </SectionHeading>
         <p className={`mt-8 max-w-3xl ${bodyCopy}`}>
           Ma Earth combined project-owned data, partner review, crowdfunding,
-          and matching to support regenerative projects around the world.
+          and matching to support 201 regenerative projects with almost $2.2M.
           Project information was stored on the open network.
         </p>
         <div className="mt-12 grid items-center gap-10 md:grid-cols-2 md:gap-16">
@@ -55,12 +55,6 @@ export default function UseCases() {
               <a href="/case-studies/ma-earth" className={textLink}>
                 Read the full Ma Earth case study{" "}
                 <span aria-hidden="true">→</span>
-              </a>
-              <a
-                href="/contact"
-                className="py-2 font-body text-body-lg text-brand-black underline underline-offset-4"
-              >
-                Discuss your use case <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
