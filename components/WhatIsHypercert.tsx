@@ -1,34 +1,25 @@
 import Image from "next/image";
-import {
-  bodyCopy,
-  developerGuideUrl,
-  SectionHeading,
-  textLink,
-} from "./LandingSection";
+import { bodyCopy, developerGuideUrl, SectionHeading } from "./LandingSection";
 
 const contributions = [
   {
     role: "Projects and organizations",
     action:
       "Publish profiles, progress updates, and evidence about their work.",
-    record: "Profiles, updates & evidence",
   },
   {
     role: "Networks",
     action: "Publish memberships, badges, and endorsements.",
-    record: "Memberships & endorsements",
   },
   {
     role: "Evaluators and certifiers",
     action:
       "Contribute certifications and assessments with supporting evidence.",
-    record: "Certifications & assessments",
   },
   {
     role: "Funders",
     action:
       "Use others’ assessments alongside their own, and record support for the work.",
-    record: "Funding history",
   },
 ];
 
@@ -61,7 +52,7 @@ export default function WhatIsHypercert() {
           stewards the protocol and maintains that infrastructure.
         </p>
         <div className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2">
-          {contributions.map(({ role, action, record }) => (
+          {contributions.map(({ role, action }) => (
             <div
               key={role}
               className="flex flex-col border-t border-brand-black pt-6"
@@ -70,14 +61,37 @@ export default function WhatIsHypercert() {
                 {role}
               </h3>
               <p className={`flex-1 ${bodyCopy}`}>{action}</p>
-              <p className="mt-6 font-body text-body-sm leading-relaxed text-ui-grey-muted">
-                {record}
-              </p>
             </div>
           ))}
         </div>
-        <a href={developerGuideUrl} className={`mt-10 ${textLink}`}>
-          For builders: read the Guide <span aria-hidden="true">↗</span>
+        <a
+          href={developerGuideUrl}
+          className="builder-guide group mt-16 md:mt-20"
+        >
+          <div>
+            <span className="mb-3 block font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark">
+              For builders
+            </span>
+            <span className="font-display text-[36px] leading-[1.1] tracking-[-0.02em] sm:text-display-3">
+              Read the <em className="text-brand-accent">Guide</em>
+            </span>
+          </div>
+          <span className="builder-guide-rule" aria-hidden="true" />
+          <span className="builder-guide-arrow" aria-hidden="true">
+            <svg
+              viewBox="0 0 32 32"
+              fill="none"
+              className="h-8 w-8 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            >
+              <path
+                d="M8 24 24 8M8 8h16v16"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </a>
       </div>
     </section>

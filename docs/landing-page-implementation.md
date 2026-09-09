@@ -8,7 +8,7 @@ The homepage follows the latest Miro continuity pass: hero, mission, moving part
 
 The trust illustration is a responsive SVG curve with three selectable fields. All fields share project updates and peer endorsements; the third signal is certification for local energy, community evaluation and impact data for land regeneration, and expert assessment for AI safety research. Select a signal to view that stage of the curve. The descriptions and contributors are illustrative examples, not real records. The graph has no numerical or universal trust score. Tabs support arrow keys, Home, and End; changes are announced to screen readers.
 
-The information-economy diagram has three connected chapters: today's crowdfunding and matching, possible next outcome payments, and future impact investing, commerce, and procurement. Bounties are described as a nearer possibility; procurement requires protocol changes. Current uses have grey panels, possible extensions white panels. The line draws once on entry and the panels settle into place. On narrow screens the timeline becomes vertical. Both diagrams respect reduced motion.
+The information-economy diagram has three connected chapters: today's crowdfunding and matching, possible next outcome payments, and future impact investing, commerce, and procurement. Bounties are described as a nearer possibility; procurement requires protocol changes. Current uses have grey panels, possible extensions white panels. The line draws once on entry in 500ms while the panels remain still. On narrow screens the timeline becomes vertical. Both diagrams respect reduced motion.
 
 The original hero, mission wave, protocol-corner, and contact guilloche treatments are restored. This deliberately follows the user's request for the existing site's background images over the design repository's usual single-ornament guidance. The expensive radial ornaments are existing static assets. The partner strip matches the main branch's 50px height, 150px cells, and gentle hover enlargement. It has no pause button. Partner logos move continuously, pause on hover, and become a static scrollable row during keyboard use or reduced motion. Duplicate visuals are inert and hidden from assistive technology. Silvi is included from the updated wireframe.
 
@@ -56,3 +56,15 @@ Removed the trust diagram's illustrative-example label, explanatory caption, and
 Em dashes have been removed from locally authored site copy and metadata, including their escaped and HTML-entity forms. Sentences use conjunctions, commas, colons, or full stops according to context. The rule is recorded in `DESIGN.md` for future edits.
 
 Feedback validation: production build passed; lint has zero errors and the existing unused-component warning. Checked 320, 390, 682, 884, 1024, and 1440px for overflow, 50px logo height, removed trust annotations, and absence of em dashes in rendered homepage text. Trust selection and keyboard/reduced-motion logo behavior still work. Axe reported zero automated violations.
+
+## Protocol, timeline, and collective detail pass
+
+Removed the four protocol record summaries, the separate “Almost” label above the homepage funding figure, the timeline's trailing note, and the collective's About link. The Ma Earth introductory paragraph retains its original rounded wording. Both large figures now share the same top spacing.
+
+The builder guide is a dedicated full-width link band with an eyebrow, large serif title, thin rules, and a black arrow button treatment. It retains the existing verified guide destination and adds no new explanatory copy.
+
+Timeline connectors now belong to each card's grid cell and include the exact shared gutter width. The red segment ends at the center of the next circle on both horizontal and vertical layouts. A 500ms SVG clip reveal avoids scaling artifacts from normalized dash animation. Cards and dots remain still. Reduced motion shows the completed line immediately.
+
+The collective remains scrollable with hidden scrollbars and room for keyboard focus outlines.
+
+Detail-pass validation: production build and lint passed with the existing unused-component image warning. At 320, 390, 682, 768, 884, 1024, and 1440px, the red SVG endpoint matched the next circle center exactly in both axes. Verified the line is continuous, all requested removals, guide destination, horizontal scrolling with hidden scrollbar, keyboard access, reduced motion, and no document overflow. Axe reported zero automated violations.

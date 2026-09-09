@@ -27,7 +27,7 @@ export default function UseCases() {
                 <dt className="font-body text-body-sm leading-relaxed text-ui-grey-dark">
                   Projects supported
                 </dt>
-                <dd className="mt-2 pt-5 font-display text-[48px] leading-none text-brand-black md:text-[64px]">
+                <dd className="mt-3 font-display text-[48px] leading-none text-brand-black md:text-[64px]">
                   201
                 </dd>
               </div>
@@ -35,10 +35,7 @@ export default function UseCases() {
                 <dt className="font-body text-body-sm leading-relaxed text-ui-grey-dark">
                   Combined funding
                 </dt>
-                <dd className="mt-2 font-display text-[48px] leading-none text-brand-accent md:text-[64px]">
-                  <span className="mb-1 block font-body text-body-sm text-ui-grey-dark">
-                    Almost
-                  </span>
+                <dd className="mt-3 font-display text-[48px] leading-none text-brand-accent md:text-[64px]">
                   $2.2M
                 </dd>
               </div>

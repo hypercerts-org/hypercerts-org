@@ -247,8 +247,7 @@ html {
   stroke-width: 2;
   stroke-linecap: round;
 }
-.diagram-reveal[data-visible="true"] .trust-curve,
-.diagram-reveal[data-visible="true"] .timeline-present {
+.diagram-reveal[data-visible="true"] .trust-curve {
   animation: draw-line 650ms ease-out both;
   stroke-dasharray: 1;
 }
@@ -305,15 +304,58 @@ html {
   font-size: 18px;
 }
 .economy-timeline {
+  --timeline-gap: 2rem;
   position: relative;
   padding-top: 48px;
 }
-.economy-line {
+/* Each segment shares the card grid, so its endpoint is the next dot's center. */
+.timeline-connector-horizontal {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40px;
+  top: -34px;
+  left: 6px;
+  width: calc(100% + var(--timeline-gap));
+  height: 12px;
+}
+.timeline-era:last-child .timeline-connector-horizontal {
+  width: calc(100% - 6px);
+}
+.timeline-connector-vertical {
+  display: none;
+}
+.diagram-reveal[data-visible="true"]
+  .timeline-era[data-current="true"]
+  .timeline-connector-horizontal {
+  animation: reveal-timeline-horizontal 500ms cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+.diagram-reveal[data-visible="true"]
+  .timeline-era[data-current="true"]
+  .timeline-connector-vertical {
+  animation: reveal-timeline-vertical 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes reveal-timeline-horizontal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes reveal-timeline-vertical {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+.timeline-arrow {
+  position: absolute;
+  top: -34px;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  color: #666;
 }
 .timeline-present {
   stroke: #af2901;
@@ -329,6 +371,7 @@ html {
   flex-direction: column;
 }
 .timeline-dot {
+  z-index: 1;
   position: absolute;
   top: -34px;
   left: 0;
@@ -355,17 +398,6 @@ html {
 .timeline-era[data-current="true"] .timeline-record {
   background: #f1f1f1;
   border-color: #666;
-}
-.diagram-reveal[data-visible="true"] .timeline-record {
-  animation: settle-in 700ms ease-out both;
-}
-@keyframes settle-in {
-  from {
-    transform: translateY(8px);
-  }
-  to {
-    transform: translateY(0);
-  }
 }
 .partner-marquee {
   position: relative;
@@ -418,19 +450,26 @@ html {
     padding-top: 0;
     padding-left: 28px;
   }
-  .economy-line {
+  .timeline-arrow {
+    top: auto;
+    right: auto;
+    left: -28px;
+    bottom: 0;
+    transform: rotate(90deg);
+  }
+  .timeline-connector-horizontal {
     display: none;
   }
-  .economy-timeline > ol {
-    position: relative;
-  }
-  .economy-timeline > ol::before {
-    content: "";
+  .timeline-connector-vertical {
+    display: block;
     position: absolute;
-    top: 6px;
-    bottom: 0;
-    left: -23px;
-    border-left: 1px dashed #666;
+    top: 9px;
+    left: -28px;
+    width: 12px;
+    height: calc(100% + var(--timeline-gap));
+  }
+  .timeline-era:last-child .timeline-connector-vertical {
+    height: calc(100% - 9px);
   }
   .timeline-dot {
     left: -28px;
@@ -602,4 +641,51 @@ html {
   .knowledge-record-entries {
     font-size: 11px;
   }
+}
+
+/* The guide is a full-width editorial signpost and one generous link target. */
+.builder-guide {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #d2d2d2;
+  padding-block: 40px;
+}
+.builder-guide-rule {
+  flex: 1;
+  height: 1px;
+  background: #d2d2d2;
+}
+.builder-guide-arrow {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  background: #000;
+  color: #fff;
+  transition: background 200ms;
+}
+.builder-guide:hover .builder-guide-arrow {
+  background: #191919;
+}
+@media (max-width: 479px) {
+  .builder-guide {
+    justify-content: space-between;
+    gap: 20px;
+    padding-block: 32px;
+  }
+  .builder-guide-rule {
+    display: none;
+  }
+  .builder-guide-arrow {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.timeline-grid {
+  gap: var(--timeline-gap);
 }

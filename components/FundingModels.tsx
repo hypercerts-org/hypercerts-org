@@ -48,32 +48,61 @@ export default function FundingModels() {
         </SectionHeading>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
           Start with crowdfunding and matching. Over time, shared information
-          about valuable work could support more ways to allocate resources, from
-          bounties to investing, commerce, and procurement.
+          about valuable work could support more ways to allocate resources,
+          from bounties to investing, commerce, and procurement.
         </p>
         <div
           ref={ref}
           data-visible={visible}
           className="economy-timeline diagram-reveal mt-14 md:mt-20"
         >
-          <svg
-            className="economy-line"
-            viewBox="0 0 1000 40"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path d="M0 20H1000" className="chart-guide" />
-            <path d="M0 20H333" pathLength="1" className="timeline-present" />
-            <path d="M333 20H995m-9-5 9 5-9 5" className="timeline-future" />
-          </svg>
-          <ol className="grid gap-8 md:grid-cols-3">
+          <ol className="timeline-grid grid md:grid-cols-3">
             {horizons.map((horizon, index) => (
               <li
                 key={horizon.label}
                 className="timeline-era"
                 data-current={horizon.current}
-                style={{ animationDelay: `${index * 180}ms` }}
               >
+                <svg
+                  className="timeline-connector timeline-connector-horizontal"
+                  viewBox="0 0 100 12"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M0 6H100"
+                    className={
+                      horizon.current ? "timeline-present" : "timeline-future"
+                    }
+                  />
+                </svg>
+                <svg
+                  className="timeline-connector timeline-connector-vertical"
+                  viewBox="0 0 12 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 0V100"
+                    className={
+                      horizon.current ? "timeline-present" : "timeline-future"
+                    }
+                  />
+                </svg>
+                {index === horizons.length - 1 && (
+                  <svg
+                    className="timeline-arrow"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="m6 2 6 4-6 4"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                    />
+                  </svg>
+                )}
                 <span className="timeline-dot" aria-hidden="true" />
                 <p className="mb-5 font-body text-body-sm uppercase tracking-[0.2em] text-brand-black">
                   {horizon.label}
@@ -94,10 +123,6 @@ export default function FundingModels() {
               </li>
             ))}
           </ol>
-          <p className="mt-8 max-w-2xl font-body text-body-sm leading-relaxed text-ui-grey-muted">
-            Future uses are possibilities to explore together, rather than a
-            release schedule.
-          </p>
         </div>
       </div>
     </section>

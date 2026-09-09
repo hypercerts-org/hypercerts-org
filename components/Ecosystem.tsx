@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { textLink } from "./LandingSection";
 import Image from "next/image";
 import { ecosystemPartners } from "@/lib/data/ecosystem";
 
@@ -33,7 +31,7 @@ export default function Ecosystem() {
       </div>
 
       {/* Carousel: full-width scroll area */}
-      <div className="mt-16 overflow-x-auto pb-2">
+      <div className="collective-scroll scrollbar-hide mt-16 overflow-x-auto py-2">
         <div
           className="flex gap-5 px-6 snap-x snap-mandatory"
           style={{
@@ -81,12 +79,6 @@ export default function Ecosystem() {
           {/* Spacer for right padding */}
           <div className="flex-shrink-0 w-6" aria-hidden="true" />
         </div>
-      </div>
-      <div className="landing-container mt-10">
-        <Link href="/about" className={textLink}>
-          Meet the Foundation and the people behind Hypercerts{" "}
-          <span aria-hidden="true">→</span>
-        </Link>
       </div>
     </section>
   );
