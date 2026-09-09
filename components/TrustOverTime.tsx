@@ -41,8 +41,8 @@ export default function TrustOverTime() {
         </SectionHeading>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
           Project updates, endorsements, and independent assessments paint a
-          fuller picture of the work. Which signals matter depends on the
-          field—and who is making the decision.
+          fuller picture of the work. Which signals matter depends on the field
+          and who is making the decision.
         </p>
         <div
           ref={ref}
@@ -100,9 +100,6 @@ export default function TrustOverTime() {
               <p className="font-display text-heading-4 text-brand-black">
                 {project.project}
               </p>
-              <p className="font-body text-body-sm text-ui-grey-muted">
-                An illustrative example
-              </p>
             </div>
             <figure
               className="mt-8"
@@ -156,10 +153,6 @@ export default function TrustOverTime() {
               <div className="mt-2 text-right font-body text-body-sm text-ui-grey-dark">
                 Time <span aria-hidden="true">→</span>
               </div>
-              <figcaption className="mt-5 font-body text-body-sm leading-relaxed text-ui-grey-muted">
-                Select a signal to explore how the picture develops. This curve
-                illustrates growing confidence, not a calculated trust score.
-              </figcaption>
             </figure>
             <div
               className="mt-8 grid gap-4 md:grid-cols-3"
@@ -185,9 +178,6 @@ export default function TrustOverTime() {
                   </span>
                   <span className="mt-4 block font-body text-body-sm leading-relaxed text-ui-grey-dark">
                     {signal.description}
-                  </span>
-                  <span className="mt-6 block border-t border-ui-separator pt-4 font-body text-body-sm leading-relaxed text-ui-grey-muted">
-                    From {signal.source.toLowerCase()}
                   </span>
                 </button>
               ))}

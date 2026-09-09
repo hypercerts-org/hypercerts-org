@@ -1,11 +1,11 @@
 export const metadata = {
   title: "Contact",
   description:
-    "Get in touch with the Hypercerts Foundation — whether you're a builder, funder, evaluator, or researcher.",
+    "Get in touch with the Hypercerts Foundation, whether you're a builder, funder, evaluator, or researcher.",
   openGraph: {
     title: "Contact | Hypercerts",
     description:
-      "Get in touch with the Hypercerts Foundation — whether you're a builder, funder, evaluator, or researcher.",
+      "Get in touch with the Hypercerts Foundation, whether you're a builder, funder, evaluator, or researcher.",
   },
 };
 
@@ -63,7 +63,7 @@ const faqs = [
   {
     question: "What impact domains can hypercerts be used in?",
     answer:
-      "Hypercerts work across any impact domain where collective work needs funding — including climate and regeneration, open-source software, research and development, community programs, and many more. The same pattern applies across all of them.",
+      "Hypercerts work across any impact domain where collective work needs funding, including climate and regeneration, open-source software, research and development, community programs, and many more. The same pattern applies across all of them.",
   },
   {
     question: "How can I get started?",
@@ -75,21 +75,21 @@ const faqs = [
   {
     question: "What technology are hypercerts built on?",
     answer:
-      "Hypercerts are built on the AT Protocol as open infrastructure. Records, evaluations, and attribution are portable and referenceable across applications — not locked into any single platform.",
+      "Hypercerts are built on the AT Protocol as open infrastructure. Records, evaluations, and attribution are portable and referenceable across applications, without being locked into any single platform.",
   },
   {
     question: "What is the AT Protocol?",
     answer:
-      "The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting — so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at atproto.com.",
+      "The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting, so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at atproto.com.",
     richAnswer:
-      'The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting — so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at <a href="https://atproto.com" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">atproto.com</a>.',
+      'The AT Protocol is an open, decentralized protocol for building social applications. It provides portable identity, shared data schemas, and federated hosting, so data is not locked into any single platform. Hypercerts uses it as the foundation for storing and sharing records, evaluations, and attribution across applications. Learn more at <a href="https://atproto.com" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">atproto.com</a>.',
   },
   {
     question: "What is Certified?",
     answer:
-      "Certified is your portable impact profile — one identity across all hypercert-enabled applications. It aggregates your actions, evaluations, and credentials without locking you into any single platform. Create your identity at certified.app.",
+      "Certified is your portable impact profile: one identity across all hypercert-enabled applications. It aggregates your actions, evaluations, and credentials without locking you into any single platform. Create your identity at certified.app.",
     richAnswer:
-      'Certified is your portable impact profile — one identity across all hypercert-enabled applications. It aggregates your actions, evaluations, and credentials without locking you into any single platform. Create your identity at <a href="https://certified.app" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">certified.app</a>.',
+      'Certified is your portable impact profile: one identity across all hypercert-enabled applications. It aggregates your actions, evaluations, and credentials without locking you into any single platform. Create your identity at <a href="https://certified.app" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-brand-black transition underline">certified.app</a>.',
   },
   {
     question: "Is hypercerts free to use?",
@@ -131,7 +131,7 @@ export default function ContactPage() {
         </h1>
 
         <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mb-16">
-          Whether you&rsquo;re a builder, funder, evaluator, or researcher—we&rsquo;d
+          Whether you&rsquo;re a builder, funder, evaluator, or researcher, we&rsquo;d
           love to hear from you.
         </p>
 

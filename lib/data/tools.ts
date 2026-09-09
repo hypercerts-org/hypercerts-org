@@ -11,7 +11,7 @@ export const featuredTools: ToolCard[] = [
   {
     title: "Hyperscan",
     description:
-      "Explore the hypercert network\u2014browse records, evaluations, data, and activity across the ecosystem.",
+      "Explore the hypercert network. Browse records, evaluations, data, and activity across the ecosystem.",
     cta: "hyperscan.dev",
     href: "https://hyperscan.dev",
     image: "/img/screenshots/hyperscan_screenshot.png",
@@ -19,7 +19,7 @@ export const featuredTools: ToolCard[] = [
   {
     title: "Certified",
     description:
-      "Your portable impact profile\u2014aggregating actions, evaluations, and credentials across applications.",
+      "Your portable impact profile, aggregating actions, evaluations, and credentials across applications.",
     cta: "certified.app",
     href: "https://certified.app",
     image: "/img/screenshots/certified_screenshot.png",
@@ -30,7 +30,7 @@ export const tools: ToolCard[] = [
   {
     title: "Scaffold App",
     description:
-      "Reference app for building on hypercerts\u2014start quickly with authentication, creation, and browsing.",
+      "Reference app for building on hypercerts. Start quickly with authentication, creation, and browsing.",
     cta: "Get started",
     href: "https://github.com/hypercerts-org/hypercerts-scaffold-atproto",
     image: "/img/screenshots/scaffold_screenshot.png",
@@ -38,7 +38,7 @@ export const tools: ToolCard[] = [
   {
     title: "Hypercerts CLI",
     description:
-      "Create and manage hypercerts programmatically\u2014automate workflows and integrate with your tools.",
+      "Create and manage hypercerts programmatically. Automate workflows and integrate with your tools.",
     cta: "View on GitHub",
     href: "https://github.com/GainForest/hypercerts-cli",
     image: "/img/screenshots/cli_screenshot.png",
@@ -56,7 +56,7 @@ export const tools: ToolCard[] = [
   {
     title: "Hyperindex",
     description:
-      "Query hypercert data across the network\u2014power your application with real-time, structured, and composable data.",
+      "Query hypercert data across the network. Power your application with real-time, structured, and composable data.",
     cta: "API reference",
     href: "https://docs.hypercerts.org/tools/hyperindex",
     image: "/img/screenshots/hyperindex_screenshot.png",

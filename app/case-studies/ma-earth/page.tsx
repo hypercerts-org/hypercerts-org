@@ -60,7 +60,7 @@ export default function MaEarthCaseStudy() {
             </h1>
             <p className={`mt-8 max-w-3xl ${bodyCopy}`}>
               Project-owned data, partner review, crowdfunding, and matching
-              supported 201 regenerative projects—and created information that
+              supported 201 regenerative projects and created information that
               can remain useful after the round.
             </p>
             <div className="mt-12 grid items-center gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">

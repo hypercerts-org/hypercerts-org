@@ -10,7 +10,7 @@ The trust illustration is a responsive SVG curve with three selectable fields. A
 
 The information-economy diagram has three connected chapters: today's crowdfunding and matching, possible next outcome payments, and future impact investing, commerce, and procurement. Bounties are described as a nearer possibility; procurement requires protocol changes. Current uses have grey panels, possible extensions white panels. The line draws once on entry and the panels settle into place. On narrow screens the timeline becomes vertical. Both diagrams respect reduced motion.
 
-The original hero, mission wave, protocol-corner, and contact guilloche treatments are restored. This deliberately follows the user's request for the existing site's background images over the design repository's usual single-ornament guidance. The expensive radial ornaments are existing static assets. Partner logos move continuously, pause on hover or with the pause button, and become a static scrollable row during keyboard use or reduced motion. Duplicate visuals are inert and hidden from assistive technology. Silvi is included from the updated wireframe.
+The original hero, mission wave, protocol-corner, and contact guilloche treatments are restored. This deliberately follows the user's request for the existing site's background images over the design repository's usual single-ornament guidance. The expensive radial ornaments are existing static assets. The partner strip matches the main branch's 50px height, 150px cells, and gentle hover enlargement. It has no pause button. Partner logos move continuously, pause on hover, and become a static scrollable row during keyboard use or reduced motion. Duplicate visuals are inert and hidden from assistive technology. Silvi is included from the updated wireframe.
 
 A shared 64rem container aligns navigation, content, diagrams, and footer. Instrument Serif roman/italic and Switzer remain self-hosted. The latest accessible muted grey (#666666), 11px micro type token, and monochrome button hover are reflected in the site tokens. Section spacing stays generous and card padding is consistent.
 
@@ -46,3 +46,13 @@ Metadata, JSON-LD, `llms.txt`, and the reproducible social card reflect the new 
 - Desktop and mobile screenshots reviewed for both diagrams, typography, spacing, restored backgrounds, and About. Partner images were checked after scrolling them into view.
 
 The pre-existing `no-img-element` lint warning in unused `components/OpenByDesign.tsx` remains. Beads (`bd`) is unavailable; editorial follow-ups are therefore recorded above.
+
+## Browser feedback iteration
+
+The bridge now pairs its unchanged paragraphs with a static contribution map: communities, experts, evaluators, certifiers, and funders connect into a shared project record while retaining visible attribution. This is the design proposal implemented for review at `/#reusable-information`.
+
+Removed the trust diagram's illustrative-example label, explanatory caption, and all three source footers and divider lines as requested. Card text retains its original comfortable padding. The examples remain illustrative in the underlying data and documentation.
+
+Em dashes have been removed from locally authored site copy and metadata, including their escaped and HTML-entity forms. Sentences use conjunctions, commas, colons, or full stops according to context. The rule is recorded in `DESIGN.md` for future edits.
+
+Feedback validation: production build passed; lint has zero errors and the existing unused-component warning. Checked 320, 390, 682, 884, 1024, and 1440px for overflow, 50px logo height, removed trust annotations, and absence of em dashes in rendered homepage text. Trust selection and keyboard/reduced-motion logo behavior still work. Axe reported zero automated violations.

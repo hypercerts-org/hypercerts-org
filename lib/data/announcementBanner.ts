@@ -1,4 +1,4 @@
-/** Leaf module — no runtime deps; safe for any bundle. */
+/** Leaf module: no runtime deps; safe for any bundle. */
 
 /**
  * Human-readable ISO date string (e.g. "2026-05-06"). The template-literal

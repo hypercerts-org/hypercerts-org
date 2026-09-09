@@ -7,13 +7,13 @@ import AnnouncementBanner from "@/components/AnnouncementBanner";
 export const metadata: Metadata = {
   metadataBase: new URL("https://hypercerts.org"),
   title: {
-    default: "Hypercerts — Open infrastructure for funding valuable work",
+    default: "Hypercerts | Open infrastructure for funding valuable work",
     template: "%s | Hypercerts",
   },
   description:
     "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
   openGraph: {
-    title: "Hypercerts — Open infrastructure for funding valuable work",
+    title: "Hypercerts | Open infrastructure for funding valuable work",
     description:
       "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
     url: "https://hypercerts.org",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         url: "/img/hypercerts-opengraph-sep-2026.png",
         width: 1200,
         height: 630,
-        alt: "Hypercerts — Open infrastructure for funding valuable work",
+        alt: "Hypercerts | Open infrastructure for funding valuable work",
       },
     ],
     locale: "en_US",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hypercerts — Open infrastructure for funding valuable work",
+    title: "Hypercerts | Open infrastructure for funding valuable work",
     description:
       "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
     images: ["/img/hypercerts-opengraph-sep-2026.png"],

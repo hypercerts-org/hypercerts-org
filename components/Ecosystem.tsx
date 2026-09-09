@@ -32,7 +32,7 @@ export default function Ecosystem() {
         </p>
       </div>
 
-      {/* Carousel — full-width scroll area */}
+      {/* Carousel: full-width scroll area */}
       <div className="mt-16 overflow-x-auto pb-2">
         <div
           className="flex gap-5 px-6 snap-x snap-mandatory"

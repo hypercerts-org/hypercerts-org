@@ -25,7 +25,7 @@ export default function ToolsAndApps() {
         {/* Intro */}
         <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mt-8">
           A complete toolkit for creating, exploring, and integrating
-          hypercerts&mdash;whether you&rsquo;re building applications, funding
+          hypercerts, whether you&rsquo;re building applications, funding
           systems, or new coordination mechanisms.
         </p>
 
@@ -65,7 +65,7 @@ export default function ToolsAndApps() {
           ))}
         </div>
 
-        {/* Developer tools — compact grid with hover screenshots */}
+        {/* Developer tools: compact grid with hover screenshots */}
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {tools.map((card) => (
             <a

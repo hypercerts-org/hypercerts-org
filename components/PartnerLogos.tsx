@@ -1,17 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import { partners } from "@/lib/data/partners";
 
 export default function PartnerLogos() {
-  const [paused, setPaused] = useState(false);
   return (
     <div className="border-y border-ui-separator bg-white">
       <nav
         aria-label="Hypercerts partners"
         className="partner-marquee"
-        data-paused={paused}
         onBlur={(event) => {
           if (
             !event.currentTarget.contains(event.relatedTarget) &&
@@ -35,7 +32,7 @@ export default function PartnerLogos() {
                   target="_blank"
                   rel="noopener noreferrer"
                   tabIndex={duplicate ? -1 : undefined}
-                  className="flex h-20 w-[180px] shrink-0 items-center justify-center transition-opacity hover:opacity-70 focus-visible:-outline-offset-4"
+                  className="flex h-[50px] w-[150px] shrink-0 items-center justify-center transition-transform duration-200 ease-in-out hover:scale-110 focus-visible:-outline-offset-4"
                 >
                   <Image
                     src={partner.img}
@@ -51,17 +48,6 @@ export default function PartnerLogos() {
           ))}
         </div>
       </nav>
-      <div className="landing-container flex justify-end pb-3 motion-reduce:hidden">
-        <button
-          type="button"
-          onClick={() => setPaused((value) => !value)}
-          aria-pressed={paused}
-          className="flex min-h-8 items-center gap-2 px-2 text-body-sm text-ui-grey-muted hover:text-brand-black"
-        >
-          <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
-          {paused ? "Resume logos" : "Pause logos"}
-        </button>
-      </div>
     </div>
   );
 }

@@ -25,7 +25,7 @@ export default function WhyNow() {
               evidence.
             </p>
             <p className={`mt-5 ${bodyCopy}`}>
-              Funders—whether people or AI agents—need to see who stands behind
+              Funders, whether people or AI agents, need to see who stands behind
               a claim, what supports it, and whether independent sources
               corroborate it.
             </p>

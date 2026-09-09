@@ -48,7 +48,7 @@ export default function FundingModels() {
         </SectionHeading>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
           Start with crowdfunding and matching. Over time, shared information
-          about valuable work could support more ways to allocate resources—from
+          about valuable work could support more ways to allocate resources, from
           bounties to investing, commerce, and procurement.
         </p>
         <div
