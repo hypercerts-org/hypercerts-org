@@ -49,7 +49,7 @@ The pre-existing `no-img-element` lint warning in unused `components/OpenByDesig
 
 ## Browser feedback iteration
 
-The bridge now pairs its unchanged paragraphs with a static contribution map: communities, experts, evaluators, certifiers, and funders connect into a shared project record while retaining visible attribution. This is the design proposal implemented for review at `/#reusable-information`.
+The bridge uses two alternating rows at `/#reusable-information`: paragraph one on the left with a simple scattered-sheet SVG on the right, then a reusable-sheet SVG on the left with paragraph two on the right. Both paragraphs retain the original wording and use the same body typography. The first image has a tiny fading dot; the second has a dot moving eight SVG units along a short reuse arrow. Each animation lasts five seconds and respects reduced motion. Mobile stacks each paragraph with its corresponding image. The earlier labeled contribution map has been removed.
 
 Removed the trust diagram's illustrative-example label, explanatory caption, and all three source footers and divider lines as requested. Card text retains its original comfortable padding. The examples remain illustrative in the underlying data and documentation.
 
@@ -68,3 +68,5 @@ Timeline connectors now belong to each card's grid cell and include the exact sh
 The collective remains scrollable with hidden scrollbars and room for keyboard focus outlines.
 
 Detail-pass validation: production build and lint passed with the existing unused-component image warning. At 320, 390, 682, 768, 884, 1024, and 1440px, the red SVG endpoint matched the next circle center exactly in both axes. Verified the line is continuous, all requested removals, guide destination, horizontal scrolling with hidden scrollbar, keyboard access, reduced motion, and no document overflow. Axe reported zero automated violations.
+
+Simple bridge validation: production build passed; lint retains only the existing unused-component warning. Checked the alternating desktop rows and stacked mobile order at six widths from 320 to 1440px. Verified unchanged paragraph text, no overflow, two small animations, and no animation under reduced motion.
