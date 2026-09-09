@@ -49,7 +49,7 @@ The pre-existing `no-img-element` lint warning in unused `components/OpenByDesig
 
 ## Browser feedback iteration
 
-The bridge at `/#reusable-information` is one short editorial section, grounded in the 9 September “Website and Docs Wireframe Review” meeting notes, section 3. Its heading is “The knowledge is there. Let’s make it reusable.” One paragraph concludes the fragmentation problem and introduces Hypercerts through visibility, attribution, and reuse in later funding decisions. It uses the existing section-heading component, typography, and content measure. The illustrations and their animations have been removed. Protocol mechanics remain after the trust examples.
+The bridge at `/#reusable-information` is one short editorial section, grounded in the 9 September “Website and Docs Wireframe Review” meeting notes, section 3. Its heading is “The knowledge is there. Let’s make it reusable.” One paragraph concludes the fragmentation problem and introduces Hypercerts through visibility, attribution, and reuse in later funding decisions. It uses the existing section-heading component and typography. The eyebrow, heading, and paragraph are centered in the style of the hero, with a 38rem body measure and refined wrapping to provide variation between the left-aligned sections. The illustrations and their animations have been removed. Protocol mechanics remain after the trust examples.
 
 Removed the trust diagram's illustrative-example label, explanatory caption, and all three source footers and divider lines as requested. Card text retains its original comfortable padding. The examples remain illustrative in the underlying data and documentation.
 
@@ -72,3 +72,5 @@ Detail-pass validation: production build and lint passed with the existing unuse
 Simple bridge validation: production build passed; lint retains only the existing unused-component warning. Checked the alternating desktop rows and stacked mobile order at six widths from 320 to 1440px. Verified unchanged paragraph text, no overflow, two small animations, and no animation under reduced motion.
 
 The editorial bridge revision passed the production build and lint (the existing unused `OpenByDesign.tsx` image warning remains). Browser checks covered 1237px desktop and 390px mobile layouts, with a 320px overflow check. The rendered homepage contains no em dashes, and the bridge contains no SVGs. Screenshots are saved in the 9 September output folder under `editorial-bridge`.
+
+The challenge now ends after the project and funder explanations. Its repeated-applications closing statement and divider were removed in response to browser feedback.

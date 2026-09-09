@@ -43,10 +43,6 @@ export default function ResourceAllocation() {
               </p>
             </div>
           </div>
-          <p className="mt-12 max-w-3xl border-t border-ui-separator pt-8 font-display text-[28px] leading-tight md:text-[32px]">
-            Repeating applications and repeating assessments take time away{" "}
-            <em>from the work itself.</em>
-          </p>
         </div>
       </section>
       <KnowledgeBridge />
