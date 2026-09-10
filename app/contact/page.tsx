@@ -127,7 +127,7 @@ export default function ContactPage() {
       <div className="max-w-5xl mx-auto px-6">
         {/* Heading */}
         <h1 className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black mb-6">
-          Build with <span className="italic text-brand-accent">us.</span>
+          Build with <span className="italic text-brand-accent">us</span>
         </h1>
 
         <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mb-16">

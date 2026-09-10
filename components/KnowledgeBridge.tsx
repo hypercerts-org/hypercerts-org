@@ -11,7 +11,7 @@ export default function KnowledgeBridge() {
         <SectionHeading id="knowledge-heading" eyebrow="The opportunity">
           The knowledge is there.
           <br />
-          <em className="text-brand-accent">Let’s make it reusable.</em>
+          <em className="text-brand-accent">Let’s make it visible and trustworthy</em>
         </SectionHeading>
         <p className={`mt-8 max-w-[38rem] text-pretty ${bodyCopy}`}>
           Communities, experts, evaluators, certifiers, and funders already hold

@@ -70,6 +70,8 @@ Honest notes rather than intentions, so nobody mistakes these for design decisio
 - **`public/brand/` ships without usage guidance** — no clear space, minimum sizes, or rule for when Hypercerts vs. Hypercerts Foundation applies.
 - **`display-1` (160px) is declared but never used.** The largest type on the site is the 88px hero and the 80px mission statement.
 
-## Copy rule
+## Copy rules
 
 Do not use em dashes in site copy, UI labels, metadata, or new documentation. Rewrite the sentence with a conjunction, a comma, a colon, or separate sentences as appropriate.
+
+Headings never end with a period. Keep punctuation inside a heading where the grammar needs it: a comma between clauses, or a period between two sentences. The final sentence of a heading takes no full stop. Example: "The knowledge is there. Let's make it visible and trustworthy".

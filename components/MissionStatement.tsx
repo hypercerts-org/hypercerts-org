@@ -18,7 +18,7 @@ export default function MissionStatement() {
         <h2 className="font-display text-[36px] leading-[1.05] tracking-[-0.03em] text-brand-black sm:text-[48px] md:text-[64px] lg:text-[80px]">
           What we choose to fund
           <br />
-          <em>shapes the future we create.</em>
+          <em>shapes the future we create</em>
         </h2>
       </div>
     </section>
