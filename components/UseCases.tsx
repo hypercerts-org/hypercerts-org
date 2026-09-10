@@ -44,9 +44,11 @@ export default function UseCases() {
               Ma Earth · Round 3
             </p>
             <p className={`mt-8 ${bodyCopy}`}>
-              Silvi and GainForest helped review applications. The next step is
-              for other compatible applications to use the project records in
-              later funding processes.
+              Partner organizations reviewed applications using their own
+              expertise and methods. The next step is closing the loop: the
+              projects funded in this round report what they did with the
+              money, so their record is ready when the next round opens in
+              2027.
             </p>
             <div className="mt-6 flex flex-col items-start gap-2">
               <a href="/case-studies/ma-earth" className={textLink}>

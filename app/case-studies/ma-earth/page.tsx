@@ -124,7 +124,7 @@ export default function MaEarthCaseStudy() {
                 ],
                 [
                   "Evaluators",
-                  "Silvi and GainForest helped review applications using their own expertise and methods.",
+                  "Partner organizations reviewed applications using their own expertise and methods.",
                 ],
                 [
                   "Funders and crowd",
@@ -171,12 +171,14 @@ export default function MaEarthCaseStudy() {
               </div>
               <div className="rounded-brand border border-ui-separator bg-white p-6 md:p-8">
                 <h3 className="font-display text-[28px]">
-                  The next funding process
+                  Closing the loop
                 </h3>
                 <p className={`mt-4 ${bodyCopy}`}>
-                  The next step is for another application to use those records
-                  in a later funding process and add its own evaluations,
-                  endorsements, or funding decision.
+                  The projects funded in this round report what they did with
+                  the money, so their record is ready when the next round opens
+                  in 2027. Later funding processes can then add their own
+                  evaluations, endorsements, or funding decisions to the same
+                  records.
                 </p>
                 <p className="mt-5 border-t border-ui-separator pt-5 font-body text-body-sm leading-relaxed text-ui-grey-dark">
                   Endorsements were not used to allocate the Ma Earth matching
