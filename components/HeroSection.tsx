@@ -42,7 +42,7 @@ export default function HeroSection() {
           Hypercerts is an open protocol that connects information about
           valuable work with evidence, evaluations, and funding history.
           Projects and organizations publish once, for any application or agent
-          to read. Funders build on what others already know.
+          to read.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a href="#how-it-works" className={primaryButton}>

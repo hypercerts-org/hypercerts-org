@@ -39,15 +39,15 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <HeroSection />
-      <MissionStatement />
       <PartnerLogos />
       <ResourceAllocation />
       <TrustOverTime />
       <WhatIsHypercert />
-      <ForBuilders />
       <UseCases />
       <WhyNow />
       <FundingModels />
+      <ForBuilders />
+      <MissionStatement />
       <Ecosystem />
       <MediaSection />
       <GetInvolved />
