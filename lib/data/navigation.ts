@@ -10,8 +10,8 @@ export interface NavColumn {
 }
 
 export const headerNavLinks: NavLink[] = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Docs ↗", href: "https://docs.hypercerts.org", external: true },
 ];
 
