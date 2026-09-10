@@ -506,3 +506,141 @@ html {
 .timeline-grid {
   gap: var(--timeline-gap);
 }
+
+/* Field-specific signals: a project's public record drawn as a countersigned
+   document. Common lines stay fixed; only the field lines change. */
+.field-tabs {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #000;
+}
+.field-tab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid #d2d2d2;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #000;
+  cursor: pointer;
+  transition: color 150ms;
+}
+.field-tab:hover {
+  color: #af2901;
+}
+.field-tab[aria-selected="true"] {
+  color: #af2901;
+}
+.field-tab:focus-visible {
+  outline-offset: -4px;
+}
+.field-tab-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.field-tab-signal {
+  font-size: 14px;
+  color: #666;
+}
+.field-tab[aria-selected="true"] .field-tab-signal {
+  color: #535353;
+}
+.record-card {
+  align-self: start;
+  background: white;
+  border: 1px solid #d2d2d2;
+  border-radius: 12px;
+  padding: 32px;
+}
+.record-card:focus-visible {
+  outline-offset: -6px;
+}
+.record-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #000;
+}
+.record-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 12px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #666;
+}
+.record-issuer-label {
+  display: none;
+}
+.record-lines {
+  display: flex;
+  flex-direction: column;
+}
+.record-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid #d2d2d2;
+}
+.record-line[data-field="true"] {
+  background: linear-gradient(90deg, #f9f6ef, transparent 85%);
+  margin-inline: -16px;
+  padding-inline: 16px;
+  border-radius: 8px;
+  border-bottom-color: transparent;
+}
+.record-line[data-field="true"] + .record-line[data-field="true"] {
+  margin-top: 4px;
+}
+.record-issuer {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666;
+  text-align: right;
+  white-space: nowrap;
+  padding-top: 6px;
+}
+.record-issuer::first-letter {
+  text-transform: uppercase;
+}
+.record-issuer-field {
+  color: #af2901;
+}
+.record-seal {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.record-foot {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666;
+}
+@media (max-width: 767px) {
+  .record-card {
+    padding: 24px 20px;
+  }
+  .record-line {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .record-issuer {
+    text-align: left;
+    padding-top: 0;
+    white-space: normal;
+  }
+  .record-issuer-label {
+    display: inline;
+  }
+  .record-columns {
+    display: none;
+  }
+}

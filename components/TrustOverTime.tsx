@@ -2,9 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { bodyCopy, SectionHeading } from "./LandingSection";
-import { trustExamples } from "@/lib/data/trustExamples";
+import { commonSignals } from "@/lib/data/trustSignals";
 import { useDiagramReveal } from "./diagrams/useDiagramReveal";
-import ProjectIcon from "./diagrams/ProjectIcon";
 
 const curve =
   "M20 260 C110 260 165 244 250 225 C355 202 435 178 550 145 C675 109 785 61 890 45";
@@ -13,7 +12,6 @@ const points = [
   { x: 55, y: 48.333 },
   { x: 89, y: 15 },
 ];
-
 const drawDuration = 1500;
 
 /* The red curve is one path revealed by a linear clip wipe. On mount it starts
@@ -70,16 +68,8 @@ function TrustCurve({ stage, visible }: { stage: number; visible: boolean }) {
 }
 
 export default function TrustOverTime() {
-  const [projectIndex, setProjectIndex] = useState(0);
   const [stage, setStage] = useState(2);
-  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const { ref, visible } = useDiagramReveal();
-  const project = trustExamples[projectIndex];
-
-  function selectProject(index: number) {
-    setProjectIndex(index);
-    setStage(2);
-  }
 
   return (
     <section
@@ -92,75 +82,27 @@ export default function TrustOverTime() {
           Trust builds <em className="text-brand-accent">over time</em>
         </SectionHeading>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
-          Project updates, endorsements, and independent assessments paint a
-          fuller picture of the work. Which signals matter depends on the field
-          and who is making the decision.
+          A project&rsquo;s public record grows as others add to it. Updates
+          from the team, endorsements from peers, and records from funders each
+          name their source. Together they paint a fuller picture than any
+          application form.
         </p>
         <div
           ref={ref}
           data-visible={visible}
           className="trust-explorer diagram-reveal mt-12 md:mt-16"
         >
-          <div
-            role="tablist"
-            aria-label="Choose a project type"
-            className="trust-tabs"
-          >
-            {trustExamples.map((item, index) => (
-              <button
-                key={item.id}
-                ref={(element) => {
-                  tabs.current[index] = element;
-                }}
-                type="button"
-                role="tab"
-                id={`trust-tab-${item.id}`}
-                aria-controls="trust-panel"
-                aria-selected={projectIndex === index}
-                tabIndex={projectIndex === index ? 0 : -1}
-                className="trust-tab"
-                onClick={() => selectProject(index)}
-                onKeyDown={(event) => {
-                  let next: number | undefined;
-                  if (event.key === "ArrowRight")
-                    next = (index + 1) % trustExamples.length;
-                  if (event.key === "ArrowLeft")
-                    next =
-                      (index + trustExamples.length - 1) % trustExamples.length;
-                  if (event.key === "Home") next = 0;
-                  if (event.key === "End") next = trustExamples.length - 1;
-                  if (next !== undefined) {
-                    event.preventDefault();
-                    selectProject(next);
-                    tabs.current[next]?.focus();
-                  }
-                }}
-              >
-                <ProjectIcon kind={item.id} className="h-7 w-7 shrink-0" />
-                <span>{item.name}</span>
-              </button>
-            ))}
-          </div>
-          <div
-            id="trust-panel"
-            role="tabpanel"
-            aria-labelledby={`trust-tab-${project.id}`}
-            tabIndex={0}
-            className="trust-panel"
-          >
+          <div className="trust-panel">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
               <p className="font-display text-heading-4 text-brand-black">
-                {project.project}
+                One project, three signals
               </p>
             </div>
-            <figure
-              className="mt-8"
-              aria-label={`How trust can build in ${project.name.toLowerCase()}`}
-            >
+            <figure className="mt-8" aria-label="How trust can build over time">
               <div className="mb-3 font-body text-body-sm text-ui-grey-dark">
                 Trust <span aria-hidden="true">↑</span>
               </div>
-              <div className="trust-plot" key={project.id}>
+              <div className="trust-plot">
                 <svg
                   viewBox="0 0 1000 300"
                   preserveAspectRatio="none"
@@ -189,9 +131,9 @@ export default function TrustOverTime() {
               role="group"
               aria-label="Explore the trust signals"
             >
-              {project.signals.map((signal, index) => (
+              {commonSignals.map((signal, index) => (
                 <button
-                  key={`${project.id}-${index}`}
+                  key={signal.title}
                   type="button"
                   className="trust-signal"
                   aria-pressed={stage === index}
@@ -213,8 +155,8 @@ export default function TrustOverTime() {
               ))}
             </div>
             <p className="sr-only" aria-live="polite" aria-atomic="true">
-              {project.name}: {stage + 1} of 3 illustrative signals added.
-              Latest signal: {project.signals[stage].title}.
+              {stage + 1} of 3 illustrative signals added. Latest signal:{" "}
+              {commonSignals[stage].title}.
             </p>
           </div>
         </div>
