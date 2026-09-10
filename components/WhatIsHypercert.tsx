@@ -48,8 +48,9 @@ export default function WhatIsHypercert() {
           The Hypercerts protocol gives project information a common format, so
           it can be reused across applications and agents instead of being
           submitted and assessed from scratch. Lexicons, usage guidance, and
-          supporting infrastructure work together. The Hypercerts Foundation
-          stewards the protocol and maintains that infrastructure.
+          supporting infrastructure work together to make that possible. The
+          Hypercerts Foundation stewards the protocol and maintains the
+          infrastructure that keeps the information accessible.
         </p>
         <div className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2">
           {contributions.map(({ role, action }) => (
