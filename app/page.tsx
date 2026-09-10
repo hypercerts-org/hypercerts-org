@@ -9,6 +9,7 @@ import ResourceAllocation from "@/components/ResourceAllocation";
 import TrustOverTime from "@/components/TrustOverTime";
 import UseCases from "@/components/UseCases";
 import WhatIsHypercert from "@/components/WhatIsHypercert";
+import ForBuilders from "@/components/ForBuilders";
 import WhyNow from "@/components/WhyNow";
 
 const structuredData = {
@@ -43,6 +44,7 @@ export default function Home() {
       <ResourceAllocation />
       <TrustOverTime />
       <WhatIsHypercert />
+      <ForBuilders />
       <UseCases />
       <WhyNow />
       <FundingModels />

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { bodyCopy, developerGuideUrl, SectionHeading } from "./LandingSection";
+import { bodyCopy, SectionHeading } from "./LandingSection";
 
 const contributions = [
   {
@@ -52,11 +52,11 @@ export default function WhatIsHypercert() {
           Hypercerts Foundation stewards the protocol and maintains the
           infrastructure that keeps the information accessible.
         </p>
-        <div className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2">
           {contributions.map(({ role, action }) => (
             <div
               key={role}
-              className="flex flex-col border-t border-brand-black pt-6"
+              className="flex flex-col rounded-brand border border-ui-separator bg-white p-6 md:p-8"
             >
               <h3 className="mb-4 font-display text-[28px] leading-tight">
                 {role}
@@ -65,35 +65,6 @@ export default function WhatIsHypercert() {
             </div>
           ))}
         </div>
-        <a
-          href={developerGuideUrl}
-          className="builder-guide group mt-16 md:mt-20"
-        >
-          <div>
-            <span className="mb-3 block font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark">
-              For builders
-            </span>
-            <span className="font-display text-[36px] leading-[1.1] tracking-[-0.02em] sm:text-display-3">
-              Read the <em className="text-brand-accent">Guide</em>
-            </span>
-          </div>
-          <span className="builder-guide-rule" aria-hidden="true" />
-          <span className="builder-guide-arrow" aria-hidden="true">
-            <svg
-              viewBox="0 0 32 32"
-              fill="none"
-              className="h-8 w-8 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            >
-              <path
-                d="M8 24 24 8M8 8h16v16"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-        </a>
       </div>
     </section>
   );

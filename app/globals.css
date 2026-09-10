@@ -511,49 +511,6 @@ html {
   }
 }
 
-/* The guide is a full-width editorial signpost and one generous link target. */
-.builder-guide {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #d2d2d2;
-  padding-block: 40px;
-}
-.builder-guide-rule {
-  flex: 1;
-  height: 1px;
-  background: #d2d2d2;
-}
-.builder-guide-arrow {
-  display: grid;
-  flex-shrink: 0;
-  place-items: center;
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
-  background: #000;
-  color: #fff;
-  transition: background 200ms;
-}
-.builder-guide:hover .builder-guide-arrow {
-  background: #191919;
-}
-@media (max-width: 479px) {
-  .builder-guide {
-    justify-content: space-between;
-    gap: 20px;
-    padding-block: 32px;
-  }
-  .builder-guide-rule {
-    display: none;
-  }
-  .builder-guide-arrow {
-    width: 64px;
-    height: 64px;
-  }
-}
-
 .timeline-grid {
   gap: var(--timeline-gap);
 }
