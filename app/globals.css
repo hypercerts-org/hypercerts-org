@@ -247,17 +247,8 @@ html {
   stroke-width: 2;
   stroke-linecap: round;
 }
-.diagram-reveal[data-visible="true"] .trust-curve {
-  animation: draw-line 650ms ease-out both;
-  stroke-dasharray: 1;
-}
-@keyframes draw-line {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
+.trust-curve-layer {
+  transition: clip-path 1500ms linear;
 }
 .trust-point {
   position: absolute;
@@ -272,8 +263,9 @@ html {
   color: #666;
   font-size: 14px;
   transition:
-    background 250ms,
-    color 250ms;
+    background 150ms,
+    border-color 150ms,
+    color 150ms;
 }
 .trust-point[data-added="true"] {
   background: #af2901;

@@ -1,21 +1,73 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { bodyCopy, SectionHeading } from "./LandingSection";
 import { trustExamples } from "@/lib/data/trustExamples";
 import { useDiagramReveal } from "./diagrams/useDiagramReveal";
 import ProjectIcon from "./diagrams/ProjectIcon";
 
-const segments = [
-  "M20 260 C110 260 165 244 250 225",
-  "M250 225 C355 202 435 178 550 145",
-  "M550 145 C675 109 785 61 890 45",
-];
+const curve =
+  "M20 260 C110 260 165 244 250 225 C355 202 435 178 550 145 C675 109 785 61 890 45";
 const points = [
   { x: 25, y: 75 },
   { x: 55, y: 48.333 },
   { x: 89, y: 15 },
 ];
+
+const drawDuration = 1500;
+
+/* The red curve is one path revealed by a linear clip wipe. On mount it starts
+   hidden and, once the diagram is visible, sweeps to the current stage. Each
+   point lights up at the moment the sweep reaches it. */
+function TrustCurve({ stage, visible }: { stage: number; visible: boolean }) {
+  const [drawn, setDrawn] = useState(false);
+  const previous = useRef(0);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setDrawn(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+  const reveal = drawn && visible ? points[stage].x : 0;
+  const from = previous.current;
+  useEffect(() => {
+    previous.current = reveal;
+  }, [reveal]);
+  const span = Math.abs(reveal - from);
+  /* Delay each point until the sweep passes it, growing or retracting. */
+  const delayFor = (x: number) => {
+    if (span === 0) return 0;
+    const within =
+      reveal > from ? x > from && x <= reveal : x <= from && x > reveal;
+    return within ? (Math.abs(x - from) / span) * drawDuration : 0;
+  };
+  return (
+    <>
+      <svg
+        viewBox="0 0 1000 300"
+        preserveAspectRatio="none"
+        className="trust-curve-layer absolute inset-0 h-full w-full"
+        style={{ clipPath: `inset(0 ${100 - reveal}% 0 0)` }}
+        aria-hidden="true"
+      >
+        <path d={curve} className="trust-curve" />
+      </svg>
+      {points.map((point, index) => (
+        <span
+          key={index}
+          aria-hidden="true"
+          className="trust-point"
+          data-added={reveal >= point.x}
+          style={{
+            left: `${point.x}%`,
+            top: `${point.y}%`,
+            transitionDelay: `${delayFor(point.x)}ms`,
+          }}
+        >
+          {index + 1}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function TrustOverTime() {
   const [projectIndex, setProjectIndex] = useState(0);
@@ -124,31 +176,9 @@ export default function TrustOverTime() {
                       className="chart-guide"
                     />
                   ))}
-                  <path d={segments.join(" ")} className="trust-potential" />
-                  {segments.map(
-                    (d, index) =>
-                      stage >= index && (
-                        <path
-                          key={index}
-                          d={d}
-                          pathLength="1"
-                          className="trust-curve"
-                          style={{ animationDelay: `${index * 220}ms` }}
-                        />
-                      ),
-                  )}
+                  <path d={curve} className="trust-potential" />
                 </svg>
-                {points.map((point, index) => (
-                  <span
-                    key={index}
-                    aria-hidden="true"
-                    className="trust-point"
-                    data-added={stage >= index}
-                    style={{ left: `${point.x}%`, top: `${point.y}%` }}
-                  >
-                    {index + 1}
-                  </span>
-                ))}
+                <TrustCurve stage={stage} visible={visible} />
               </div>
               <div className="mt-2 text-right font-body text-body-sm text-ui-grey-dark">
                 Time <span aria-hidden="true">→</span>
