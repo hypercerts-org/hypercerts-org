@@ -2,6 +2,10 @@
   "name": "hypercerts-org-v3",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@12.2.1",
+  "engines": {
+    "node": "24.x"
+  },
   "type": "module",
   "scripts": {
     "dev": "next dev",
