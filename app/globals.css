@@ -553,7 +553,8 @@ html {
   background: white;
   border: 1px solid #d2d2d2;
   border-radius: 12px;
-  padding: 32px;
+  /* The bottom inset matches the side inset of the sealed slips. */
+  padding: 32px 32px 16px;
 }
 .record-card:focus-visible {
   outline-offset: -6px;
@@ -636,7 +637,11 @@ html {
 }
 @media (max-width: 767px) {
   .record-card {
-    padding: 24px 20px;
+    padding: 24px 24px 12px;
+  }
+  .record-line[data-field="true"] {
+    margin-inline: -12px;
+    padding-inline: 12px;
   }
   .record-line {
     grid-template-columns: 1fr;
