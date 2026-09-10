@@ -80,8 +80,9 @@ export default function FieldSignals() {
               assessment for research.
             </p>
             <p>
-              A project&rsquo;s record can hold all of them. Each one names who
-              issued it, so a reader can decide how much weight to give it.
+              A project&rsquo;s record can hold all of them. Each one is linked
+              to its issuer, so a reader can see who stands behind it and
+              decide how much weight to give it.
             </p>
           </div>
           <div
