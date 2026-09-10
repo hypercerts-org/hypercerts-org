@@ -1,53 +1,58 @@
+import Image from "next/image";
+import {
+  bodyCopy,
+  developerGuideUrl,
+  primaryButton,
+  secondaryButton,
+} from "./LandingSection";
+
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100svh-50px)] flex flex-col items-center justify-center bg-white overflow-hidden" aria-labelledby="hero-heading">
-      {/* Guilloche background — positioned so only top 40% is visible */}
-      <img
+    <section
+      className="relative flex min-h-[calc(100svh-50px)] flex-col items-center justify-center overflow-hidden bg-white py-24 md:py-32"
+      aria-labelledby="hero-heading"
+    >
+      <Image
         src="/img/guilloche_02_top.svg"
         alt=""
         aria-hidden="true"
-        className="absolute left-1/2 -translate-x-1/2 bottom-0 pointer-events-none opacity-[0.25] max-w-none"
+        width={1600}
+        height={1000}
+        priority
+        className="pointer-events-none absolute bottom-0 left-1/2 max-w-none -translate-x-1/2 opacity-[0.2]"
         style={{
           width: "auto",
           height: "calc(100% - 70px)",
-          maskImage: "radial-gradient(ellipse 50% 70% at 50% 90%, transparent 30%, black 70%)",
-          WebkitMaskImage: "radial-gradient(ellipse 50% 70% at 50% 90%, transparent 30%, black 70%)",
+          maskImage:
+            "radial-gradient(ellipse 50% 70% at 50% 90%, transparent 30%, black 70%)",
         }}
       />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
-        {/* Label */}
-        <p className="font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent mb-6">
-          The AI-Native, Open Context Layer
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
+        <p className="mb-6 max-w-xl font-body text-body-sm uppercase tracking-[0.2em] leading-relaxed text-brand-accent">
+          The AI-native context layer
         </p>
-
-        {/* Title */}
-        <h1 id="hero-heading" className="font-display text-[58px] sm:text-[68px] md:text-[72px] lg:text-[88px] leading-[0.95] tracking-[-0.03em] text-brand-black">
-          Collective Intelligence
-          <br />
-          <span className="italic text-brand-accent">for Funding Impact</span>
+        <h1
+          id="hero-heading"
+          className="font-display text-[36px] min-[375px]:text-[40px] leading-[0.98] tracking-[-0.03em] text-brand-black sm:text-[68px] md:text-[72px] lg:text-[88px]"
+        >
+          Open infrastructure for
+          <br /> <em className="text-brand-accent">funding valuable work</em>
         </h1>
-
-        {/* Subtitle */}
-        <p className="mt-8 font-body text-body-lg text-ui-grey-dark max-w-md mx-auto leading-relaxed">
-          Hypercerts create shared context—evidence, expert input,
-          and community trust—for better resource allocation.
+        <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
+          Hypercerts is an open protocol that connects information about
+          valuable work with evidence, evaluations, and funding history.
+          Projects and organizations publish once, for any application or agent
+          to read.
         </p>
-
-        {/* CTAs */}
-        <div className="mt-12 flex gap-4 flex-wrap justify-center">
-          <a
-            href="#tools-and-apps"
-            className="bg-brand-black text-brand-white px-8 py-3 rounded-brand text-body-lg font-medium hover:bg-brand-navy transition"
-          >
-            Build with hypercerts
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <a href="#how-it-works" className={primaryButton}>
+            See how it works
           </a>
-          <a
-            href="#what-is-hypercert"
-            className="bg-brand-white border border-ui-separator text-brand-black px-8 py-3 rounded-brand text-body-lg font-medium hover:border-brand-black hover:bg-ui-bg transition"
-          >
-            Learn more
+          <a href={developerGuideUrl} className={secondaryButton}>
+            Start the Guide{" "}
+            <span className="ml-2" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
       </div>

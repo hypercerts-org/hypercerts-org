@@ -7,23 +7,23 @@ import AnnouncementBanner from "@/components/AnnouncementBanner";
 export const metadata: Metadata = {
   metadataBase: new URL("https://hypercerts.org"),
   title: {
-    default: "Hypercerts — Collective Intelligence for Funding Impact",
+    default: "Hypercerts | Open infrastructure for funding valuable work",
     template: "%s | Hypercerts",
   },
   description:
-    "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
+    "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
   openGraph: {
-    title: "Hypercerts — Collective Intelligence for Funding Impact",
+    title: "Hypercerts | Open infrastructure for funding valuable work",
     description:
-      "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
+      "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
     url: "https://hypercerts.org",
     siteName: "Hypercerts",
     images: [
       {
-        url: "/img/hypercerts_opengraph-v2.jpg",
+        url: "/img/hypercerts-opengraph-sep-2026.png",
         width: 1200,
         height: 630,
-        alt: "Hypercerts — Collective Intelligence for Funding Impact",
+        alt: "Hypercerts | Open infrastructure for funding valuable work",
       },
     ],
     locale: "en_US",
@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hypercerts — Collective Intelligence for Funding Impact",
+    title: "Hypercerts | Open infrastructure for funding valuable work",
     description:
-      "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
-    images: ["/img/hypercerts_opengraph-v2.jpg"],
+      "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
+    images: ["/img/hypercerts-opengraph-sep-2026.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -77,7 +77,7 @@ export default function RootLayout({
                   url: "https://hypercerts.org/img/hypercerts_logo_horizontal.svg",
                 },
                 description:
-                  "Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.",
+                  "An independent nonprofit stewarding the Hypercerts protocol, maintaining open infrastructure, and helping organizations participate.",
                 sameAs: [
                   "https://bsky.app/profile/hypercerts.org",
                   "https://twitter.com/hypercerts",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 /**
  * Catch-all for any `hypercerts.org/docs/...` URL. The documentation
- * site has moved to `docs.hypercerts.org` — without this page, every
+ * site has moved to `docs.hypercerts.org`: without this page, every
  * legacy URL (which Google still has indexed for `/docs/guide/start`
  * and friends) renders the generic 404 and reads as broken.
  *

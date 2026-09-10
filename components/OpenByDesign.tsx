@@ -2,7 +2,7 @@ const capabilities = [
   {
     title: "Portable records",
     description:
-      "Contributions, evaluations, and funding data belong to their creators\u2014not to any single application. Records move with you.",
+      "Contributions, evaluations, and funding data belong to their creators, rather than any single application. Records move with you.",
   },
   {
     title: "Persistent identity",
@@ -12,7 +12,7 @@ const capabilities = [
   {
     title: "Interoperable by default",
     description:
-      "Different tools, funders, and communities can read and build on the same shared data\u2014without permission gates.",
+      "Different tools, funders, and communities can read and build on the same shared data without permission gates.",
   },
 ];
 
@@ -22,7 +22,7 @@ export default function OpenByDesign() {
       className="relative bg-surface-cream py-24 md:py-32 overflow-hidden"
       aria-labelledby="open-by-design-heading"
     >
-      {/* Guilloche — bottom left corner */}
+      {/* Guilloche: bottom left corner */}
       <img
         src="/img/guilloche/guilloche_01.svg"
         alt=""
@@ -48,7 +48,7 @@ export default function OpenByDesign() {
         {/* Intro */}
         <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mt-8">
           Hypercerts are built on the AT Protocol as open, shared
-          infrastructure&mdash;so that value, context, and trust are never
+          infrastructure so that value, context, and trust are never
           locked into a single platform.
         </p>
 

@@ -6,7 +6,7 @@ export default function Vision() {
           Where we are headed
         </p>
         <p className="font-display text-[28px] sm:text-[36px] md:text-[48px] leading-[1.15] tracking-[-0.02em] text-brand-black">
-          Decisions are no longer based on isolated reports. They are built on shared records—where evidence accumulates and trust is earned over time.
+          Decisions are no longer based on isolated reports. They are built on shared records where evidence accumulates and trust is earned over time.
         </p>
       </div>
     </section>

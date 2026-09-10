@@ -4,11 +4,11 @@ import { footerNavColumns as navColumns } from "@/lib/data/navigation";
 export default function Footer() {
   return (
     <footer className="w-full bg-ui-bg py-16 md:py-20">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="landing-container">
         {/* Navigation columns */}
         <div className="mb-12">
           <nav aria-label="Footer navigation">
-            <div className="grid grid-cols-3 gap-12 max-w-lg">
+            <div className="grid grid-cols-3 gap-6 sm:gap-12 max-w-lg">
               {navColumns.map((col) => (
                 <div key={col.header}>
                   <p className="text-brand-black font-body font-medium text-body-sm uppercase tracking-wider mb-4">
@@ -48,7 +48,7 @@ export default function Footer() {
 
         {/* Bottom row */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-ui-grey text-body-sm font-body">
+          <p className="text-ui-grey-muted text-body-sm font-body">
             &copy; {new Date().getFullYear()} Hypercerts Foundation
           </p>
           <div className="flex items-center gap-3 text-body-sm font-body">
