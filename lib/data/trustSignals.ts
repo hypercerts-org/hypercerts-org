@@ -32,19 +32,6 @@ export const commonSignals: TrustSignal[] = [
    signals differ between them. */
 export const fields = [
   {
-    id: "energy",
-    name: "Local energy",
-    project: "A community-owned energy project",
-    signals: [
-      {
-        title: "Certification",
-        description:
-          "An independent certifier documents the standards the installation meets.",
-        issuer: "a certifier",
-      },
-    ],
-  },
-  {
     id: "land",
     name: "Community land regeneration",
     project: "A community-led land regeneration project",
@@ -60,6 +47,19 @@ export const fields = [
         description:
           "Measurements from the land, such as satellite imagery or bioacoustics.",
         issuer: "field measurements",
+      },
+    ],
+  },
+  {
+    id: "energy",
+    name: "Local energy",
+    project: "A community-owned energy project",
+    signals: [
+      {
+        title: "Certification",
+        description:
+          "An independent certifier documents the standards the installation meets.",
+        issuer: "a certifier",
       },
     ],
   },

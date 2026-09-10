@@ -75,8 +75,8 @@ export default function FieldSignals() {
             <p>
               Updates, endorsements, and funding records apply to any project.
               The signals that carry the most weight are particular to the
-              work: certifications for an energy installation, community
-              evaluation and measured impact for land regeneration, expert
+              work: community evaluation and measured impact for land
+              regeneration, certification for an energy installation, expert
               assessment for research.
             </p>
             <p>
@@ -171,31 +171,41 @@ export default function FieldSignals() {
                 </p>
               </li>
             ))}
-            {field.signals.map((signal) => (
-              <li
-                key={`${field.id}-${signal.title}`}
-                className="record-line animate-fade-in"
-                data-field="true"
-              >
-                <div>
-                  <p className="flex items-center gap-2 font-display text-[22px] leading-tight text-brand-accent">
-                    <Seal />
-                    {signal.title}
-                  </p>
-                  <p className="mt-1 font-body text-body-sm leading-relaxed text-ui-grey-dark">
-                    {signal.description}
-                  </p>
-                </div>
-                <p className="record-issuer record-issuer-field">
-                  <span className="record-issuer-label">Issued by </span>
-                  {signal.issuer}
-                </p>
-              </li>
-            ))}
           </ol>
-          <p className="record-foot">
-            Every line names its issuer. None of them is a score.
-          </p>
+          {/* Every field's lines share one grid cell, so the card keeps the
+              height of the tallest set while only the active one shows. */}
+          <div className="record-field-lines">
+            {fields.map((item) => (
+              <ul
+                key={item.id}
+                className="record-field-set"
+                data-active={item.id === field.id}
+                aria-hidden={item.id !== field.id}
+              >
+                {item.signals.map((signal) => (
+                  <li
+                    key={signal.title}
+                    className="record-line"
+                    data-field="true"
+                  >
+                    <div>
+                      <p className="flex items-center gap-2 font-display text-[22px] leading-tight text-brand-accent">
+                        <Seal />
+                        {signal.title}
+                      </p>
+                      <p className="mt-1 font-body text-body-sm leading-relaxed text-ui-grey-dark">
+                        {signal.description}
+                      </p>
+                    </div>
+                    <p className="record-issuer record-issuer-field">
+                      <span className="record-issuer-label">Issued by </span>
+                      {signal.issuer}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
       </div>
     </section>

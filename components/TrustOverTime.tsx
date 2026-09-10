@@ -82,10 +82,11 @@ export default function TrustOverTime() {
           Trust builds <em className="text-brand-accent">over time</em>
         </SectionHeading>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
-          A project&rsquo;s public record grows as others add to it. Updates
-          from the team, endorsements from peers, and records from funders each
-          name their source. Together they paint a fuller picture than any
-          application form.
+          A project starts with little to show. As the work goes on, others
+          add to its public record: the team posts an update, a peer vouches
+          for it, a funder records its support. Each addition gives the next
+          reader more to go on. The three below are examples of the signals a
+          record can carry, not the full list.
         </p>
         <div
           ref={ref}

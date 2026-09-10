@@ -618,11 +618,16 @@ html {
   height: 20px;
   flex-shrink: 0;
 }
-.record-foot {
-  margin-top: 20px;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #666;
+.record-field-lines {
+  display: grid;
+}
+.record-field-set {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+.record-field-set[data-active="true"] {
+  visibility: visible;
+  animation: fade-in 0.25s ease-out;
 }
 @media (max-width: 767px) {
   .record-card {
