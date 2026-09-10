@@ -7,7 +7,7 @@ const horizons = [
   {
     label: "Today",
     status: "In use",
-    models: ["Crowdfunding", "Matching"],
+    models: ["Crowdfunding with matching pools"],
     description:
       "Project information and partner review support real funding rounds.",
     current: true,
@@ -15,7 +15,7 @@ const horizons = [
   {
     label: "Possible next",
     status: "Potential extensions",
-    models: ["Outcome payments"],
+    models: ["Outcome payments", "Hackathons", "Milestone bounties"],
     description:
       "Shared evidence could inform payments for results. Bounties are another nearer possibility.",
     current: false,
@@ -25,7 +25,7 @@ const horizons = [
     status: "Possibilities to explore",
     models: ["Impact investing", "Commerce", "Procurement"],
     description:
-      "Broader uses would need further development. Procurement requires protocol changes.",
+      "Investment, purchasing, and contracting decisions could draw on the same impact and trust signals.",
     current: false,
   },
 ];
