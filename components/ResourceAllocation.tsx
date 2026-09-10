@@ -29,9 +29,9 @@ export default function ResourceAllocation() {
               eyebrow="The challenge"
               headingClassName="text-[36px] sm:text-[44px] md:text-[36px] lg:text-display-3"
             >
-              There is too much friction
+              The same questions,
               <br />
-              <em className="text-brand-accent">for projects and funders</em>
+              <em className="text-brand-accent">asked over and over</em>
             </SectionHeading>
             <div className={`mt-8 space-y-6 ${bodyCopy}`}>
               <p>
@@ -41,9 +41,9 @@ export default function ResourceAllocation() {
                 being able to judge it.
               </p>
               <p>
-                Today that work is repeated for every funding decision. It takes
-                time away from the work itself, and what one round learns rarely
-                reaches the next.
+                Today that work is repeated for every funding decision. The
+                friction takes time away from the work itself, and what one
+                round learns rarely reaches the next.
               </p>
             </div>
           </div>
