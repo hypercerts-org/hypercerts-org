@@ -85,7 +85,7 @@ export default function TrustOverTime() {
           A project starts with little to show. As the work goes on, others
           add to its public record: the team posts an update, a peer vouches
           for it, a funder records its support. Each addition gives the next
-          reader more to go on. The three below are examples of the signals a
+          reader more to go on. The three below are examples of trust signals a
           record can carry, not the full list.
         </p>
         <div
