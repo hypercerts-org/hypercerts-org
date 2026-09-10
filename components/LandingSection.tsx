@@ -15,10 +15,12 @@ export function SectionHeading({
   id,
   eyebrow,
   children,
+  headingClassName = "text-[36px] sm:text-[48px] md:text-display-2",
 }: {
   id: string;
   eyebrow: string;
   children: ReactNode;
+  headingClassName?: string;
 }) {
   return (
     <>
@@ -27,7 +29,7 @@ export function SectionHeading({
       </p>
       <h2
         id={id}
-        className="max-w-4xl font-display text-[36px] leading-[1.05] tracking-[-0.02em] text-brand-black sm:text-[48px] md:text-display-2"
+        className={`max-w-4xl font-display leading-[1.05] tracking-[-0.02em] text-brand-black ${headingClassName}`}
       >
         {children}
       </h2>
