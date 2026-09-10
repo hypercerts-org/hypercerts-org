@@ -19,7 +19,7 @@ Hypercerts builds on AT Protocol for portable identities, user-controlled record
 
 Crowdfunding and matching are current uses. Outcome payments and bounties are possible next extensions. Impact investing, commerce, and procurement are future possibilities, not supported features or a release schedule. Procurement requires protocol changes.
 
-Illustrative trust examples cover local energy, community land regeneration, and AI safety research. Project updates and peer endorsements are shared signals. The field-specific signals are certification, community evaluation and impact data, and expert assessment, respectively. The curve illustrates confidence building over time; it is not a calculated trust score.
+Trust is shown in two illustrative sections. The first shows one project's record growing over time with three signals that apply to any field: a project update, a peer endorsement, and a funding record. The second shows that field-specific signals differ: certification for local energy, community evaluation and impact data for community land regeneration, and expert assessment for AI safety research. Every signal names its issuer. Nothing on the page is a calculated trust score.
 
 ## Ma Earth case study
 
