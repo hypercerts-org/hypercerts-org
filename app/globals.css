@@ -39,6 +39,10 @@
   html[data-banner-hidden] [data-banner-role="announcement"] {
     display: none !important;
   }
+  :focus-visible {
+    outline: 2px solid #af2901;
+    outline-offset: 4px;
+  }
 }
 
 @keyframes fade-in {
@@ -160,13 +164,9 @@
   margin: 2em 0;
 }
 
-/* Keep anchor destinations and keyboard focus clear of the fixed header. */
+/* Keep anchor destinations clear of the fixed header. */
 html {
   scroll-padding-top: 74px;
-}
-:focus-visible {
-  outline: 2px solid #af2901;
-  outline-offset: 4px;
 }
 
 /* Shared page measure: the logo, headings, diagrams and footer use one margin. */
