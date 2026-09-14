@@ -39,8 +39,7 @@ export default function PrivacyPage() {
               collect information that you submit when contacting us, including
               your name, email address, organization, and message. We use this
               information solely to respond to you. Our contact form uses Resend
-              to deliver messages and Upstash to temporarily rate-limit requests
-              using a one-way hash of the originating IP address.
+              to deliver messages.
             </p>
             <p>
               We may use tracking or analytics technologies to automatically
@@ -62,8 +61,7 @@ export default function PrivacyPage() {
               use your data in a way we are not aware of. We therefore have no
               responsibility or liability for the content and activities of these
               linked sites. Service providers that process data on our behalf,
-              including Resend and Upstash, process it to provide their respective
-              email delivery and rate-limiting services.
+              including Resend, process it to provide email delivery services.
             </p>
           </section>
 

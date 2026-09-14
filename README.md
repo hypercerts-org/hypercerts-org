@@ -51,9 +51,8 @@ The contact form posts to `/api/contact` and sends an internal notification thro
 - `RESEND_API_KEY` (required): Resend API key with permission to send from the configured domain.
 - `RESEND_FROM_EMAIL` (optional): sender address, defaulting to `Hypercerts <no-reply@hypercerts.org>`.
 - `CONTACT_TO_EMAIL` (optional): internal recipient, defaulting to `team@hypercerts.org`.
-- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` (required in production): Upstash credentials used to limit submissions to five per IP every ten minutes.
 
-The visitor's email is used only as `Reply-To`; the endpoint never sends mail to an address supplied by a visitor. In development, rate limiting uses process memory when Upstash is not configured.
+The visitor's email is used only as `Reply-To`; the endpoint never sends mail to an address supplied by a visitor. Production request limits are enforced by a Vercel Firewall rule on `POST /api/contact`.
 
 ## Links
 

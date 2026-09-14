@@ -1,5 +1,3 @@
-import { createHash } from "node:crypto";
-import { Redis } from "@upstash/redis";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -7,22 +5,9 @@ const CONTACT_EMAIL = process.env.CONTACT_TO_EMAIL || "team@hypercerts.org";
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL ||
   "Hypercerts <no-reply@hypercerts.org>";
-const RATE_LIMIT_MAX = 5;
-const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
-
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
-const redis =
-  process.env.UPSTASH_REDIS_REST_URL &&
-  process.env.UPSTASH_REDIS_REST_TOKEN
-    ? Redis.fromEnv()
-    : null;
-
-const developmentRateLimits = new Map<
-  string,
-  { count: number; resetAt: number }
->();
 
 type ContactBody = {
   name?: unknown;
@@ -41,15 +26,6 @@ function clean(value: unknown) {
         )
         .trim()
     : "";
-}
-
-function getClientIp(request: NextRequest) {
-  return (
-    request.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown"
-  );
 }
 
 function checkOrigin(request: NextRequest) {
@@ -103,45 +79,6 @@ function isValidEmail(email: string) {
   );
 }
 
-async function enforceRateLimit(request: NextRequest) {
-  const now = Date.now();
-  const bucket = Math.floor(now / (RATE_LIMIT_WINDOW_SECONDS * 1000));
-  const ipHash = createHash("sha256").update(getClientIp(request)).digest("hex");
-  const key = `contact:${ipHash}:${bucket}`;
-  const resetAt = (bucket + 1) * RATE_LIMIT_WINDOW_SECONDS * 1000;
-  let count: number;
-
-  if (redis) {
-    count = await redis.incr(key);
-    if (count === 1) await redis.expire(key, RATE_LIMIT_WINDOW_SECONDS + 60);
-  } else if (process.env.NODE_ENV !== "production") {
-    const current = developmentRateLimits.get(key);
-    count = (current?.count || 0) + 1;
-    developmentRateLimits.set(key, { count, resetAt });
-
-    for (const [storedKey, value] of developmentRateLimits) {
-      if (value.resetAt <= now) developmentRateLimits.delete(storedKey);
-    }
-  } else {
-    return NextResponse.json(
-      { error: "The contact form is not configured." },
-      { status: 503 },
-    );
-  }
-
-  if (count <= RATE_LIMIT_MAX) return null;
-
-  return NextResponse.json(
-    { error: "Too many messages. Please try again in a few minutes." },
-    {
-      status: 429,
-      headers: {
-        "Retry-After": String(Math.max(1, Math.ceil((resetAt - now) / 1000))),
-      },
-    },
-  );
-}
-
 export async function POST(request: NextRequest) {
   if (!checkOrigin(request)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -150,20 +87,6 @@ export async function POST(request: NextRequest) {
   if (!request.headers.get("content-type")?.includes("application/json")) {
     return NextResponse.json({ error: "Invalid request" }, { status: 415 });
   }
-
-  let rateLimitResponse: NextResponse | null;
-
-  try {
-    rateLimitResponse = await enforceRateLimit(request);
-  } catch (error) {
-    console.error("[contact] rate limit failed", error);
-    return NextResponse.json(
-      { error: "The contact form is temporarily unavailable." },
-      { status: 503 },
-    );
-  }
-
-  if (rateLimitResponse) return rateLimitResponse;
 
   if (!resend) {
     return NextResponse.json(
