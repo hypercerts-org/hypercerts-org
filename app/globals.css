@@ -573,3 +573,81 @@ html {
 .timeline-grid {
   gap: var(--timeline-gap);
 }
+
+/* A sideways-scrolling row (HorizontalScroller). It starts at the page margin
+   and runs to the window edge; fixed-width items let the next one peek in,
+   a fade marks each side with more to see, and arrow buttons sit over it. */
+.scroller {
+  --scroller-fade: 6rem;
+  position: relative;
+  margin-top: 3rem;
+}
+/* Narrow screens show only a sliver of the next item, so fade less of it. */
+@media (max-width: 767px) {
+  .scroller {
+    --scroller-fade: 2rem;
+  }
+}
+.scroller-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-block: 0.5rem;
+  scroll-padding-inline: max(1.5rem, calc((100% - 64rem) / 2 + 1.5rem));
+}
+.scroller-track:focus-visible {
+  outline-offset: -2px;
+}
+.scroller-list {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  padding-inline: max(1.5rem, calc((100% - 64rem) / 2 + 1.5rem));
+}
+.scroller-list > li {
+  width: min(340px, calc(100vw - 4.5rem));
+  scroll-snap-align: start;
+}
+.scroller[data-at-end="false"] .scroller-track {
+  mask-image: linear-gradient(
+    to right,
+    #000 calc(100% - var(--scroller-fade)),
+    transparent
+  );
+}
+.scroller[data-at-start="false"] .scroller-track {
+  mask-image: linear-gradient(to right, transparent, #000 var(--scroller-fade));
+}
+.scroller[data-at-start="false"][data-at-end="false"] .scroller-track {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 var(--scroller-fade),
+    #000 calc(100% - var(--scroller-fade)),
+    transparent
+  );
+}
+.scroller-button {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d2d2d2;
+  border-radius: 50%;
+  background: white;
+  color: #000;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: border-color 150ms;
+}
+.scroller-button:hover {
+  border-color: #000;
+}
+.scroller-button[data-side="start"] {
+  left: 1rem;
+}
+.scroller-button[data-side="end"] {
+  right: 1rem;
+}

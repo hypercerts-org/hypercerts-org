@@ -60,8 +60,16 @@ export interface Collaborator {
   people: Person[];
 }
 
-/* Organizations building on the stack in production, with some of the people
-   who represent them. */
+/* David represents both GainForest and Protocol Labs. */
+const davidDao: Person = {
+  name: "David Dao",
+  linkedin: "https://www.linkedin.com/in/dwddao/",
+  github: "https://github.com/daviddao",
+  bluesky: "https://bsky.app/profile/daviddao.org",
+  photo: "/img/collaborators/david-dao.png",
+};
+
+/* Organizations we work with, with some of the people who represent them. */
 export const collaborators: Collaborator[] = [
   {
     name: "Ma Earth",
@@ -100,13 +108,7 @@ export const collaborators: Collaborator[] = [
         bluesky: "https://bsky.app/profile/sharfyae.bsky.social",
         photo: "/img/collaborators/sharfina-adamantine.png",
       },
-      {
-        name: "David Dao",
-        linkedin: "https://www.linkedin.com/in/dwddao/",
-        github: "https://github.com/daviddao",
-        bluesky: "https://bsky.app/profile/daviddao.org",
-        photo: "/img/collaborators/david-dao.png",
-      },
+      davidDao,
     ],
   },
   {
@@ -131,6 +133,15 @@ export const collaborators: Collaborator[] = [
         photo: "/img/collaborators/sev-nightingale.png",
       },
     ],
+  },
+  {
+    name: "Protocol Labs",
+    href: "https://www.protocol.ai",
+    description:
+      "Protocol Labs is an innovation network driving breakthroughs in computing.",
+    logo: "/img/protocollabs_logo.png",
+    logoHeight: 20,
+    people: [davidDao],
   },
 ];
 

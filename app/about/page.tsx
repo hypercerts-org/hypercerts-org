@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import HorizontalScroller from "@/components/HorizontalScroller";
 import {
   bodyCopy,
   primaryButton,
@@ -365,7 +366,8 @@ export default function About() {
           <SectionHeading id="partners-heading" eyebrow="Who we work with">
             Our <em className="text-brand-accent">collaborators</em>
           </SectionHeading>
-          <ul className="mt-12 grid gap-4 md:grid-cols-3">
+        </div>
+        <HorizontalScroller label="Collaborators">
             {collaborators.map((collaborator) => (
               <li
                 key={collaborator.name}
@@ -375,7 +377,7 @@ export default function About() {
                   href={collaborator.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between gap-6 transition-opacity hover:opacity-70"
+                  className="flex h-7 items-center justify-between gap-6 transition-opacity hover:opacity-70"
                 >
                   <Image
                     src={collaborator.logo}
@@ -410,8 +412,7 @@ export default function About() {
                 </ul>
               </li>
             ))}
-          </ul>
-        </div>
+        </HorizontalScroller>
       </section>
 
       <section
