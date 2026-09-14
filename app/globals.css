@@ -1,3 +1,5 @@
+@import "@hypercerts-org/ui-react/styles.css";
+
 @font-face {
   font-family: "Instrument Serif";
   src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2");

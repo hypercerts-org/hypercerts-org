@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
-import { primaryButton, secondaryButton } from "./LandingSection";
+import {
+  Button,
+  Field,
+  Input,
+  Textarea,
+} from "@hypercerts-org/ui-react";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
-
-const fieldClassName =
-  "mt-2 w-full rounded-brand border border-ui-separator bg-brand-white px-4 py-3 font-body text-body-lg text-brand-black placeholder:text-ui-grey transition focus:border-brand-accent focus:outline-none disabled:cursor-not-allowed disabled:bg-ui-bg";
 
 export default function ContactForm() {
   const [submissionState, setSubmissionState] =
@@ -80,13 +82,15 @@ export default function ContactForm() {
             Your note is on its way to the Hypercerts team.
           </p>
         </div>
-        <button
+        <Button
           type="button"
-          className={`${secondaryButton} mt-10 self-start`}
+          variant="secondary"
+          size="lg"
+          className="mt-10 self-start"
           onClick={() => setSubmissionState("idle")}
         >
           Send another message
-        </button>
+        </Button>
       </div>
     );
   }
@@ -100,56 +104,77 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
     >
       <div className="grid gap-6 sm:grid-cols-2">
-        <label className="font-body text-body-sm font-medium text-brand-black">
-          Name
-          <input
-            className={fieldClassName}
-            type="text"
-            name="name"
-            autoComplete="name"
-            maxLength={100}
-            disabled={isSubmitting}
-          />
-        </label>
+        <Field label="Name">
+          {(fieldProps) => (
+            <Input
+              {...fieldProps}
+              type="text"
+              inputSize="lg"
+              name="name"
+              autoComplete="name"
+              maxLength={100}
+              disabled={isSubmitting}
+            />
+          )}
+        </Field>
 
-        <label className="font-body text-body-sm font-medium text-brand-black">
-          Email <span aria-hidden="true">*</span>
-          <input
-            className={fieldClassName}
-            type="email"
-            name="email"
-            autoComplete="email"
-            maxLength={254}
-            required
-            disabled={isSubmitting}
-          />
-        </label>
+        <Field
+          label={
+            <>
+              Email <span aria-hidden="true">*</span>
+            </>
+          }
+        >
+          {(fieldProps) => (
+            <Input
+              {...fieldProps}
+              type="email"
+              inputSize="lg"
+              name="email"
+              autoComplete="email"
+              maxLength={254}
+              required
+              disabled={isSubmitting}
+            />
+          )}
+        </Field>
       </div>
 
-      <label className="mt-6 block font-body text-body-sm font-medium text-brand-black">
-        Organization
-        <input
-          className={fieldClassName}
-          type="text"
-          name="organization"
-          autoComplete="organization"
-          maxLength={150}
-          disabled={isSubmitting}
-        />
-      </label>
+      <Field label="Organization" className="mt-6">
+        {(fieldProps) => (
+          <Input
+            {...fieldProps}
+            type="text"
+            inputSize="lg"
+            name="organization"
+            autoComplete="organization"
+            maxLength={150}
+            disabled={isSubmitting}
+          />
+        )}
+      </Field>
 
-      <label className="mt-6 block font-body text-body-sm font-medium text-brand-black">
-        What would you like to explore? <span aria-hidden="true">*</span>
-        <textarea
-          className={`${fieldClassName} min-h-40 resize-y`}
-          name="message"
-          rows={6}
-          maxLength={5000}
-          required
-          disabled={isSubmitting}
-          placeholder="Tell us about your project, funding program, research, or integration."
-        />
-      </label>
+      <Field
+        className="mt-6"
+        label={
+          <>
+            What would you like to explore? <span aria-hidden="true">*</span>
+          </>
+        }
+      >
+        {(fieldProps) => (
+          <Textarea
+            {...fieldProps}
+            className="min-h-40 text-base"
+            name="message"
+            rows={6}
+            maxLength={5000}
+            required
+            disabled={isSubmitting}
+            placeholder="Tell us about your project, funding program, research, or integration."
+          />
+        )}
+      </Field>
 
       <input
         className="hidden"
@@ -170,14 +195,15 @@ export default function ContactForm() {
         <p className="max-w-xs font-body text-body-sm leading-relaxed text-ui-grey-dark">
           We&rsquo;ll use these details only to respond to your message.
         </p>
-        <button
+        <Button
           type="submit"
-          className={`${primaryButton} whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-60`}
+          size="lg"
+          loading={isSubmitting}
+          className="whitespace-nowrap"
           disabled={isSubmitting}
-          aria-busy={isSubmitting}
         >
           {isSubmitting ? "Sending..." : "Send message"}
-        </button>
+        </Button>
       </div>
     </form>
   );

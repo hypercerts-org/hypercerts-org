@@ -60,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-hc-theme="hypercerts" suppressHydrationWarning>
       <body className="font-body pt-[50px]" suppressHydrationWarning>
         <script
           type="application/ld+json"

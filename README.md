@@ -35,6 +35,11 @@ Open [http://localhost:3000](http://localhost:3000)
 system, the guilloche ornament, and the rules to follow when adding a section. Read it
 before building new UI.
 
+Reusable controls come from `@hypercerts-org/ui-react`. Its compiled, component-scoped
+stylesheet is imported once in `app/globals.css`, and the Hypercerts theme is selected
+with `data-hc-theme="hypercerts"` in the root layout. The application can continue to
+use Tailwind for page-specific layout and composition.
+
 ## Blog
 
 Blog posts are fetched from [hypercerts.leaflet.pub](https://hypercerts.leaflet.pub) via RSS and rendered at `/blog`. Posts revalidate every 60 seconds.
