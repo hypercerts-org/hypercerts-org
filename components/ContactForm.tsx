@@ -45,13 +45,29 @@ export default function ContactForm() {
       });
 
       const result = (await response.json().catch(() => null)) as {
-        error?: string;
+        error?: unknown;
+        message?: unknown;
       } | null;
 
       if (!response.ok) {
-        throw new Error(
-          result?.error || "Your message could not be sent. Please try again.",
-        );
+        let message = "Your message could not be sent. Please try again.";
+
+        if (response.status === 429) {
+          message = "Too many attempts. Please wait a few minutes and try again.";
+        } else if (typeof result?.error === "string") {
+          message = result.error;
+        } else if (
+          result?.error &&
+          typeof result.error === "object" &&
+          "message" in result.error &&
+          typeof result.error.message === "string"
+        ) {
+          message = result.error.message;
+        } else if (typeof result?.message === "string") {
+          message = result.message;
+        }
+
+        throw new Error(message);
       }
 
       form.reset();
