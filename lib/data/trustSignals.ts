@@ -1,79 +1,38 @@
 /** Illustrative examples, not records or measured trust scores. */
 
 export type TrustSignal = {
+  /* The kind of signal, as named on its card; any kind can recur. */
   title: string;
+  /* The chart's label, naming what it draws for one example project. */
+  label: string;
   description: string;
-  issuer: string;
 };
 
-/* Signals that apply to any project, whatever its field. */
-export const commonSignals: TrustSignal[] = [
-  {
-    title: "Project update",
-    description:
-      "The team reports what it has done and attaches evidence of the work.",
-    issuer: "the project",
-  },
-  {
-    title: "Peer endorsement",
-    description:
-      "An organization that knows the work vouches for it in its own name.",
-    issuer: "a peer organization",
-  },
-  {
-    title: "Funding record",
-    description:
-      "A funder records its support and, when useful, the reasons behind it.",
-    issuer: "a funder",
-  },
+export const projectUpdates: TrustSignal = {
+  title: "Project updates",
+  label: "Project update",
+  description:
+    "The team reports what it has done and attaches evidence of the work, as often as there is progress.",
+};
+
+export const thirdPartyAttestations: TrustSignal = {
+  title: "Third-party attestations",
+  label: "Third-party attestations",
+  description: "Others vouch for the work, depending on the impact area:",
+};
+
+/* What third-party attestations can be depends on the impact area. A peer
+   endorsement fits any area; the rest are particular to the work. */
+export const fieldSignals = [
+  "Peer endorsement",
+  "Community evaluation",
+  "Impact data / certifications",
+  "Expert assessment",
 ];
 
-/* Provisional fields from the 9 September review. Only the field-specific
-   signals differ between them. */
-export const fields = [
-  {
-    id: "land",
-    name: "Community land regeneration",
-    project: "A community-led land regeneration project",
-    signals: [
-      {
-        title: "Community evaluation",
-        description:
-          "Local participants assess the work and what it has changed on the ground.",
-        issuer: "the local community",
-      },
-      {
-        title: "Impact data",
-        description:
-          "Measurements from the land, such as satellite imagery or bioacoustics.",
-        issuer: "field measurements",
-      },
-    ],
-  },
-  {
-    id: "energy",
-    name: "Local energy",
-    project: "A community-owned energy project",
-    signals: [
-      {
-        title: "Certification",
-        description:
-          "An independent certifier documents the standards the installation meets.",
-        issuer: "a certifier",
-      },
-    ],
-  },
-  {
-    id: "research",
-    name: "AI safety research",
-    project: "An independent AI safety research project",
-    signals: [
-      {
-        title: "Expert assessment",
-        description:
-          "Independent researchers assess the methods and the findings.",
-        issuer: "domain experts",
-      },
-    ],
-  },
-] as const;
+export const fundingRecords: TrustSignal = {
+  title: "Funding records",
+  label: "Funding record",
+  description:
+    "Funders record their support and, if they choose, the reasons behind it.",
+};

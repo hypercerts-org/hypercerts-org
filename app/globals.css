@@ -221,9 +221,9 @@ html {
   height: 260px;
 }
 .chart-axis,
-.chart-guide,
-.trust-potential,
-.trust-curve,
+.chart-leader,
+.trust-track,
+.trust-step,
 .timeline-present,
 .timeline-future {
   fill: none;
@@ -233,44 +233,127 @@ html {
   stroke: #666;
   stroke-width: 1;
 }
-.chart-guide {
-  stroke: #d2d2d2;
+/* Dotted guides from each jump up to its label. */
+.chart-leader {
+  stroke: #999;
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+/* A label inside the chart area, centred on the given left with its bottom on
+   the given top. */
+.trust-annotation {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  transform: translate(-50%, -100%);
+  color: #535353;
+  font-size: 13px;
+  line-height: 1.2;
+}
+/* The number linking a chart label to its card. */
+.trust-number {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #af2901;
+  color: white;
+  font-size: 11px;
+  line-height: 1;
+}
+.trust-signal .trust-number {
+  width: 24px;
+  height: 24px;
+  font-size: 13px;
+}
+/* The seal in front of each kind of third-party attestation, centred on the
+   first line when a name wraps. */
+.signal-seal {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-top: 0.3em;
+  color: #af2901;
+}
+/* The top of each jump. */
+.trust-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #af2901;
+  box-shadow: 0 0 0 2px white;
+}
+/* A fixed-size arrowhead at the end of a chart axis. */
+.trust-axis-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  overflow: visible;
+  fill: none;
+  stroke: #666;
   stroke-width: 1;
 }
-.trust-potential {
-  stroke: #999;
-  stroke-width: 1.5;
-  stroke-dasharray: 4 6;
+/* The whole record in grey, under the red line. */
+.trust-track {
+  stroke: #d2d2d2;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.trust-curve {
+/* Scroll-linked drawing. While the chart crosses the viewport the red line
+   draws over the grey track, and each dot fills as the line reaches it
+   (`--at` is the dot's position across the chart). Nothing is hidden: the
+   track, dots, guides, and labels always show. Browsers without scroll
+   timelines and readers who prefer reduced motion see the finished chart. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .trust-plot {
+      view-timeline-name: --trust-plot;
+    }
+    .trust-line {
+      animation: trust-draw linear both;
+      animation-timeline: --trust-plot;
+      animation-range: cover 20% cover 50%;
+    }
+    .trust-dot {
+      --reach: calc(20% + 30% * var(--at));
+      animation: trust-dot-fill linear both;
+      animation-timeline: --trust-plot;
+      animation-range: cover var(--reach) cover calc(var(--reach) + 1%);
+    }
+  }
+}
+@keyframes trust-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes trust-dot-fill {
+  from {
+    background: white;
+    box-shadow:
+      inset 0 0 0 1.5px #999,
+      0 0 0 2px white;
+  }
+  to {
+    background: #af2901;
+    box-shadow: 0 0 0 2px white;
+  }
+}
+.trust-step {
   stroke: #af2901;
   stroke-width: 2;
   stroke-linecap: round;
-}
-.trust-curve-layer {
-  transition: clip-path 1500ms linear;
-}
-.trust-point {
-  position: absolute;
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid #666;
-  background: white;
-  color: #666;
-  font-size: 14px;
-  transition:
-    background 150ms,
-    border-color 150ms,
-    color 150ms;
-}
-.trust-point[data-added="true"] {
-  background: #af2901;
-  border-color: #af2901;
-  color: white;
+  stroke-linejoin: round;
 }
 .trust-signal {
   display: flex;
@@ -278,22 +361,6 @@ html {
   padding: 24px;
   border: 1px solid #d2d2d2;
   border-radius: 12px;
-  text-align: left;
-  cursor: pointer;
-  transition:
-    border-color 200ms,
-    background 200ms;
-}
-.trust-signal:hover {
-  border-color: #666;
-}
-.trust-signal[aria-pressed="true"] {
-  border-color: #af2901;
-  background: #f9f6ef;
-}
-.signal-mark {
-  color: #af2901;
-  font-size: 18px;
 }
 .economy-timeline {
   --timeline-gap: 2rem;
@@ -505,157 +572,4 @@ html {
 
 .timeline-grid {
   gap: var(--timeline-gap);
-}
-
-/* Field-specific signals: a project's public record drawn as a countersigned
-   document. Common lines stay fixed; only the field lines change. */
-.field-tabs {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid #d2d2d2;
-}
-.field-tab {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 0;
-  border-bottom: 1px solid #d2d2d2;
-  text-align: left;
-  font-size: 16px;
-  line-height: 1.3;
-  color: #000;
-  cursor: pointer;
-  transition: color 150ms;
-}
-.field-tab:hover {
-  color: #af2901;
-}
-.field-tab[aria-selected="true"] {
-  color: #af2901;
-}
-.field-tab:focus-visible {
-  outline-offset: -4px;
-}
-.field-tab-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.field-tab-signal {
-  font-size: 14px;
-  color: #666;
-}
-.field-tab[aria-selected="true"] .field-tab-signal {
-  color: #535353;
-}
-.record-card {
-  align-self: start;
-  background: white;
-  border: 1px solid #d2d2d2;
-  border-radius: 12px;
-  /* The bottom inset matches the side inset of the sealed slips. */
-  padding: 32px 32px 16px;
-}
-.record-card:focus-visible {
-  outline-offset: -6px;
-}
-.record-head {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #000;
-}
-.record-columns {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  padding: 12px 0 0;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #666;
-}
-.record-issuer-label {
-  display: none;
-}
-.record-lines {
-  display: flex;
-  flex-direction: column;
-}
-.record-line {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
-  align-items: start;
-  padding: 20px 0;
-  border-bottom: 1px solid #d2d2d2;
-}
-/* The last common line has no rule beneath it; the sealed field lines sit
-   on the record as attached slips rather than further rows. */
-.record-lines .record-line:last-child {
-  border-bottom: 0;
-}
-.record-line[data-field="true"] {
-  background: #f9f6ef;
-  margin-inline: -16px;
-  padding-inline: 16px;
-  border-radius: 8px;
-  border-bottom: 0;
-}
-.record-line[data-field="true"] + .record-line[data-field="true"] {
-  margin-top: 6px;
-}
-.record-issuer {
-  font-size: 14px;
-  line-height: 1.4;
-  color: #666;
-  text-align: right;
-  white-space: nowrap;
-  padding-top: 6px;
-}
-.record-issuer::first-letter {
-  text-transform: uppercase;
-}
-.record-issuer-field {
-  color: #af2901;
-}
-.record-seal {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-.record-field-lines {
-  display: grid;
-}
-.record-field-set {
-  grid-area: 1 / 1;
-  visibility: hidden;
-}
-.record-field-set[data-active="true"] {
-  visibility: visible;
-  animation: fade-in 0.25s ease-out;
-}
-@media (max-width: 767px) {
-  .record-card {
-    padding: 24px 24px 12px;
-  }
-  .record-line[data-field="true"] {
-    margin-inline: -12px;
-    padding-inline: 12px;
-  }
-  .record-line {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .record-issuer {
-    text-align: left;
-    padding-top: 0;
-    white-space: normal;
-  }
-  .record-issuer-label {
-    display: inline;
-  }
-  .record-columns {
-    display: none;
-  }
 }

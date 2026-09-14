@@ -17,13 +17,13 @@ These are independent contributions, not a mandatory sequence. Each contribution
 
 Hypercerts builds on AT Protocol for portable identities, user-controlled records, and connected applications. Organizations can share approved public information while keeping private information in existing systems.
 
-Crowdfunding and matching are current uses. Outcome payments and bounties are possible next extensions. Impact investing, commerce, and procurement are future possibilities, not supported features or a release schedule. Procurement requires protocol changes.
+Crowdfunding with matching funds is the current use. Crowdfunding signals determine distribution of matching funds. Outcome payments, prize competitions, and milestone bounties are possible next extensions. Impact investing, commerce, and procurement are future possibilities, not supported features or a release schedule. Procurement requires protocol changes.
 
-Trust is shown in two illustrative sections. The first shows one project's record growing over time with three signals that apply to any field: a project update, a peer endorsement, and a funding record. The second shows that field-specific signals differ: certification for local energy, community evaluation and impact data for community land regeneration, and expert assessment for AI safety research. Every signal names its issuer. Nothing on the page is a calculated trust score.
+Trust is shown in one illustrative section, "One project, many signals": one project's record gaining three signals over time. The chart draws the record as a line that steps up with each signal, on a trust axis with no scale. The first, a project update, and the third, a funding record, apply to any field. The second, third-party attestations, can come from several parties and takes two of the chart's four equal steps; what they are depends on the impact area: a peer endorsement, a community evaluation, impact data or certifications, or an expert assessment. Nothing on the page is a calculated trust score.
 
 ## Ma Earth case study
 
-Ma Earth's third funding round supported 201 regenerative projects with almost $2.2M ($2.19M reported by Ma Earth). Partner organizations reviewed applications using their own expertise and methods. Project information was stored on the open network. The next step is closing the loop: funded projects report what they did with the money, so their record is ready when the next round opens in 2027. Reuse by another application in a later funding process has not yet been demonstrated. Endorsements were not used to allocate the matching pool.
+Ma Earth's third funding round supported 201 regenerative projects with almost $2.2M ($2.19M reported by Ma Earth). Over a three-week campaign, crowdfunders backed the projects they believed in, each donation a trust signal from donor to project. Those signals determined how $1M in matching funds was distributed. Bottom-up signals from a community that knows these projects keep due diligence costs down, making it possible to move funds to many small projects. Reuse by another application in a later funding process has not yet been demonstrated. Endorsements were not used to allocate the matching funds.
 
 ## Links
 

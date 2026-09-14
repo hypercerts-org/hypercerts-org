@@ -7,7 +7,6 @@ import MissionStatement from "@/components/MissionStatement";
 import PartnerLogos from "@/components/PartnerLogos";
 import ResourceAllocation from "@/components/ResourceAllocation";
 import TrustOverTime from "@/components/TrustOverTime";
-import FieldSignals from "@/components/FieldSignals";
 import UseCases from "@/components/UseCases";
 import WhatIsHypercert from "@/components/WhatIsHypercert";
 import ForBuilders from "@/components/ForBuilders";
@@ -43,7 +42,6 @@ export default function Home() {
       <PartnerLogos />
       <ResourceAllocation />
       <TrustOverTime />
-      <FieldSignals />
       <WhatIsHypercert />
       <UseCases />
       <WhyNow />
