@@ -261,7 +261,7 @@ export default function About() {
               </p>
               <p>
                 In September 2025 we started using the AT Protocol, the open
-                network behind Bluesky, moving towards a decentralized data
+                protocol behind Bluesky, moving towards a decentralized data
                 layer for any funding mechanism.
               </p>
             </div>
