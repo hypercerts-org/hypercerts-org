@@ -14,9 +14,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@upstash/redis": "^1.38.4",
     "next": "^15",
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "resend": "^6.28.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.5.14",

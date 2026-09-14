@@ -1,3 +1,5 @@
+import ContactForm from "../../components/ContactForm";
+
 export const metadata = {
   title: "Contact",
   description:
@@ -10,21 +12,6 @@ export const metadata = {
 };
 
 const contactSections = [
-  {
-    title: "Use hypercerts",
-    description:
-      "Interested in participating as a funder, evaluator, or project?",
-    links: [
-      {
-        label: "Fill out the form",
-        href: "https://form.feathery.io/to/kV8E0l",
-      },
-      {
-        label: "Email team@hypercerts.org",
-        href: "mailto:team@hypercerts.org",
-      },
-    ],
-  },
   {
     title: "Stay informed",
     description:
@@ -146,8 +133,40 @@ export default function ContactPage() {
           love to hear from you.
         </p>
 
+        <section
+          className="grid gap-10 border-t-2 border-brand-black pt-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16"
+          aria-labelledby="contact-form-heading"
+        >
+          <div>
+            <p className="mb-4 font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark">
+              Start a conversation
+            </p>
+            <h2
+              id="contact-form-heading"
+              aria-label="Tell us what you're working on, and where Hypercerts might fit"
+              className="font-display text-[32px] leading-[1.05] tracking-[-0.02em] text-brand-black sm:text-[40px]"
+            >
+              Tell us what you&rsquo;re working on, and{" "}
+              <span className="italic text-brand-accent">where Hypercerts might fit</span>
+            </h2>
+            <p className="mt-6 font-body text-body-lg leading-relaxed text-ui-grey-dark">
+              Share the context, the people involved, and what you want to achieve. We&rsquo;ll help identify a useful next step.
+            </p>
+            <p className="mt-6 font-body text-body-sm leading-relaxed text-ui-grey-dark">
+              Prefer email? Write directly to{" "}
+              <a
+                href="mailto:team@hypercerts.org"
+                className="font-medium text-brand-accent underline decoration-brand-accent/40 underline-offset-4 transition hover:text-brand-black"
+              >
+                team@hypercerts.org
+              </a>
+            </p>
+          </div>
+          <ContactForm />
+        </section>
+
         {/* Contact sections */}
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="mt-20 grid gap-10 md:grid-cols-2">
           {contactSections.map((section) => (
             <div
               key={section.title}
