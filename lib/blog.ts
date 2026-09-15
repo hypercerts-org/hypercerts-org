@@ -24,17 +24,27 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
   if (!facets || facets.length === 0) return escapeHtml(plaintext);
 
   const bytes = new TextEncoder().encode(plaintext);
-
-  // Build a list of boundary events
-  type Event = { pos: number; type: "open" | "close"; tag: string; end: number; ordinal: number };
-  const events: Event[] = [];
+  type Span = {
+    start: number;
+    end: number;
+    openTag: string;
+    closeTag: string;
+    isLink: boolean;
+    ordinal: number;
+  };
+  const spans: Span[] = [];
+  const boundaries = new Set([0, bytes.length]);
   let ordinalCounter = 0;
 
   for (const facet of facets) {
-    const { byteStart, byteEnd } = facet.index;
+    const byteStart = Math.max(0, Math.min(bytes.length, facet.index.byteStart));
+    const byteEnd = Math.max(0, Math.min(bytes.length, facet.index.byteEnd));
+    if (byteStart >= byteEnd) continue;
+
     for (const feat of facet.features) {
       let openTag = "";
       let closeTag = "";
+      let isLink = false;
       switch (feat.$type) {
         case "pub.leaflet.richtext.facet#bold":
           openTag = "<strong>";
@@ -54,6 +64,7 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
           if (safe) {
             openTag = `<a href="${escapeAttr(uri)}" target="_blank" rel="noopener noreferrer">`;
             closeTag = "</a>";
+            isLink = true;
           } else {
             openTag = "<span>";
             closeTag = "</span>";
@@ -62,42 +73,40 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
         }
       }
       if (openTag) {
-        const ord = ordinalCounter++;
-        events.push({ pos: byteStart, type: "open", tag: openTag, end: byteEnd, ordinal: ord });
-        events.push({ pos: byteEnd, type: "close", tag: closeTag, end: byteEnd, ordinal: ord });
+        spans.push({
+          start: byteStart,
+          end: byteEnd,
+          openTag,
+          closeTag,
+          isLink,
+          ordinal: ordinalCounter++,
+        });
+        boundaries.add(byteStart);
+        boundaries.add(byteEnd);
       }
     }
   }
 
-  // Sort: by position; at same position opens before closes,
-  // longer spans open first, shorter spans close first,
-  // stable ordinal tiebreaker for identical ranges
-  events.sort((a, b) => {
-    if (a.pos !== b.pos) return a.pos - b.pos;
-    if (a.type === "open" && b.type === "close") return -1;
-    if (a.type === "close" && b.type === "open") return 1;
-    if (a.type === "open") {
-      const endDiff = b.end - a.end;
-      return endDiff !== 0 ? endDiff : a.ordinal - b.ordinal;
-    }
-    const endDiff = a.end - b.end;
-    return endDiff !== 0 ? endDiff : b.ordinal - a.ordinal;
-  });
-
   const decoder = new TextDecoder();
   let result = "";
-  let cursor = 0;
 
-  for (const ev of events) {
-    if (ev.pos > cursor) {
-      result += escapeHtml(decoder.decode(bytes.slice(cursor, ev.pos)));
-    }
-    result += ev.tag;
-    cursor = ev.pos;
-  }
+  const positions = [...boundaries].sort((a, b) => a - b);
+  for (let index = 0; index < positions.length - 1; index++) {
+    const start = positions[index];
+    const end = positions[index + 1];
+    const activeSpans = spans
+      .filter((span) => span.start <= start && span.end >= end)
+      .sort((a, b) => {
+        const lengthDiff = b.end - b.start - (a.end - a.start);
+        return lengthDiff !== 0 ? lengthDiff : a.ordinal - b.ordinal;
+      })
+      .filter((span, spanIndex, allSpans) =>
+        !span.isLink || !allSpans.slice(0, spanIndex).some((other) => other.isLink)
+      );
 
-  if (cursor < bytes.length) {
-    result += escapeHtml(decoder.decode(bytes.slice(cursor)));
+    result += activeSpans.map((span) => span.openTag).join("");
+    result += escapeHtml(decoder.decode(bytes.slice(start, end)));
+    result += activeSpans.reverse().map((span) => span.closeTag).join("");
   }
 
   return result;
