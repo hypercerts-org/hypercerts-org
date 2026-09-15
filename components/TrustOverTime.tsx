@@ -1,76 +1,61 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import { bodyCopy, SectionHeading } from "./LandingSection";
-import { commonSignals } from "@/lib/data/trustSignals";
-import { useDiagramReveal } from "./diagrams/useDiagramReveal";
+import {
+  fieldSignals,
+  fundingRecords,
+  projectUpdates,
+  thirdPartyAttestations,
+} from "@/lib/data/trustSignals";
 
-const curve =
-  "M20 260 C110 260 165 244 250 225 C355 202 435 178 550 145 C675 109 785 61 890 45";
-const points = [
-  { x: 25, y: 75 },
-  { x: 55, y: 48.333 },
-  { x: 89, y: 15 },
-];
-const drawDuration = 1500;
+const signals = [projectUpdates, thirdPartyAttestations, fundingRecords];
 
-/* The red curve is one path revealed by a linear clip wipe. On mount it starts
-   hidden and, once the diagram is visible, sweeps to the current stage. Each
-   point lights up at the moment the sweep reaches it. */
-function TrustCurve({ stage, visible }: { stage: number; visible: boolean }) {
-  const [drawn, setDrawn] = useState(false);
-  const previous = useRef(0);
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setDrawn(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
-  const reveal = drawn && visible ? points[stage].x : 0;
-  const from = previous.current;
-  useEffect(() => {
-    previous.current = reveal;
-  }, [reveal]);
-  const span = Math.abs(reveal - from);
-  /* Delay each point until the sweep passes it, growing or retracting. */
-  const delayFor = (x: number) => {
-    if (span === 0) return 0;
-    const within =
-      reveal > from ? x > from && x <= reveal : x <= from && x > reveal;
-    return within ? (Math.abs(x - from) / span) * drawDuration : 0;
-  };
+/* The record as four equal steps in the 1000 × 300 viewBox: flat, a jump when
+   evidence is added, flat again. Third-party attestations can come from
+   several parties, so they take two of the jumps. */
+const baseline = 280;
+const stepWidth = 200;
+const stepHeight = 45;
+const jumps = Array.from({ length: 4 }, (_, index) => ({
+  x: 160 + index * stepWidth,
+  top: baseline - (index + 1) * stepHeight,
+}));
+const stepPath = `M20 ${baseline} ${jumps.map((jump) => `H${jump.x} V${jump.top}`).join(" ")} H960`;
+
+/* Each label sits the same distance above its highest point, centred over the
+   points it names, so the labels rise with the steps. A dotted guide joins
+   each point to its label; a dotted bracket joins the guides of a signal with
+   several jumps. Labels may wrap within their maximum width (in percent). */
+const labelRise = 40;
+const chartLabels = [
+  { signal: projectUpdates, points: [jumps[0]], maxWidth: 26 },
+  { signal: thirdPartyAttestations, points: [jumps[1], jumps[2]], maxWidth: 39 },
+  { signal: fundingRecords, points: [jumps[3]], maxWidth: 28 },
+].map((label) => ({
+  ...label,
+  x: (label.points[0].x + label.points[label.points.length - 1].x) / 2,
+  guideEnd: Math.min(...label.points.map((point) => point.top)) - labelRise,
+}));
+
+/* A seal mark for the kinds of third-party attestation. */
+function Seal() {
   return (
-    <>
-      <svg
-        viewBox="0 0 1000 300"
-        preserveAspectRatio="none"
-        className="trust-curve-layer absolute inset-0 h-full w-full"
-        style={{ clipPath: `inset(0 ${100 - reveal}% 0 0)` }}
-        aria-hidden="true"
-      >
-        <path d={curve} className="trust-curve" />
-      </svg>
-      {points.map((point, index) => (
-        <span
-          key={index}
-          aria-hidden="true"
-          className="trust-point"
-          data-added={reveal >= point.x}
-          style={{
-            left: `${point.x}%`,
-            top: `${point.y}%`,
-            transitionDelay: `${delayFor(point.x)}ms`,
-          }}
-        >
-          {index + 1}
-        </span>
-      ))}
-    </>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="signal-seal"
+      aria-hidden="true"
+    >
+      <path d="M12 2.5 14.3 4.6l3.1-.4.9 3 2.8 1.4-1.2 2.9 1.2 2.9-2.8 1.4-.9 3-3.1-.4L12 21.5l-2.3-2.1-3.1.4-.9-3-2.8-1.4 1.2-2.9-1.2-2.9 2.8-1.4.9-3 3.1.4Z" />
+      <path d="m8.5 12 2.3 2.3 4.7-4.6" />
+    </svg>
   );
 }
 
 export default function TrustOverTime() {
-  const [stage, setStage] = useState(2);
-  const { ref, visible } = useDiagramReveal();
-
   return (
     <section
       id="trust"
@@ -78,87 +63,153 @@ export default function TrustOverTime() {
       aria-labelledby="trust-heading"
     >
       <div className="landing-container">
-        <SectionHeading id="trust-heading" eyebrow="Examples of trust">
+        <SectionHeading id="trust-heading" eyebrow="One project, many signals">
           Trust builds <em className="text-brand-accent">over time</em>
         </SectionHeading>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
           A project starts with little to show. As the work goes on, others
           add to its public record: the team posts an update, a peer vouches
-          for it, a funder records its support. Each addition gives the next
-          reader more to go on. The three below are examples of trust signals a
-          record can carry, not the full list.
+          for it, a funder records its support. Each addition lowers the cost
+          of the next decision about the project.
         </p>
-        <div
-          ref={ref}
-          data-visible={visible}
-          className="trust-explorer diagram-reveal mt-12 md:mt-16"
-        >
+        <div className="trust-explorer mt-12 md:mt-16">
           <div className="trust-panel">
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <p className="font-display text-heading-4 text-brand-black">
-                One project, three signals
-              </p>
-            </div>
-            <figure className="mt-8" aria-label="How trust can build over time">
-              <div className="mb-3 font-body text-body-sm text-ui-grey-dark">
-                Trust <span aria-hidden="true">↑</span>
-              </div>
-              <div className="trust-plot">
+            <figure
+              aria-label="How trust builds on a project's record: a step up for a project update, two steps for third-party attestations, and a step up for a funding record"
+            >
+              <div className="trust-plot" aria-hidden="true">
                 <svg
                   viewBox="0 0 1000 300"
                   preserveAspectRatio="none"
                   className="absolute inset-0 h-full w-full"
-                  aria-hidden="true"
                 >
                   <path d="M20 20V280H980" className="chart-axis" />
-                  <path d="m971 275 9 5-9 5" className="chart-axis" />
-                  {points.map((p, i) => (
-                    <path
-                      key={i}
-                      d={`M${p.x * 10} ${p.y * 3} V280`}
-                      className="chart-guide"
-                    />
-                  ))}
-                  <path d={curve} className="trust-potential" />
+                  {chartLabels.flatMap((label) =>
+                    label.points.map((point) => (
+                      <path
+                        key={point.x}
+                        d={`M${point.x} ${point.top - 10} V${label.guideEnd}`}
+                        className="chart-leader"
+                      />
+                    )),
+                  )}
+                  {chartLabels
+                    .filter((label) => label.points.length > 1)
+                    .map((label) => (
+                      <path
+                        key={label.signal.title}
+                        d={`M${label.points[0].x} ${label.guideEnd} H${label.points[label.points.length - 1].x}`}
+                        className="chart-leader"
+                      />
+                    ))}
+                  <path d={stepPath} className="trust-track" />
                 </svg>
-                <TrustCurve stage={stage} visible={visible} />
-              </div>
-              <div className="mt-2 text-right font-body text-body-sm text-ui-grey-dark">
-                Time <span aria-hidden="true">→</span>
+                {/* The red line draws over the grey track as the chart scrolls
+                    through the viewport; the track keeps the whole record
+                    visible throughout. */}
+                <svg
+                  viewBox="0 0 1000 300"
+                  preserveAspectRatio="none"
+                  className="trust-line absolute inset-0 h-full w-full"
+                >
+                  <path d={stepPath} className="trust-step" />
+                </svg>
+                {jumps.map((jump) => (
+                  <span
+                    key={jump.x}
+                    className="trust-dot"
+                    style={
+                      {
+                        left: `${jump.x / 10}%`,
+                        top: `${jump.top / 3}%`,
+                        "--at": jump.x / 1000,
+                      } as CSSProperties
+                    }
+                  />
+                ))}
+                {chartLabels.map((label, index) => (
+                  <span
+                    key={label.signal.title}
+                    className="trust-annotation"
+                    style={{
+                      left: `${label.x / 10}%`,
+                      top: `${(label.guideEnd - 4) / 3}%`,
+                      maxWidth: `${label.maxWidth}%`,
+                    }}
+                  >
+                    <span className="trust-number font-body">{index + 1}</span>
+                    <span>{label.signal.label}</span>
+                  </span>
+                ))}
+                {/* Arrowheads and axis names at the ends of the axes (the
+                    axis runs from 20 to 280 down and to 980 across). They are
+                    HTML so they keep their shape while the plot stretches. */}
+                <svg
+                  viewBox="0 0 10 10"
+                  className="trust-axis-arrow"
+                  style={{
+                    left: "2%",
+                    top: `${20 / 3}%`,
+                    transform: "translate(-50%, -1.5px)",
+                  }}
+                >
+                  <path d="M1.5 6 5 1.5 8.5 6" />
+                </svg>
+                <svg
+                  viewBox="0 0 10 10"
+                  className="trust-axis-arrow"
+                  style={{
+                    left: "98%",
+                    top: `${baseline / 3}%`,
+                    transform: "translate(-8.5px, -50%)",
+                  }}
+                >
+                  <path d="M4 1.5 8.5 5 4 8.5" />
+                </svg>
+                <span
+                  className="absolute font-body text-body-sm text-ui-grey-dark"
+                  style={{
+                    left: "calc(2% + 12px)",
+                    top: `${20 / 3}%`,
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  Trust
+                </span>
+                <span
+                  className="absolute font-body text-body-sm text-ui-grey-dark"
+                  style={{
+                    right: "calc(2% + 6px)",
+                    bottom: `calc(${(300 - baseline) / 3}% + 6px)`,
+                  }}
+                >
+                  Time
+                </span>
               </div>
             </figure>
-            <div
-              className="mt-8 grid gap-4 md:grid-cols-3"
-              role="group"
-              aria-label="Explore the trust signals"
-            >
-              {commonSignals.map((signal, index) => (
-                <button
-                  key={signal.title}
-                  type="button"
-                  className="trust-signal"
-                  aria-pressed={stage === index}
-                  onClick={() => setStage(index)}
-                >
-                  <span className="mb-5 flex items-center justify-between gap-4 font-body text-body-sm text-ui-grey-muted">
-                    <span>Signal {index + 1}</span>
-                    <span aria-hidden="true" className="signal-mark">
-                      {stage >= index ? "✓" : "+"}
-                    </span>
-                  </span>
-                  <span className="block font-display text-heading-4 text-brand-black">
+            <ol className="mt-8 grid gap-4 md:grid-cols-3">
+              {signals.map((signal, index) => (
+                <li key={signal.title} className="trust-signal">
+                  <h3 className="flex items-center gap-3 font-display text-heading-4 text-brand-black">
+                    <span className="trust-number font-body">{index + 1}</span>
                     {signal.title}
-                  </span>
-                  <span className="mt-4 block font-body text-body-sm leading-relaxed text-ui-grey-dark">
+                  </h3>
+                  <p className="mt-4 font-body text-body-sm leading-relaxed text-ui-grey-dark">
                     {signal.description}
-                  </span>
-                </button>
+                  </p>
+                  {signal === thirdPartyAttestations && (
+                    <ul className="mt-3 space-y-1 font-body text-body-sm leading-relaxed text-brand-black">
+                      {fieldSignals.map((type) => (
+                        <li key={type} className="flex items-start gap-2">
+                          <Seal />
+                          {type}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
               ))}
-            </div>
-            <p className="sr-only" aria-live="polite" aria-atomic="true">
-              {stage + 1} of 3 illustrative signals added. Latest signal:{" "}
-              {commonSignals[stage].title}.
-            </p>
+            </ol>
           </div>
         </div>
       </div>

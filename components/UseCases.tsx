@@ -17,7 +17,6 @@ export default function UseCases() {
         <p className={`mt-8 max-w-3xl ${bodyCopy}`}>
           Ma Earth combined project-owned data, partner review, crowdfunding,
           and matching to support 201 regenerative projects with almost $2.2M.
-          Project information was stored on the open network.
         </p>
         <div className="mt-12 grid items-center gap-10 md:grid-cols-2 md:gap-16">
           <MaEarthImage />
@@ -44,11 +43,15 @@ export default function UseCases() {
               Ma Earth · Round 3
             </p>
             <p className={`mt-8 ${bodyCopy}`}>
-              Partner organizations reviewed applications using their own
-              expertise and methods. The next step is closing the loop: the
-              projects funded in this round report what they did with the
-              money, so their record is ready when the next round opens in
-              2027.
+              Over a three-week campaign, crowdfunders backed the projects they
+              believed in, each donation a trust signal from donor to project.
+              Those signals determined how $1M in matching funds was
+              distributed.
+            </p>
+            <p className={`mt-4 ${bodyCopy}`}>
+              Bottom-up signals from a community that knows these projects keep
+              due diligence costs down, making it possible to move funds to
+              many small projects.
             </p>
             <div className="mt-6 flex flex-col items-start gap-2">
               <a href="/case-studies/ma-earth" className={textLink}>

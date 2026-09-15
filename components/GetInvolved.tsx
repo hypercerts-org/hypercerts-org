@@ -23,14 +23,14 @@ export default function GetInvolved() {
         className="pointer-events-none absolute -bottom-[500px] left-1/2 max-w-none -translate-x-1/2 opacity-[0.2]"
       />
       <div className="landing-container relative">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16">
+        <SectionHeading id="get-involved-heading" eyebrow="Get involved">
+          Let’s build this
+          <br />
+          <em className="text-brand-accent">together</em>
+        </SectionHeading>
+        <div className="mt-8 grid gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16">
           <div>
-            <SectionHeading id="get-involved-heading" eyebrow="Get involved">
-              Let’s build this
-              <br />
-              <em className="text-brand-accent">together</em>
-            </SectionHeading>
-            <p className={`mt-8 ${bodyCopy}`}>
+            <p className={bodyCopy}>
               We work with funders, networks, certifiers, communities, and
               builders. Bring a funding program, a certification process, or a
               need to follow the work your organization supports.
@@ -50,7 +50,7 @@ export default function GetInvolved() {
               </a>
             </div>
           </div>
-          <div className="self-center border-t-2 border-brand-black pt-5">
+          <div className="border-t-2 border-brand-black pt-5">
             <h3 className="font-display text-[28px] leading-tight">
               The Hypercerts Foundation
             </h3>

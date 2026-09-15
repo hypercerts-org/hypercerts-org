@@ -7,17 +7,17 @@ const horizons = [
   {
     label: "Today",
     status: "In use",
-    models: ["Crowdfunding with matching pools"],
+    models: ["Crowdfunding with matching funds"],
     description:
-      "Project information and partner review support real funding rounds.",
+      "Crowdfunding signals determine distribution of matching funds.",
     current: true,
   },
   {
     label: "Possible next",
     status: "Potential extensions",
-    models: ["Outcome payments", "Hackathons", "Milestone bounties"],
+    models: ["Outcome payments", "Prize competitions", "Milestone bounties"],
     description:
-      "Shared evidence could inform payments for results. Bounties are another nearer possibility.",
+      "Shared evidence from many sources informs payments for results.",
     current: false,
   },
   {
@@ -25,7 +25,7 @@ const horizons = [
     status: "Possibilities to explore",
     models: ["Impact investing", "Commerce", "Procurement"],
     description:
-      "Investment, purchasing, and contracting decisions could draw on the same impact and trust signals.",
+      "Investment, purchasing, and contracting decisions draw on the same impact and trust signals.",
     current: false,
   },
 ];
@@ -47,9 +47,9 @@ export default function FundingModels() {
           <em className="text-brand-accent">done right</em>
         </SectionHeading>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
-          Start with crowdfunding and matching. Over time, shared information
-          about valuable work could support more ways to allocate resources,
-          from bounties to investing, commerce, and procurement.
+          Start with crowdfunding with matching funds. Over time, shared
+          information about valuable work supports more ways to allocate
+          resources, from bounties to investing, commerce, and procurement.
         </p>
         <div
           ref={ref}
