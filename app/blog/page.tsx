@@ -114,20 +114,7 @@ export default async function BlogPage() {
                       href={`/blog/${post.slug}`}
                       className="group block border-t border-ui-separator py-10 first:border-t first:border-brand-accent/40"
                     >
-                      <div
-                        className={`grid items-start gap-6 md:gap-12 ${post.image ? "sm:grid-cols-[12rem_1fr] md:grid-cols-[12rem_1fr_auto]" : "md:grid-cols-[1fr_auto]"}`}
-                      >
-                        {post.image && (
-                          <div className="relative aspect-[16/9] overflow-hidden rounded-brand bg-ui-bg">
-                            <Image
-                              src={post.image}
-                              alt=""
-                              fill
-                              sizes="192px"
-                              className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                            />
-                          </div>
-                        )}
+                      <div className="grid items-start gap-6 md:grid-cols-[1fr_auto] md:gap-12">
                         <div>
                           <h3 className="font-display text-heading-4 text-brand-black group-hover:underline mb-3">
                             {post.title}

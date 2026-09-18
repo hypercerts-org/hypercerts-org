@@ -24,6 +24,12 @@ interface BlobRef {
   ref?: { $link?: string } | string;
 }
 
+const INLINE_IMAGE_WIDTHS = [640, 828, 1200, 1920];
+
+function getOptimizedImageUrl(src: string, width: number): string {
+  return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
+}
+
 function applyFacets(plaintext: string, facets?: Facet[]): string {
   if (!facets || facets.length === 0) return escapeHtml(plaintext);
 
@@ -176,7 +182,10 @@ function renderBlock(block: Block): string {
 
       const width = Math.max(1, Math.floor(Number(block.aspectRatio?.width) || 1));
       const height = Math.max(1, Math.floor(Number(block.aspectRatio?.height) || 1));
-      return `<img src="${escapeAttr(imageSrc)}" alt="${escapeAttr(block.alt ?? "")}" width="${width}" height="${height}" loading="lazy" decoding="async" />`;
+      const srcSet = INLINE_IMAGE_WIDTHS
+        .map((imageWidth) => `${getOptimizedImageUrl(imageSrc, imageWidth)} ${imageWidth}w`)
+        .join(", ");
+      return `<img src="${escapeAttr(getOptimizedImageUrl(imageSrc, 828))}" srcset="${escapeAttr(srcSet)}" sizes="(max-width: 816px) calc(100vw - 48px), 768px" alt="${escapeAttr(block.alt ?? "")}" width="${width}" height="${height}" loading="lazy" decoding="async" />`;
     }
     case "pub.leaflet.blocks.unorderedList": {
       const items = (block.children ?? [])
