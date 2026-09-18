@@ -37,10 +37,7 @@ export default function GetInvolved() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a href="/contact" className={primaryButton}>
-                Start a conversation{" "}
-                <span className="ml-2" aria-hidden="true">
-                  →
-                </span>
+                Start a conversation
               </a>
               <a href={developerGuideUrl} className={secondaryButton}>
                 Start the Guide{" "}

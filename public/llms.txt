@@ -1,8 +1,8 @@
 # Hypercerts
 
-> Open infrastructure for funding valuable work. The AI-native context layer.
+> Open infrastructure for funding valuable work. Trust in times of AI.
 
-Hypercerts is an open protocol that connects information about valuable work with evidence, evaluations, and funding history. Projects and organizations publish once, for any application or agent to read. Funders build on what others already know.
+Hypercerts is an open protocol to connect projects with those who review them, vouch for them, and back them, creating the trust it takes to fund what matters. Funders build on what others already know.
 
 The Hypercerts Foundation is an independent nonprofit stewarding the protocol, maintaining open infrastructure, and helping organizations participate.
 
@@ -29,7 +29,7 @@ Ma Earth's third funding round supported 201 regenerative projects with almost $
 
 - [Homepage](https://hypercerts.org/)
 - [About the Hypercerts Foundation](https://hypercerts.org/about)
-- [Ma Earth case study](https://hypercerts.org/case-studies/ma-earth)
+- [Ma Earth case study](https://hypercerts.org/blog/3mvru46xfus2r)
 - [Ma Earth results](https://www.maearth.com/)
 - [Developer guide](https://docs.hypercerts.org/getting-started/building-on-hypercerts)
 - [Documentation](https://docs.hypercerts.org/)

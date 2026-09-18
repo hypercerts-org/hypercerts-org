@@ -56,8 +56,7 @@ export default function UseCases() {
             </p>
             <div className="mt-6 flex flex-col items-start gap-2">
               <Link href="/blog/3mvru46xfus2r" className={textLink}>
-                Read the full Ma Earth case study{" "}
-                <span aria-hidden="true">→</span>
+                Read the full Ma Earth case study
               </Link>
             </div>
           </div>

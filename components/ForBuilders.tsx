@@ -53,7 +53,10 @@ export default function ForBuilders() {
             </p>
           </div>
           <a href={developerGuideUrl} className={`${primaryButton} mt-10`}>
-            Start the Guide
+            Start the Guide{" "}
+            <span className="ml-2" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
         <div className="md:pt-9">

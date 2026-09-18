@@ -15,7 +15,7 @@ Nine of the section headings change voice partway through — usually at a line 
 > What we choose to fund
 > *shapes the future we create.*
 
-Roman states the condition, italic states the consequence. It appears in `HeroSection`, `MissionStatement`, `ResourceAllocation`, `WhatIsHypercert`, `OpenByDesign`, `UseCases`, `ToolsAndApps`, `Ecosystem` and `GetInvolved` — often with the italic clause also carrying `text-brand-accent`. This is the closest thing the site has to a logo behaviour. **If you write a new section heading, it should turn.** A heading that states one flat thing in one voice will look foreign next to its neighbours.
+Roman states the condition, italic states the consequence. It appears in `HeroSection`, `MissionStatement`, `ResourceAllocation`, `WhyNow`, `WhatIsHypercert`, `UseCases`, `Ecosystem` and `GetInvolved` — often with the italic clause also carrying `text-brand-accent`. This is the closest thing the site has to a logo behaviour. **If you write a new section heading, it should turn.** A heading that states one flat thing in one voice will look foreign next to its neighbours.
 
 Above nearly every heading sits an eyebrow: `text-body-sm uppercase tracking-[0.2em]`. Ten of the twelve homepage sections open this way — only `MissionStatement` and `PartnerLogos` skip it. It is the section-head convention of a printed report, and it is doing the work that a coloured category chip would do in a more conventional marketing layout.
 
@@ -34,7 +34,7 @@ The ornament from banknotes and share certificates, built mathematically: `Guill
 It ships two ways, and the split is deliberate rather than accidental duplication:
 
 - **Live-rendered** in `MissionStatement`, using the cheap `wave` variant.
-- **Baked to static SVG** in `public/img/guilloche/` for `HeroSection`, `OpenByDesign` and `GetInvolved`. The `radial` compositions run 130–290 KB of path data each; rendering them per request is not free, so the output was frozen.
+- **Baked to static SVG** in `public/img/guilloche/` for `HeroSection`, `WhatIsHypercert` and `GetInvolved`. The `radial` compositions run 130–290 KB of path data each; rendering them per request is not free, so the output was frozen.
 
 If you need a new placement, generate it with the component and bake the result. Do not render a `radial` variant live.
 

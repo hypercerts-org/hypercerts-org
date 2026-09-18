@@ -164,13 +164,13 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {post.image && (
-          <div className="relative mb-12 aspect-[16/8] overflow-hidden rounded-brand bg-ui-bg">
+          <div className="relative mx-auto mb-12 aspect-[16/8] max-w-3xl overflow-hidden rounded-brand bg-ui-bg">
             <Image
               src={post.image}
               alt=""
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 976px"
+              sizes="(max-width: 816px) 100vw, 768px"
               className="object-cover"
             />
           </div>

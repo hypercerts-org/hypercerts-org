@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import ContactForm from "@/components/ContactForm";
 import HorizontalScroller from "@/components/HorizontalScroller";
-import {
-  bodyCopy,
-  primaryButton,
-  SectionHeading,
-} from "@/components/LandingSection";
+import { bodyCopy, SectionHeading } from "@/components/LandingSection";
 import {
   collaborators,
   foundationLinks,
@@ -419,8 +416,10 @@ export default function About() {
         className="bg-surface-cream py-24 md:py-32"
         aria-labelledby="find-us-heading"
       >
-        <div className="landing-container grid gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16">
-          <div>
+        {/* On wide screens the links sit under the intro, beside the form; on
+            phones the form comes straight after the intro. */}
+        <div className="landing-container grid gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:grid-rows-[auto_1fr] md:gap-x-16 md:gap-y-10">
+          <div className="md:col-start-1 md:row-start-1">
             <SectionHeading id="find-us-heading" eyebrow="Find us">
               We want to
               <br />
@@ -430,14 +429,11 @@ export default function About() {
               If you fund, evaluate, or build tools for valuable work, we want
               to hear from you.
             </p>
-            <a href="/contact" className={`mt-10 ${primaryButton}`}>
-              Start a conversation{" "}
-              <span className="ml-2" aria-hidden="true">
-                →
-              </span>
-            </a>
           </div>
-          <ul className="border-t-2 border-brand-black md:mt-9">
+          <div className="md:col-start-2 md:row-span-2 md:row-start-1">
+            <ContactForm tone="white" />
+          </div>
+          <ul className="self-start border-t-2 border-brand-black md:col-start-1 md:row-start-2">
             {findUs.map((link) => (
               <li key={link.label} className="border-b border-ui-separator">
                 <a
@@ -457,7 +453,7 @@ export default function About() {
                 className="flex items-center justify-between py-4 font-body text-body-lg text-brand-black transition hover:text-brand-accent"
               >
                 {foundationLinks.email}
-                <span aria-hidden="true">→</span>
+                <span aria-hidden="true">↗</span>
               </a>
             </li>
           </ul>

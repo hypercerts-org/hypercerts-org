@@ -43,7 +43,7 @@ const faqs = [
   {
     question: "What is the Hypercerts Protocol?",
     answer:
-      "Hypercerts is an open protocol that connects information about valuable work with evidence, evaluations, and funding history. Shared data formats, usage guidance, and supporting infrastructure make that information reusable across compatible applications and agents rather than keeping it inside one platform.",
+      "Hypercerts is an open protocol to connect projects with those who review them, vouch for them, and back them, creating the trust it takes to fund what matters. Shared data formats, usage guidance, and supporting infrastructure make project records and the signals around them reusable across compatible applications and agents, rather than keeping them inside one platform.",
   },
   {
     question: "What problem does it solve?",
@@ -61,9 +61,9 @@ const faqs = [
       "Hypercerts does not impose a single evaluator or universal impact score. Communities, experts, certifiers, and other organizations can contribute evidence and assessments, and each application or funder decides which signals to trust. Attribution helps readers understand where information came from; it does not automatically make a claim true.",
   },
   {
-    question: "What does AI-native mean here?",
+    question: "What role does AI play?",
     answer:
-      "Applications and AI agents can read structured, attributable records about projects, inspect supporting evidence, and see who contributed an assessment. As AI makes convincing stories easier to produce, those signals help people and agents look beyond polished text. AI-native does not mean that Hypercerts automatically verifies impact or makes funding decisions; it provides shared context for those decisions.",
+      "AI makes polished applications cheap to produce, so funders need signals from outside the application. Hypercerts records are structured and attributable: people and AI agents alike can read them, inspect the evidence behind them, and see who contributed each assessment. Hypercerts does not verify impact or make funding decisions itself. It provides open, shared context for the people and systems that do.",
   },
   {
     question: "Do we need to replace our existing platform?",
@@ -123,34 +123,27 @@ export default function ContactPage() {
         join the Telegram community, or explore the GitHub repositories.
       </p>
       <div className="max-w-5xl mx-auto px-6">
-        {/* Heading */}
-        <h1 className="font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black mb-6">
-          Build with <span className="italic text-brand-accent">us</span>
+        {/* Heading: labelled like the "Start a conversation" buttons that
+            lead here. */}
+        <p className="mb-6 font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark">
+          Start a conversation
+        </p>
+        <h1 className="mb-16 text-balance font-display text-[36px] sm:text-[48px] md:text-display-2 leading-[1] tracking-[-0.02em] text-brand-black">
+          Whether you fund, evaluate, or build,{" "}
+          <br />
+          <span className="italic text-brand-accent">
+            we&rsquo;d love to hear from you
+          </span>
         </h1>
 
-        <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mb-16">
-          Whether you&rsquo;re a builder, funder, evaluator, or researcher, we&rsquo;d
-          love to hear from you.
-        </p>
-
         <section
-          className="grid gap-10 border-t-2 border-brand-black pt-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16"
-          aria-labelledby="contact-form-heading"
+          className="grid gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16"
+          aria-label="Contact form"
         >
           <div>
-            <p className="mb-4 font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark">
-              Start a conversation
-            </p>
-            <h2
-              id="contact-form-heading"
-              aria-label="Tell us what you're working on, and where Hypercerts might fit"
-              className="font-display text-[32px] leading-[1.05] tracking-[-0.02em] text-brand-black sm:text-[40px]"
-            >
-              Tell us what you&rsquo;re working on, and{" "}
-              <span className="italic text-brand-accent">where Hypercerts might fit</span>
-            </h2>
-            <p className="mt-6 font-body text-body-lg leading-relaxed text-ui-grey-dark">
-              Share the context, the people involved, and what you want to achieve. We&rsquo;ll help identify a useful next step.
+            <p className="font-body text-body-lg leading-relaxed text-ui-grey-dark">
+              Tell us a little about your work, and we&rsquo;ll help find a useful
+              next step.
             </p>
             <p className="mt-6 font-body text-body-sm leading-relaxed text-ui-grey-dark">
               Prefer email? Write directly to{" "}
@@ -187,7 +180,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="font-body text-body-sm text-brand-accent font-medium hover:text-brand-black transition"
                   >
-                    {link.label} &rarr;
+                    {link.label} <span aria-hidden="true">↗</span>
                   </a>
                 ))}
               </div>

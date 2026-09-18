@@ -61,7 +61,7 @@ export default function AnnouncementBanner() {
             >
               {cfg.ctaText}
               {" "}
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">↗</span>
             </a>
           </span>
           <AnnouncementBannerDismiss bannerId={cfg.id} />

@@ -1,6 +1,6 @@
 # Hypercerts.org
 
-The official website for Hypercerts: The AI-Native, Open Context Layer for Collective Funding
+The official website for Hypercerts: open infrastructure for funding valuable work. Trust in times of AI.
 
 Hypercerts create shared context—evidence, expert input, and community trust—for better resource allocation.
 
