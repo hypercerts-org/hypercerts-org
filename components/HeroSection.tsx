@@ -1,10 +1,6 @@
 import Image from "next/image";
-import {
-  bodyCopy,
-  developerGuideUrl,
-  primaryButton,
-  secondaryButton,
-} from "./LandingSection";
+import Link from "next/link";
+import { bodyCopy, primaryButton, secondaryButton } from "./LandingSection";
 
 export default function HeroSection() {
   return (
@@ -29,7 +25,7 @@ export default function HeroSection() {
       />
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
         <p className="mb-6 max-w-xl font-body text-body-sm uppercase tracking-[0.2em] leading-relaxed text-brand-accent">
-          The AI-native context layer
+          Trust in times of AI
         </p>
         <h1
           id="hero-heading"
@@ -39,21 +35,17 @@ export default function HeroSection() {
           <br /> <em className="text-brand-accent">funding valuable work</em>
         </h1>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
-          Hypercerts is an open protocol that connects information about
-          valuable work with evidence, evaluations, and funding history.
-          Projects and organizations publish once, for any application or agent
-          to read.
+          Hypercerts is an open protocol to connect projects with those who
+          review them, vouch for them, and back them, creating the trust it
+          takes to fund what matters.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <a href="#how-it-works" className={primaryButton}>
-            See how it works
+          <a href="#why-hypercerts" className={primaryButton}>
+            See why it matters
           </a>
-          <a href={developerGuideUrl} className={secondaryButton}>
-            Start the Guide{" "}
-            <span className="ml-2" aria-hidden="true">
-              ↗
-            </span>
-          </a>
+          <Link href="/contact" className={secondaryButton}>
+            Start a conversation
+          </Link>
         </div>
       </div>
     </section>

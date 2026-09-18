@@ -2,6 +2,7 @@ import Ecosystem from "@/components/Ecosystem";
 import FundingModels from "@/components/FundingModels";
 import GetInvolved from "@/components/GetInvolved";
 import HeroSection from "@/components/HeroSection";
+import KnowledgeBridge from "@/components/KnowledgeBridge";
 import MediaSection from "@/components/MediaSection";
 import MissionStatement from "@/components/MissionStatement";
 import PartnerLogos from "@/components/PartnerLogos";
@@ -19,7 +20,7 @@ const structuredData = {
   url: "https://hypercerts.org",
   name: "Hypercerts | Open infrastructure for funding valuable work",
   description:
-    "Hypercerts is an open protocol that connects information about valuable work with evidence, evaluations, and funding history. Projects and organizations publish once, for any application or agent to read. Funders build on what others already know.",
+    "Hypercerts is an open protocol to connect projects with those who review them, vouch for them, and back them, creating the trust it takes to fund what matters. Funders build on what others already know.",
   isPartOf: { "@id": "https://hypercerts.org/#website" },
   about: {
     "@type": "DefinedTerm",
@@ -41,10 +42,11 @@ export default function Home() {
       <HeroSection />
       <PartnerLogos />
       <ResourceAllocation />
+      <WhyNow />
+      <KnowledgeBridge />
       <TrustOverTime />
       <WhatIsHypercert />
       <UseCases />
-      <WhyNow />
       <FundingModels />
       <ForBuilders />
       <MissionStatement />

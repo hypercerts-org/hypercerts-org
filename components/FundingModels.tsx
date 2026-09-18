@@ -34,7 +34,7 @@ export default function FundingModels() {
   const { ref, visible } = useDiagramReveal();
   return (
     <section
-      className="bg-surface-cream py-24 md:py-32"
+      className="bg-white py-24 md:py-32"
       aria-labelledby="funding-models-heading"
     >
       <div className="landing-container">
