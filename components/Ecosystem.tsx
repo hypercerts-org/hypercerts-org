@@ -7,7 +7,7 @@ export default function Ecosystem() {
       className="w-full bg-white py-24 md:py-32"
       aria-labelledby="ecosystem-heading"
     >
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="landing-container">
         {/* Eyebrow */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark mb-4">
           The Hypercerts Collective
@@ -24,16 +24,19 @@ export default function Ecosystem() {
 
         {/* Intro */}
         <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mt-8">
-          Hypercerts is not a product shipped by one organization—it is a protocol shaped by a growing ecosystem of
-          builders, funders, evaluators, and researchers across multiple domains.
+          The Hypercerts Foundation stewards the protocol with builders,
+          funders, evaluators, researchers, and domain partners. Their work
+          shapes the shared language and infrastructure.
         </p>
       </div>
 
-      {/* Carousel — full-width scroll area */}
-      <div className="mt-16 overflow-x-auto scrollbar-hide">
+      {/* Carousel: full-width scroll area */}
+      <div className="collective-scroll scrollbar-hide mt-16 overflow-x-auto py-2">
         <div
           className="flex gap-5 px-6 snap-x snap-mandatory"
-          style={{ paddingLeft: "max(1.5rem, calc((100% - 64rem) / 2 + 1.5rem))" }}
+          style={{
+            paddingLeft: "max(1.5rem, calc((100% - 64rem) / 2 + 1.5rem))",
+          }}
         >
           {ecosystemPartners.map((partner) => (
             <a
@@ -41,7 +44,7 @@ export default function Ecosystem() {
               href={partner.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex-shrink-0 w-[300px] snap-start border border-ui-separator rounded-brand p-6 hover:border-brand-black transition-colors flex flex-col"
+              className="group flex-shrink-0 w-[min(300px,calc(100vw-48px))] snap-start border border-ui-separator rounded-brand p-6 hover:border-brand-black transition-colors flex flex-col"
             >
               {/* Logo */}
               {partner.logo && (
@@ -77,7 +80,6 @@ export default function Ecosystem() {
           <div className="flex-shrink-0 w-6" aria-hidden="true" />
         </div>
       </div>
-
     </section>
   );
 }

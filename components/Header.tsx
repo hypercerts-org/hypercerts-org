@@ -3,18 +3,35 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { headerNavLinks as navLinks } from "@/lib/data/navigation";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-[50px] flex items-center px-6 border-b border-ui-separator">
-      <div className="relative flex items-center justify-center w-full max-w-7xl mx-auto">
-        {/* Logo — pinned left */}
-        <Link href="/" className="absolute left-0 flex items-center shrink-0" aria-current={pathname === "/" ? "page" : undefined}>
+    <header
+      className="fixed inset-x-0 top-0 z-50 flex h-[50px] items-center border-b border-ui-separator bg-white"
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && menuOpen) {
+          setMenuOpen(false);
+          menuButton.current?.focus();
+        }
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget))
+          setMenuOpen(false);
+      }}
+    >
+      <div className="landing-container flex items-center justify-between gap-6">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center"
+          aria-current={pathname === "/" ? "page" : undefined}
+          onClick={() => setMenuOpen(false)}
+        >
           <Image
             src="/img/hypercerts_logo_horizontal.svg"
             alt="Hypercerts"
@@ -24,87 +41,62 @@ export default function Header() {
             priority
           />
         </Link>
-
-        {/* Desktop Nav — centred */}
-        <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
-          {navLinks.map((link) =>
-            link.external ? (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-black hover:opacity-70 transition-opacity"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm text-black hover:opacity-70 transition-opacity"
-                aria-current={pathname === link.href ? "page" : undefined}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
+        <nav
+          className="hidden items-center gap-6 md:flex"
+          aria-label="Main navigation"
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="py-2 text-body-sm text-brand-black transition-colors hover:text-brand-accent"
+              aria-current={pathname === link.href ? "page" : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
-
-        {/* Mobile Hamburger — pinned right */}
         <button
-          className="md:hidden absolute right-0 w-8 h-8"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle menu"
+          ref={menuButton}
+          type="button"
+          className="relative h-11 w-11 shrink-0 md:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
           <span
-            className={`absolute left-1.5 top-[10px] block w-5 h-0.5 bg-black transition-all duration-200 ${
-              menuOpen ? "rotate-45 translate-y-[6px]" : ""
-            }`}
+            aria-hidden="true"
+            className={`absolute left-3 top-[15px] h-px w-5 bg-brand-black transition-transform ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`}
           />
           <span
-            className={`absolute left-1.5 top-[16px] block w-5 h-0.5 bg-black transition-all duration-200 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
+            aria-hidden="true"
+            className={`absolute left-3 top-[21px] h-px w-5 bg-brand-black ${menuOpen ? "opacity-0" : ""}`}
           />
           <span
-            className={`absolute left-1.5 top-[22px] block w-5 h-0.5 bg-black transition-all duration-200 ${
-              menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
-            }`}
+            aria-hidden="true"
+            className={`absolute left-3 top-[27px] h-px w-5 bg-brand-black transition-transform ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
           />
         </button>
       </div>
-
-      {/* Mobile Dropdown */}
-      {menuOpen && (
-        <nav className="md:hidden absolute top-[50px] left-0 right-0 bg-white border-t border-gray-100 shadow-md px-6 py-4 flex flex-col gap-4" aria-label="Mobile navigation">
-          {navLinks.map((link) =>
-            link.external ? (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-black hover:opacity-70 transition-opacity"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm text-black hover:opacity-70 transition-opacity"
-                aria-current={pathname === link.href ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
-        </nav>
-      )}
+      <nav
+        id="mobile-navigation"
+        hidden={!menuOpen}
+        className={`${menuOpen ? "flex" : "hidden"} absolute inset-x-0 top-[50px] max-h-[calc(100dvh-50px)] flex-col overflow-y-auto border-b border-ui-separator bg-white py-4 md:hidden`}
+        aria-label="Mobile navigation"
+      >
+        {navLinks.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            className="py-3 text-body-lg text-brand-black transition-colors hover:text-brand-accent"
+            aria-current={pathname === link.href ? "page" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }

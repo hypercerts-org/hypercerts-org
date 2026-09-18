@@ -38,7 +38,7 @@ export const recentTextItems: MediaItem[] = [
   {
     tags: ["Talk 18min", "Nov 2025 | Schelling Point Buenos Aires"],
     title:
-      "Hypercert on AT Protocol: Rewriting How We Recognize — and Reward — Value Creation",
+      "Hypercert on AT Protocol: Rewriting How We Recognize and Reward Value Creation",
     titleLink: "https://youtu.be/-Rw1kLyo2wQ?si=xza1MJN2hzY4m16S",
     authors: [
       { name: "@sharfyae", link: "https://bsky.app/profile/sharfyae.bsky.social" },

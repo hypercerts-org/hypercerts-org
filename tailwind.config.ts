@@ -32,6 +32,7 @@ const config: Config = {
           grey: "#999999",
           "grey-light": "#D7D7D7",
           "grey-dark": "#535353",
+          "grey-muted": "#666666",
           "grey-tag": "#ECECEC",
         },
         surface: {
@@ -44,12 +45,16 @@ const config: Config = {
         },
       },
       fontSize: {
-        "display-1": ["160px", { lineHeight: "0.81", letterSpacing: "-0.03em" }],
+        "display-1": [
+          "160px",
+          { lineHeight: "0.81", letterSpacing: "-0.03em" },
+        ],
         "display-2": ["72px", { lineHeight: "1", letterSpacing: "-0.02em" }],
         "display-3": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
         "heading-4": ["24px", { lineHeight: "1.17", letterSpacing: "-0.02em" }],
         "body-lg": ["18px", { lineHeight: "1.2", letterSpacing: "-0.2px" }],
         "body-sm": ["14px", { lineHeight: "1.2" }],
+        micro: ["11px", { lineHeight: "1.2" }],
       },
       borderRadius: {
         brand: "12px",

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
@@ -125,44 +126,64 @@ export default async function BlogPostPage({ params }: Props) {
           ]),
         }}
       />
-      <article className="max-w-3xl mx-auto px-6">
+      <article className="max-w-5xl mx-auto px-6">
         {/* Back link */}
-        <Link
-          href="/blog"
-          className="font-body text-body-sm text-brand-accent hover:text-brand-black transition mb-10 inline-block"
-        >
-          &larr; All posts
-        </Link>
+        <div className="mx-auto max-w-3xl">
+          <Link
+            href="/blog"
+            className="font-body text-body-sm text-brand-accent hover:text-brand-black transition mb-10 inline-block"
+          >
+            &larr; All posts
+          </Link>
 
-        {/* Header */}
-        <h1 className="font-display text-[32px] sm:text-[42px] md:text-[56px] leading-[1.05] tracking-[-0.02em] text-brand-black mb-4">
-          {post.title}
-        </h1>
+          {/* Header */}
+          <h1 className="font-display text-[32px] sm:text-[42px] md:text-[56px] leading-[1.05] tracking-[-0.02em] text-brand-black mb-4">
+            {post.title}
+          </h1>
 
-        {post.description && (
-          <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed mb-6">
-            {post.description}
-          </p>
-        )}
+          {post.description && (
+            <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed mb-6">
+              {post.description}
+            </p>
+          )}
 
-        <div className="flex items-center gap-4 mb-6 pb-8 border-b border-brand-accent/40">
-          <time dateTime={isoDate} className="font-body text-body-sm text-ui-grey-dark">
-            {date}
-          </time>
-          <span className="text-ui-separator">|</span>
-          <span className="font-body text-body-sm text-ui-grey-dark">
-            Hypercerts Foundation
-          </span>
+          <div
+            className={`flex items-center gap-4 border-b border-brand-accent/40 pb-8 ${post.image ? "mb-10" : "mb-6"}`}
+          >
+            <time
+              dateTime={isoDate}
+              className="font-body text-body-sm text-ui-grey-dark"
+            >
+              {date}
+            </time>
+            <span className="text-ui-separator">|</span>
+            <span className="font-body text-body-sm text-ui-grey-dark">
+              Hypercerts Foundation
+            </span>
+          </div>
         </div>
+
+        {post.image && (
+          <div className="relative mx-auto mb-12 aspect-[16/8] max-w-3xl overflow-hidden rounded-brand bg-ui-bg">
+            <Image
+              src={post.image}
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 816px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+        )}
 
         {/* Article content */}
         <div
-          className="blog-content font-body text-body-lg text-ui-grey-dark leading-relaxed"
+          className="blog-content mx-auto max-w-3xl font-body text-body-lg text-ui-grey-dark leading-relaxed"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-ui-separator">
+        <div className="mx-auto mt-16 max-w-3xl border-t border-ui-separator pt-8">
           <Link
             href="/blog"
             className="font-body text-body-sm text-brand-black font-medium hover:underline"

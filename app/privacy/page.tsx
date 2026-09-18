@@ -36,11 +36,10 @@ export default function PrivacyPage() {
             </h2>
             <p className="mb-4">
               The Hypercerts Foundation (&ldquo;we,&rdquo; &ldquo;us&rdquo;) may
-              collect information to communicate with our users, such as email
-              addresses or user names of messaging applications. We use this
-              information solely to communicate with our users. We currently do
-              not collect any other personal information from the users of our
-              Service or our Websites.
+              collect information that you submit when contacting us, including
+              your name, email address, organization, and message. We use this
+              information solely to respond to you. Our contact form uses Resend
+              to deliver messages.
             </p>
             <p>
               We may use tracking or analytics technologies to automatically
@@ -53,7 +52,7 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="font-display text-heading-4 text-brand-black mb-4">
-              3. Third party links
+              3. Third party services and links
             </h2>
             <p>
               Occasionally, at our discretion, we may include or offer third
@@ -61,7 +60,8 @@ export default function PrivacyPage() {
               have separate and independent privacy policies and may collect or
               use your data in a way we are not aware of. We therefore have no
               responsibility or liability for the content and activities of these
-              linked sites.
+              linked sites. Service providers that process data on our behalf,
+              including Resend, process it to provide email delivery services.
             </p>
           </section>
 
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
           </section>
 
           <p className="text-body-sm text-ui-grey pt-8 border-t border-ui-separator">
-            This document is CC-BY-SA. It was last updated June 10, 2024.
+            This document is CC-BY-SA. It was last updated September 14, 2026.
           </p>
         </div>
       </article>

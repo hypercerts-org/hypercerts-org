@@ -51,7 +51,7 @@ export default function AnnouncementBanner() {
           </span>
           <span className="text-center min-w-0">
             <strong className="font-semibold">{cfg.title}</strong>
-            {" — "}
+            {" · "}
             {cfg.description}{" "}
             <a
               href={cfg.ctaHref}
@@ -61,7 +61,7 @@ export default function AnnouncementBanner() {
             >
               {cfg.ctaText}
               {" "}
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">↗</span>
             </a>
           </span>
           <AnnouncementBannerDismiss bannerId={cfg.id} />

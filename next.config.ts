@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "app.hypercerts.org",
       },
+      {
+        protocol: "https",
+        hostname: "lionsmane.us-east.host.bsky.network",
+      },
     ],
   },
   async redirects() {

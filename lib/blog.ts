@@ -20,21 +20,41 @@ interface Facet {
   features: { $type: string; uri?: string }[];
 }
 
+interface BlobRef {
+  ref?: { $link?: string } | string;
+}
+
+const INLINE_IMAGE_WIDTHS = [640, 828, 1200, 1920];
+
+function getOptimizedImageUrl(src: string, width: number): string {
+  return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
+}
+
 function applyFacets(plaintext: string, facets?: Facet[]): string {
   if (!facets || facets.length === 0) return escapeHtml(plaintext);
 
   const bytes = new TextEncoder().encode(plaintext);
-
-  // Build a list of boundary events
-  type Event = { pos: number; type: "open" | "close"; tag: string; end: number; ordinal: number };
-  const events: Event[] = [];
+  type Span = {
+    start: number;
+    end: number;
+    openTag: string;
+    closeTag: string;
+    isLink: boolean;
+    ordinal: number;
+  };
+  const spans: Span[] = [];
+  const boundaries = new Set([0, bytes.length]);
   let ordinalCounter = 0;
 
   for (const facet of facets) {
-    const { byteStart, byteEnd } = facet.index;
+    const byteStart = Math.max(0, Math.min(bytes.length, facet.index.byteStart));
+    const byteEnd = Math.max(0, Math.min(bytes.length, facet.index.byteEnd));
+    if (byteStart >= byteEnd) continue;
+
     for (const feat of facet.features) {
       let openTag = "";
       let closeTag = "";
+      let isLink = false;
       switch (feat.$type) {
         case "pub.leaflet.richtext.facet#bold":
           openTag = "<strong>";
@@ -54,6 +74,7 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
           if (safe) {
             openTag = `<a href="${escapeAttr(uri)}" target="_blank" rel="noopener noreferrer">`;
             closeTag = "</a>";
+            isLink = true;
           } else {
             openTag = "<span>";
             closeTag = "</span>";
@@ -62,42 +83,40 @@ function applyFacets(plaintext: string, facets?: Facet[]): string {
         }
       }
       if (openTag) {
-        const ord = ordinalCounter++;
-        events.push({ pos: byteStart, type: "open", tag: openTag, end: byteEnd, ordinal: ord });
-        events.push({ pos: byteEnd, type: "close", tag: closeTag, end: byteEnd, ordinal: ord });
+        spans.push({
+          start: byteStart,
+          end: byteEnd,
+          openTag,
+          closeTag,
+          isLink,
+          ordinal: ordinalCounter++,
+        });
+        boundaries.add(byteStart);
+        boundaries.add(byteEnd);
       }
     }
   }
 
-  // Sort: by position; at same position opens before closes,
-  // longer spans open first, shorter spans close first,
-  // stable ordinal tiebreaker for identical ranges
-  events.sort((a, b) => {
-    if (a.pos !== b.pos) return a.pos - b.pos;
-    if (a.type === "open" && b.type === "close") return -1;
-    if (a.type === "close" && b.type === "open") return 1;
-    if (a.type === "open") {
-      const endDiff = b.end - a.end;
-      return endDiff !== 0 ? endDiff : a.ordinal - b.ordinal;
-    }
-    const endDiff = a.end - b.end;
-    return endDiff !== 0 ? endDiff : b.ordinal - a.ordinal;
-  });
-
   const decoder = new TextDecoder();
   let result = "";
-  let cursor = 0;
 
-  for (const ev of events) {
-    if (ev.pos > cursor) {
-      result += escapeHtml(decoder.decode(bytes.slice(cursor, ev.pos)));
-    }
-    result += ev.tag;
-    cursor = ev.pos;
-  }
+  const positions = [...boundaries].sort((a, b) => a - b);
+  for (let index = 0; index < positions.length - 1; index++) {
+    const start = positions[index];
+    const end = positions[index + 1];
+    const activeSpans = spans
+      .filter((span) => span.start <= start && span.end >= end)
+      .sort((a, b) => {
+        const lengthDiff = b.end - b.start - (a.end - a.start);
+        return lengthDiff !== 0 ? lengthDiff : a.ordinal - b.ordinal;
+      })
+      .filter((span, spanIndex, allSpans) =>
+        !span.isLink || !allSpans.slice(0, spanIndex).some((other) => other.isLink)
+      );
 
-  if (cursor < bytes.length) {
-    result += escapeHtml(decoder.decode(bytes.slice(cursor)));
+    result += activeSpans.map((span) => span.openTag).join("");
+    result += escapeHtml(decoder.decode(bytes.slice(start, end)));
+    result += activeSpans.reverse().map((span) => span.closeTag).join("");
   }
 
   return result;
@@ -124,6 +143,10 @@ interface Block {
   // iframe
   url?: string;
   height?: number;
+  // image
+  image?: BlobRef;
+  alt?: string;
+  aspectRatio?: { width?: number; height?: number };
   // unorderedList
   children?: { $type: string; content?: Block }[];
 }
@@ -151,6 +174,29 @@ function renderBlock(block: Block): string {
         return "";
       }
       return `<iframe src="${escapeAttr(iframeSrc)}" width="100%" allow="fullscreen" loading="lazy" style="border:none;"></iframe>`;
+    }
+    case "pub.leaflet.blocks.image": {
+      const blobImageSrc = getBlobUrl(block.image);
+      const externalImageSrc = block.url && isSafeUrl(block.url) ? block.url : undefined;
+      const imageSrc = blobImageSrc ?? externalImageSrc;
+      if (!imageSrc) return "";
+
+      const rawWidth = Number(block.aspectRatio?.width);
+      const rawHeight = Number(block.aspectRatio?.height);
+      const dimensions = Number.isFinite(rawWidth)
+        && Number.isFinite(rawHeight)
+        && rawWidth > 0
+        && rawHeight > 0
+        ? ` width="${Math.floor(rawWidth)}" height="${Math.floor(rawHeight)}"`
+        : "";
+      if (!blobImageSrc) {
+        return `<img src="${escapeAttr(imageSrc)}" alt="${escapeAttr(block.alt ?? "")}"${dimensions} loading="lazy" decoding="async" />`;
+      }
+
+      const srcSet = INLINE_IMAGE_WIDTHS
+        .map((imageWidth) => `${getOptimizedImageUrl(blobImageSrc, imageWidth)} ${imageWidth}w`)
+        .join(", ");
+      return `<img src="${escapeAttr(getOptimizedImageUrl(blobImageSrc, 828))}" srcset="${escapeAttr(srcSet)}" sizes="(max-width: 816px) calc(100vw - 48px), 768px" alt="${escapeAttr(block.alt ?? "")}"${dimensions} loading="lazy" decoding="async" />`;
     }
     case "pub.leaflet.blocks.unorderedList": {
       const items = (block.children ?? [])
@@ -188,24 +234,6 @@ function isSafeUrl(url: string): boolean {
   }
 }
 
-function findFirstImage(pages: { blocks?: { block: Block }[] }[]): string | undefined {
-  for (const page of pages) {
-    for (const entry of page.blocks ?? []) {
-      const block = entry.block;
-      if (block.$type === "pub.leaflet.blocks.image" && block.url && isSafeUrl(block.url)) {
-        return block.url;
-      }
-      if (block.$type === "pub.leaflet.blocks.iframe" && block.url) {
-        const match = block.url.match(/youtube\.com\/embed\/([^?/]+)/);
-        if (match) {
-          return `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
-        }
-      }
-    }
-  }
-  return undefined;
-}
-
 function stripHtml(html: string): string {
   return html
     .replace(/<[^>]*>/g, "")
@@ -227,11 +255,22 @@ interface ATRecord {
     description?: string;
     path: string;
     publishedAt?: string;
+    coverImage?: BlobRef;
     content?: {
       $type: string;
       pages: { blocks?: { block: Block }[] }[];
     };
   };
+}
+
+function getBlobUrl(blob?: BlobRef): string | undefined {
+  const cid = typeof blob?.ref === "string" ? blob.ref : blob?.ref?.$link;
+  if (!cid) return undefined;
+
+  const url = new URL(`${PDS}/xrpc/com.atproto.sync.getBlob`);
+  url.searchParams.set("did", DID);
+  url.searchParams.set("cid", cid);
+  return url.toString();
 }
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
@@ -247,11 +286,18 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     const posts: BlogPost[] = records
       .filter((r) => r.value.publishedAt)
       .map((r) => {
-        const { title, description: rawDesc, path, publishedAt, content } = r.value;
+        const {
+          title,
+          description: rawDesc,
+          path,
+          publishedAt,
+          coverImage,
+          content,
+        } = r.value;
         const slug = path.replace(/^\//, "");
         const pages = content?.pages ?? [];
         const htmlContent = pages.length ? renderBlocks(pages) : "";
-        const image = findFirstImage(pages);
+        const image = getBlobUrl(coverImage);
         const description = rawDesc
           || (() => {
             const plainText = stripHtml(htmlContent);
