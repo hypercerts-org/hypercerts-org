@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MaEarthImage from "./MaEarthImage";
 import { bodyCopy, SectionHeading, textLink } from "./LandingSection";
 
@@ -54,10 +55,10 @@ export default function UseCases() {
               many small projects.
             </p>
             <div className="mt-6 flex flex-col items-start gap-2">
-              <a href="/case-studies/ma-earth" className={textLink}>
+              <Link href="/blog/3mvru46xfus2r" className={textLink}>
                 Read the full Ma Earth case study{" "}
                 <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

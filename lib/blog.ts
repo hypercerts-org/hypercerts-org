@@ -236,11 +236,24 @@ interface ATRecord {
     description?: string;
     path: string;
     publishedAt?: string;
+    coverImage?: {
+      ref?: { $link?: string } | string;
+    };
     content?: {
       $type: string;
       pages: { blocks?: { block: Block }[] }[];
     };
   };
+}
+
+function getBlobUrl(blob?: ATRecord["value"]["coverImage"]): string | undefined {
+  const cid = typeof blob?.ref === "string" ? blob.ref : blob?.ref?.$link;
+  if (!cid) return undefined;
+
+  const url = new URL(`${PDS}/xrpc/com.atproto.sync.getBlob`);
+  url.searchParams.set("did", DID);
+  url.searchParams.set("cid", cid);
+  return url.toString();
 }
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
@@ -256,11 +269,18 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     const posts: BlogPost[] = records
       .filter((r) => r.value.publishedAt)
       .map((r) => {
-        const { title, description: rawDesc, path, publishedAt, content } = r.value;
+        const {
+          title,
+          description: rawDesc,
+          path,
+          publishedAt,
+          coverImage,
+          content,
+        } = r.value;
         const slug = path.replace(/^\//, "");
         const pages = content?.pages ?? [];
         const htmlContent = pages.length ? renderBlocks(pages) : "";
-        const image = findFirstImage(pages);
+        const image = getBlobUrl(coverImage) ?? findFirstImage(pages);
         const description = rawDesc
           || (() => {
             const plainText = stripHtml(htmlContent);
