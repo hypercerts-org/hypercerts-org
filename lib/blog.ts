@@ -176,16 +176,27 @@ function renderBlock(block: Block): string {
       return `<iframe src="${escapeAttr(iframeSrc)}" width="100%" allow="fullscreen" loading="lazy" style="border:none;"></iframe>`;
     }
     case "pub.leaflet.blocks.image": {
-      const imageSrc = getBlobUrl(block.image)
-        ?? (block.url && isSafeUrl(block.url) ? block.url : undefined);
+      const blobImageSrc = getBlobUrl(block.image);
+      const externalImageSrc = block.url && isSafeUrl(block.url) ? block.url : undefined;
+      const imageSrc = blobImageSrc ?? externalImageSrc;
       if (!imageSrc) return "";
 
-      const width = Math.max(1, Math.floor(Number(block.aspectRatio?.width) || 1));
-      const height = Math.max(1, Math.floor(Number(block.aspectRatio?.height) || 1));
+      const rawWidth = Number(block.aspectRatio?.width);
+      const rawHeight = Number(block.aspectRatio?.height);
+      const dimensions = Number.isFinite(rawWidth)
+        && Number.isFinite(rawHeight)
+        && rawWidth > 0
+        && rawHeight > 0
+        ? ` width="${Math.floor(rawWidth)}" height="${Math.floor(rawHeight)}"`
+        : "";
+      if (!blobImageSrc) {
+        return `<img src="${escapeAttr(imageSrc)}" alt="${escapeAttr(block.alt ?? "")}"${dimensions} loading="lazy" decoding="async" />`;
+      }
+
       const srcSet = INLINE_IMAGE_WIDTHS
-        .map((imageWidth) => `${getOptimizedImageUrl(imageSrc, imageWidth)} ${imageWidth}w`)
+        .map((imageWidth) => `${getOptimizedImageUrl(blobImageSrc, imageWidth)} ${imageWidth}w`)
         .join(", ");
-      return `<img src="${escapeAttr(getOptimizedImageUrl(imageSrc, 828))}" srcset="${escapeAttr(srcSet)}" sizes="(max-width: 816px) calc(100vw - 48px), 768px" alt="${escapeAttr(block.alt ?? "")}" width="${width}" height="${height}" loading="lazy" decoding="async" />`;
+      return `<img src="${escapeAttr(getOptimizedImageUrl(blobImageSrc, 828))}" srcset="${escapeAttr(srcSet)}" sizes="(max-width: 816px) calc(100vw - 48px), 768px" alt="${escapeAttr(block.alt ?? "")}"${dimensions} loading="lazy" decoding="async" />`;
     }
     case "pub.leaflet.blocks.unorderedList": {
       const items = (block.children ?? [])
@@ -221,26 +232,6 @@ function isSafeUrl(url: string): boolean {
   } catch {
     return false;
   }
-}
-
-function findFirstImage(pages: { blocks?: { block: Block }[] }[]): string | undefined {
-  for (const page of pages) {
-    for (const entry of page.blocks ?? []) {
-      const block = entry.block;
-      if (block.$type === "pub.leaflet.blocks.image") {
-        const imageSrc = getBlobUrl(block.image);
-        if (imageSrc) return imageSrc;
-        if (block.url && isSafeUrl(block.url)) return block.url;
-      }
-      if (block.$type === "pub.leaflet.blocks.iframe" && block.url) {
-        const match = block.url.match(/youtube\.com\/embed\/([^?/]+)/);
-        if (match) {
-          return `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
-        }
-      }
-    }
-  }
-  return undefined;
 }
 
 function stripHtml(html: string): string {
@@ -306,7 +297,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         const slug = path.replace(/^\//, "");
         const pages = content?.pages ?? [];
         const htmlContent = pages.length ? renderBlocks(pages) : "";
-        const image = getBlobUrl(coverImage) ?? findFirstImage(pages);
+        const image = getBlobUrl(coverImage);
         const description = rawDesc
           || (() => {
             const plainText = stripHtml(htmlContent);

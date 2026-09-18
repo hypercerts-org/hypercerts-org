@@ -15,10 +15,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "lionsmane.us-east.host.bsky.network",
       },
-      {
-        protocol: "https",
-        hostname: "img.youtube.com",
-      },
     ],
   },
   async redirects() {
