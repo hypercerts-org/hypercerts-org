@@ -11,7 +11,14 @@ import {
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
-export default function ContactForm() {
+/* The form sits on a cream panel by default; "white" is for pages where the
+   surrounding section is already cream. */
+export default function ContactForm({
+  tone = "cream",
+}: {
+  tone?: "cream" | "white";
+}) {
+  const surface = tone === "white" ? "bg-white" : "bg-surface-cream";
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle");
   const [error, setError] = useState("");
@@ -85,7 +92,7 @@ export default function ContactForm() {
   if (submissionState === "success") {
     return (
       <div
-        className="flex min-h-[430px] flex-col justify-between rounded-brand bg-surface-cream p-6 sm:p-8"
+        className={`flex min-h-[430px] flex-col justify-between rounded-brand p-6 sm:p-8 ${surface}`}
       >
         <div ref={successRef} role="status" tabIndex={-1} className="outline-none">
           <p className="mb-5 font-body text-body-sm uppercase tracking-[0.2em] text-ui-grey-dark">
@@ -116,7 +123,7 @@ export default function ContactForm() {
   return (
     <form
       id="contact-form"
-      className="rounded-brand bg-surface-cream p-6 sm:p-8"
+      className={`rounded-brand p-6 sm:p-8 ${surface}`}
       onSubmit={handleSubmit}
     >
       <div className="grid gap-6 sm:grid-cols-2">
