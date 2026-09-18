@@ -32,7 +32,7 @@ export default async function BlogPage() {
         Foundation and contributors across climate, open-source, research, and
         community domains.
       </p>
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="landing-container">
         {/* Header */}
         <p className="font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent mb-4">
           Blog
@@ -41,7 +41,7 @@ export default async function BlogPage() {
           Updates from the{" "}
           <span className="italic text-brand-accent">Hypercerts Foundation</span>
         </h1>
-        <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mt-8 mb-16">
+        <p className="font-body text-body-lg text-ui-grey-dark leading-relaxed max-w-2xl mt-8 mb-12">
           News and highlights from across the
           growing ecosystem.
         </p>
@@ -62,40 +62,43 @@ export default async function BlogPage() {
           </p>
         ) : (
           <>
+            {/* Text beside the cover image on wider screens, so the title and
+                image are both visible; on phones the image sits on top. */}
             <Link
               href={`/blog/${latestPost.slug}`}
-              className="group block focus-visible:outline-offset-4"
+              className={`group focus-visible:outline-offset-4 ${latestPost.image ? "grid items-center gap-8 md:grid-cols-[5fr_6fr] md:gap-12 lg:gap-16" : "block max-w-3xl"}`}
             >
               {latestPost.image && (
-                <div className="relative aspect-[16/8] overflow-hidden rounded-brand bg-ui-bg">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-brand bg-ui-bg md:order-last">
                   <Image
                     src={latestPost.image}
                     alt=""
                     fill
                     priority
-                    sizes="(max-width: 1152px) 100vw, 1104px"
+                    sizes="(max-width: 768px) 100vw, 520px"
                     className="object-cover transition duration-500 group-hover:scale-[1.01]"
                   />
                 </div>
               )}
-              <div className="mt-8 grid gap-5 md:grid-cols-[1fr_auto] md:gap-12">
-                <div className="max-w-3xl">
-                  <p className="mb-4 font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent">
-                    Latest post
-                  </p>
-                  <h2 className="font-display text-[32px] leading-[1.08] tracking-[-0.02em] text-brand-black sm:text-[42px] md:text-[52px]">
-                    {latestPost.title}
-                  </h2>
-                  <p className="mt-5 font-body text-body-lg leading-relaxed text-ui-grey-dark">
-                    {latestPost.description}
-                  </p>
-                  <span className="mt-6 inline-block font-body text-body-sm font-medium text-brand-black underline decoration-brand-accent/40 underline-offset-4">
-                    Read the post <span aria-hidden="true">→</span>
+              <div>
+                <p className="mb-4 font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent">
+                  Latest post
+                  <span aria-hidden="true" className="mx-2 text-ui-grey-dark">
+                    ·
                   </span>
-                </div>
-                <time className="font-body text-body-sm text-ui-grey-dark whitespace-nowrap md:pt-1">
-                  {formatDate(latestPost.pubDate)}
-                </time>
+                  <time className="text-ui-grey-dark">
+                    {formatDate(latestPost.pubDate)}
+                  </time>
+                </p>
+                <h2 className="text-balance font-display text-[32px] leading-[1.08] tracking-[-0.02em] text-brand-black sm:text-[40px] lg:text-[44px]">
+                  {latestPost.title}
+                </h2>
+                <p className="mt-4 line-clamp-3 font-body text-body-lg leading-relaxed text-ui-grey-dark">
+                  {latestPost.description}
+                </p>
+                <span className="mt-5 inline-block font-body text-body-sm font-medium text-brand-black underline decoration-brand-accent/40 underline-offset-4">
+                  Read the post
+                </span>
               </div>
             </Link>
 
