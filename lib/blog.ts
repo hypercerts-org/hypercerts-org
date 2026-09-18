@@ -20,6 +20,10 @@ interface Facet {
   features: { $type: string; uri?: string }[];
 }
 
+interface BlobRef {
+  ref?: { $link?: string } | string;
+}
+
 function applyFacets(plaintext: string, facets?: Facet[]): string {
   if (!facets || facets.length === 0) return escapeHtml(plaintext);
 
@@ -133,6 +137,10 @@ interface Block {
   // iframe
   url?: string;
   height?: number;
+  // image
+  image?: BlobRef;
+  alt?: string;
+  aspectRatio?: { width?: number; height?: number };
   // unorderedList
   children?: { $type: string; content?: Block }[];
 }
@@ -160,6 +168,15 @@ function renderBlock(block: Block): string {
         return "";
       }
       return `<iframe src="${escapeAttr(iframeSrc)}" width="100%" allow="fullscreen" loading="lazy" style="border:none;"></iframe>`;
+    }
+    case "pub.leaflet.blocks.image": {
+      const imageSrc = getBlobUrl(block.image)
+        ?? (block.url && isSafeUrl(block.url) ? block.url : undefined);
+      if (!imageSrc) return "";
+
+      const width = Math.max(1, Math.floor(Number(block.aspectRatio?.width) || 1));
+      const height = Math.max(1, Math.floor(Number(block.aspectRatio?.height) || 1));
+      return `<img src="${escapeAttr(imageSrc)}" alt="${escapeAttr(block.alt ?? "")}" width="${width}" height="${height}" loading="lazy" decoding="async" />`;
     }
     case "pub.leaflet.blocks.unorderedList": {
       const items = (block.children ?? [])
@@ -201,8 +218,10 @@ function findFirstImage(pages: { blocks?: { block: Block }[] }[]): string | unde
   for (const page of pages) {
     for (const entry of page.blocks ?? []) {
       const block = entry.block;
-      if (block.$type === "pub.leaflet.blocks.image" && block.url && isSafeUrl(block.url)) {
-        return block.url;
+      if (block.$type === "pub.leaflet.blocks.image") {
+        const imageSrc = getBlobUrl(block.image);
+        if (imageSrc) return imageSrc;
+        if (block.url && isSafeUrl(block.url)) return block.url;
       }
       if (block.$type === "pub.leaflet.blocks.iframe" && block.url) {
         const match = block.url.match(/youtube\.com\/embed\/([^?/]+)/);
@@ -236,9 +255,7 @@ interface ATRecord {
     description?: string;
     path: string;
     publishedAt?: string;
-    coverImage?: {
-      ref?: { $link?: string } | string;
-    };
+    coverImage?: BlobRef;
     content?: {
       $type: string;
       pages: { blocks?: { block: Block }[] }[];
@@ -246,7 +263,7 @@ interface ATRecord {
   };
 }
 
-function getBlobUrl(blob?: ATRecord["value"]["coverImage"]): string | undefined {
+function getBlobUrl(blob?: BlobRef): string | undefined {
   const cid = typeof blob?.ref === "string" ? blob.ref : blob?.ref?.$link;
   if (!cid) return undefined;
 

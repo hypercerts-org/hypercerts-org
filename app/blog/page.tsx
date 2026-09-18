@@ -64,10 +64,10 @@ export default async function BlogPage() {
           <>
             <Link
               href={`/blog/${latestPost.slug}`}
-              className="group block overflow-hidden rounded-brand border border-ui-separator bg-surface-cream transition hover:border-brand-accent focus-visible:outline-offset-4"
+              className="group block focus-visible:outline-offset-4"
             >
               {latestPost.image && (
-                <div className="relative aspect-[16/8] overflow-hidden bg-ui-bg">
+                <div className="relative aspect-[16/8] overflow-hidden rounded-brand bg-ui-bg">
                   <Image
                     src={latestPost.image}
                     alt=""
@@ -78,7 +78,7 @@ export default async function BlogPage() {
                   />
                 </div>
               )}
-              <div className="grid gap-5 p-6 sm:p-8 md:grid-cols-[1fr_auto] md:gap-12 md:p-10">
+              <div className="mt-8 grid gap-5 md:grid-cols-[1fr_auto] md:gap-12">
                 <div className="max-w-3xl">
                   <p className="mb-4 font-body text-body-sm uppercase tracking-[0.2em] text-brand-accent">
                     Latest post
