@@ -1,7 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const CONTACT_EMAIL = process.env.CONTACT_TO_EMAIL || "team@hypercerts.org";
+const CONFIRMATION_TEXT = [
+  "Thank you for contacting the Hypercerts Foundation. We’ve received your message and will get back to you soon.",
+  "",
+  "If you’d like to add anything, just reply to this email.",
+  "",
+  "Hypercerts Foundation",
+  "https://hypercerts.org",
+].join("\n");
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL ||
   "Hypercerts <no-reply@hypercerts.org>";
@@ -170,6 +178,24 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) throw error;
+
+    // Confirm receipt to the sender once the response has gone out. The text
+    // is fixed on purpose: nothing the sender typed is echoed, so the form
+    // cannot be used to send arbitrary content from our domain. A failure
+    // here is only logged, since the team already has the message.
+    after(async () => {
+      const { error: confirmationError } = await resend.emails.send({
+        from: FROM_EMAIL,
+        to: email,
+        replyTo: CONTACT_EMAIL,
+        subject: "We received your message",
+        text: CONFIRMATION_TEXT,
+      });
+      if (confirmationError) {
+        console.error("[contact] confirmation email failed", confirmationError);
+      }
+    });
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("[contact] email send failed", error);
