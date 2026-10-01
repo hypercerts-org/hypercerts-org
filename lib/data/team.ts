@@ -150,12 +150,12 @@ export const foundationLinks: {
   bluesky: string;
   email: string;
   linkedin?: string;
-  roadmap?: string;
+  releases?: string;
   communityCall?: string;
 } = {
   github: "https://github.com/hypercerts-org",
   bluesky: "https://bsky.app/profile/hypercerts.org",
   email: "team@hypercerts.org",
   linkedin: "https://www.linkedin.com/company/hypercerts",
-  roadmap: "https://docs.hypercerts.org/roadmap",
+  releases: "https://docs.hypercerts.org/changes",
 };

@@ -8,15 +8,15 @@ import {
 const guideTopics = [
   {
     title: "Start here",
-    copy: "What Hypercerts is, why it builds on AT Protocol, and how the protocol and infrastructure fit together.",
+    copy: "What Hypercerts is, why it builds on AT Protocol, and what it means for projects to own their records.",
   },
   {
-    title: "Core data model",
-    copy: "Activities and contributions, projects and collections, actors, evidence and assessments, trust relationships, and funding records.",
+    title: "The shared language",
+    copy: "Activity claims, projects and collections, evidence and measurements, evaluations, trust signals, and funding records.",
   },
   {
-    title: "Common usage",
-    copy: "The shared rules that let independent applications interpret the same records in the same way.",
+    title: "Building on shared records",
+    copy: "How records change over time, how applications find and reuse them, and where your own application fits.",
   },
 ];
 

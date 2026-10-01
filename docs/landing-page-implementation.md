@@ -32,7 +32,7 @@ The board still marks the hero category “AI-native context layer,” hero CTA 
 - [Approved Ma Earth case-study frame](https://miro.com/app/board/uXjVHrWL3EE=/?moveToWidget=3458764682667732989), implemented in the previous iteration.
 - [Ma Earth](https://www.maearth.com/): Round 3 supported 201 projects with $2.19M, expressed as “almost $2.2M.” The page distinguishes this completed round from reuse of its records in another application's future funding process.
 - The existing Ma Earth photograph is credited visibly and stored at `public/img/case-studies/ma-earth-community.webp`.
-- [Existing developer guide](https://docs.hypercerts.org/getting-started/building-on-hypercerts); documentation redesign remains separate.
+- [Existing developer guide](https://docs.hypercerts.org/guide); documentation redesign remains separate.
 
 Metadata, JSON-LD, `llms.txt`, and the reproducible social card reflect the new visible copy. The social card source is `scripts/landing-social-card.html`; capture it at 1200 × 630 after fonts load.
 
