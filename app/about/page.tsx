@@ -12,7 +12,7 @@ import {
 } from "@/lib/data/team";
 
 const description =
-  "The Hypercerts Foundation is an independent, grant-funded nonprofit building open infrastructure for funding valuable work.";
+  "The Hypercerts Foundation is an independent, grant-funded nonprofit building open infrastructure for funding ecosystems.";
 
 export const metadata: Metadata = {
   title: "About the Hypercerts Foundation",
@@ -215,7 +215,7 @@ export default function About() {
           <div className={`mt-8 max-w-2xl space-y-6 ${bodyCopy}`}>
             <p>
               We are an independent, grant-funded nonprofit. We build and
-              maintain the open infrastructure for funding valuable work.
+              maintain the open infrastructure for funding ecosystems.
             </p>
             <p>
               We do not fund projects, we do not define what counts as impact,

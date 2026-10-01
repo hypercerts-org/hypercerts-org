@@ -18,7 +18,7 @@ const structuredData = {
   "@type": "WebPage",
   "@id": "https://hypercerts.org/#webpage",
   url: "https://hypercerts.org",
-  name: "Hypercerts | Open infrastructure for funding valuable work",
+  name: "Hypercerts | Open infrastructure for funding ecosystems",
   description:
     "Hypercerts is an open protocol to connect projects with those who review them, vouch for them, and back them, creating the trust it takes to fund what matters. Funders build on what others already know.",
   isPartOf: { "@id": "https://hypercerts.org/#website" },
