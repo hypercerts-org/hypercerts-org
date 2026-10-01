@@ -344,7 +344,7 @@ export default function About() {
           </ul>
           <p className={`mt-10 max-w-2xl ${bodyCopy}`}>
             We publish our{" "}
-            <OptionalLink href={foundationLinks.roadmap}>roadmap</OptionalLink>,
+            <OptionalLink href={foundationLinks.releases}>release notes</OptionalLink>,
             hold an open monthly{" "}
             <OptionalLink href={foundationLinks.communityCall}>
               community call

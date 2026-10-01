@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 export const developerGuideUrl =
-  "https://docs.hypercerts.org/getting-started/building-on-hypercerts";
+  "https://docs.hypercerts.org/guide";
 export const primaryButton =
   "inline-flex items-center justify-center rounded-brand bg-brand-black px-8 py-3 font-body text-body-lg font-medium text-brand-white transition hover:bg-brand-black/90";
 export const secondaryButton =
