@@ -1,6 +1,6 @@
 # Hypercerts
 
-> Open infrastructure for funding valuable work. Trust in times of AI.
+> Open infrastructure for funding ecosystems. Trust in times of AI.
 
 Hypercerts is an open protocol to connect projects with those who review them, vouch for them, and back them, creating the trust it takes to fund what matters. Funders build on what others already know.
 
