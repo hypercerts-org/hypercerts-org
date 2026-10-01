@@ -32,7 +32,7 @@ export default function HeroSection() {
           className="font-display text-[36px] min-[375px]:text-[40px] leading-[0.98] tracking-[-0.03em] text-brand-black sm:text-[68px] md:text-[72px] lg:text-[88px]"
         >
           Open infrastructure for
-          <br /> <em className="text-brand-accent">funding valuable work</em>
+          <br /> <em className="text-brand-accent">funding ecosystems</em>
         </h1>
         <p className={`mt-8 max-w-2xl ${bodyCopy}`}>
           Hypercerts is an open protocol to connect projects with those who
