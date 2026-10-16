@@ -58,7 +58,7 @@ export const tools: ToolCard[] = [
     description:
       "Query hypercert data across the network. Power your application with real-time, structured, and composable data.",
     cta: "API reference",
-    href: "https://docs.hypercerts.org/tools/hyperindex",
+    href: "https://github.com/GainForest/hyperindex/blob/main/docs/hyperindex.md",
     image: "/img/screenshots/hyperindex_screenshot.png",
     imagePosition: "object-left",
   },
