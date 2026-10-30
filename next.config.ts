@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { ogImage, retiredOgImages } from "./lib/metadata";
 
 const nextConfig: NextConfig = {
   // Files the blog preview cards read at runtime. Next doesn't reliably
@@ -39,6 +40,14 @@ const nextConfig: NextConfig = {
         destination: "https://docs.hypercerts.org",
         permanent: true,
       },
+      // Earlier preview cards go to the current one. Temporary, because
+      // the destination changes with each new card; a permanent redirect
+      // would be cached pointing at this one.
+      ...retiredOgImages.map((source) => ({
+        source,
+        destination: ogImage.url,
+        permanent: false,
+      })),
     ];
   },
 };
