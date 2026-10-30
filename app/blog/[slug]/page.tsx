@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props) {
       publishedTime: new Date(post.pubDate).toISOString(),
       authors: ["Hypercerts Foundation"],
     },
-    /* The card comes from opengraph-image.tsx and twitter-image.tsx. */
+    /* The card comes from opengraph-image.tsx; Next copies it to twitter:image. */
     twitter: {
       card: "summary_large_image",
       title: post.title,
