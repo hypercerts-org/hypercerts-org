@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
+import { ogImage, sharedOpenGraph } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hypercerts.org"),
@@ -17,24 +18,13 @@ export const metadata: Metadata = {
     description:
       "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
     url: "https://hypercerts.org",
-    siteName: "Hypercerts",
-    images: [
-      {
-        url: "/img/hypercerts-opengraph-sep-2026.png",
-        width: 1200,
-        height: 630,
-        alt: "Hypercerts | Open infrastructure for funding ecosystems",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
+    ...sharedOpenGraph,
   },
+  /* No title or description here, so X and others fall back to each
+     page's own og:title and og:description. */
   twitter: {
     card: "summary_large_image",
-    title: "Hypercerts | Open infrastructure for funding ecosystems",
-    description:
-      "An open protocol connecting valuable work with evidence, evaluations, and funding history, so funders can build on what others already know.",
-    images: ["/img/hypercerts-opengraph-sep-2026.png"],
+    images: [ogImage.url],
   },
   icons: {
     icon: "/favicon.ico",

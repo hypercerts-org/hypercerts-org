@@ -10,6 +10,7 @@ import {
   team,
   type Person,
 } from "@/lib/data/team";
+import { sharedOpenGraph } from "@/lib/metadata";
 
 const description =
   "The Hypercerts Foundation is an independent, grant-funded nonprofit building open infrastructure for funding ecosystems.";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/about" },
   openGraph: {
+    ...sharedOpenGraph,
     title: "About the Hypercerts Foundation",
     description,
     url: "/about",

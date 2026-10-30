@@ -1,13 +1,16 @@
 import ContactForm from "../../components/ContactForm";
+import { sharedOpenGraph } from "@/lib/metadata";
 
 export const metadata = {
   title: "Contact",
   description:
     "Get in touch with the Hypercerts Foundation, whether you're a builder, funder, evaluator, or researcher.",
   openGraph: {
+    ...sharedOpenGraph,
     title: "Contact | Hypercerts",
     description:
       "Get in touch with the Hypercerts Foundation, whether you're a builder, funder, evaluator, or researcher.",
+    url: "/contact",
   },
 };
 
