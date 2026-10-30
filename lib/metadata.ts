@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
 
 /* The link preview card. Source: scripts/landing-social-card.html.
-   Give a new card a new filename so messenger caches pick it up. */
+   Give a new card a new filename so messenger caches pick it up, and add
+   the old one to retiredOgImages. */
 export const ogImage = {
   url: "/img/hypercerts-opengraph-2026-10-30.png",
   width: 1200,
   height: 630,
   alt: "Hypercerts | Open infrastructure for funding ecosystems",
 };
+
+/* Earlier cards. Apps like Slack, Discord, and X can fetch a preview image
+   again long after a link was shared, so these redirect to the current
+   card (see next.config.ts) instead of breaking old shares. */
+export const retiredOgImages = [
+  "/img/hypercerts_opengraph.jpg",
+  "/img/hypercerts_opengraph-v2.jpg",
+  "/img/hypercerts-opengraph-sep-2026.png",
+  "/img/hypercerts-opengraph-oct-2026.png",
+];
 
 /* A page that sets its own openGraph or twitter replaces the root one
    entirely, so pages spread these in to keep the shared fields. */
