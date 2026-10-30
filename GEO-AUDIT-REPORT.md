@@ -7,6 +7,35 @@
 
 ---
 
+## Status Update (2026-10-30)
+
+Most of the technical findings have been fixed since this audit. The scores and the rest of the report still describe the site as it was in March 2026.
+
+| # | Issue | Status |
+|---|---|---|
+| 1 | Blog canonical URL points to homepage | Fixed: every page sets its own canonical |
+| 2 | Blog OG/Twitter tags show homepage content | Fixed: each post has its own title, description, and preview card |
+| 3 | www vs non-www mismatch | Fixed: www.hypercerts.org redirects to hypercerts.org, matching the canonical |
+| 4 | No statistics on the homepage | Open |
+| 5 | No Reddit presence | Off-site, not tracked here |
+| 6 | No YouTube presence | Off-site, not tracked here |
+| 7 | Article schema missing `image` | Fixed |
+| 8 | No BreadcrumbList schema | Partly fixed: blog posts have it, other pages don't |
+| 9 | Only 3 blog posts | Open: 5 posts |
+| 10 | FAQ schema without a visible FAQ | Fixed: the FAQ is visible on the Contact page, with matching schema |
+| 11 | Schema blocks not linked by `@id` | Fixed |
+| 12 | Non-standard `applicationCategory` | No longer applies: the SoftwareApplication schema was removed |
+| 13 | No `ClaudeBot` in robots.txt | Fixed |
+| 14 | Opaque blog slugs | Open |
+| 15 | No comparison content | Open |
+| 16 | HowTo schema lacks images | No longer applies: the HowTo schema was removed |
+| 17 | Stale LinkedIn presence | Off-site, not tracked here |
+| 18 | Duplicate H3 headings | Fixed |
+
+The blog also has an RSS feed at `/blog/rss.xml` now.
+
+---
+
 ## Executive Summary
 
 **Overall GEO Score: 55/100 (Fair)**
