@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { blogFeed } from "@/lib/metadata";
 import Ecosystem from "@/components/Ecosystem";
 import FundingModels from "@/components/FundingModels";
 import GetInvolved from "@/components/GetInvolved";
@@ -16,7 +17,7 @@ import WhyNow from "@/components/WhyNow";
 
 /* Set here rather than in the root layout, which every page would inherit. */
 export const metadata: Metadata = {
-  alternates: { canonical: "https://hypercerts.org" },
+  alternates: { canonical: "https://hypercerts.org", types: blogFeed },
 };
 
 const structuredData = {

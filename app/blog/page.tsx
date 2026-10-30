@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { fetchBlogPosts } from "@/lib/blog";
-import { sharedOpenGraph } from "@/lib/metadata";
+import { blogFeed, sharedOpenGraph } from "@/lib/metadata";
 
 export const metadata = {
   title: "Blog",
   description:
     "Updates from the Hypercerts Foundation on protocol development and highlights from across the ecosystem.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/blog", types: blogFeed },
   openGraph: {
     ...sharedOpenGraph,
     title: "Blog | Hypercerts",
