@@ -1,0 +1,133 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { ImageResponse } from "next/og";
+import sharp from "sharp";
+import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
+import { ogImage } from "@/lib/metadata";
+
+/* The link preview card for a blog post: its cover image if it has one,
+   otherwise its title in the style of scripts/landing-social-card.html.
+   Always a JPEG served from hypercerts.org: covers can be WebP, which some
+   messengers won't show, and a PNG of a photo is too big for WhatsApp. */
+
+export const size = { width: ogImage.width, height: ogImage.height };
+export const contentType = "image/jpeg";
+export const alt = "Hypercerts blog";
+
+export async function generateStaticParams() {
+  const posts = await fetchBlogPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
+const accent = "#af2901";
+
+function toJpeg(image: ArrayBuffer) {
+  return sharp(Buffer.from(image))
+    .resize(size.width, size.height, { fit: "cover" })
+    .jpeg({ quality: 90 })
+    .toBuffer();
+}
+
+async function coverCard(url: string) {
+  try {
+    const res = await fetch(url, { cache: "force-cache" });
+    if (!res.ok) return null;
+    return await toJpeg(await res.arrayBuffer());
+  } catch (err) {
+    console.error("Failed to load blog cover for the preview card:", err);
+    return null;
+  }
+}
+
+async function dataUri(path: string, type: string) {
+  const file = await readFile(join(process.cwd(), path));
+  return `data:${type};base64,${file.toString("base64")}`;
+}
+
+/* Instrument Serif is narrow, so roughly 30 characters fit a line at 80px. */
+function titleSize(title: string) {
+  if (title.length <= 40) return 80;
+  if (title.length <= 80) return 68;
+  return 56;
+}
+
+async function titleCard(title: string) {
+  const [serif, sans, ornament, logo] = await Promise.all([
+    readFile(join(process.cwd(), "assets/fonts/InstrumentSerif-Regular.ttf")),
+    readFile(join(process.cwd(), "assets/fonts/Switzer-Regular.ttf")),
+    dataUri("public/img/guilloche_02_top.svg", "image/svg+xml"),
+    dataUri("public/img/hypercerts_logo_horizontal.svg", "image/svg+xml"),
+  ]);
+
+  const card = new ImageResponse(
+    (
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 80,
+          background: "#fff",
+          textAlign: "center",
+        }}
+      >
+        <img
+          src={ornament}
+          alt=""
+          width={1500}
+          height={1000}
+          style={{ position: "absolute", left: -150, top: 0, opacity: 0.15 }}
+        />
+        <div
+          style={{
+            fontFamily: "Switzer",
+            fontSize: 18,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: accent,
+            marginBottom: 28,
+          }}
+        >
+          Hypercerts blog
+        </div>
+        <div
+          style={{
+            fontFamily: "Instrument Serif",
+            fontSize: titleSize(title),
+            lineHeight: 1.05,
+            letterSpacing: "-0.02em",
+            color: "#000",
+            maxWidth: 1000,
+          }}
+        >
+          {title}
+        </div>
+        <img src={logo} alt="" width={180} height={32} style={{ marginTop: 48 }} />
+      </div>
+    ),
+    {
+      ...size,
+      fonts: [
+        { name: "Instrument Serif", data: serif, style: "normal", weight: 400 },
+        { name: "Switzer", data: sans, style: "normal", weight: 400 },
+      ],
+    },
+  );
+  return toJpeg(await card.arrayBuffer());
+}
+
+export default async function Image({ params }: { params: { slug: string } }) {
+  const post = await fetchBlogPost(params.slug);
+  if (!post) return new Response("Not found", { status: 404 });
+
+  const card =
+    (post.image && (await coverCard(post.image))) || (await titleCard(post.title));
+
+  return new Response(new Uint8Array(card), {
+    headers: { "Content-Type": contentType },
+  });
+}

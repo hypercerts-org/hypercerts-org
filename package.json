@@ -18,7 +18,8 @@
     "next": "^15",
     "react": "^19",
     "react-dom": "^19",
-    "resend": "^6.28.0"
+    "resend": "^6.28.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.5.14",
