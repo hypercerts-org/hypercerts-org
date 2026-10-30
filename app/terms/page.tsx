@@ -1,5 +1,18 @@
+import { sharedOpenGraph } from "@/lib/metadata";
+
+const description =
+  "The terms that govern your use of hypercerts.org, hypercerts.xyz, and the Hypercerts services.";
+
 export const metadata = {
   title: "Terms of Use",
+  description,
+  alternates: { canonical: "/terms" },
+  openGraph: {
+    ...sharedOpenGraph,
+    title: "Terms of Use | Hypercerts",
+    description,
+    url: "/terms",
+  },
 };
 
 export default function TermsPage() {

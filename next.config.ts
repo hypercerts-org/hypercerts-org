@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Files the blog preview cards read at runtime. Next doesn't reliably
+  // trace them on its own, and without them cards can't regenerate on
+  // Vercel. ("[slug]" would be a character class in a glob, hence "*".)
+  outputFileTracingIncludes: {
+    "/blog/*/opengraph-image": [
+      "./assets/fonts/*.ttf",
+      "./public/img/guilloche_02_top.svg",
+      "./public/img/hypercerts_logo_horizontal.svg",
+    ],
+  },
   images: {
     remotePatterns: [
       {

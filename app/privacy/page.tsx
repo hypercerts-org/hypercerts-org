@@ -1,5 +1,18 @@
+import { sharedOpenGraph } from "@/lib/metadata";
+
+const description =
+  "How the Hypercerts Foundation collects and uses information when you use hypercerts.org and hypercerts.xyz.";
+
 export const metadata = {
   title: "Privacy Policy",
+  description,
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    ...sharedOpenGraph,
+    title: "Privacy Policy | Hypercerts",
+    description,
+    url: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

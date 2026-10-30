@@ -26,8 +26,23 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [ogImage.url],
   },
+  /* app/favicon.ico is picked up by file name; browsers that support SVG
+     favicons use these instead. Setting icons here turns off other
+     file-based icons, so the Apple touch icon is listed too. */
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/brand/favicon/favicon-light.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/brand/favicon/favicon-dark.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+    apple: { url: "/brand/favicon/apple-touch-icon.png", sizes: "180x180" },
   },
   keywords: [
     "hypercerts",
@@ -39,9 +54,6 @@ export const metadata: Metadata = {
     "AT Protocol",
   ],
   authors: [{ name: "Hypercerts Foundation" }],
-  alternates: {
-    canonical: "https://hypercerts.org",
-  },
 };
 
 export default function RootLayout({

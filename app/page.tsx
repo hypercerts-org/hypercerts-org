@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Ecosystem from "@/components/Ecosystem";
 import FundingModels from "@/components/FundingModels";
 import GetInvolved from "@/components/GetInvolved";
@@ -12,6 +13,11 @@ import UseCases from "@/components/UseCases";
 import WhatIsHypercert from "@/components/WhatIsHypercert";
 import ForBuilders from "@/components/ForBuilders";
 import WhyNow from "@/components/WhyNow";
+
+/* Set here rather than in the root layout, which every page would inherit. */
+export const metadata: Metadata = {
+  alternates: { canonical: "https://hypercerts.org" },
+};
 
 const structuredData = {
   "@context": "https://schema.org",
