@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
-import { blogFeed, sharedOpenGraph, twitterHandle } from "@/lib/metadata";
+import { blogFeed, openGraphBase, sharedTwitter } from "@/lib/metadata";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -19,11 +19,8 @@ export async function generateMetadata({ params }: Props) {
       canonical: `https://hypercerts.org/blog/${slug}`,
       types: blogFeed,
     },
-    /* Not spreading sharedOpenGraph: its images would replace the card
-       from opengraph-image.tsx. */
     openGraph: {
-      siteName: sharedOpenGraph.siteName,
-      locale: sharedOpenGraph.locale,
+      ...openGraphBase,
       title: `${post.title} | Hypercerts Blog`,
       description: post.description,
       url: `https://hypercerts.org/blog/${slug}`,
@@ -33,8 +30,7 @@ export async function generateMetadata({ params }: Props) {
     },
     /* The card comes from opengraph-image.tsx; Next copies it to twitter:image. */
     twitter: {
-      card: "summary_large_image",
-      site: twitterHandle,
+      ...sharedTwitter,
       title: post.title,
       description: post.description,
     },

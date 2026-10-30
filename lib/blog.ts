@@ -1,4 +1,8 @@
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
+
 export interface BlogPost {
+  /* The AT Protocol record URI. Unlike the slug, it survives a path change. */
+  uri: string;
   title: string;
   link: string;
   slug: string;
@@ -278,7 +282,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     const url = `${PDS}/xrpc/com.atproto.repo.listRecords?repo=${DID}&collection=${COLLECTION}&limit=100`;
     const res = await fetch(url, { next: { revalidate: 60 } });
 
-    if (!res.ok) return [];
+    if (!res.ok) throw new Error(`The PDS responded with ${res.status}`);
 
     const data = await res.json();
     const records: ATRecord[] = data.records ?? [];
@@ -305,6 +309,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
           })();
 
         return {
+          uri: r.uri,
           title,
           link: `${LEAFLET_BASE}${path}`,
           slug,
@@ -321,8 +326,16 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
 
     return posts;
   } catch (err) {
-    console.error("Failed to fetch blog posts from AT Protocol:", err);
-    return [];
+    /* During `next build`, carry on without posts so an outage doesn't
+       block deploys. At runtime, throw, so ISR keeps the last good version
+       of each page instead of caching one without posts. */
+    if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+      console.error("Failed to fetch blog posts from AT Protocol:", err);
+      return [];
+    }
+    throw new Error("Failed to fetch blog posts from AT Protocol", {
+      cause: err,
+    });
   }
 }
 

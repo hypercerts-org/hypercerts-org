@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
-import { ogImage, sharedOpenGraph, twitterHandle } from "@/lib/metadata";
+import { ogImage, sharedOpenGraph, sharedTwitter } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hypercerts.org"),
@@ -23,8 +23,7 @@ export const metadata: Metadata = {
   /* No title or description here, so X and others fall back to each
      page's own og:title and og:description. */
   twitter: {
-    card: "summary_large_image",
-    site: twitterHandle,
+    ...sharedTwitter,
     images: [ogImage.url],
   },
   /* app/favicon.ico is picked up by file name; browsers that support SVG

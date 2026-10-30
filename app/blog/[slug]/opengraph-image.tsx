@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import sharp from "sharp";
-import { fetchBlogPosts } from "@/lib/blog";
+import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
 import { ogImage } from "@/lib/metadata";
 
 /* The link preview card for a blog post: its cover image if it has one,
@@ -135,12 +135,7 @@ async function titleCard(fullTitle: string) {
 }
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  /* The feed comes back empty when it fails. Throw then, so a cached card
-     is kept and crawlers get a 5xx to retry, rather than a 404. */
-  const posts = await fetchBlogPosts();
-  if (posts.length === 0) throw new Error("Blog feed unavailable");
-
-  const post = posts.find((p) => p.slug === params.slug);
+  const post = await fetchBlogPost(params.slug);
   if (!post) return new Response("Not found", { status: 404 });
 
   const card =
