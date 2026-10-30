@@ -1,15 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { fetchBlogPosts } from "@/lib/blog";
+import { sharedOpenGraph } from "@/lib/metadata";
 
 export const metadata = {
   title: "Blog",
   description:
     "Updates from the Hypercerts Foundation on protocol development and highlights from across the ecosystem.",
   openGraph: {
+    ...sharedOpenGraph,
     title: "Blog | Hypercerts",
     description:
       "Updates from the Hypercerts Foundation on protocol development and highlights from across the ecosystem.",
+    url: "/blog",
   },
 };
 

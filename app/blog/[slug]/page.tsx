@@ -2,6 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
+import { ogImage } from "@/lib/metadata";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props) {
       authors: ["Hypercerts Foundation"],
       images: [
         {
-          url: post.image ?? "/img/hypercerts_opengraph-v2.jpg",
+          url: post.image ?? ogImage.url,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props) {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [post.image ?? "/img/hypercerts_opengraph-v2.jpg"],
+      images: [post.image ?? ogImage.url],
     },
   };
 }
@@ -76,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
               datePublished: isoDate,
               image: {
                 "@type": "ImageObject",
-                url: post.image ?? "https://hypercerts.org/img/hypercerts_opengraph-v2.jpg",
+                url: post.image ?? `https://hypercerts.org${ogImage.url}`,
                 width: 1200,
                 height: 630,
               },
