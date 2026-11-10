@@ -67,7 +67,7 @@ async function titleCard(fullTitle: string) {
   /* Bundled with the function by outputFileTracingIncludes in next.config.ts. */
   const [serif, sans, ornament, logo] = await Promise.all([
     readFile(join(process.cwd(), "assets/fonts/InstrumentSerif-Regular.ttf")),
-    readFile(join(process.cwd(), "assets/fonts/Switzer-Regular.ttf")),
+    readFile(join(process.cwd(), "assets/fonts/HankenGrotesk-Regular.ttf")),
     readFile(join(process.cwd(), "public/img/guilloche_02_top.svg")),
     readFile(join(process.cwd(), "public/img/hypercerts_logo_horizontal.svg")),
   ]);
@@ -98,7 +98,7 @@ async function titleCard(fullTitle: string) {
         />
         <div
           style={{
-            fontFamily: "Switzer",
+            fontFamily: "Hanken Grotesk",
             fontSize: 18,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
@@ -127,7 +127,7 @@ async function titleCard(fullTitle: string) {
       ...size,
       fonts: [
         { name: "Instrument Serif", data: serif, style: "normal", weight: 400 },
-        { name: "Switzer", data: sans, style: "normal", weight: 400 },
+        { name: "Hanken Grotesk", data: sans, style: "normal", weight: 400 },
       ],
     },
   );

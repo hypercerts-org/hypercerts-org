@@ -6,7 +6,7 @@ If Certified is a notary's ledger reimagined as a mobile app, hypercerts.org is 
 
 ## Typography carries the identity
 
-Instrument Serif for display, Switzer Variable for everything structural, both self-hosted as woff2 in `public/fonts/`. Serif headlines give the page the weight of something printed; the sans handles labels, navigation and body copy without editorialising. There is no illustration and no photography in the page chrome. As on Certified, the restraint is the brand — but here it is restraint with a cream backdrop rather than a white one.
+Instrument Serif for display, Hanken Grotesk for everything structural, both self-hosted as woff2 in `public/fonts/`. Serif headlines give the page the weight of something printed; the sans handles labels, navigation and body copy without editorialising. There is no illustration and no photography in the page chrome. As on Certified, the restraint is the brand — but here it is restraint with a cream backdrop rather than a white one.
 
 ## The italic turn is the signature device
 

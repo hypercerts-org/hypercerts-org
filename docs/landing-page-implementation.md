@@ -12,7 +12,7 @@ The information-economy diagram has three connected chapters: today's crowdfundi
 
 The original hero, mission wave, protocol-corner, and contact guilloche treatments are restored. This deliberately follows the user's request for the existing site's background images over the design repository's usual single-ornament guidance. The expensive radial ornaments are existing static assets. The partner strip matches the main branch's 50px height, 150px cells, and gentle hover enlargement. It has no pause button. Partner logos move continuously, pause on hover, and become a static scrollable row during keyboard use or reduced motion. Duplicate visuals are inert and hidden from assistive technology. Silvi is included from the updated wireframe.
 
-A shared 64rem container aligns navigation, content, diagrams, and footer. Instrument Serif roman/italic and Switzer remain self-hosted. The latest accessible muted grey (#666666), 11px micro type token, and monochrome button hover are reflected in the site tokens. Section spacing stays generous and card padding is consistent.
+A shared 64rem container aligns navigation, content, diagrams, and footer. Instrument Serif roman/italic and Hanken Grotesk remain self-hosted. The latest accessible muted grey (#666666), 11px micro type token, and monochrome button hover are reflected in the site tokens. Section spacing stays generous and card padding is consistent.
 
 ## About scaffold and editorial follow-up
 

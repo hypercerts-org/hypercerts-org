@@ -9,7 +9,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         display: ["Instrument Serif", "serif"],
-        body: ["Switzer Variable", "system-ui", "sans-serif"],
+        body: ["Hanken Grotesk", "system-ui", "sans-serif"],
       },
       colors: {
         brand: {
