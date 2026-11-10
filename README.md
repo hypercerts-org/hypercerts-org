@@ -61,3 +61,9 @@ The visitor's email is used only as `Reply-To`; the endpoint never sends mail to
 - [Certified](https://certified.app)
 - [GitHub](https://github.com/hypercerts-org)
 - [Bluesky](https://bsky.app/profile/hypercerts.org)
+
+## License
+
+Licensed under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+
+The licenses cover the code. They don't cover the logos or fonts in this repository: logos belong to their owners, and each font keeps its own license.
