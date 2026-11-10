@@ -68,7 +68,9 @@ Licensed under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at you
 
 The licenses cover the code. They don't cover the images, wordmarks or fonts in this repository: images (including logos, photos and screenshots) and wordmarks belong to their owners, and each font keeps its own license.
 
+The text of the Terms of Use (`app/terms/page.tsx`) and the Privacy Policy (`app/privacy/page.tsx`) isn't covered either: as each page says, it is licensed under CC BY-SA.
+
 Some code in this repository comes from elsewhere and keeps its own terms:
 
 - The GitHub, LinkedIn and Bluesky icons in `app/about/page.tsx` come from [Bootstrap Icons](https://icons.getbootstrap.com) 1.13.1, under the MIT license (Copyright (c) 2019-2024 The Bootstrap Authors). The logos they show belong to their owners.
-- The slide deck in `public/docs/2026-08-24_Hypercerts_Introduction.html` bundles React and React DOM 18.3.1, under the MIT license (Copyright (c) Facebook, Inc. and its affiliates), and code from the tool that exported the deck: its runtime and a page-layout component.
+- The slide deck in `public/docs/2026-08-24_Hypercerts_Introduction.html` bundles React and React DOM 18.3.1, under the MIT license (Copyright (c) Facebook, Inc. and its affiliates), and code from Claude (Anthropic), the tool that exported the deck: its loader, its runtime and a page-layout component.
