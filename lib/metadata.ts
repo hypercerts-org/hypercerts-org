@@ -4,7 +4,7 @@ import type { Metadata } from "next";
    Give a new card a new filename so messenger caches pick it up, and add
    the old one to retiredOgImages. */
 export const ogImage = {
-  url: "/img/hypercerts-opengraph-2026-10-30.png",
+  url: "/img/hypercerts-opengraph-2026-11-10.png",
   width: 1200,
   height: 630,
   alt: "Hypercerts | Open infrastructure for funding ecosystems",
@@ -18,6 +18,7 @@ export const retiredOgImages = [
   "/img/hypercerts_opengraph-v2.jpg",
   "/img/hypercerts-opengraph-sep-2026.png",
   "/img/hypercerts-opengraph-oct-2026.png",
+  "/img/hypercerts-opengraph-2026-10-30.png",
 ];
 
 /* A page that sets its own openGraph or twitter replaces the root one
