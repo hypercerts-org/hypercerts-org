@@ -35,10 +35,9 @@ Open [http://localhost:3000](http://localhost:3000)
 system, the guilloche ornament, and the rules to follow when adding a section. Read it
 before building new UI.
 
-Reusable controls come from `@hypercerts-org/ui-react`. Its compiled, component-scoped
-stylesheet is imported once in `app/globals.css`, and the Hypercerts theme is selected
-with `data-hc-theme="hypercerts"` in the root layout. The application can continue to
-use Tailwind for page-specific layout and composition.
+The contact form's controls (`components/FormControls.tsx`) are local: they are adapted
+from the Hypercerts design system's React package and styled with this site's Tailwind
+tokens. Everything else is Tailwind.
 
 ## Blog
 
