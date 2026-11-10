@@ -16,7 +16,7 @@
   font-display: swap;
 }
 
-/* Hanken Grotesk: SIL Open Font License 1.1, see public/fonts/OFL.txt. */
+/* Hanken Grotesk: SIL Open Font License 1.1, see public/fonts/OFL-HankenGrotesk.txt. */
 @font-face {
   font-family: "Hanken Grotesk";
   src: url("/fonts/HankenGrotesk-Variable.woff2") format("woff2");
