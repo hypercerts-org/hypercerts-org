@@ -16,12 +16,21 @@
   font-display: swap;
 }
 
+/* Hanken Grotesk: SIL Open Font License 1.1, see public/fonts/OFL.txt. */
 @font-face {
-  font-family: "Switzer Variable";
-  src: url("/fonts/Switzer-Variable.woff2") format("woff2");
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/HankenGrotesk-Variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
+}
+
+/* @hypercerts-org/ui-react 0.2.0 sets --font-body to "Switzer Variable" on
+   :root, and its components (the contact form's fields and button) read it
+   through --hc-font-body. Remove once a release that uses Hanken Grotesk is
+   installed. */
+:root {
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
 }
 
 @import "tailwindcss";
