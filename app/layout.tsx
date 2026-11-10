@@ -69,7 +69,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-hc-theme="hypercerts"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

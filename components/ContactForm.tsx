@@ -2,12 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
-import {
-  Button,
-  Field,
-  Input,
-  Textarea,
-} from "@hypercerts-org/ui-react";
+import { Button, Field, Input, Textarea } from "./FormControls";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
@@ -108,7 +103,6 @@ export default function ContactForm({
         <Button
           type="button"
           variant="secondary"
-          size="lg"
           className="mt-10 self-start"
           onClick={() => setSubmissionState("idle")}
         >
@@ -132,7 +126,6 @@ export default function ContactForm({
             <Input
               {...fieldProps}
               type="text"
-              inputSize="lg"
               name="name"
               autoComplete="name"
               maxLength={100}
@@ -152,7 +145,6 @@ export default function ContactForm({
             <Input
               {...fieldProps}
               type="email"
-              inputSize="lg"
               name="email"
               autoComplete="email"
               maxLength={254}
@@ -168,7 +160,6 @@ export default function ContactForm({
           <Input
             {...fieldProps}
             type="text"
-            inputSize="lg"
             name="organization"
             autoComplete="organization"
             maxLength={150}
@@ -188,7 +179,7 @@ export default function ContactForm({
         {(fieldProps) => (
           <Textarea
             {...fieldProps}
-            className="min-h-40 text-base"
+            className="min-h-40"
             name="message"
             rows={6}
             maxLength={5000}
@@ -220,7 +211,6 @@ export default function ContactForm({
         </p>
         <Button
           type="submit"
-          size="lg"
           loading={isSubmitting}
           className="whitespace-nowrap"
           disabled={isSubmitting}
