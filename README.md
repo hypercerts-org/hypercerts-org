@@ -61,3 +61,18 @@ The visitor's email is used only as `Reply-To`; the endpoint never sends mail to
 - [Certified](https://certified.app)
 - [GitHub](https://github.com/hypercerts-org)
 - [Bluesky](https://bsky.app/profile/hypercerts.org)
+
+## License
+
+- **Text:** the text in this repository is licensed under [CC BY 4.0](LICENSE). That covers the copy on the site's pages (much of it written inside components), the slide deck in `public/docs/`, and documents such as this README and `DESIGN.md`. You may share and adapt it if you credit the Hypercerts Foundation, link to the license, and say whether you changed it. The exception is the Terms of Use (`app/terms/page.tsx`) and the Privacy Policy (`app/privacy/page.tsx`): as each page says, they are licensed under CC BY-SA.
+- **Code:** the site's source is licensed under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+- **Marks:** the Hypercerts logos and wordmarks and the guilloche ornament identify the Hypercerts Foundation. The code licenses cover the code that draws the ornament (`components/Guilloche.tsx`); they are not permission to use the marks to identify something else.
+- **Not covered:** the images (including logos, photos and screenshots) and the fonts. The images belong to their owners, and each font keeps its own license.
+- Blog posts are fetched from [hypercerts.leaflet.pub](https://hypercerts.leaflet.pub) and aren't stored here.
+
+Some code and icons in this repository come from elsewhere and keep their own terms:
+
+- The GitHub, LinkedIn and Bluesky icons in `app/about/page.tsx` come from [Bootstrap Icons](https://icons.getbootstrap.com) 1.13.1, under the MIT license (Copyright (c) 2019-2024 The Bootstrap Authors). The logos they show belong to their owners.
+- `public/img/social-icons/github.svg` is adapted from the `github-square` icon of [Font Awesome Free](https://fontawesome.com) 5 by Fonticons, Inc., under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); it has been cropped and partly redrawn. The GitHub logo it shows belongs to GitHub.
+- `public/img/social-icons/support.svg` is adapted from the `contact_support` icon of Google's [Material Symbols](https://fonts.google.com/icons), under the Apache License 2.0; a black square has been added behind it.
+- The slide deck in `public/docs/2026-08-24_Hypercerts_Introduction.html` bundles React and React DOM 18.3.1, under the MIT license (Copyright (c) Facebook, Inc. and its affiliates), and code from Claude (Anthropic), the tool that exported the deck: its loader, its runtime and a page-layout component.
