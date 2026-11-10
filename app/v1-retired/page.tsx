@@ -31,12 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-/* Subheadings are set in Hanken Grotesk, not Instrument Serif. Instrument
-   Serif has a single "1" that reads as an "l", so "v1" would read "vl", and
-   a line never switches fonts partway through. */
-const subheading =
-  "font-body text-body-lg font-semibold leading-snug text-brand-black";
-const sectionText = "mt-2 text-base leading-[1.55] text-ui-grey-dark";
+const leadIn = "font-semibold text-brand-black";
 
 export default function V1RetiredPage() {
   return (
@@ -63,36 +58,26 @@ export default function V1RetiredPage() {
               With v2 here, the Hypercerts v1 app has been retired.
             </p>
 
-            <div className="mt-8 space-y-6">
-              <section aria-labelledby="v1-hypercerts">
-                <h2 id="v1-hypercerts" className={subheading}>
-                  Your v1 hypercerts still exist
-                </h2>
-                <p className={sectionText}>
-                  Hypercerts created in v1 are tokens on the blockchain
-                  networks where they were minted. Retiring the app
-                  doesn&apos;t remove them: they stay in the wallets that hold
-                  them.
-                </p>
-              </section>
-
-              <section aria-labelledby="indexer">
-                <h2 id="indexer" className={subheading}>
-                  The indexer is retiring too
-                </h2>
-                <p className={sectionText}>
-                  The GraphQL indexer behind the app will be retired as well.
-                  If you need access to its data,{" "}
-                  <Link
-                    href="/contact"
-                    className="text-brand-accent underline underline-offset-2 transition hover:text-brand-black"
-                  >
-                    contact us
-                  </Link>
-                  .
-                </p>
-              </section>
-            </div>
+            <ul className="mt-6 list-disc space-y-3 pl-5 text-base leading-[1.55] text-ui-grey-dark marker:text-ui-grey">
+              <li>
+                <strong className={leadIn}>Your v1 hypercerts still exist:</strong>{" "}
+                Hypercerts created in v1 are tokens on the blockchain networks
+                where they were minted. Retiring the app doesn&apos;t remove
+                them: they stay in the wallets that hold them.
+              </li>
+              <li>
+                <strong className={leadIn}>The indexer is retiring too:</strong>{" "}
+                The GraphQL indexer behind the app will be retired as well. If
+                you need access to its data,{" "}
+                <Link
+                  href="/contact"
+                  className="text-brand-accent underline underline-offset-2 transition hover:text-brand-black"
+                >
+                  contact us
+                </Link>
+                .
+              </li>
+            </ul>
 
             <div className="mt-10">
               <Link href="/" className={primaryButton}>
