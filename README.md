@@ -64,11 +64,11 @@ The visitor's email is used only as `Reply-To`; the endpoint never sends mail to
 
 ## License
 
-Licensed under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
-
-The licenses cover the code. They don't cover the images, wordmarks or fonts in this repository: images (including logos, photos and screenshots) and wordmarks belong to their owners, and each font keeps its own license.
-
-The text of the Terms of Use (`app/terms/page.tsx`) and the Privacy Policy (`app/privacy/page.tsx`) isn't covered either: as each page says, it is licensed under CC BY-SA.
+- **Text:** the text in this repository is licensed under [CC BY 4.0](LICENSE). That covers the copy on the site's pages (much of it written inside components), the slide deck in `public/docs/`, and documents such as this README and `DESIGN.md`. You may share and adapt it if you credit the Hypercerts Foundation, link to the license, and say whether you changed it. The exception is the Terms of Use (`app/terms/page.tsx`) and the Privacy Policy (`app/privacy/page.tsx`): as each page says, they are licensed under CC BY-SA.
+- **Code:** the site's source is licensed under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+- **Marks:** the Hypercerts logos and wordmarks and the guilloche ornament identify the Hypercerts Foundation. The code licenses cover the code that draws the ornament (`components/Guilloche.tsx`); they are not permission to use the marks to identify something else.
+- **Not covered:** the images (including logos, photos and screenshots) and the fonts. The images belong to their owners, and each font keeps its own license.
+- Blog posts are fetched from [hypercerts.leaflet.pub](https://hypercerts.leaflet.pub) and aren't stored here.
 
 Some code and icons in this repository come from elsewhere and keep their own terms:
 
