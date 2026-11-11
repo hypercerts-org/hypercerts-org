@@ -84,7 +84,6 @@ You do not need to adopt the entire stack to use hypercerts—individual compone
 ## Legacy repositories (v0.1)
 
 - [hypercerts-protocol](https://github.com/hypercerts-org/hypercerts-protocol) — smart contracts and the contracts NPM package
-- [hypercerts-app](https://github.com/hypercerts-org/hypercerts-app) — the original app.hypercerts.org application
 - [hypercerts-sdk](https://github.com/hypercerts-org/hypercerts-sdk) — SDK with contract methods, helpers, and tooling
 - [marketplace-sdk](https://github.com/hypercerts-org/marketplace-sdk) — marketplace SDK (built on Looksrare)
 - [hypercerts-indexer](https://github.com/hypercerts-org/hypercerts-indexer) — custom indexer for rapid data access
