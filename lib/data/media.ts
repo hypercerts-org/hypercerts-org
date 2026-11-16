@@ -18,7 +18,7 @@ export const featuredItems: MediaItem[] = [
       "Interview 1h 9min",
       "Nov 2026 | Ma Earth: The Regeneration Will Be Funded",
     ],
-    title: "Open protocols for regenerative coordination",
+    title: "Open Protocols for Regenerative Coordination",
     titleLink: "https://www.youtube.com/watch?v=MdUzJWAzoik",
     authors: [
       { name: "@holke.xyz", link: "https://bsky.app/profile/holke.xyz" },
@@ -28,7 +28,7 @@ export const featuredItems: MediaItem[] = [
   {
     image: "/img/davidad_ftc_talk.png",
     tags: ["Talk 18min", "Jun 2022 | Funding the Commons NYC"],
-    title: "On-chain Primitives for Impact Markets",
+    title: "On-Chain Primitives for Impact Markets",
     titleLink: "https://youtu.be/2hOhOdCbBlU?si=CvaAkL4651z3LwvD",
     authors: [{ name: "@davidad", link: "https://twitter.com/davidad" }],
   },
@@ -38,7 +38,7 @@ export const recentTextItems: MediaItem[] = [
   {
     tags: ["Blogpost", "Sep 2026"],
     title:
-      "Every donation a trust signal: how Ma Earth funded 201 regenerative projects",
+      "Every Donation a Trust Signal: How Ma Earth Funded 201 Regenerative Projects",
     titleLink: "/blog/3mvru46xfus2r",
     authors: [
       { name: "@hypercerts.org", link: "https://bsky.app/profile/hypercerts.org" },
@@ -64,7 +64,7 @@ export const recentTextItems: MediaItem[] = [
     tags: ["Blogpost", "Nov 2025"],
     title:
       "Why We Are Building Hypercerts: Recognizing and Rewarding Value Creators",
-    titleLink: "https://hypercerts.leaflet.pub/3m6mnb2riz22o",
+    titleLink: "/blog/3m6mnb2riz22o",
     authors: [
       { name: "@hypercerts.org", link: "https://bsky.app/profile/hypercerts.org" },
       { name: "@holke.xyz", link: "https://bsky.app/profile/holke.xyz" },
@@ -75,7 +75,7 @@ export const recentTextItems: MediaItem[] = [
       "Interview 1h 12min",
       "Sep 2025 | Ma Earth: The Regeneration Will Be Funded",
     ],
-    title: "The Moment is Ripe for Hypercerts",
+    title: "The Moment Is Ripe for Hypercerts",
     titleLink: "https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN",
     authors: [
       { name: "@holke.xyz", link: "https://bsky.app/profile/holke.xyz" },
@@ -93,7 +93,7 @@ export const recentTextItems: MediaItem[] = [
 export const olderTextItems: MediaItem[] = [
   {
     tags: ["Workshop 1h20min", "Nov 2024 | Devcon SEA Bangkok"],
-    title: "Kickstarting impact funding with hypercerts",
+    title: "Kickstarting Impact Funding with Hypercerts",
     titleLink: "https://youtu.be/Ozf8X4UeDY0?si=YTXwtqb8GTisBM2j",
     authors: [
       { name: "@bitbeckers", link: "https://bsky.app/profile/bitbeckers.bsky.social" },
@@ -102,7 +102,7 @@ export const olderTextItems: MediaItem[] = [
   },
   {
     tags: ["Demo 10min", "May 2024 | TechSoupVideo"],
-    title: "A new protocol for funding and rewarding positive impact",
+    title: "A New Protocol for Funding and Rewarding Positive Impact",
     titleLink: "https://youtu.be/8osT1iL7Vcc?si=l05fDArAQdJAbpLe",
     authors: [{ name: "@bitbeckers", link: "https://bsky.app/profile/bitbeckers.bsky.social" }],
   },
@@ -135,7 +135,7 @@ export const olderTextItems: MediaItem[] = [
   {
     tags: ["Blogpost", "Apr 2023 | Forbes"],
     title:
-      "Greenpilled: Meet 5 Entrepreneurs Engineering Social Good On The Blockchain",
+      "Greenpilled: Meet 5 Entrepreneurs Engineering Social Good on the Blockchain",
     titleLink:
       "https://www.forbes.com/sites/digital-assets/2023/04/25/greenpilled-meet-5-entrepreneurs-engineering-social-good-on-the-blockchain/?sh=4e26c7f2468f",
     authors: [
