@@ -13,13 +13,13 @@ export interface MediaItem {
 
 export const featuredItems: MediaItem[] = [
   {
-    image: "/img/holke_maearth_podcast_2.jpg",
+    image: "/img/holke_maearth_podcast_3.jpg",
     tags: [
-      "Interview 1h 12min",
-      "Sep 2025 | Ma Earth: The Regeneration Will Be Funded",
+      "Interview 1h 9min",
+      "Nov 2026 | Ma Earth: The Regeneration Will Be Funded",
     ],
-    title: "The Moment is Ripe for Hypercerts",
-    titleLink: "https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN",
+    title: "Open protocols for regenerative coordination",
+    titleLink: "https://www.youtube.com/watch?v=MdUzJWAzoik",
     authors: [
       { name: "@holke.xyz", link: "https://bsky.app/profile/holke.xyz" },
       { name: "@matthewmonahan", link: "https://bsky.app/profile/matthewmonahan.bsky.social" },
@@ -35,6 +35,15 @@ export const featuredItems: MediaItem[] = [
 ];
 
 export const recentTextItems: MediaItem[] = [
+  {
+    tags: ["Blogpost", "Sep 2026"],
+    title:
+      "Every donation a trust signal: how Ma Earth funded 201 regenerative projects",
+    titleLink: "/blog/3mvru46xfus2r",
+    authors: [
+      { name: "@hypercerts.org", link: "https://bsky.app/profile/hypercerts.org" },
+    ],
+  },
   {
     tags: ["Talk 18min", "Nov 2025 | Schelling Point Buenos Aires"],
     title:
@@ -62,11 +71,26 @@ export const recentTextItems: MediaItem[] = [
     ],
   },
   {
+    tags: [
+      "Interview 1h 12min",
+      "Sep 2025 | Ma Earth: The Regeneration Will Be Funded",
+    ],
+    title: "The Moment is Ripe for Hypercerts",
+    titleLink: "https://youtu.be/R70Jj5jBtgw?si=P9pQQzorWLE5amlN",
+    authors: [
+      { name: "@holke.xyz", link: "https://bsky.app/profile/holke.xyz" },
+      { name: "@matthewmonahan", link: "https://bsky.app/profile/matthewmonahan.bsky.social" },
+    ],
+  },
+  {
     tags: ["Talk & Demo 12min", "Jul 2025 | EthCC[8] Cannes"],
     title: "Decentralized Impact Funding Networks at Scale",
     titleLink: "https://www.youtube.com/live/bQ2Z0pwZOh8?si=tHMpQuY8C2pUfXmk",
     authors: [{ name: "@holke.xyz", link: "https://bsky.app/profile/holke.xyz" }],
   },
+];
+
+export const olderTextItems: MediaItem[] = [
   {
     tags: ["Workshop 1h20min", "Nov 2024 | Devcon SEA Bangkok"],
     title: "Kickstarting impact funding with hypercerts",
@@ -82,9 +106,6 @@ export const recentTextItems: MediaItem[] = [
     titleLink: "https://youtu.be/8osT1iL7Vcc?si=l05fDArAQdJAbpLe",
     authors: [{ name: "@bitbeckers", link: "https://bsky.app/profile/bitbeckers.bsky.social" }],
   },
-];
-
-export const olderTextItems: MediaItem[] = [
   {
     tags: [
       "Interview 55min",
