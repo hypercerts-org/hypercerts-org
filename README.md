@@ -69,6 +69,8 @@ The visitor's email is used only as `Reply-To`; the endpoint never sends mail to
 - **Not covered:** the images (including logos, photos and screenshots) and the fonts. The images belong to their owners, and each font keeps its own license.
 - Blog posts are fetched from [hypercerts.leaflet.pub](https://hypercerts.leaflet.pub) and aren't stored here.
 
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be licensed as above, without any additional terms or conditions.
+
 Some code and icons in this repository come from elsewhere and keep their own terms:
 
 - The GitHub, LinkedIn and Bluesky icons in `app/about/page.tsx` come from [Bootstrap Icons](https://icons.getbootstrap.com) 1.13.1, under the MIT license (Copyright (c) 2019-2024 The Bootstrap Authors). The logos they show belong to their owners.
