@@ -15,6 +15,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@upstash/redis": "^1.41.0",
     "botid": "^1.5.13",
     "next": "^15",
     "react": "^19",
