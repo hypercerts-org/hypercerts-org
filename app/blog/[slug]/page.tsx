@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { fetchBlogPost, fetchBlogPosts } from "@/lib/blog";
 import { blogFeed, openGraphBase, sharedTwitter } from "@/lib/metadata";
+import { serializeJsonLd } from "@/lib/jsonLd";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -61,7 +62,7 @@ export default async function BlogPostPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
+          __html: serializeJsonLd([
             {
               "@context": "https://schema.org",
               "@type": "Article",
