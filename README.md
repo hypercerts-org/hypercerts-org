@@ -48,10 +48,12 @@ Blog posts are fetched from [hypercerts.leaflet.pub](https://hypercerts.leaflet.
 The contact form posts to `/api/contact` and sends an internal notification through Resend. Configure these server-side environment variables in Vercel:
 
 - `RESEND_API_KEY` (required): Resend API key with permission to send from the configured domain.
-- `RESEND_FROM_EMAIL` (optional): sender address, defaulting to `Hypercerts <no-reply@hypercerts.org>`.
+- `RESEND_FROM_EMAIL` (optional): sender address, defaulting to `Hypercerts <no-reply@hypercerts.org>`. In production, set it to `Hypercerts <no-reply@notify.hypercerts.org>`, a subdomain verified in Resend, so mail the public can trigger doesn't share a sender with the main domain.
 - `CONTACT_TO_EMAIL` (optional): internal recipient, defaulting to `team@hypercerts.org`.
+- `KV_REST_API_URL` and `KV_REST_API_TOKEN`: Upstash Redis, set by the Vercel Marketplace integration. Holds the daily confirmation count only. Without them (local development), there is no daily cap.
+- `CONTACT_CONFIRMATION_DAILY_CAP` (optional): most confirmations the whole site sends per UTC day, defaulting to `100`.
 
-The visitor's email is used only as `Reply-To`; the endpoint never sends mail to an address supplied by a visitor. Production request limits are enforced by a Vercel Firewall rule on `POST /api/contact`.
+The visitor's email is the `Reply-To` of the internal notification, and it receives one fixed-text confirmation that echoes nothing the visitor typed. Because anyone can type any address, each mailbox gets at most one confirmation per 24 hours (a Resend idempotency key per mailbox, with case, `+tag` and Gmail dots folded). The confirmation is only sent when [Vercel BotID](https://vercel.com/docs/botid), an invisible check run by the visitor's browser, classifies the request as human; other requests still reach the team, flagged as automated. Across the whole site, at most `CONTACT_CONFIRMATION_DAILY_CAP` confirmations go out per day; past that, messages still reach the team. Production request limits are enforced by a Vercel Firewall rule on `POST /api/contact`.
 
 ## Links
 

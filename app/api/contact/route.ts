@@ -1,3 +1,6 @@
+import { createHash } from "node:crypto";
+import { Redis } from "@upstash/redis";
+import { checkBotId } from "botid/server";
 import { after, NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -6,6 +9,8 @@ const CONFIRMATION_TEXT = [
   "Thank you for contacting the Hypercerts Foundation. We’ve received your message and will get back to you soon.",
   "",
   "If you’d like to add anything, just reply to this email.",
+  "",
+  "If you didn’t send us a message, you can ignore this email.",
   "",
   "Hypercerts Foundation",
   "https://hypercerts.org",
@@ -16,6 +21,15 @@ const FROM_EMAIL =
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
+
+// Upstash Redis, connected through the Vercel Marketplace (KV_* variables).
+const redisUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const redisToken =
+  process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const redis =
+  redisUrl && redisToken ? new Redis({ url: redisUrl, token: redisToken }) : null;
+const CONFIRMATION_DAILY_CAP =
+  Number(process.env.CONTACT_CONFIRMATION_DAILY_CAP) || 100;
 
 type ContactBody = {
   name?: unknown;
@@ -34,6 +48,33 @@ function clean(value: unknown) {
         )
         .trim()
     : "";
+}
+
+/* One mailbox has many spellings: letter case, "+tag" subaddresses, and
+   dots in Gmail addresses. Fold them, so the one-confirmation-per-mailbox
+   limit can't be dodged by respelling the address. Used only for that
+   limit; mail still goes to the address as typed. */
+function mailboxKey(email: string) {
+  const [rawLocal, rawDomain] = email.toLowerCase().split("@");
+  const domain = rawDomain === "googlemail.com" ? "gmail.com" : rawDomain;
+  let local = rawLocal.split("+")[0];
+  if (domain === "gmail.com") local = local.replaceAll(".", "");
+  return createHash("sha256").update(`${local}@${domain}`).digest("hex");
+}
+
+/* A ceiling on confirmations across the whole site per UTC day, so however
+   requests are spread, the form can't mail more than this many people
+   outside the team. Past it, messages still reach the team; only the
+   confirmation is skipped. The counter is one number per day and holds
+   nothing about senders. Without Redis configured (local development)
+   there is no ceiling. */
+async function withinDailyConfirmationCap() {
+  if (!redis) return true;
+  const day = new Date().toISOString().slice(0, 10);
+  const key = `contact:confirmations:${process.env.VERCEL_ENV ?? "local"}:${day}`;
+  const count = await redis.incr(key);
+  if (count === 1) await redis.expire(key, 2 * 24 * 60 * 60);
+  return count <= CONFIRMATION_DAILY_CAP;
 }
 
 function checkOrigin(request: NextRequest) {
@@ -153,12 +194,29 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Vercel BotID: an invisible check the visitor's browser runs, with no
+  // challenge and no extra step (see instrumentation-client.ts). A request
+  // that fails it, such as a script posting directly, still reaches the
+  // team, flagged, in case a real person was misjudged, but never triggers
+  // a confirmation, so the form can't be used to mail other people. If the
+  // check itself errors, no confirmation is sent either.
+  const isHuman = await checkBotId().then(
+    (result) => result.isHuman,
+    (error) => {
+      console.error("[contact] bot check failed", error);
+      return false;
+    },
+  );
+
   const senderLines = [
     name ? `Name: ${name}` : "Name: Not provided",
     `Email: ${email}`,
     organization
       ? `Organization: ${organization}`
       : "Organization: Not provided",
+    ...(isHuman
+      ? []
+      : ["Note: flagged as automated by the bot check; no confirmation was sent."]),
   ];
 
   try {
@@ -166,7 +224,9 @@ export async function POST(request: NextRequest) {
       from: FROM_EMAIL,
       to: CONTACT_EMAIL,
       replyTo: email,
-      subject: "New contact request from hypercerts.org",
+      subject: isHuman
+        ? "New contact request from hypercerts.org"
+        : "[Flagged as automated] New contact request from hypercerts.org",
       text: [
         "New contact request from hypercerts.org",
         "",
@@ -179,18 +239,39 @@ export async function POST(request: NextRequest) {
 
     if (error) throw error;
 
+    // No confirmation for requests the bot check didn't pass (see above).
+    if (!isHuman) return NextResponse.json({ success: true });
+
     // Confirm receipt to the sender once the response has gone out. The text
     // is fixed on purpose: nothing the sender typed is echoed, so the form
     // cannot be used to send arbitrary content from our domain. A failure
     // here is only logged, since the team already has the message.
+    //
+    // Anyone can type any address, so each mailbox gets at most one
+    // confirmation per 24 hours: Resend keeps an idempotency key for 24
+    // hours and won't send again for a repeated one. That stops the form
+    // being used to flood someone's inbox from our domain. On top of that,
+    // the whole site sends at most CONFIRMATION_DAILY_CAP a day.
     after(async () => {
-      const { error: confirmationError } = await resend.emails.send({
-        from: FROM_EMAIL,
-        to: email,
-        replyTo: CONTACT_EMAIL,
-        subject: "We received your message",
-        text: CONFIRMATION_TEXT,
+      const withinCap = await withinDailyConfirmationCap().catch((error) => {
+        console.error("[contact] confirmation cap check failed; none sent", error);
+        return null;
       });
+      if (withinCap === false) {
+        console.warn("[contact] daily confirmation cap reached; none sent");
+      }
+      if (!withinCap) return;
+
+      const { error: confirmationError } = await resend.emails.send(
+        {
+          from: FROM_EMAIL,
+          to: email,
+          replyTo: CONTACT_EMAIL,
+          subject: "We received your message",
+          text: CONFIRMATION_TEXT,
+        },
+        { idempotencyKey: `contact-confirmation/${mailboxKey(email)}` },
+      );
       if (confirmationError) {
         console.error("[contact] confirmation email failed", confirmationError);
       }
