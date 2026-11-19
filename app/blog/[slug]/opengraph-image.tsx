@@ -139,7 +139,8 @@ export default async function Image({ params }: { params: { slug: string } }) {
   if (!post) return new Response("Not found", { status: 404 });
 
   const card =
-    (post.image && (await coverCard(post.image))) || (await titleCard(post.title));
+    (post.imageSourceUrl && (await coverCard(post.imageSourceUrl))) ||
+    (await titleCard(post.title));
 
   return new Response(new Uint8Array(card), {
     headers: { "Content-Type": contentType },
