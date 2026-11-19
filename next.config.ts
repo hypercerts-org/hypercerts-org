@@ -13,20 +13,21 @@ const nextConfig: NextConfig = {
     ],
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "hypercerts.org",
-      },
-      {
-        protocol: "https",
-        hostname: "app.hypercerts.org",
-      },
-      {
-        protocol: "https",
-        hostname: "lionsmane.us-east.host.bsky.network",
-      },
+    // No remote hosts: /_next/image is public, so anyone can make it fetch
+    // and resize whatever a listed host serves. The site's own images are
+    // all local. Blog images come from app/blog-image/[cid]/route.ts, which
+    // only fetches the Foundation's own blobs; the PDS they live on is
+    // shared by many accounts, so it must not be listed here.
+    // Only the local folders the site's images live in, and no query
+    // string: otherwise "?n=1", "?n=2", ... each make a new source the
+    // optimizer resizes and caches.
+    localPatterns: [
+      { pathname: "/img/**", search: "" },
+      { pathname: "/blog-image/**", search: "" },
     ],
+    // One quality, the one the site uses, so a source can't fan out into
+    // a hundred variants.
+    qualities: [75],
   },
   async redirects() {
     return [

@@ -9,11 +9,16 @@ export interface BlogPost {
   description: string;
   content: string;
   pubDate: string;
+  /* The cover as a path on this site, for pages. */
   image?: string;
+  /* The same cover on the PDS, for server-side fetches like the preview card. */
+  imageSourceUrl?: string;
 }
 
+/* The Foundation's account. The DID stays the same if the account moves to
+   another PDS; the PDS is looked up from it (see getPds). */
 const DID = "did:plc:s4puetfspot742ai7y4otuel";
-const PDS = "https://lionsmane.us-east.host.bsky.network";
+const PLC_DIRECTORY = "https://plc.directory";
 const COLLECTION = "site.standard.document";
 const LEAFLET_BASE = "https://hypercerts.leaflet.pub";
 
@@ -267,19 +272,69 @@ interface ATRecord {
   };
 }
 
-function getBlobUrl(blob?: BlobRef): string | undefined {
+function getBlobCid(blob?: BlobRef): string | undefined {
   const cid = typeof blob?.ref === "string" ? blob.ref : blob?.ref?.$link;
-  if (!cid) return undefined;
+  return cid || undefined;
+}
 
-  const url = new URL(`${PDS}/xrpc/com.atproto.sync.getBlob`);
+interface DidDocument {
+  service?: { id?: string; type?: string; serviceEndpoint?: unknown }[];
+}
+
+/* The PDS the Foundation's account currently lives on, read from its DID
+   document, so moving the account needs no code change. Cached for an
+   hour; if the directory can't be reached, Next keeps serving the last
+   good answer, and the callers' own error handling covers a cold cache. */
+async function getPds(): Promise<string> {
+  const res = await fetch(`${PLC_DIRECTORY}/${DID}`, {
+    next: { revalidate: 3600 },
+  });
+  if (!res.ok) {
+    throw new Error(`The PLC directory responded with ${res.status}`);
+  }
+
+  const doc: DidDocument = await res.json();
+  const endpoint = doc.service?.find(
+    (s) =>
+      s.id?.endsWith("#atproto_pds") && s.type === "AtprotoPersonalDataServer",
+  )?.serviceEndpoint;
+  if (typeof endpoint !== "string") {
+    throw new Error("The DID document names no PDS");
+  }
+
+  const url = new URL(endpoint);
+  if (url.protocol !== "https:") {
+    throw new Error("The DID document's PDS is not served over HTTPS");
+  }
+  return url.origin;
+}
+
+/* Where the PDS serves one of the Foundation's blobs. Always the
+   Foundation's DID: a PDS can hold many accounts' blobs. */
+function blobSourceUrl(pds: string, cid: string): string {
+  const url = new URL(`${pds}/xrpc/com.atproto.sync.getBlob`);
   url.searchParams.set("did", DID);
   url.searchParams.set("cid", cid);
   return url.toString();
 }
 
+/* For server-side fetches only; pages use getBlobUrl. */
+export async function getBlobSourceUrl(cid: string): Promise<string> {
+  return blobSourceUrl(await getPds(), cid);
+}
+
+/* A blob as a path on this site, served by app/blog-image/[cid]/route.ts,
+   so the image optimizer resizes it as a local image and never needs the
+   shared PDS as a remote host. */
+function getBlobUrl(blob?: BlobRef): string | undefined {
+  const cid = getBlobCid(blob);
+  return cid ? `/blog-image/${encodeURIComponent(cid)}` : undefined;
+}
+
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   try {
-    const url = `${PDS}/xrpc/com.atproto.repo.listRecords?repo=${DID}&collection=${COLLECTION}&limit=100`;
+    const pds = await getPds();
+    const url = `${pds}/xrpc/com.atproto.repo.listRecords?repo=${DID}&collection=${COLLECTION}&limit=100`;
     const res = await fetch(url, { next: { revalidate: 60 } });
 
     if (!res.ok) throw new Error(`The PDS responded with ${res.status}`);
@@ -302,6 +357,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         const pages = content?.pages ?? [];
         const htmlContent = pages.length ? renderBlocks(pages) : "";
         const image = getBlobUrl(coverImage);
+        const coverCid = getBlobCid(coverImage);
         const description = rawDesc
           || (() => {
             const plainText = stripHtml(htmlContent);
@@ -317,6 +373,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
           content: htmlContent,
           pubDate: publishedAt!,
           image,
+          imageSourceUrl: coverCid ? blobSourceUrl(pds, coverCid) : undefined,
         };
       })
       .sort(
