@@ -52,7 +52,11 @@ export default function PrivacyPage() {
               collect information that you submit when contacting us, including
               your name, email address, organization, and message. We use this
               information solely to respond to you. Our contact form uses Resend
-              to deliver messages.
+              to deliver messages. To protect the form from automated abuse, it
+              also uses Vercel BotID, which runs an invisible check in your
+              browser when you send a message. The check processes technical
+              signals from your browser to tell people from automated programs
+              and asks nothing of you.
             </p>
             <p>
               We may use tracking or analytics technologies to automatically
@@ -73,8 +77,9 @@ export default function PrivacyPage() {
               have separate and independent privacy policies and may collect or
               use your data in a way we are not aware of. We therefore have no
               responsibility or liability for the content and activities of these
-              linked sites. Service providers that process data on our behalf,
-              including Resend, process it to provide email delivery services.
+              linked sites. Service providers that process data on our behalf
+              include Resend, which provides email delivery, and Vercel, which
+              hosts our Websites and runs the contact form&rsquo;s bot check.
             </p>
           </section>
 
