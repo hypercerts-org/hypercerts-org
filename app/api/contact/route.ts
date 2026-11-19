@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { after, NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -6,6 +7,8 @@ const CONFIRMATION_TEXT = [
   "Thank you for contacting the Hypercerts Foundation. We’ve received your message and will get back to you soon.",
   "",
   "If you’d like to add anything, just reply to this email.",
+  "",
+  "If you didn’t send us a message, you can ignore this email.",
   "",
   "Hypercerts Foundation",
   "https://hypercerts.org",
@@ -34,6 +37,18 @@ function clean(value: unknown) {
         )
         .trim()
     : "";
+}
+
+/* One mailbox has many spellings: letter case, "+tag" subaddresses, and
+   dots in Gmail addresses. Fold them, so the one-confirmation-per-mailbox
+   limit can't be dodged by respelling the address. Used only for that
+   limit; mail still goes to the address as typed. */
+function mailboxKey(email: string) {
+  const [rawLocal, rawDomain] = email.toLowerCase().split("@");
+  const domain = rawDomain === "googlemail.com" ? "gmail.com" : rawDomain;
+  let local = rawLocal.split("+")[0];
+  if (domain === "gmail.com") local = local.replaceAll(".", "");
+  return createHash("sha256").update(`${local}@${domain}`).digest("hex");
 }
 
 function checkOrigin(request: NextRequest) {
@@ -183,14 +198,22 @@ export async function POST(request: NextRequest) {
     // is fixed on purpose: nothing the sender typed is echoed, so the form
     // cannot be used to send arbitrary content from our domain. A failure
     // here is only logged, since the team already has the message.
+    //
+    // Anyone can type any address, so each mailbox gets at most one
+    // confirmation per 24 hours: Resend keeps an idempotency key for 24
+    // hours and won't send again for a repeated one. That stops the form
+    // being used to flood someone's inbox from our domain.
     after(async () => {
-      const { error: confirmationError } = await resend.emails.send({
-        from: FROM_EMAIL,
-        to: email,
-        replyTo: CONTACT_EMAIL,
-        subject: "We received your message",
-        text: CONFIRMATION_TEXT,
-      });
+      const { error: confirmationError } = await resend.emails.send(
+        {
+          from: FROM_EMAIL,
+          to: email,
+          replyTo: CONTACT_EMAIL,
+          subject: "We received your message",
+          text: CONFIRMATION_TEXT,
+        },
+        { idempotencyKey: `contact-confirmation/${mailboxKey(email)}` },
+      );
       if (confirmationError) {
         console.error("[contact] confirmation email failed", confirmationError);
       }
