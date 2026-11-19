@@ -15,6 +15,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "botid": "^1.5.13",
     "next": "^15",
     "react": "^19",
     "react-dom": "^19",

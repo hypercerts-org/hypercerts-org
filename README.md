@@ -51,7 +51,7 @@ The contact form posts to `/api/contact` and sends an internal notification thro
 - `RESEND_FROM_EMAIL` (optional): sender address, defaulting to `Hypercerts <no-reply@hypercerts.org>`.
 - `CONTACT_TO_EMAIL` (optional): internal recipient, defaulting to `team@hypercerts.org`.
 
-The visitor's email is the `Reply-To` of the internal notification, and it receives one fixed-text confirmation that echoes nothing the visitor typed. Because anyone can type any address, each mailbox gets at most one confirmation per 24 hours (a Resend idempotency key per mailbox, with case, `+tag` and Gmail dots folded). Production request limits are enforced by a Vercel Firewall rule on `POST /api/contact`.
+The visitor's email is the `Reply-To` of the internal notification, and it receives one fixed-text confirmation that echoes nothing the visitor typed. Because anyone can type any address, each mailbox gets at most one confirmation per 24 hours (a Resend idempotency key per mailbox, with case, `+tag` and Gmail dots folded). The confirmation is only sent when [Vercel BotID](https://vercel.com/docs/botid), an invisible check run by the visitor's browser, classifies the request as human; other requests still reach the team, flagged as automated. Production request limits are enforced by a Vercel Firewall rule on `POST /api/contact`.
 
 ## Links
 

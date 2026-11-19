@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { checkBotId } from "botid/server";
 import { after, NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -168,12 +169,29 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Vercel BotID: an invisible check the visitor's browser runs, with no
+  // challenge and no extra step (see instrumentation-client.ts). A request
+  // that fails it, such as a script posting directly, still reaches the
+  // team, flagged, in case a real person was misjudged, but never triggers
+  // a confirmation, so the form can't be used to mail other people. If the
+  // check itself errors, no confirmation is sent either.
+  const isHuman = await checkBotId().then(
+    (result) => result.isHuman,
+    (error) => {
+      console.error("[contact] bot check failed", error);
+      return false;
+    },
+  );
+
   const senderLines = [
     name ? `Name: ${name}` : "Name: Not provided",
     `Email: ${email}`,
     organization
       ? `Organization: ${organization}`
       : "Organization: Not provided",
+    ...(isHuman
+      ? []
+      : ["Note: flagged as automated by the bot check; no confirmation was sent."]),
   ];
 
   try {
@@ -181,7 +199,9 @@ export async function POST(request: NextRequest) {
       from: FROM_EMAIL,
       to: CONTACT_EMAIL,
       replyTo: email,
-      subject: "New contact request from hypercerts.org",
+      subject: isHuman
+        ? "New contact request from hypercerts.org"
+        : "[Flagged as automated] New contact request from hypercerts.org",
       text: [
         "New contact request from hypercerts.org",
         "",
@@ -193,6 +213,9 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) throw error;
+
+    // No confirmation for requests the bot check didn't pass (see above).
+    if (!isHuman) return NextResponse.json({ success: true });
 
     // Confirm receipt to the sender once the response has gone out. The text
     // is fixed on purpose: nothing the sender typed is echoed, so the form
